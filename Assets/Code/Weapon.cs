@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Weapon : MonoBehaviour {
+public class Weapon : MonoBehaviour {
 
 	string name;
 	int ammo;
@@ -9,6 +9,7 @@ public abstract class Weapon : MonoBehaviour {
 	bool reloading;
 	int durability;
 	float accidentalFire;
+	int hitDamage;
 
 	// Use this for initialization
 	void Start () {
@@ -35,5 +36,10 @@ public abstract class Weapon : MonoBehaviour {
 		if (reloading)
 			return true;
 		return false;
+	}
+
+	public int giveHitDamage()
+	{
+		return hitDamage;
 	}
 }

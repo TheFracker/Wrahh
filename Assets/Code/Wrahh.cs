@@ -9,7 +9,7 @@ public class Wrahh : MonoBehaviour {
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	float moveSpeed = 10.0f;
+	float moveSpeed = 5.0f;
 	float MAX_MOVE_SPEED = 1.0f;
 
 	// Use this for initialization
@@ -55,6 +55,7 @@ public class Wrahh : MonoBehaviour {
 	public void useWeapon(Weapon currentWeapon)
 	{
 		Debug.Log ("Hitting with this weird club");
+		currentWeapon.hit ();
 	}
 
 	public void throwGrenade()
@@ -96,10 +97,9 @@ public class Wrahh : MonoBehaviour {
 		transform.localScale = direction;
 	}
 
-	/*
+
 	public void hurt(Projectile p)
 	{
-		health -= p.damage
+		health -= p.giveDamage ();
 	}
-	*/
 }

@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightStart: {fileID: 1101690270}
   sightEnd: {fileID: 214986877}
+  spottet: 0
 --- !u!143 &474097032
 CharacterController:
   m_ObjectHideFlags: 0

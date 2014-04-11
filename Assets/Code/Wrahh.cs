@@ -16,7 +16,7 @@ public class Wrahh : MonoBehaviour {
 		health = 3;  // Three hearts
 		armor = 0; // No armor to start with
 		grenades = 0; // Nothing to throw yet
-		currentWeapon = new Weapon ();
+		currentWeapon = gameObject.AddComponent<Weapon> ();
 	}
 	
 	// Update is called once per frame
@@ -63,14 +63,14 @@ public class Wrahh : MonoBehaviour {
 		Debug.Log ("Dying");
 	}
 
-	void OnCollisionEnter2D(Collision2D c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		// Pick up weapon
-		if (c.collider.tag == "Weapon")
+		if (c.tag == "Weapon")
 			// picks up weapon
 			Debug.Log ("Picking up this thing");
 		// Pick up armor
-		if (c.collider.tag == "Armor")
+		if (c.tag == "Armor")
 			// picks up armor
 			Debug.Log ("This can protect me");
 	}

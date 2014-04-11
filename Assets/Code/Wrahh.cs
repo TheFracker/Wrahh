@@ -16,6 +16,7 @@ public class Wrahh : MonoBehaviour {
 		health = 3;  // Three hearts
 		armor = 0; // No armor to start with
 		grenades = 0; // Nothing to throw yet
+		currentWeapon = new Weapon ();
 	}
 	
 	// Update is called once per frame
@@ -23,6 +24,10 @@ public class Wrahh : MonoBehaviour {
 		// Throw grenade
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
+
+		// Shooting
+		if (Input.GetKeyDown (KeyCode.Space))
+			useWeapon (currentWeapon);
 	}
 
 	void FixedUpdate()

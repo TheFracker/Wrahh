@@ -63,16 +63,20 @@ public class Wrahh : MonoBehaviour {
 		Debug.Log ("Dying");
 	}
 
-	void OnTriggerEnter2D(Collider2D c)
+	void OnTriggerStay2D(Collider2D c)
 	{
 		// Pick up weapon
-		if (c.tag == "Weapon")
+		if (c.tag == "Weapon") {
 			// picks up weapon
 			Debug.Log ("Picking up this thing");
+			Destroy(c.gameObject);
+		}
 		// Pick up armor
-		if (c.tag == "Armor")
+		if (c.tag == "Armor") {
 			// picks up armor
 			Debug.Log ("This can protect me");
+			Destroy(c.gameObject);
+		}
 	}
 
 }

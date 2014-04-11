@@ -3,16 +3,18 @@ using System.Collections;
 
 public class Wrahh : MonoBehaviour {
 
+	bool facingRight;
 	int health;
 	int armor;
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	float moveSpeed = 5.0f;
+	float moveSpeed = 25.0f;
 	float MAX_MOVE_SPEED = 1.0f;
 
 	// Use this for initialization
 	void Start () {
+		facingRight = true;
 		health = 3;  // Three hearts
 		armor = 0; // No armor to start with
 		grenades = 0; // Nothing to throw yet
@@ -32,15 +34,22 @@ public class Wrahh : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		float h = Input.GetAxis ("Horizontal");
+		float input = Input.GetAxis ("Horizontal");
 
 		// Moving right
-		if (h * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
-			rigidbody2D.AddForce (Vector2.right * h * moveSpeed);
+		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
+			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 
 		// Moving left
-		if (Mathf.Abs(h * rigidbody2D.velocity.x) > MAX_MOVE_SPEED)
-			rigidbody2D.AddForce (Vector2.right * h * moveSpeed);
+		if (Mathf.Abs (input * rigidbody2D.velocity.x) > MAX_MOVE_SPEED)
+			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
+
+		// Turn the direction Wrahh is walking
+		if (input < 0 && facingRight)
+			flip ();
+
+		if (input > 0 && !facingRight)
+			flip ();
 	}
 
 	public void useWeapon(Weapon currentWeapon)
@@ -63,7 +72,7 @@ public class Wrahh : MonoBehaviour {
 		Debug.Log ("Dying");
 	}
 
-	void OnTriggerStay2D(Collider2D c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		// Pick up weapon
 		if (c.tag == "Weapon") {
@@ -77,6 +86,14 @@ public class Wrahh : MonoBehaviour {
 			Debug.Log ("This can protect me");
 			Destroy(c.gameObject);
 		}
+	}
+
+	void flip()
+	{
+		facingRight = !facingRight;
+		Vector3 direction = transform.localScale;
+		direction.x *= -1;
+		transform.localScale = direction;
 	}
 
 }

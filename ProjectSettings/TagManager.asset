@@ -14,7 +14,7 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
+  User Layer 8: Player
   User Layer 9: 
   User Layer 10: 
   User Layer 11: 
@@ -42,4 +42,12 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Bones
+    userID: 1
+    uniqueID: 1042250913
+    locked: 0
+  - name: Controls
+    userID: 2
+    uniqueID: 935044075
     locked: 0

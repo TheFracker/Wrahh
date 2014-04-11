@@ -436,6 +436,7 @@ GameObject:
   - 58: {fileID: 2054006543}
   - 58: {fileID: 2054006542}
   - 58: {fileID: 2054006541}
+  - 95: {fileID: 2054006545}
   m_Layer: 0
   m_Name: Player_wrahh
   m_TagString: Untagged
@@ -510,6 +511,20 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!95 &2054006545
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2054006539}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0d37eeb999646642b7ab3565a68e480, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &2106121296
 GameObject:
   m_ObjectHideFlags: 0

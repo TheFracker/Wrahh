@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Wrahh : MonoBehaviour {
@@ -18,7 +18,7 @@ public class Wrahh : MonoBehaviour {
 		health = 3;  // Three hearts
 		armor = 0; // No armor to start with
 		grenades = 0; // Nothing to throw yet
-		currentWeapon = new Rifle ();
+		currentWeapon = gameObject.AddComponent<Rifle>();
 	}
 	
 	// Update is called once per frame
@@ -28,7 +28,7 @@ public class Wrahh : MonoBehaviour {
 			throwGrenade ();
 
 		// Shooting
-		if (Input.GetKeyDown (KeyCode.Space))
+		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
 	}
 
@@ -55,7 +55,7 @@ public class Wrahh : MonoBehaviour {
 	void useWeapon(Weapon currentWeapon)
 	{
 		Debug.Log ("Hitting with this weird club");
-		currentWeapon.hit ();
+		currentWeapon.shoot ();
 	}
 
 	void throwGrenade()

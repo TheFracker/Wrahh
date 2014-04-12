@@ -4,13 +4,12 @@ using System.Collections;
 public class Dolphin : MonoBehaviour
 {
 		public float walkSpeed = 2.0f;
-		public float walkLeft = 0.0f;
-		public float walkRight = 1.0f;
-		float walkingDirection = 1.0f;
+		public float walkRight = 0.0f;
+		public float walkLeft = 1.0f;
+		float walkingDirection = -1.0f;
 		Vector3 walkAmount;
-		
 		int health = 2;
-		Weapon weapon;
+		Weapon cweapon;
 		bool dead;
 		public Transform sightStart, sightEnd;
 		public bool spotted = false;
@@ -19,23 +18,14 @@ public class Dolphin : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				weapon = new Pistol ();
-				InvokeRepeating ("patrol", 0f, Random.Range (2f, 4f));
+				cweapon = gameObject.AddComponent<Pistol>();
+				InvokeRepeating ("patrol", 0f, 2f);
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-				walkAmount.x = walkingDirection * walkSpeed * Time.deltaTime;
-		
-				if (walkingDirection > 0.0f && transform.position.x >= walkRight) {
-						walkingDirection = -1.0f;
-				} else if (walkingDirection < 0.0f && transform.position.x <= walkLeft) {
-						walkingDirection = 1.0f;
-				}
-		
 				transform.Translate (walkAmount);
-
 				raycast ();
 				actions ();
 		}
@@ -61,19 +51,26 @@ public class Dolphin : MonoBehaviour
 
 		public void patrol ()
 		{ 
-				facingRight = !facingRight;
+			//walkAmount.x = walkingDirection * walkSpeed * Time.deltaTime;	
 
-				if (facingRight == true) {
+		if (walkingDirection > 0.0f && transform.position.x >= walkLeft && facingRight == true) {
+						walkingDirection = -1.0f;
 						transform.eulerAngles = new Vector2 (0, 0);
+						facingRight = false;
 				} else {
+						walkingDirection = 1.0f;
 						transform.eulerAngles = new Vector2 (0, 180);
-				}
+						facingRight=true;
+		}
+
+						
+	
 		}
 
 		public void actions ()
 		{
 				if (spotted) {
-						useWeapon (weapon);
+						useWeapon (cweapon);
 				}
 		}
 

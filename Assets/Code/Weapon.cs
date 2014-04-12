@@ -2,44 +2,55 @@
 using System.Collections;
 
 public class Weapon : MonoBehaviour {
+	
+	protected string name; // Name of the weapon
+	protected int ammo; // Amount of ammoation
+	protected int MAGAZINE_SIZE; // Size of magazine
+	protected float reloadTime; // The time it takes to reload
+	protected bool reloading; // If reloading, this will be true
+	protected int durability; // How many hits it can take
+	protected float accidentalFire; // Critacal chance
+	protected int hitDamage; // Damage it gives when using it as a club
 
-	string name;
-	int ammo;
-	float reloadTime;
-	bool reloading;
-	int durability;
-	float accidentalFire;
-	int hitDamage;
-
-	public Weapon()
+	void Update()
 	{
-
+		Debug.Log (isReloading ());
 	}
 
 	public virtual void hit()
 	{
 		Debug.Log ("Hitting");
+		durability--;
 	}
 
 	public virtual void shoot()
 	{
-		Debug.Log ("Shooting");
-	}
-
-	public void reload()
-	{
-		Debug.Log ("Reloading");
+		if (ammo > 0) {
+			Debug.Log ("Shooting");
+			ammo--;
+		} else
+			StartCoroutine (reload ());
 	}
 
 	public bool isReloading()
 	{
-		if (reloading)
-			return true;
-		return false;
+		return reloading;
 	}
 
 	public int giveHitDamage()
 	{
 		return hitDamage;
+	}
+
+	public string getName()
+	{
+		return name;
+	}
+
+	IEnumerator reload()
+	{
+		reloading = true;
+		yield return new WaitForSeconds (reloadTime);
+		reloading = false;
 	}
 }

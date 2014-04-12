@@ -23,6 +23,7 @@ public class Pistol : Weapon {
 		facing = dolphin.facingRight;
 		shoot ();
 	}
+
 	public override void shoot()
 	{
 		if (facing == true){

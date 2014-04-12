@@ -87,6 +87,7 @@ GameObject:
   - 58: {fileID: 41583944}
   - 58: {fileID: 41583943}
   - 95: {fileID: 41583942}
+  - 114: {fileID: 41583947}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -172,6 +173,18 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!114 &41583947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41583940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d7dcccd6d090042b1b8e1a97d5b175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 25
 --- !u!1 &146467631
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +691,7 @@ GameObject:
   - 58: {fileID: 1767814746}
   - 58: {fileID: 1767814745}
   - 58: {fileID: 1767814744}
+  - 61: {fileID: 1767814748}
   m_Layer: 0
   m_Name: enemyLobster
   m_TagString: Untagged
@@ -741,6 +755,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7c96515aa3c1344a69ae69665e20c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 4
+--- !u!61 &1767814748
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1767814742}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .639999986, y: 6.9000001}
+  m_Center: {x: -16.25, y: 2.76999998}
 --- !u!1 &2067617332
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,16 +3,23 @@ using System.Collections;
 
 public class Lobster : MonoBehaviour
 {
-
-	// Use this for initialization
+	public int speed = 4;
+	
 	void Start ()
 	{
 	
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
 	{
-		transform.LookAt (Wrahh);	//Referring to the Player.
+
+	}
+
+	void OnTriggerEnter2D(Collider2D c)
+	{
+		if (c.tag == "Player")
+		{
+			Debug.Log("Lobster sight triggered!");
+		}
 	}
 }

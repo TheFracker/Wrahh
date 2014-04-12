@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon : MonoBehaviour {
+public abstract class Weapon {
 
 	string name;
 	int ammo;
@@ -11,9 +11,9 @@ public class Weapon : MonoBehaviour {
 	float accidentalFire;
 	int hitDamage;
 
-	// Use this for initialization
-	void Start () {
-	
+	public Weapon()
+	{
+
 	}
 
 	public void hit()

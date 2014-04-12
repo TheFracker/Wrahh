@@ -18,7 +18,7 @@ public class Wrahh : MonoBehaviour {
 		health = 3;  // Three hearts
 		armor = 0; // No armor to start with
 		grenades = 0; // Nothing to throw yet
-		currentWeapon = gameObject.AddComponent<Weapon> ();
+		currentWeapon = new Pistol();
 	}
 	
 	// Update is called once per frame

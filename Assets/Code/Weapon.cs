@@ -16,12 +16,12 @@ public class Weapon : MonoBehaviour {
 
 	}
 
-	public void hit()
+	public virtual void hit()
 	{
 		Debug.Log ("Hitting");
 	}
 
-	public void shoot()
+	public virtual void shoot()
 	{
 		Debug.Log ("Shooting");
 	}

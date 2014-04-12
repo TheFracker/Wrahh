@@ -19,7 +19,7 @@ public class Dolphin : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				weapon = gameObject.AddComponent<Weapon> ();
+				weapon = new Pistol();
 				InvokeRepeating ("patrol", 0f, Random.Range (2f, 4f));
 		}
 	

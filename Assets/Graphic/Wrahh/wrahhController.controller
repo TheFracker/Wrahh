@@ -7,7 +7,13 @@ AnimatorController:
   m_PrefabInternal: {fileID: 0}
   m_Name: wrahhController
   serializedVersion: 2
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: Speed
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -20,6 +26,42 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1101 &110100000
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110256762}
+  m_DstState: {fileID: 110289228}
+  m_TransitionDuration: .1875
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: .00999999978
+    m_ExitTime: .8125
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+--- !u!1101 &110102854
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110289228}
+  m_DstState: {fileID: 110256762}
+  m_TransitionDuration: .25
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: .100000001
+    m_ExitTime: .75
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
 --- !u!1102 &110200000
 State:
   m_ObjectHideFlags: 3
@@ -46,7 +88,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 6f853d60735f95643a1a6e1be3ea3633, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 492, y: 12, z: 0}
+  m_Position: {x: 336, y: 36, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: idle
@@ -61,7 +103,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: d83ea236a50c92540a010cda94572985, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 204, y: 72, z: 0}
+  m_Position: {x: 636, y: 36, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: run
@@ -81,10 +123,12 @@ StateMachine:
   m_OrderedTransitions:
     data:
       first: {fileID: 110256762}
-      second: []
+      second:
+      - {fileID: 110100000}
     data:
       first: {fileID: 110289228}
-      second: []
+      second:
+      - {fileID: 110102854}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 24, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

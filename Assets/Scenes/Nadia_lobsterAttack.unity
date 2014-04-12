@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  maxDist: 20
+  maxDistance: 20
 --- !u!50 &1767814748
 Rigidbody2D:
   m_ObjectHideFlags: 0

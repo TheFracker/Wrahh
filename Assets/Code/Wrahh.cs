@@ -9,7 +9,7 @@ public class Wrahh : MonoBehaviour {
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	float moveSpeed = 5.0f;
+	public float moveSpeed = 5.0f;
 	float MAX_MOVE_SPEED = 1.0f;
 
 	// Use this for initialization

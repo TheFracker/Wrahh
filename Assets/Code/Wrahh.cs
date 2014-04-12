@@ -9,20 +9,25 @@ public class Wrahh : MonoBehaviour {
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	float moveSpeed = 5.0f;
+	public float moveSpeed = 11.0f;
+
 	float MAX_MOVE_SPEED = 1.0f;
+	Animator anim;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		facingRight = true;
 		health = 3;  // Three hearts
 		armor = 3; // No armor to start with
 		grenades = 0; // Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
+		anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		// Throw grenade
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
@@ -35,6 +40,8 @@ public class Wrahh : MonoBehaviour {
 	void FixedUpdate()
 	{
 		float input = Input.GetAxis ("Horizontal");
+
+		anim.SetFloat("Speed", Mathf.Abs(input));
 
 		// Moving right
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
@@ -50,6 +57,9 @@ public class Wrahh : MonoBehaviour {
 
 		if (input > 0 && !facingRight)
 			flip ();
+
+		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
+		//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.x < 0);
 	}
 
 	void useWeapon(Weapon currentWeapon)

@@ -13,7 +13,7 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: Ground
+  User Layer 8: LevelFloor
   User Layer 9: Wrahh
   User Layer 10: Dolphin
   User Layer 11: Lobster
@@ -41,4 +41,12 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: LevelFloor
+    userID: 1
+    uniqueID: 1851168923
+    locked: 0
+  - name: Wrahh
+    userID: 2
+    uniqueID: 1120892641
     locked: 0

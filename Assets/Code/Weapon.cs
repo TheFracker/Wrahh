@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Weapon {
+public class Weapon : MonoBehaviour {
 
 	string name;
 	int ammo;

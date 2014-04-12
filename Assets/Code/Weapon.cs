@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour {
 	public bool isReloading()
 	{
 		if (reloading)
-			return true;
+		return true;
 		return false;
 	}
 

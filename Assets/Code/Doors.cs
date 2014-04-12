@@ -18,7 +18,8 @@ public class Doors : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.gameObject == Wrahhh){
+		Debug.Log(buttonActive);
+		if(other.gameObject == Wrahhh && buttonActive == true){
 			Animator anim = GetComponent<Animator>();
 			anim.SetBool("open", true);
 		}

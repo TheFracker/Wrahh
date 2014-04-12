@@ -18,7 +18,7 @@ public class Wrahh : MonoBehaviour {
 		health = 3;  // Three hearts
 		armor = 0; // No armor to start with
 		grenades = 0; // Nothing to throw yet
-		currentWeapon = new Pistol();
+		currentWeapon = new Rifle ();
 	}
 	
 	// Update is called once per frame
@@ -52,13 +52,13 @@ public class Wrahh : MonoBehaviour {
 			flip ();
 	}
 
-	public void useWeapon(Weapon currentWeapon)
+	void useWeapon(Weapon currentWeapon)
 	{
 		Debug.Log ("Hitting with this weird club");
 		currentWeapon.hit ();
 	}
 
-	public void throwGrenade()
+	void throwGrenade()
 	{
 		if (grenades > 0) {
 			Debug.Log("Throwing grenade " + grenades);
@@ -68,7 +68,7 @@ public class Wrahh : MonoBehaviour {
 		Debug.Log ("Don't have anything to throw");
 	}
 
-	public void die()
+	void die()
 	{
 		Debug.Log ("Dying");
 	}
@@ -100,6 +100,17 @@ public class Wrahh : MonoBehaviour {
 
 	public void hurt(Projectile p)
 	{
-		health -= p.giveDamage ();
+		int damageTaken = p.giveDamage ();
+		if (armor > 0 && armor > damageTaken) {
+			armor -= damageTaken;
+			damageTaken = 0;
+		}
+		else if (armor > 0) {
+			damageTaken -= armor;
+			armor = 0;
+		}
+		health -= damageTaken;
+		if (health <= 0)
+			die ();
 	}
 }

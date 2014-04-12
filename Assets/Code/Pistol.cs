@@ -10,6 +10,10 @@ public class Pistol : Weapon {
 	{
 	}
 
+	public Pistol(int ammo, float reloadTime) : base(ammo, reloadTime){}
+	
+	public Pistol(string name, int durability, int hitDamage, float accidentalFire) : base(name, durability, hitDamage, accidentalFire){}
+
 	public override void shoot()
 	{
 		GameObject shot = (GameObject)GameObject.Instantiate(bullet, transform.position, transform.rotation);

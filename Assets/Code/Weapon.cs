@@ -12,10 +12,6 @@ public class Weapon : MonoBehaviour {
 	protected float accidentalFire; // Critacal chance
 	protected int hitDamage; // Damage it gives when using it as a club
 
-	void Update()
-	{
-		Debug.Log (isReloading ());
-	}
 
 	public virtual void hit()
 	{

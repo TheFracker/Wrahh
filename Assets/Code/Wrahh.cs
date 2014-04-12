@@ -9,7 +9,7 @@ public class Wrahh : MonoBehaviour {
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	float moveSpeed = 5.0f;
+	float moveSpeed = 11.0f;
 	float MAX_MOVE_SPEED = 1.0f;
 
 	// Use this for initialization
@@ -50,6 +50,9 @@ public class Wrahh : MonoBehaviour {
 
 		if (input > 0 && !facingRight)
 			flip ();
+
+		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
+		//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.x < 0);
 	}
 
 	void useWeapon(Weapon currentWeapon)

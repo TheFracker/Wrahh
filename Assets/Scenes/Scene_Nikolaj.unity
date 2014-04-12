@@ -361,7 +361,7 @@ Transform:
   m_GameObject: {fileID: 1057735361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .274257481, y: -.00991292112, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 0}
+  m_LocalScale: {x: 21.1249981, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1101690269
@@ -400,6 +400,7 @@ GameObject:
   - 4: {fileID: 1266318451}
   - 33: {fileID: 1266318450}
   - 23: {fileID: 1266318449}
+  - 114: {fileID: 1266318452}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -446,6 +447,19 @@ Transform:
   m_LocalScale: {x: .263232499, y: .263232499, z: .263232499}
   m_Children: []
   m_Father: {fileID: 474097030}
+--- !u!114 &1266318452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1266318448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd6274977855584d873fffc36b157c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 100000, guid: 34fe8d9a87c37ae4dbb8b2a122e5b406, type: 2}
+  bulletSpeed: 100
 --- !u!1 &1916375785
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,13 +487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00125744d186548ad46f315afd2304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  ammo: 0
-  reloadTime: 0
-  reloading: 0
-  durability: 0
-  accidentalFire: 0
-  hitDamage: 0
 --- !u!4 &1916375787
 Transform:
   m_ObjectHideFlags: 0

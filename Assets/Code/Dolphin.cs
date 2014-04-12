@@ -5,7 +5,7 @@ public class Dolphin : MonoBehaviour
 {
 		public float walkSpeed = 2.0f;
 		public float walkLeft = 0.0f;
-		public float walkRight = 2.0f;
+		public float walkRight = 1.0f;
 		float walkingDirection = 1.0f;
 		Vector3 walkAmount;
 		
@@ -19,7 +19,7 @@ public class Dolphin : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				weapon = new Pistol();
+				weapon = new Pistol ();
 				InvokeRepeating ("patrol", 0f, Random.Range (2f, 4f));
 		}
 	

@@ -10,11 +10,12 @@ public class Pistol : Weapon {
 	{
 	}
 
-	public void shoot()
+	public override void shoot()
 	{
-		GameObject shot = GameObject.Instantiate(bullet, transform.position + (transform.forward*2), transform.rotation);
+		GameObject shot = (GameObject)GameObject.Instantiate(bullet, transform.position, transform.rotation);
 
-		shot.rigidbody2D.AddForce(transform.forward*bulletSpeed);
+		shot.rigidbody.AddForce(transform.forward*bulletSpeed);
+		Debug.Log ("bullet");
 	}
 
 }

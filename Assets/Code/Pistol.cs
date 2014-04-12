@@ -6,10 +6,6 @@ public class Pistol : Weapon {
 	public GameObject bullet = null;
 	public float bulletSpeed = 100f;
 
-	public Pistol() : base()
-	{
-	}
-
 	public override void shoot()
 	{
 		GameObject shot = (GameObject)GameObject.Instantiate(bullet, transform.position, transform.rotation);

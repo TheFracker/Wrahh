@@ -6,14 +6,15 @@ public class Lobster : MonoBehaviour
 	public float speed = 6.0f;
 	public float maxDistance = 20.0f;
 
-	Transform target;
-	Transform enemyTransform;
+	private Transform target;
+	private Transform enemyTransform;
 
 	private bool playerDead = false;
 	private bool facingRight;
-
-	Vector2 startPos;
-	Vector3 dir;
+	
+	private Vector3 startPos;
+	private Vector3 dir;
+	private Vector3 currentDir;
 	
 	void Start()
 	{
@@ -27,9 +28,9 @@ public class Lobster : MonoBehaviour
 		//Only run this if the game is not over - so basically as long as Wrahh is alive :)
 		if(!playerDead)
 		{
-		
 		//Assign the target to be the whatever object with the tag; "Player"
 			target = GameObject.FindWithTag("Player").transform;
+			currentDir = enemyTransform.position;
 		
 		//Flip according to player's direction
 			if (enemyTransform.position.x < target.position.x &! facingRight)
@@ -41,10 +42,7 @@ public class Lobster : MonoBehaviour
 			if (Vector3.Distance(target.position, enemyTransform.position) < maxDistance)
 				chaseTarget();
 			else //Otherwise the enemy should return to it's initial position.
-			{
 				returnToStartPos();
-				Debug.Log("The lobster returned");
-			}
 		}
 	}
 
@@ -62,21 +60,26 @@ public class Lobster : MonoBehaviour
 	{
 	//The enemy's diretion
 		dir = target.position - enemyTransform.position;
-		dir.Normalize(); //We normalize the direction vector
+		dir.Normalize(); //Normalize the direction vector
 		enemyTransform.position += dir * speed * Time.deltaTime; //CHASE THE PLAYER!!!!!
 	}
 
-	void flip()
+	void flip() //The lobster should face the player
 	{
-		Debug.Log ("FLIPPED!"); 					//Just to make sure it works so far..
 		facingRight = !facingRight;
 		Vector3 direction = transform.localScale;
 		direction.x *= -1;
 		transform.localScale = direction;
+		Debug.Log ("FLIPPED!"); 					//Just to make sure it works so far..
 	}
 
 	void returnToStartPos()
 	{
-		enemyTransform.position = startPos;
+		if(enemyTransform.position.x < startPos.x &! facingRight) //Must face starting position
+		{
+			flip ();
+			enemyTransform.position += enemyTransform.right * speed * Time.deltaTime;
+		}
+		Debug.Log("The enemy returned");			//Just to make sure it works so far..
 	}
 }

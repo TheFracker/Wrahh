@@ -52,8 +52,8 @@ TextureImporter:
         y: 1103
         width: 193
         height: 424
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .740553617, y: .943847358}
     - name: wrahh_arm_BACK
       rect:
         serializedVersion: 2
@@ -61,8 +61,8 @@ TextureImporter:
         y: 1291
         width: 267
         height: 399
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .106862955, y: .913156629}
     - name: wrahh_eyes_SAD
       rect:
         serializedVersion: 2

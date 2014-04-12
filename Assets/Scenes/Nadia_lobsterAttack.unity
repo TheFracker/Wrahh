@@ -102,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 41583940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.2056026, y: 2.78782272, z: 0}
+  m_LocalPosition: {x: -25.1531868, y: 2.92367768, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1516705916}
@@ -691,10 +691,10 @@ GameObject:
   - 58: {fileID: 1767814746}
   - 58: {fileID: 1767814745}
   - 58: {fileID: 1767814744}
-  - 61: {fileID: 1767814748}
+  - 50: {fileID: 1767814748}
   m_Layer: 0
   m_Name: enemyLobster
-  m_TagString: Untagged
+  m_TagString: Lobster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -706,7 +706,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1767814742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .505656183, y: -.108151853, z: 0}
+  m_LocalPosition: {x: .361961365, y: -.0528311729, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 246192135}
@@ -730,7 +730,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1767814742}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: .660000026
   m_Center: {x: .660000026, y: .100000001}
 --- !u!58 &1767814746
@@ -755,19 +755,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7c96515aa3c1344a69ae69665e20c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  rotateSpeed: 4
---- !u!61 &1767814748
-BoxCollider2D:
+  speed: 8
+  maxDist: 15
+--- !u!50 &1767814748
+Rigidbody2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1767814742}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: .639999986, y: 6.9000001}
-  m_Center: {x: -16.25, y: 2.76999998}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &2067617332
 GameObject:
   m_ObjectHideFlags: 0

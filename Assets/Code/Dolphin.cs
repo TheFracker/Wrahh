@@ -3,7 +3,12 @@ using System.Collections;
 
 public class Dolphin : MonoBehaviour
 {
-
+		public float walkSpeed = 2.0f;
+		public float walkLeft = 0.0f;
+		public float walkRight = 2.0f;
+		float walkingDirection = 1.0f;
+		Vector3 walkAmount;
+		
 		int health = 2;
 		Weapon weapon;
 		bool dead;
@@ -14,12 +19,23 @@ public class Dolphin : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
+				weapon = gameObject.AddComponent<Weapon> ();
 				InvokeRepeating ("patrol", 0f, Random.Range (2f, 4f));
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				walkAmount.x = walkingDirection * walkSpeed * Time.deltaTime;
+		
+				if (walkingDirection > 0.0f && transform.position.x >= walkRight) {
+						walkingDirection = -1.0f;
+				} else if (walkingDirection < 0.0f && transform.position.x <= walkLeft) {
+						walkingDirection = 1.0f;
+				}
+		
+				transform.Translate (walkAmount);
+
 				raycast ();
 				actions ();
 		}
@@ -31,9 +47,9 @@ public class Dolphin : MonoBehaviour
 				Debug.Log ("Dead!");
 		}
 
-		public void useWeapon ()
+		public void useWeapon (Weapon weapon)
 		{
-				Debug.Log ("Fire");
+				weapon.shoot ();
 		}
 
 		public void raycast ()
@@ -57,7 +73,7 @@ public class Dolphin : MonoBehaviour
 		public void actions ()
 		{
 				if (spotted) {
-						useWeapon ();
+						useWeapon (weapon);
 				}
 		}
 

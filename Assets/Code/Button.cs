@@ -7,9 +7,11 @@ public class Button : MonoBehaviour {
 	
 	public GameObject Wrahhh;
 	private bool triggerActive = false;
+	Doors _door;
 
 	// Use this for initialization
 	void Start () {
+		door = gameObject.GetComponentInChildren<Doors>();
 	}
 	
 	// Update is called once per frame
@@ -28,12 +30,12 @@ public class Button : MonoBehaviour {
 
 				if(anim.GetBool("push") == false){
 					anim.SetBool("push", true);
-					transform.Find("doorRightTrigger").GetComponent<Doors>().buttonActive = true;
+					_door.buttonActive = true;
 				}
 				
 				else if(anim.GetBool("push") == true){
 					anim.SetBool("push", false);
-					transform.Find("doorRightTrigger").GetComponent<Doors>().buttonActive = false;
+					_door.buttonActive = false;
 				}
 			}
 

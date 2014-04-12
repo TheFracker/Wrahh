@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Pistol : Weapon {
 
-	GameObject bullet = null;
-	float bulletSpeed = 100f;
+	public GameObject bullet = null;
+	public float bulletSpeed = 100f;
 
 	public Pistol() : base()
 	{

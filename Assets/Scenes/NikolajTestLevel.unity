@@ -890,6 +890,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
   m_RootGameObject: {fileID: 1075421143}
@@ -1307,7 +1311,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -1759,8 +1763,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .99999994, y: .0199999996}
-  m_Center: {x: 0, y: .49000001}
+  m_Size: {x: .99999994, y: .100000001}
+  m_Center: {x: 0, y: .479999989}
 --- !u!23 &1491032950
 Renderer:
   m_ObjectHideFlags: 0
@@ -2155,6 +2159,14 @@ Prefab:
     - target: {fileID: 400000, guid: 5c30f37a8720c7348a36e95f93804327, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: 5c30f37a8720c7348a36e95f93804327, type: 2}
+      propertyPath: m_Size.y
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: 5c30f37a8720c7348a36e95f93804327, type: 2}
+      propertyPath: m_Center.y
+      value: .479999989
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c30f37a8720c7348a36e95f93804327, type: 2}

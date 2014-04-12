@@ -3,14 +3,17 @@ using System.Collections;
 
 public class Pistol : Weapon {
 
+
 	public Rigidbody2D bullet;
-	float speed = 20f;
-	Dolphin dolphin;
-	bool facing;
+	float speed = 20.0f;
+	Transform trans;
+	bool t;
+
 	void Awake()
 	{
-		dolphin = GetComponent<Dolphin>();
+
 	}
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -20,21 +23,37 @@ public class Pistol : Weapon {
 	// Update is called once per frame
 	void Update () 
 	{	
-		facing = dolphin.facingRight;
-		shoot ();
+		//shoot ();
+		t = Dolphin.facingRight;
+		fireLeft ();
 	}
-
+	
 	public override void shoot()
 	{
-		if (facing == true){
-		Debug.Log ("bullet");
-		Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
-		bulletInstance.velocity = new Vector2(speed, 0);
+		Debug.Log (12345678);
+		if (!t){
+			Debug.Log ("bullet");
+			Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+			bulletInstance.velocity = new Vector2(speed, 0);
 		}
 		else{
-			Debug.Log ("bulletFalse");
-			Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
-			bulletInstance.velocity = new Vector2(-speed, 0);
+			fireLeft();
+			//Debug.Log ("bulletFalse");
+			//Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity) as Rigidbody2D;
+			//bulletInstance.velocity = new Vector2(-speed, 0);
+			//Debug.Log (122);
 		}
+	}
+	
+	void fireRight()
+	{
+		Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+		bulletInstance.velocity = new Vector2(speed, 0);
+	}
+
+	void fireLeft()
+	{
+		Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+		bulletInstance.velocity = new Vector2(-speed, 0);
 	}
 }

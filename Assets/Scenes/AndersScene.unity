@@ -164,6 +164,7 @@ GameObject:
   - 4: {fileID: 300180352}
   - 212: {fileID: 300180351}
   - 61: {fileID: 300180350}
+  - 114: {fileID: 300180353}
   m_Layer: 0
   m_Name: wrahh_arm_FRONT
   m_TagString: Armor
@@ -216,6 +217,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &300180353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 300180349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64da7e910c221b458c44814a87f0a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &303323428
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +328,7 @@ GameObject:
   - 4: {fileID: 584035713}
   - 212: {fileID: 584035712}
   - 61: {fileID: 584035711}
+  - 114: {fileID: 584035714}
   m_Layer: 0
   m_Name: wrahh_arm_BACK
   m_TagString: Weapon
@@ -368,3 +381,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &584035714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 584035710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64da7e910c221b458c44814a87f0a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

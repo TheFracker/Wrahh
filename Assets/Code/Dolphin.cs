@@ -9,25 +9,28 @@ public class Dolphin : MonoBehaviour
 		float walkingDirection = -1.0f;
 		Vector3 walkAmount;
 		int health = 2;
-		Weapon cweapon;
+		Weapon weapon;
 		bool dead;
 		public Transform sightStart, sightEnd;
 		public bool spotted = false;
-		public bool facingRight = true;
+		public static bool facingRight = true;
 	
 		// Use this for initialization
 		void Start ()
 		{
-				cweapon = gameObject.AddComponent<Pistol>();
+				weapon = gameObject.AddComponent<Weapon>();
 				InvokeRepeating ("patrol", 0f, 2f);
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+		//weapon.shoot ();
+		Transform.FindObjectOfType<Weapon>().shoot();
 				transform.Translate (walkAmount);
 				raycast ();
 				actions ();
+
 		}
 
 		public void die ()
@@ -70,7 +73,7 @@ public class Dolphin : MonoBehaviour
 		public void actions ()
 		{
 				if (spotted) {
-						useWeapon (cweapon);
+						useWeapon (weapon);
 				}
 		}
 

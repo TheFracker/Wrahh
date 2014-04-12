@@ -16,7 +16,7 @@ public class Wrahh : MonoBehaviour {
 	void Start () {
 		facingRight = true;
 		health = 3;  // Three hearts
-		armor = 0; // No armor to start with
+		armor = 3; // No armor to start with
 		grenades = 0; // Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
 	}

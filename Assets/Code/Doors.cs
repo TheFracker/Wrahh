@@ -6,8 +6,11 @@ using System.Collections;
 public class Doors : MonoBehaviour {
 
 	public GameObject Wrahhh;
+	public bool buttonActive;
+
 	// Use this for initialization
 	void Start () {
+
 	}
 	
 	// Update is called once per frame

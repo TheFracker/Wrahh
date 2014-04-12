@@ -1,24 +1,28 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Rifle : Weapon {
 
-	public Rifle() : base()
+	void Start()
 	{
-		// SHOULD ONLY BE USED FOR TESTING PURPOSE
+		name = "Rifle";
+		ammo = 3;
+		MAGAZINE_SIZE = 30;
+		reloadTime = 5.0f;
+		reloading = false;
+		durability = 3;
+		accidentalFire = 2.0f;
+		hitDamage = 1;
 	}
-
-	public Rifle(int ammo, float reloadTime) : base(ammo, reloadTime){}
-
-	public Rifle(string name, int durability, int hitDamage, float accidentalFire) : base(name, durability, hitDamage, accidentalFire){}
 
 	public override void hit()
 	{
-		Debug.Log ("Rifle hit");
+		Debug.Log ("Rifle hit " + ammo);
 	}
-
+	
 	public override void shoot ()
 	{
-		Debug.Log ("Rifle shot");
+		base.shoot ();
+		Debug.Log ("Rifle Shot " + ammo);
 	}
 }

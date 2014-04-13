@@ -15,6 +15,7 @@ public class Wrahh : MonoBehaviour
 	private float MAX_MOVE_SPEED = 3.0f; // initial max speed
 	private float standardGravity = 7.42f; // initial gravity
 	private float standardDrag = 5f; // initial drag force
+	public float fallingSpeed;
 
 	Animator anim; // Variable of the typ "Animator" to acces the Animator later
 
@@ -54,6 +55,7 @@ public class Wrahh : MonoBehaviour
 		}
 
 		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
+		fallingSpeed = rigidbody2D.velocity.y; //sets the "fallingSpeed" to the movement speed in the y-axis
 
 		// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)

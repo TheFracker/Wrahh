@@ -4047,6 +4047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d7dcccd6d090042b1b8e1a97d5b175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallingSpeed: 0
+  defaultPrefab: {fileID: 0}
+  shieldPrefab: {fileID: 0}
 --- !u!95 &2116705645
 Animator:
   serializedVersion: 2

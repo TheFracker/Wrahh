@@ -9,9 +9,10 @@ public class Wrahh : MonoBehaviour {
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	public float moveSpeed = 11.0f;
+	public float moveSpeed = 15.0f;
+	public float currentSpeed;
 
-	float MAX_MOVE_SPEED = 1.0f;
+	public float MAX_MOVE_SPEED = 3.0f;
 	Animator anim;
 
 	// Use this for initialization
@@ -43,13 +44,10 @@ public class Wrahh : MonoBehaviour {
 
 		anim.SetFloat("Speed", Mathf.Abs(input));
 
-		// Moving right
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 
-		// Moving left
-		if (Mathf.Abs (input * rigidbody2D.velocity.x) > MAX_MOVE_SPEED)
-			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
+		currentSpeed = rigidbody2D.velocity.x;
 
 		// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)

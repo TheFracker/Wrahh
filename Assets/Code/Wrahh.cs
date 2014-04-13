@@ -5,12 +5,12 @@ public class Wrahh : MonoBehaviour
 {
 	bool facingRight;
 
-	int health;
-	int armor;
+	int health = 3; // Three Lives
+	int armor = 0; // No armor to begin with
 
-	int lobsterParts;
-	int gunsCollected;
-	int riflesCollected;
+	int lobsterParts = 5;
+	int gunsCollected = 10;
+	int riflesCollected = 5;
 
 	Weapon[] weapons;
 	Weapon currentWeapon;
@@ -31,8 +31,6 @@ public class Wrahh : MonoBehaviour
 	void Start ()
 	{
 		facingRight = true;
-		health = 3;  										// Three hearts
-		armor = 0; 											// No armor to start with
 		grenades = 0; 										// Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();

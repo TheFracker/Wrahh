@@ -10,6 +10,7 @@ AnimationClip:
   m_AnimationType: 2
   m_Compressed: 0
   m_UseHighQualityCurve: 1
+<<<<<<< HEAD
   m_RotationCurves:
   - curve:
       serializedVersion: 2
@@ -222,6 +223,13 @@ AnimationClip:
     path: wrahh_BODY/wrahh_eyes_SURPRISED
     classID: 1
     script: {fileID: 0}
+=======
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+>>>>>>> fd5b4ebf0e273c8a034eda0ee4a8c0a40c85947c
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -231,7 +239,11 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
+<<<<<<< HEAD
     m_StopTime: 0
+=======
+    m_StopTime: 1
+>>>>>>> fd5b4ebf0e273c8a034eda0ee4a8c0a40c85947c
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -245,6 +257,7 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
+<<<<<<< HEAD
   m_EditorCurves:
   - curve:
       serializedVersion: 2
@@ -1199,4 +1212,8 @@ AnimationClip:
     path: wrahh_leg_FRONT
     classID: 4
     script: {fileID: 0}
+=======
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+>>>>>>> fd5b4ebf0e273c8a034eda0ee4a8c0a40c85947c
   m_Events: []

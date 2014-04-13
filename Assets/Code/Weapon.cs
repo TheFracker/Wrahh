@@ -22,7 +22,12 @@ public class Weapon : MonoBehaviour {
 
 	void Update()
 	{
-		//shoot ();
+
+	}
+
+	public void pew()
+	{
+		shoot ();
 	}
 
 	public virtual void shoot()

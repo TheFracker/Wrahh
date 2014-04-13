@@ -302,9 +302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d7dcccd6d090042b1b8e1a97d5b175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  defaultPrefab: {fileID: 0}
-  shieldPrefab: {fileID: 0}
+  moveSpeed: 300
+  defaultPrefab: {fileID: 100000}
+  shieldPrefab: {fileID: 100016, guid: c42b6ee6d1c7dce44b04440d66cf406d, type: 2}
+  helmetPrefab: {fileID: 100002, guid: 11a7853961b1c144d9460f683d9185f3, type: 2}
+  shieldAndHelmet: {fileID: 100004, guid: 205627b55d767af4993fbf106056301d, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

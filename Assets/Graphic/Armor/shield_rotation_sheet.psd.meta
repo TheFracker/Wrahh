@@ -1,0 +1,139 @@
+fileFormatVersion: 2
+guid: bb5c1bd90dfe0d8449c658d7d07914af
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: shield_rotation_FRONT
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 44
+        width: 373
+        height: 375
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 43
+        width: 362
+        height: 376
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 43
+        width: 314
+        height: 373
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 44
+        width: 192
+        height: 372
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 47
+        width: 75
+        height: 369
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 44
+        width: 32
+        height: 372
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 41
+        width: 78
+        height: 378
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 42
+        width: 202
+        height: 374
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1981
+        y: 41
+        width: 286
+        height: 378
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: shield_rotation_BACK
+      rect:
+        serializedVersion: 2
+        x: 2287
+        y: 44
+        width: 373
+        height: 372
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 

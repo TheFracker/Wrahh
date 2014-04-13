@@ -22,14 +22,13 @@ public class Projectile : MonoBehaviour {
 		return damage;
 	}
 
-	void OnTriggerEnter2D(Collider2D c)
+	void OnCollisionEnter2D(Collision2D c)
 	{
-		c.gameObject.GetComponent<Wrahh>().hurt(this);
-	}
-
-	public void activate()
-	{
-
+		if(c.collider.tag == "Player")
+		{
+			c.gameObject.GetComponent<Wrahh>().hurt(this);
+			Destroy (this.gameObject);
+		}
 	}
 
 	void move ()

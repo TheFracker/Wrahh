@@ -4,8 +4,14 @@ using System.Collections;
 public class Wrahh : MonoBehaviour
 {
 	bool facingRight;
+
 	int health;
 	int armor;
+
+	int lobsterParts;
+	int gunsCollected;
+	int riflesCollected;
+
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
@@ -190,5 +196,29 @@ public class Wrahh : MonoBehaviour
 			die ();
 	}
 
+	public int getHealth()
+	{
+		return health;
+	}
+
+	public int getArmor()
+	{
+		return armor;
+	}
+
+	public int getLobsterParts()
+	{
+		return lobsterParts;
+	}
+
+	public int getRiflesCollected()
+	{
+		return riflesCollected;
+	}
+
+	public int getGunsCollected()
+	{
+		return gunsCollected;
+	}
 
 }

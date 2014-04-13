@@ -17,7 +17,6 @@ public class Weapon : MonoBehaviour {
 	void Start()
 	{
 		loadPrefab ();
-		Debug.Log (this.transform.position);
 	}
 
 	public virtual void hit()

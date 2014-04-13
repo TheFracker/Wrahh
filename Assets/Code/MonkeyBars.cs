@@ -5,6 +5,7 @@ public class MonkeyBars : MonoBehaviour {
 
 
 	private bool triggerActive = false;
+	public static bool onMonkeyBar;
 	private Animator anim;
 
 	// Use this for initialization
@@ -15,6 +16,15 @@ public class MonkeyBars : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		if(Input.GetKeyDown(KeyCode.W) && triggerActive == true){
+			onMonkeyBar = true;
+		}
+
+		if(Input.GetKeyDown(KeyCode.S)){
+			onMonkeyBar = false;
+		}
+
+
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -22,8 +32,8 @@ public class MonkeyBars : MonoBehaviour {
 		if(other.tag == "Player" && triggerActive == false){
 			triggerActive = true;
 			Debug.Log("Trigger is active");
-			//set this in wrahh:::: anim.SetBool("crawling", true);
 		}
+
 	}
 
 	void OnTriggerExit2D(Collider2D other){
@@ -31,6 +41,7 @@ public class MonkeyBars : MonoBehaviour {
 		if(other.tag == "Player" && triggerActive == true){
 			triggerActive = false;
 			Debug.Log("Trigger is not active");
+			onMonkeyBar = false;
 		}
 	}
 

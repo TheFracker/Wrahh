@@ -15,7 +15,6 @@ public class Wrahh : MonoBehaviour
 	private float MAX_MOVE_SPEED = 3.0f; // initial max speed
 	private float standardGravity = 7.42f; // initial gravity
 	private float standardDrag = 5f; // initial drag force
-	public float fallingSpeed;
 
 	Animator anim; // Variable of the typ "Animator" to acces the Animator later
 
@@ -49,13 +48,13 @@ public class Wrahh : MonoBehaviour
 		float input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
 
 		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
+		anim.SetFloat("FallingSpeed", Mathf.Abs(rigidbody2D.velocity.y)); // The "speed" parameter in the Animator gets values from the variable "input"
 		
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED){
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 		}
 
 		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
-		fallingSpeed = rigidbody2D.velocity.y; //sets the "fallingSpeed" to the movement speed in the y-axis
 
 		// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)

@@ -15,6 +15,7 @@ public class Wrahh : MonoBehaviour
 	private float MAX_MOVE_SPEED = 3.0f; // initial max speed
 	private float standardGravity = 7.42f; // initial gravity
 	private float standardDrag = 5f; // initial drag force
+	private float climbSpeed = 10f;
 
 	Animator anim; // Variable of the typ "Animator" to acces the Animator later
 
@@ -45,11 +46,17 @@ public class Wrahh : MonoBehaviour
 
 	void FixedUpdate(){
 
-		float input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
+		float input = 0;
+		falling ();
+		if (anim.GetBool("IsFalling") == false){
+			input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
+		}
 
 		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
-		anim.SetFloat("FallingSpeed", Mathf.Abs(rigidbody2D.velocity.y)); // The "speed" parameter in the Animator gets values from the variable "input"
-		
+
+
+
+
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED){
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 		}
@@ -63,6 +70,7 @@ public class Wrahh : MonoBehaviour
 		if (input > 0 && !facingRight)
 			flip ();
 
+		climbingLadder();
 		crawlMonkeyBars(); // runs the "crawlMonkyBars" function 
 
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
@@ -85,6 +93,30 @@ public class Wrahh : MonoBehaviour
 				this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
 			this.rigidbody2D.drag = standardDrag; //sets drag to initial
 		}
+	}
+
+	void climbingLadder(){
+
+		if (Ladder.canClimb == true){
+			Debug.Log("im should move now");
+			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
+		}
+	}
+
+
+	void falling(){
+
+		if (this.rigidbody2D.velocity.y < -2.5){
+			anim.SetBool("IsFalling", true);
+			anim.SetBool("HitGround", false);
+		}
+
+		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true){
+			anim.SetBool("IsFalling", false);
+			anim.SetBool("HitGround", true);
+		}
+
+
 	}
 
 	void useWeapon(Weapon currentWeapon)

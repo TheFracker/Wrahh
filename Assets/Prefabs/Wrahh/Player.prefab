@@ -129,7 +129,7 @@ GameObject:
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
   - 212: {fileID: 21200016}
-  - 58: {fileID: 5800000}
+  - 60: {fileID: 6000000}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -257,7 +257,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9545393, y: 6.25276089, z: 0}
+  m_LocalPosition: {x: 1.75843143, y: 1.33127546, z: 0}
   m_LocalScale: {x: .190635234, y: .190635234, z: .190635234}
   m_Children:
   - {fileID: 400008}
@@ -303,8 +303,8 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!58 &5800000
-CircleCollider2D:
+--- !u!60 &6000000
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -312,8 +312,23 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0}
+  m_Poly:
+    m_Paths:
+    - - {x: -2.15601754, y: 1.70448041}
+      - {x: -1.66494095, y: 1.97142982}
+      - {x: -1.06530404, y: 3.89953709}
+      - {x: .491814405, y: 4.75008392}
+      - {x: 1.49946451, y: 4.13067532}
+      - {x: 2.02795815, y: 2.80387974}
+      - {x: 2.10942316, y: 1.63955402}
+      - {x: 2.7133913, y: .227046102}
+      - {x: 1.69833469, y: -2.45244122}
+      - {x: 2.02224398, y: -3.75990152}
+      - {x: -1.24353707, y: -3.82138133}
+      - {x: -1.32527983, y: -2.83910823}
+      - {x: -2.13184619, y: -1.23299408}
+      - {x: -2.6766696, y: -.913337111}
+      - {x: -2.61092901, y: .411477447}
 --- !u!60 &6000002
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -715,7 +730,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 73b243f5beb41f749bc3878597536fb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

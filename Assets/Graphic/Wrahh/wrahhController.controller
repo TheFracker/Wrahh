@@ -20,8 +20,14 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: FallingSpeed
-    m_Type: 1
+  - m_Name: IsFalling
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: HitGround
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -68,11 +74,15 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: FallingSpeed
+    m_ConditionEvent: Speed
     m_EventTreshold: .5
     m_ExitTime: .5
-  - m_ConditionMode: 4
-    m_ConditionEvent: FallingSpeed
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsFalling
+    m_EventTreshold: .5
+    m_ExitTime: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: HitGround
     m_EventTreshold: .5
     m_ExitTime: 0
   m_Atomic: 1
@@ -191,8 +201,8 @@ Transition:
   m_TransitionDuration: .25
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: FallingSpeed
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsFalling
     m_EventTreshold: 3
     m_ExitTime: .75
   m_Atomic: 1
@@ -231,8 +241,8 @@ Transition:
   m_TransitionDuration: .25
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: FallingSpeed
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsFalling
     m_EventTreshold: 3
     m_ExitTime: .75
   m_Atomic: 1
@@ -249,8 +259,8 @@ Transition:
   m_TransitionDuration: .1875
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: FallingSpeed
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsFalling
     m_EventTreshold: 3
     m_ExitTime: .8125
   m_Atomic: 1
@@ -329,8 +339,8 @@ Transition:
   m_TransitionDuration: .25
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: FallingSpeed
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsFalling
     m_EventTreshold: 3
     m_ExitTime: .75
   m_Atomic: 1
@@ -348,7 +358,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: IsFalling
     m_EventTreshold: 0
     m_ExitTime: 1
   m_Atomic: 1
@@ -514,9 +524,6 @@ StateMachine:
       first: {fileID: 110245984}
       second:
       - {fileID: 110100447}
-    data:
-      first: {fileID: 0}
-      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 12, y: 204, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

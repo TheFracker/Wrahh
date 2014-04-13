@@ -14,14 +14,18 @@ public class Wrahh : MonoBehaviour
 	float MAX_MOVE_SPEED = 1.0f;
 	Animator anim;
 
+	public GameObject defaultPrefab, shieldPrefab;
+	private GameObject prefab;
+	
 	void Start ()
 	{
 		facingRight = true;
 		health = 3;  										// Three hearts
-		armor = 3; 											// No armor to start with
+		armor = 0; 											// No armor to start with
 		grenades = 0; 										// Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
+		prefab = defaultPrefab;
 	}
 
 	void Update ()
@@ -83,20 +87,23 @@ public class Wrahh : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		// Pick up weapon
-		if (c.tag == "Weapon")
+		if (c.tag == "Weapon")												// Pick up weapon
 		{
-			// picks up weapon
 			Debug.Log ("Picking up this thing");
 			Destroy(c.gameObject);
 		}
-		// Pick up armor
-		if (c.tag == "Armor")
-		{
-			// picks up armor
-			getArmor(gameObject.name);
-			Debug.Log ("This can protect me");
-			Destroy(c.gameObject);
+
+		if (c.tag == "Armor")													// Pick up armor
+		{																		
+			if(c.gameObject.name == "shield")
+			{
+				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
+				prefab = shieldPrefab;											// Store new prefab in variable
+				Destroy(gameObject);											// Delete old game object
+				Instantiate (prefab, transform.position, Quaternion.identity);	// Change to new prefab
+				armor += 3;														// Add additional armor to the player
+				Destroy(c.gameObject);											// Removed the item from the scene
+			}
 		}
 	}
 
@@ -127,11 +134,5 @@ public class Wrahh : MonoBehaviour
 			die ();
 	}
 
-	public void getArmor(string armor)
-	{
-		if (armor == "shield")
-			Debug.Log ("I got a shield!");
-		if (armor == "helmet")
-			Debug.Log ("I got a helmet!");
-	}
+
 }

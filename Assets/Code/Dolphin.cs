@@ -18,7 +18,8 @@ public class Dolphin : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				weapon = gameObject.AddComponent<Pistol>();
+			weapon = gameObject.AddComponent<Pistol>();
+			InvokeRepeating ("patrol", 0, 5);
 		}
 	
 		// Update is called once per frame
@@ -27,7 +28,7 @@ public class Dolphin : MonoBehaviour
 			transform.Translate (walkAmount);
 			raycast ();
 			actions ();
-
+			//patrol ();
 		}
 
 		public void die ()
@@ -51,27 +52,29 @@ public class Dolphin : MonoBehaviour
 
 		public void patrol ()
 		{ 
-			//walkAmount.x = walkingDirection * walkSpeed * Time.deltaTime;	
+			walkAmount.x = walkingDirection * walkSpeed * Time.deltaTime;
+			Vector3 direction = this.transform.localScale;
 
-		if (walkingDirection > 0.0f && transform.position.x >= walkLeft && facingRight == true) {
-						walkingDirection = -1.0f;
-						transform.eulerAngles = new Vector2 (0, 0);
-						facingRight = false;
-				} else {
-						walkingDirection = 1.0f;
-						transform.eulerAngles = new Vector2 (0, 180);
-						facingRight=true;
-		}
-
-						
-	
+			if (walkingDirection < 0.0f && facingRight == true) {
+				walkingDirection *= -1;
+				direction.x *= -1;
+				transform.localScale = direction;
+				facingRight = false;
+				Debug.Log ("Walking Right");
+			} else {
+				walkingDirection *= -1;
+				direction.x *= -1;
+				transform.localScale = direction;
+				facingRight = true;
+				Debug.Log ("Walking Left");
+			}
 		}
 
 		public void actions ()
 		{
-				if (spotted) {
-						useWeapon (weapon);
-				}
+			if (spotted) {
+				useWeapon (weapon);
+			}
 		}
 
 		public void hurt ()
@@ -81,9 +84,9 @@ public class Dolphin : MonoBehaviour
 
 		void FixedUpdate ()
 		{
-				if (health <= 0 && !dead) {
-						die ();
-				}
+			if (health <= 0 && !dead) {
+				die ();
+			}
 
 		}
 

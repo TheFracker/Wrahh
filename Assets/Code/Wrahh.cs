@@ -14,6 +14,10 @@ public class Wrahh : MonoBehaviour
 	float MAX_MOVE_SPEED = 1.0f;
 	Animator anim;
 
+	public Sprite shield_sprite;
+	public Sprite helmet_sprite;
+	public int armorState;
+
 	void Start ()
 	{
 		facingRight = true;
@@ -84,14 +88,17 @@ public class Wrahh : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		// Pick up weapon
-		if (c.tag == "Weapon") {
+		if (c.tag == "Weapon")
+		{
 			// picks up weapon
 			Debug.Log ("Picking up this thing");
 			Destroy(c.gameObject);
 		}
 		// Pick up armor
-		if (c.tag == "Armor") {
+		if (c.tag == "Armor")
+		{
 			// picks up armor
+			getArmor(gameObject.name);
 			Debug.Log ("This can protect me");
 			Destroy(c.gameObject);
 		}
@@ -122,5 +129,13 @@ public class Wrahh : MonoBehaviour
 		health -= damageTaken;
 		if (health <= 0)
 			die ();
+	}
+
+	public void getArmor(string armor)
+	{
+		if (armor == "shield")
+			Debug.Log ("I got a shield!");
+		if (armor == "helmet")
+			Debug.Log ("I got a helmet!");
 	}
 }

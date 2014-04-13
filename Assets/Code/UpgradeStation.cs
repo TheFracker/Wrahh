@@ -12,7 +12,7 @@ public class UpgradeStation : MonoBehaviour {
 
 	int lobsterParts = 10;
 	int guns = 10;
-	int Rifles = 10;
+	int rifles = 10;
 
 	int helmDurabillityLevel = 0; 
 	int shieldDurabillityLevel = 0;
@@ -36,7 +36,6 @@ public class UpgradeStation : MonoBehaviour {
 	void Start()
 	{
 		window300X300 = new Rect (Screen.width / 2-250, Screen.height / 2 - 100, 300,300);
-		statsWindow = new Rect (Screen.width / 2 +50 , Screen.height / 2 -100, 100,300);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -81,10 +80,18 @@ public class UpgradeStation : MonoBehaviour {
 		if(rifleShow){
 			window300X300 = GUI.Window(7, window300X300, rifleMenuFunc, "Rifle Upgrades");
 		}
-		if (statsShow){
-			statsWindow = GUI.Window(8, statsWindow, statsFunc, "Current Stats:");
-		}
+		/*if (statsShow){
+			GUI.Box (new Rect(Screen.width / 2 +50 , Screen.height / 2 -100, 200,300),
+			         "Current Items Avaliable: \n"+
+			         "Guns Avaliable: " + guns + "\n" + 
+			         "Rifles Available"+ rifles + "\n" +
+			         "Lobster Parts Avaliable : " + lobsterParts+ "\n" +
+			         "\nArmor Upgrade Levels: " + "\n" +
+			         "Helm Durabillity level: " + helmDurabillityLevel + "\n" +
+			         "Helm Protection level: "+ helmProtectionLevel + "\n" +
+			         "s"); 
 
+		}*/
 
 	}
 	
@@ -142,6 +149,7 @@ public class UpgradeStation : MonoBehaviour {
 	void helmMenuFunc(int id)
 	{
 		if(GUILayout.Button("Upgrade Protection")){
+			lobsterParts -= 5;
 			Debug.Log("Helm protection is now: ");
 		}
 		
@@ -265,9 +273,5 @@ public class UpgradeStation : MonoBehaviour {
 			statsShow = false;
 			Time.timeScale = 1;
 		}
-	}
-
-	void statsFunc(int id)
-	{
 	}
 }

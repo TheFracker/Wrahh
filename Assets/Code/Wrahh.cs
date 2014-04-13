@@ -57,9 +57,8 @@ public class Wrahh : MonoBehaviour {
 
 		if (input > 0 && !facingRight)
 			flip ();
-
+		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
-		//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.x < 0);
 	}
 
 	void useWeapon(Weapon currentWeapon)

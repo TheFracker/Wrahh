@@ -18,18 +18,15 @@ public class Dolphin : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				weapon = gameObject.AddComponent<Weapon>();
-				//InvokeRepeating ("patrol", 0f, 2f);
+				weapon = gameObject.AddComponent<Pistol>();
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-		//weapon.shoot ();
-		Transform.FindObjectOfType<Weapon>().pew();
-				transform.Translate (walkAmount);
-				raycast ();
-				actions ();
+			transform.Translate (walkAmount);
+			raycast ();
+			actions ();
 
 		}
 

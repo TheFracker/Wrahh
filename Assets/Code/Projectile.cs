@@ -9,11 +9,12 @@ public class Projectile : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		damage = 1;
+		speed = 10;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		move ();
 	}
 
 	public int giveDamage()
@@ -24,6 +25,15 @@ public class Projectile : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		c.gameObject.GetComponent<Wrahh>().hurt(this);
-		Destroy (this);
+	}
+
+	public void activate()
+	{
+
+	}
+
+	void move ()
+	{
+		this.rigidbody2D.velocity = Vector2.right * -10;
 	}
 }

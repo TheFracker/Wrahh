@@ -11,18 +11,29 @@ public class Weapon : MonoBehaviour {
 	protected int durability; // How many hits it can take
 	protected float accidentalFire; // Critacal chance
 	protected int hitDamage; // Damage it gives when using it as a club
-	public Rigidbody2D bullet;
-	float speed = 20.0f;
+	protected GameObject bullet; // The bullet in the champer
+	protected Vector3 pos; // The position of the barrels mouth
+
+	void Start()
+	{
+		loadPrefab ();
+		Debug.Log (this.transform.position);
+	}
 
 	public virtual void hit()
 	{
 		Debug.Log ("Hitting");
 		durability--;
 	}
-
+	
 	void Update()
 	{
 
+	}
+
+	protected virtual void loadPrefab()
+	{
+		bullet = Resources.Load ("Prefabs/Bullet") as GameObject;
 	}
 
 	public void pew()
@@ -33,10 +44,7 @@ public class Weapon : MonoBehaviour {
 	public virtual void shoot()
 	{
 		if (ammo > 0) {
-			Debug.Log ("Shooting");
-			Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
-			bulletInstance.velocity = new Vector2(speed, 0);
-			Debug.Log (bullet.ToString());
+			//Instantiate(bullet, this.transform.position, Quaternion.identity);
 			ammo--;
 		} else {
 			StartCoroutine (reload ());

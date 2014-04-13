@@ -4,8 +4,9 @@ using System.Collections;
 public class UpgradeStation : MonoBehaviour {
 
 	public GUISkin mySkin;
-	Rect window300X300;
+	Rect window300X300, statsWindow;
 	bool menuShow = false;
+	bool statsShow = false;
 	bool armorShow = false, helmShow = false, shieldShow = false;
 	bool weaponShow = false, pistolShow = false, rifleShow = false;
 
@@ -34,7 +35,8 @@ public class UpgradeStation : MonoBehaviour {
 
 	void Start()
 	{
-		window300X300 = new Rect (Screen.width / 2 - 100, Screen.height / 2 - 100, 300,300);
+		window300X300 = new Rect (Screen.width / 2-250, Screen.height / 2 - 100, 300,300);
+		statsWindow = new Rect (Screen.width / 2 +50 , Screen.height / 2 -100, 100,300);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -44,6 +46,7 @@ public class UpgradeStation : MonoBehaviour {
 	if (paused)
 		if (other.tag == "Player"&&playerEnter){
 			menuShow = true;
+			statsShow = true;
 			Time.timeScale = 0;
 			playerEnter = false;
 		}
@@ -70,13 +73,16 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(weaponShow){
-			window300X300 = GUI.Window(2, window300X300, weaponMenuFunc, "Weapon Upgrades");
+			window300X300 = GUI.Window(5, window300X300, weaponMenuFunc, "Weapon Upgrades");
 		}
 		if(pistolShow){
-			window300X300 = GUI.Window(2, window300X300, pistolMenuFunc, "Pistol Upgrades");
+			window300X300 = GUI.Window(6, window300X300, pistolMenuFunc, "Pistol Upgrades");
 		}
 		if(rifleShow){
-			window300X300 = GUI.Window(2, window300X300, rifleMenuFunc, "Rifle Upgrades");
+			window300X300 = GUI.Window(7, window300X300, rifleMenuFunc, "Rifle Upgrades");
+		}
+		if (statsShow){
+			statsWindow = GUI.Window(8, statsWindow, statsFunc, "Current Stats:");
 		}
 
 
@@ -104,6 +110,7 @@ public class UpgradeStation : MonoBehaviour {
 		{
 			paused = false;
 			menuShow = false;
+			statsShow = false;
 			Time.timeScale = 1;
 		}
 	}
@@ -128,19 +135,18 @@ public class UpgradeStation : MonoBehaviour {
 		{
 			paused = false;
 			armorShow = false;
+			statsShow = false;
 			Time.timeScale = 1;
 		}
 	}
 	void helmMenuFunc(int id)
 	{
 		if(GUILayout.Button("Upgrade Protection")){
-			helmProtection += 5;
-			Debug.Log("Helm protection is now: " + helmProtection);
+			Debug.Log("Helm protection is now: ");
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){
-			helmDurabillity += 5;
-			Debug.Log("Helm Durabillity is now: " + helmDurabillity);
+			Debug.Log("Helm Durabillity is now: ");
 		}
 		
 		if(GUILayout.Button("Return")){
@@ -151,6 +157,7 @@ public class UpgradeStation : MonoBehaviour {
 		{
 			paused = false;
 			helmShow = false;
+			statsShow = false;
 			Time.timeScale = 1;
 		}
 	}
@@ -158,13 +165,11 @@ public class UpgradeStation : MonoBehaviour {
 	void shieldMenuFunc(int id)
 	{
 		if(GUILayout.Button("Upgrade Protection")){
-			shieldProtection += 5;
-			Debug.Log("Shield protection is now: " + shieldProtection);
+			Debug.Log("Shield protection is now: ");
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){
-			shieldDurabillity += 5;
-			Debug.Log("Shield Durabillity is now: " + shieldDurabillity);
+			Debug.Log("Shield Durabillity is now: ");
 		}
 		
 		if(GUILayout.Button("Return")){
@@ -176,6 +181,7 @@ public class UpgradeStation : MonoBehaviour {
 		{
 			paused = false;
 			shieldShow = false;
+			statsShow = false;
 			Time.timeScale = 1;
 		}
 	}
@@ -200,6 +206,7 @@ public class UpgradeStation : MonoBehaviour {
 		{
 			paused = false;
 			weaponShow = false;
+			statsShow = false;
 			Time.timeScale = 1;
 		}
 	}
@@ -207,7 +214,7 @@ public class UpgradeStation : MonoBehaviour {
 	void pistolMenuFunc(int id)
 	{
 		if(GUILayout.Button("Upgrade damage")){
-			Debug.Log("Pistol damage is now: " + pistolDamage);
+			Debug.Log("Pistol damage is now: ");
 		}
 		
 		if(GUILayout.Button("Upgrade range")){
@@ -215,7 +222,7 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(GUILayout.Button("Upgrade accidental trigger")){
-			Debug.Log("Pistols chance to accidental trigger: " + pistolAccidentalTrigger);
+			Debug.Log("Pistols chance to accidental trigger: ");
 		}
 		
 		if(GUILayout.Button("Return")){
@@ -227,6 +234,7 @@ public class UpgradeStation : MonoBehaviour {
 		{
 			paused = false;
 			pistolShow = false;
+			statsShow = false;
 			Time.timeScale = 1;
 		}
 	}
@@ -234,7 +242,7 @@ public class UpgradeStation : MonoBehaviour {
 	void rifleMenuFunc(int id)
 	{
 		if(GUILayout.Button("Upgrade damage")){
-			Debug.Log("Rifle damage is now: " + rifleDamage);
+			Debug.Log("Rifle damage is now: ");
 		}
 		
 		if(GUILayout.Button("Upgrade range")){
@@ -242,7 +250,7 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(GUILayout.Button("Upgrade Accidental Trigger")){
-			Debug.Log("Rifle chance to trigger is now: " + rifleAccidentalTrigger);
+			Debug.Log("Rifle chance to trigger is now: ");
 		}
 		
 		if(GUILayout.Button("Return")){
@@ -254,8 +262,12 @@ public class UpgradeStation : MonoBehaviour {
 		{
 			paused = false;
 			rifleShow = false;
+			statsShow = false;
 			Time.timeScale = 1;
 		}
 	}
 
+	void statsFunc(int id)
+	{
+	}
 }

@@ -15,7 +15,7 @@ public class Wrahh : MonoBehaviour
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	private float moveSpeed = 10000.0f;
+	public float moveSpeed = 300.0f;
 	private float currentSpeed;
 	private float MAX_MOVE_SPEED = 3.0f;
 	private float standardGravity = 7.42f;
@@ -23,7 +23,7 @@ public class Wrahh : MonoBehaviour
 
 	Animator anim;
 
-	public GameObject defaultPrefab, shieldPrefab;
+	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmet;
 	private GameObject prefab;
 	
 	void Start ()
@@ -120,7 +120,7 @@ public class Wrahh : MonoBehaviour
 
 		if (c.tag == "Armor")													// Pick up armor
 		{																		
-			if(c.gameObject.name == "shield")
+			if(c.gameObject.name == "shield")									// Check which armor type it is..
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
 				prefab = shieldPrefab;											// Store new prefab in variable
@@ -139,7 +139,6 @@ public class Wrahh : MonoBehaviour
 		direction.x *= -1;
 		transform.localScale = direction;
 	}
-
 
 	public void hurt(Projectile p)
 	{

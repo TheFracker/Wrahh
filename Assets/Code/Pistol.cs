@@ -7,13 +7,14 @@ public class Pistol : Weapon {
 	void Start () 
 	{
 		loadPrefab ();
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		// The position of the dolphin + its weapon (needs to get tweeked a bit)
-		pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+		name = "Pistol";
+		ammo = 3;
+		MAGAZINE_SIZE = 30;
+		reloadTime = 5.0f;
+		reloading = false;
+		durability = 3;
+		accidentalFire = 2.0f;
+		hitDamage = 1;
 	}
 
 	protected override void loadPrefab()
@@ -24,6 +25,8 @@ public class Pistol : Weapon {
 	
 	public override void shoot()
 	{
+		// Gives the position of where the bullet should be spawned
+		pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
 		// Shoots creates the bullets, the bullets themself give them their speed
 		// There needs to be two kinds of bullets, one for shooting left and one for right
 		if (Dolphin.facingRight){

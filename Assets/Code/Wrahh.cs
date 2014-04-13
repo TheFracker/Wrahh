@@ -9,9 +9,12 @@ public class Wrahh : MonoBehaviour
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	public float moveSpeed = 11.0f;
+	private float moveSpeed = 10000.0f;
+	private float currentSpeed;
+	private float MAX_MOVE_SPEED = 3.0f;
+	private float standardGravity = 7.42f;
+	private float standardDrag = 5f;
 
-	float MAX_MOVE_SPEED = 1.0f;
 	Animator anim;
 
 	public GameObject defaultPrefab, shieldPrefab;
@@ -45,13 +48,12 @@ public class Wrahh : MonoBehaviour
 
 		anim.SetFloat("Speed", Mathf.Abs(input));
 
-		// Moving right
+
+
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 
-		// Moving left
-		if (Mathf.Abs (input * rigidbody2D.velocity.x) > MAX_MOVE_SPEED)
-			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
+		currentSpeed = rigidbody2D.velocity.x;
 
 		// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)
@@ -59,8 +61,25 @@ public class Wrahh : MonoBehaviour
 
 		if (input > 0 && !facingRight)
 			flip ();
+
+		crawlMonkeyBars();
+
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
+	}
+
+	void crawlMonkeyBars(){
+		if (MonkeyBars.onMonkeyBar == true){
+			anim.SetBool("Crawling", true);
+			this.rigidbody2D.gravityScale = 0;
+			this.rigidbody2D.drag = 25;
+		}
+
+		else if (MonkeyBars.onMonkeyBar == false){
+				anim.SetBool("Crawling", false);
+				this.rigidbody2D.gravityScale = standardGravity;
+				this.rigidbody2D.drag = standardDrag;
+		}
 	}
 
 	void useWeapon(Weapon currentWeapon)

@@ -44,8 +44,8 @@ GameObject:
   - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
   - 61: {fileID: 6100002}
-  - 114: {fileID: 11400000}
   - 95: {fileID: 9500000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: doorLeftTrigger
   m_TagString: Untagged
@@ -182,7 +182,7 @@ Animator:
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce2fef9e3660334e92c833b464d844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wrahhh: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

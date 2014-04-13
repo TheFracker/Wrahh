@@ -5,35 +5,12 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Wrahh_Hitting_Ground
+  m_Name: Wrahh_Hit_Ground
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
   m_UseHighQualityCurve: 1
-<<<<<<< HEAD
   m_RotationCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: 0, y: 0, z: .707416236, w: .706797242}
-        inSlope: {x: 0, y: 0, z: 0, w: 0}
-        outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: -1
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: wrahh_arm_FRONT
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: 0, y: 0, z: .700660408, w: .713494897}
-        inSlope: {x: 0, y: 0, z: 0, w: 0}
-        outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 7471205
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: wrahh_arm_BACK
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -41,7 +18,7 @@ AnimationClip:
         value: {x: 0, y: 0, z: -.697200358, w: .716876328}
         inSlope: {x: 0, y: 0, z: 0, w: 0}
         outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 908435548
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_BODY
@@ -52,7 +29,18 @@ AnimationClip:
         value: {x: 0, y: 0, z: -.697200358, w: .716876328}
         inSlope: {x: 0, y: 0, z: 0, w: 0}
         outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 908435548
+        tangentMode: 110682788
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: wrahh_leg_BACK
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: -.697200358, w: .716876328}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_leg_FRONT
@@ -60,33 +48,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 0, y: 0, z: -.697200358, w: .716876328}
+        value: {x: 0, y: 0, z: .711238027, w: .702951252}
         inSlope: {x: 0, y: 0, z: 0, w: 0}
         outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: wrahh_leg_BACK
-  m_CompressedRotationCurves: []
-  m_PositionCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: 2.56398201, y: -3.82887506, z: .100000001}
-        inSlope: {x: 7.10873508, y: 0, z: 0}
-        outSlope: {x: 7.10873508, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: wrahh_arm_BACK
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: 2.39828038, y: -3.79026508, z: -.200000003}
-        inSlope: {x: 7.55178022, y: 0, z: 0}
-        outSlope: {x: 7.55178022, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -95,9 +59,44 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 2.38885164, y: -3.60426283, z: 0}
-        inSlope: {x: 7.4041028, y: 0, z: 0}
-        outSlope: {x: 7.4041028, y: 0, z: 0}
+        value: {x: 0, y: 0, z: .704629958, w: .709574938}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: wrahh_arm_BACK
+  m_CompressedRotationCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 2.19786191, y: -3.89926934, z: .100000001}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: wrahh_arm_BACK
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.97792447, y: -3.84666204, z: -.200000003}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: wrahh_arm_FRONT
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 2.03229403, y: -3.7202909, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -106,9 +105,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: -1.47063577, y: -3.84041619, z: .00999999885}
-        inSlope: {x: 8.0743084, y: 0, z: 0}
-        outSlope: {x: 8.0743084, y: 0, z: 0}
+        value: {x: -1.83178067, y: -3.87710524, z: .00999999885}
+        inSlope: {x: 4.76147127, y: 0, z: 0}
+        outSlope: {x: 4.76147127, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -117,10 +116,10 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: -1.65407407, y: -3.56369925, z: -.100000001}
-        inSlope: {x: 7.4038167, y: 0, z: 0}
-        outSlope: {x: 7.4038167, y: 0, z: 0}
-        tangentMode: 121570848
+        value: {x: -2.01060772, y: -3.72877288, z: -.100000001}
+        inSlope: {x: 4.76138544, y: 0, z: 0}
+        outSlope: {x: 4.76138544, y: 0, z: 0}
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_leg_FRONT
@@ -129,10 +128,10 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: .111475132, y: 1, z: 1}
+        value: {x: .0604851022, y: 1, z: 1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 896466980
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_leg_BACK
@@ -140,21 +139,21 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: .111475132, y: 1, z: 1}
+        value: {x: .0604851022, y: 1, z: 1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 908384616
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: wrahh_arm_BACK
+    path: wrahh_BODY
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: .111475132, y: 1, z: 1}
-        inSlope: {x: -10.6622982, y: 0, z: 0}
-        outSlope: {x: -10.6622982, y: 0, z: 0}
-        tangentMode: 908369912
+        value: {x: .0604851022, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_arm_FRONT
@@ -162,24 +161,24 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: .111475132, y: 1, z: 1}
-        inSlope: {x: -10.6622982, y: 0, z: 0}
-        outSlope: {x: -10.6622982, y: 0, z: 0}
-        tangentMode: 908378204
+        value: {x: .0604851022, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: wrahh_leg_FRONT
+    path: wrahh_arm_BACK
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: .111475132, y: 1, z: 1}
-        inSlope: {x: -10.6622982, y: 0, z: 0}
-        outSlope: {x: -10.6622982, y: 0, z: 0}
-        tangentMode: 896466980
+        value: {x: .0604851022, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: wrahh_BODY
+    path: wrahh_leg_FRONT
   m_FloatCurves:
   - curve:
       serializedVersion: 2
@@ -223,13 +222,6 @@ AnimationClip:
     path: wrahh_BODY/wrahh_eyes_SURPRISED
     classID: 1
     script: {fileID: 0}
-=======
-  m_RotationCurves: []
-  m_CompressedRotationCurves: []
-  m_PositionCurves: []
-  m_ScaleCurves: []
-  m_FloatCurves: []
->>>>>>> fd5b4ebf0e273c8a034eda0ee4a8c0a40c85947c
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -239,11 +231,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-<<<<<<< HEAD
     m_StopTime: 0
-=======
-    m_StopTime: 1
->>>>>>> fd5b4ebf0e273c8a034eda0ee4a8c0a40c85947c
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -257,15 +245,14 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
-<<<<<<< HEAD
   m_EditorCurves:
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 2.56398201
-        inSlope: 7.10873508
-        outSlope: 7.10873508
+        value: 2.19786191
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -277,9 +264,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -3.82887506
-        inSlope: -20.420145
-        outSlope: -20.420145
+        value: -3.89926934
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -347,23 +334,23 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .706797242
+        value: 1
         inSlope: 0
         outSlope: 0
-        tangentMode: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: m_LocalRotation.w
-    path: wrahh_arm_FRONT
+    attribute: m_LocalScale.z
+    path: wrahh_leg_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 2.39828038
-        inSlope: 7.55178022
-        outSlope: 7.55178022
+        value: 1.97792447
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -375,9 +362,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -3.79026508
-        inSlope: -37.4024506
-        outSlope: -37.4024506
+        value: -3.84666204
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -403,65 +390,65 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1
+        value: .716876328
         inSlope: 0
         outSlope: 0
-        tangentMode: 10
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: m_LocalScale.z
-    path: wrahh_leg_BACK
+    attribute: m_LocalRotation.w
+    path: wrahh_BODY
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1
+        value: -.697200358
         inSlope: 0
         outSlope: 0
-        tangentMode: 10
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: m_LocalScale.y
-    path: wrahh_leg_BACK
+    attribute: m_LocalRotation.z
+    path: wrahh_BODY
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .111475132
-        inSlope: -10.6622982
-        outSlope: -10.6622982
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalScale.x
-    path: wrahh_leg_BACK
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
-        tangentMode: 10
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: m_LocalScale.z
-    path: wrahh_arm_BACK
+    attribute: m_LocalRotation.y
+    path: wrahh_BODY
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 2.38885164
-        inSlope: 7.4041028
-        outSlope: 7.4041028
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.x
+    path: wrahh_BODY
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 2.03229403
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -473,9 +460,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -3.60426283
-        inSlope: -28.6897964
-        outSlope: -28.6897964
+        value: -3.7202909
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -501,28 +488,28 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .713494897
+        value: .716876328
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.w
-    path: wrahh_arm_BACK
+    path: wrahh_leg_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .700660408
+        value: -.697200358
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.z
-    path: wrahh_arm_BACK
+    path: wrahh_leg_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -536,7 +523,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.y
-    path: wrahh_arm_BACK
+    path: wrahh_leg_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -550,16 +537,16 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.x
-    path: wrahh_arm_BACK
+    path: wrahh_leg_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -1.47063577
-        inSlope: 8.0743084
-        outSlope: 8.0743084
+        value: -1.83178067
+        inSlope: 4.76147127
+        outSlope: 4.76147127
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -571,9 +558,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -3.84041619
-        inSlope: -16.6210327
-        outSlope: -16.6210327
+        value: -3.87710524
+        inSlope: 107.132706
+        outSlope: 107.132706
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -606,7 +593,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.w
-    path: wrahh_BODY
+    path: wrahh_leg_FRONT
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -620,7 +607,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.z
-    path: wrahh_BODY
+    path: wrahh_leg_FRONT
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -634,7 +621,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.y
-    path: wrahh_BODY
+    path: wrahh_leg_FRONT
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -648,16 +635,16 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.x
-    path: wrahh_BODY
+    path: wrahh_leg_FRONT
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -1.65407407
-        inSlope: 7.4038167
-        outSlope: 7.4038167
+        value: -2.01060772
+        inSlope: 4.76138544
+        outSlope: 4.76138544
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -669,9 +656,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -3.56369925
-        inSlope: -28.6898003
-        outSlope: -28.6898003
+        value: -3.72877288
+        inSlope: -78.5639343
+        outSlope: -78.5639343
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -697,107 +684,107 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .707416236
+        value: 1
         inSlope: 0
         outSlope: 0
-        tangentMode: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: m_LocalRotation.z
-    path: wrahh_arm_FRONT
+    attribute: m_LocalScale.y
+    path: wrahh_leg_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
+        value: .0604851022
         inSlope: 0
         outSlope: 0
-        tangentMode: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: m_LocalRotation.y
-    path: wrahh_arm_FRONT
+    attribute: m_LocalScale.x
+    path: wrahh_leg_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
+        value: 1
         inSlope: 0
         outSlope: 0
-        tangentMode: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: m_LocalRotation.x
-    path: wrahh_arm_FRONT
+    attribute: m_LocalScale.z
+    path: wrahh_BODY
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.x
-    path: wrahh_leg_FRONT
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.y
-    path: wrahh_leg_FRONT
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -.697200358
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.z
-    path: wrahh_leg_FRONT
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: .716876328
+        value: .702951252
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.w
-    path: wrahh_leg_FRONT
+    path: wrahh_arm_FRONT
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .111475132
-        inSlope: -10.6622982
-        outSlope: -10.6622982
+        value: .711238027
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.z
+    path: wrahh_arm_FRONT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.y
+    path: wrahh_arm_FRONT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.x
+    path: wrahh_arm_FRONT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .0604851022
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -837,93 +824,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .111475132
-        inSlope: -10.6622982
-        outSlope: -10.6622982
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalScale.x
-    path: wrahh_leg_FRONT
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
+        value: .0604851022
         inSlope: 0
         outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalScale.y
-    path: wrahh_leg_FRONT
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalScale.z
-    path: wrahh_leg_FRONT
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: .111475132
-        inSlope: -10.6622982
-        outSlope: -10.6622982
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalScale.x
-    path: wrahh_BODY
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalScale.y
-    path: wrahh_BODY
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalScale.z
-    path: wrahh_BODY
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: .111475132
-        inSlope: -10.6622982
-        outSlope: -10.6622982
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -949,6 +852,90 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.z
+    path: wrahh_arm_BACK
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .0604851022
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.x
+    path: wrahh_leg_FRONT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.y
+    path: wrahh_leg_FRONT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.z
+    path: wrahh_leg_FRONT
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .0604851022
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.x
+    path: wrahh_BODY
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.y
+    path: wrahh_BODY
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
         value: 0
         inSlope: 0
         outSlope: 0
@@ -956,7 +943,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.x
-    path: wrahh_leg_BACK
+    path: wrahh_arm_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -970,35 +957,35 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.y
-    path: wrahh_leg_BACK
+    path: wrahh_arm_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -.697200358
+        value: .704629958
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.z
-    path: wrahh_leg_BACK
+    path: wrahh_arm_BACK
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .716876328
+        value: .709574938
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.w
-    path: wrahh_leg_BACK
+    path: wrahh_arm_BACK
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -1034,9 +1021,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 88.960022
-        inSlope: 571.184143
-        outSlope: 571.184143
+        value: 89.5993195
+        inSlope: -1883.62903
+        outSlope: -1883.62903
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1076,9 +1063,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 90.0501556
-        inSlope: 831.947937
-        outSlope: 831.947937
+        value: 90.671463
+        inSlope: 1164.94141
+        outSlope: 1164.94141
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1161,8 +1148,8 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: -88.4056396
-        inSlope: 0
-        outSlope: 0
+        inSlope: -1371.9176
+        outSlope: -1371.9176
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1212,8 +1199,4 @@ AnimationClip:
     path: wrahh_leg_FRONT
     classID: 4
     script: {fileID: 0}
-=======
-  m_EditorCurves: []
-  m_EulerEditorCurves: []
->>>>>>> fd5b4ebf0e273c8a034eda0ee4a8c0a40c85947c
   m_Events: []

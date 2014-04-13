@@ -15,15 +15,16 @@ public class Wrahh : MonoBehaviour
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-	public float moveSpeed = 300.0f;
-	private float currentSpeed;
-	private float MAX_MOVE_SPEED = 3.0f;
-	private float standardGravity = 7.42f;
-	private float standardDrag = 5f;
 
-	Animator anim;
+	private float moveSpeed = 10000.0f; // initial force
+	private float currentSpeed; // set to public to see current speed
+	private float MAX_MOVE_SPEED = 3.0f; // initial max speed
+	private float standardGravity = 7.42f; // initial gravity
+	private float standardDrag = 5f; // initial drag force
 
-	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmet;
+	Animator anim; // Variable of the typ "Animator" to acces the Animator later
+
+	public GameObject defaultPrefab, shieldPrefab;
 	private GameObject prefab;
 	
 	void Start ()
@@ -48,18 +49,18 @@ public class Wrahh : MonoBehaviour
 			useWeapon (currentWeapon);
 	}
 
-	void FixedUpdate()
-	{
-		float input = Input.GetAxis ("Horizontal");
+	void FixedUpdate(){
 
-		anim.SetFloat("Speed", Mathf.Abs(input));
+		float input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
 
-
-
-		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
+		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
+		anim.SetFloat("FallingSpeed", Mathf.Abs(rigidbody2D.velocity.y)); // The "speed" parameter in the Animator gets values from the variable "input"
+		
+		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED){
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
+		}
 
-		currentSpeed = rigidbody2D.velocity.x;
+		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
 
 		// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)
@@ -68,23 +69,27 @@ public class Wrahh : MonoBehaviour
 		if (input > 0 && !facingRight)
 			flip ();
 
-		crawlMonkeyBars();
+		crawlMonkeyBars(); // runs the "crawlMonkyBars" function 
 
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
 	}
 
+	//controlls physics and animtion when the player gets on or off the monkey bars
 	void crawlMonkeyBars(){
+
+		//checks if the boolean from "MonkeyBars.cs" are true
 		if (MonkeyBars.onMonkeyBar == true){
-			anim.SetBool("Crawling", true);
-			this.rigidbody2D.gravityScale = 0;
-			this.rigidbody2D.drag = 25;
+			anim.SetBool("Crawling", true); //The "Crawling" parameter in the Animator gets the value true to start crawling animations 
+			this.rigidbody2D.gravityScale = 0; //sets gravity to 0, so it simulates if the player was hanging in the arms
+			this.rigidbody2D.drag = 25; //Sets the drag up, to make it feel like there is som ressistens and you are not in a zero gravity space 
 		}
 
+		//checks if the boolean from "MonkeyBars.cs" are false
 		else if (MonkeyBars.onMonkeyBar == false){
-				anim.SetBool("Crawling", false);
-				this.rigidbody2D.gravityScale = standardGravity;
-				this.rigidbody2D.drag = standardDrag;
+				anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
+				this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
+			this.rigidbody2D.drag = standardDrag; //sets drag to initial
 		}
 	}
 
@@ -120,7 +125,7 @@ public class Wrahh : MonoBehaviour
 
 		if (c.tag == "Armor")													// Pick up armor
 		{																		
-			if(c.gameObject.name == "shield")									// Check which armor type it is..
+			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
 				prefab = shieldPrefab;											// Store new prefab in variable
@@ -139,6 +144,7 @@ public class Wrahh : MonoBehaviour
 		direction.x *= -1;
 		transform.localScale = direction;
 	}
+
 
 	public void hurt(Projectile p)
 	{

@@ -73,25 +73,15 @@ public class UpgradeStation : MonoBehaviour {
 
 		if(weaponShow){
 			window300X300 = GUI.Window(5, window300X300, weaponMenuFunc, "Weapon Upgrades");
+
 		}
 		if(pistolShow){
 			window300X300 = GUI.Window(6, window300X300, pistolMenuFunc, "Pistol Upgrades");
 		}
 		if(rifleShow){
 			window300X300 = GUI.Window(7, window300X300, rifleMenuFunc, "Rifle Upgrades");
-		}
-		/*if (statsShow){
-			GUI.Box (new Rect(Screen.width / 2 +50 , Screen.height / 2 -100, 200,300),
-			         "Current Items Avaliable: \n"+
-			         "Guns Avaliable: " + guns + "\n" + 
-			         "Rifles Available"+ rifles + "\n" +
-			         "Lobster Parts Avaliable : " + lobsterParts+ "\n" +
-			         "\nArmor Upgrade Levels: " + "\n" +
-			         "Helm Durabillity level: " + helmDurabillityLevel + "\n" +
-			         "Helm Protection level: "+ helmProtectionLevel + "\n" +
-			         "s"); 
+		} 
 
-		}*/
 
 	}
 	

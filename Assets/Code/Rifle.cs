@@ -5,6 +5,7 @@ public class Rifle : Weapon {
 
 	void Start()
 	{
+		loadPrefab ();
 		name = "Rifle";
 		ammo = 3;
 		MAGAZINE_SIZE = 30;
@@ -15,14 +16,23 @@ public class Rifle : Weapon {
 		hitDamage = 1;
 	}
 
-	public override void hit()
+	protected override void loadPrefab()
 	{
-		Debug.Log ("Rifle hit " + ammo);
+		// This bullet variable is inherited from Weapon
+		bullet = Resources.Load ("Prefabs/Bullet") as GameObject;
 	}
 	
-	public override void shoot ()
+	public override void shoot()
 	{
-		base.shoot ();
-		Debug.Log ("Rifle Shot " + ammo);
+		// Gives the position of where the bullet should be spawned
+		pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+		// Shoots creates the bullets, the bullets themself give them their speed
+		// There needs to be two kinds of bullets, one for shooting left and one for right
+		if (Dolphin.facingRight){
+			Instantiate(bullet, pos, Quaternion.identity);
+		}
+		else{
+			Instantiate(bullet, pos, Quaternion.identity);
+		}
 	}
 }

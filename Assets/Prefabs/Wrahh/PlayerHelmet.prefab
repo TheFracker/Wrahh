@@ -333,8 +333,8 @@ MonoBehaviour:
   moveSpeed: 300
   defaultPrefab: {fileID: 100000, guid: ea161d52854926b41aa3bd946937bef2, type: 2}
   shieldPrefab: {fileID: 100016, guid: c42b6ee6d1c7dce44b04440d66cf406d, type: 2}
-  helmetPrefab: {fileID: 100002}
-  shieldAndHelmet: {fileID: 100004, guid: 205627b55d767af4993fbf106056301d, type: 2}
+  helmetPrefab: {fileID: 0}
+  shieldAndHelmet: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

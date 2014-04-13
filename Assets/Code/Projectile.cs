@@ -20,4 +20,10 @@ public class Projectile : MonoBehaviour {
 	{
 		return damage;
 	}
+
+	void OnTriggerEnter2D(Collider2D c)
+	{
+		c.gameObject.GetComponent<Wrahh>().hurt(this);
+		Destroy (this);
+	}
 }

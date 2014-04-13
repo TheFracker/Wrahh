@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class Wrahh : MonoBehaviour {
-
+public class Wrahh : MonoBehaviour
+{
 	bool facingRight;
 	int health;
 	int armor;
@@ -14,18 +14,16 @@ public class Wrahh : MonoBehaviour {
 	float MAX_MOVE_SPEED = 1.0f;
 	Animator anim;
 
-	// Use this for initialization
 	void Start ()
 	{
 		facingRight = true;
-		health = 3;  // Three hearts
-		armor = 3; // No armor to start with
-		grenades = 0; // Nothing to throw yet
+		health = 3;  										// Three hearts
+		armor = 3; 											// No armor to start with
+		grenades = 0; 										// Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
 	{
 		// Throw grenade
@@ -70,7 +68,8 @@ public class Wrahh : MonoBehaviour {
 
 	void throwGrenade()
 	{
-		if (grenades > 0) {
+		if (grenades > 0)
+		{
 			Debug.Log("Throwing grenade " + grenades);
 			grenades--;
 			return;
@@ -111,11 +110,13 @@ public class Wrahh : MonoBehaviour {
 	public void hurt(Projectile p)
 	{
 		int damageTaken = p.giveDamage ();
-		if (armor > 0 && armor > damageTaken) {
+		if (armor > 0 && armor > damageTaken)
+		{
 			armor -= damageTaken;
 			damageTaken = 0;
 		}
-		else if (armor > 0) {
+		else if (armor > 0)
+		{
 			damageTaken -= armor;
 			armor = 0;
 		}

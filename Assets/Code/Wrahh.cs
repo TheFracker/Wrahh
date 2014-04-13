@@ -14,10 +14,6 @@ public class Wrahh : MonoBehaviour
 	float MAX_MOVE_SPEED = 1.0f;
 	Animator anim;
 
-	public Sprite shield_sprite;
-	public Sprite helmet_sprite;
-	public int armorState;
-
 	void Start ()
 	{
 		facingRight = true;

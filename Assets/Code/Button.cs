@@ -11,7 +11,7 @@ public class Button : MonoBehaviour {
 	//A OnTriggerEnter, which runs when/if "other" enters the trigger area (remember to set colider to "is trigger")
 	void OnTriggerEnter2D(Collider2D other){
 
-		//checks if other gameobject (the coliding object) is the object draged into the public GameObject variable "Wrahhh"
+		//checks if other gameobject (the coliding object) is the player
 		if(other.tag == "Player"){
 
 			//checks if the boolean "triggerAcvtive" is false 
@@ -34,10 +34,10 @@ public class Button : MonoBehaviour {
 		}
 	}
 
-	//A OnTriggerExit, which runs when/if "other" ecits the trigger area (remember to set colider to "is trigger")
+	//A OnTriggerExit, which runs when/if "other" exits the trigger area (remember to set colider to "is trigger")
 	void OnTriggerExit2D(Collider2D other){
 
-		//checks if other gameobject is the object draged into the public GameObject variable "Wrahhh"
+		//checks if other gameobject (the coliding object) is the player
 		if(other.tag == "Player"){
 			triggerActive = false; //Sets "triggerActive" to false so the stuff in OnTriggerEnter can happen again if the trigger is entered again after exit
 		}

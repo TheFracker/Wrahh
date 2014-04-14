@@ -35,15 +35,9 @@ public class Weapon : MonoBehaviour {
 		bullet = Resources.Load ("Prefabs/Bullet") as GameObject;
 	}
 
-	public void pew()
-	{
-		shoot ();
-	}
-
 	public virtual void shoot()
 	{
-		if (ammo > 0) {
-			//Instantiate(bullet, this.transform.position, Quaternion.identity);
+		if (ammo > 0 &! reloading) {
 			ammo--;
 		} else {
 			StartCoroutine (reload ());
@@ -71,5 +65,10 @@ public class Weapon : MonoBehaviour {
 		reloading = true;
 		yield return new WaitForSeconds (reloadTime);
 		reloading = false;
+	}
+
+	IEnumerator shot()
+	{
+
 	}
 }

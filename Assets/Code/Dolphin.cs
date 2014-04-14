@@ -71,7 +71,7 @@ public class Dolphin : MonoBehaviour {
 		w.shoot ();
 	}
 
-	void AI()
+	void action()
 	{
 
 	}

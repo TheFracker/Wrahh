@@ -16,6 +16,8 @@ public class Dolphin : GameCharacters
 	private bool playerDead = false;
 
 	private Vector3 dir;
+
+	Animator anim;
 	
 	void Start ()
 	{
@@ -25,10 +27,14 @@ public class Dolphin : GameCharacters
 		health = 3;
 		moveSpeed = 5;
 		facingRight = false;
+		anim = GetComponent<Animator>();
+
 	}
 
 	void FixedUpdate()
 	{
+		if (anim.GetBool("Crushing")==false)
+		    {
 		//Assign the target to be the whatever object with the tag; "Player"
 		target = GameObject.FindWithTag("Player").transform;
 		
@@ -44,6 +50,7 @@ public class Dolphin : GameCharacters
 		else
 			guard ();
 		// If close enough I will shoot at him
+		}
 	}
 	
 	public void hurt(Projectile p)
@@ -109,8 +116,22 @@ public class Dolphin : GameCharacters
 		transform.localScale = direction;
 	}
 
+
+
+	void OnCollisionEnter2D (Collision2D other)
+	{
+
+		if(other.collider.tag == "Player" && Wrahh.canCrushEnemy == true)
+		{
+			anim.SetBool("Crushing", true);
+		}
+	}
+
+
 	public bool isFacingRight()
 	{
 		return facingRight;
 	}
+
+
 }

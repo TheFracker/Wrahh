@@ -23,12 +23,12 @@ AnimationClip:
         value: {x: 0, y: 0, z: .528238475, w: .84909606}
         inSlope: {x: 0, y: 0, z: -.464528561, w: .179466009}
         outSlope: {x: 0, y: 0, z: -.464528561, w: .179466009}
-        tangentMode: 0
+        tangentMode: -1
       - time: .0791666657
         value: {x: 0, y: 0, z: .179842412, w: .983695447}
         inSlope: {x: 0, y: 0, z: -9.29056263, w: 3.58931732}
         outSlope: {x: 0, y: 0, z: -9.29056263, w: 3.58931732}
-        tangentMode: 0
+        tangentMode: -48820
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_arm_FRONT
@@ -39,17 +39,17 @@ AnimationClip:
         value: {x: 0, y: 0, z: -.697200358, w: .716876328}
         inSlope: {x: 0, y: 0, z: 0, w: 0}
         outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 1066052843
+        tangentMode: 0
       - time: .0416666679
         value: {x: 0, y: 0, z: -.697200358, w: .716876328}
         inSlope: {x: 0, y: 0, z: 0, w: 0}
         outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 0
+        tangentMode: -1
       - time: .0791666657
         value: {x: 0, y: 0, z: -.697200358, w: .716876328}
         inSlope: {x: 0, y: 0, z: 0, w: 0}
         outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 19
+        tangentMode: -20768
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_BODY
@@ -65,12 +65,12 @@ AnimationClip:
         value: {x: 0, y: 0, z: -.544221699, w: .838941395}
         inSlope: {x: 0, y: 0, z: -.203971624, w: -.162753463}
         outSlope: {x: 0, y: 0, z: -.203971624, w: -.162753463}
-        tangentMode: 0
+        tangentMode: -1
       - time: .0791666657
         value: {x: 0, y: 0, z: -.697200358, w: .716876328}
         inSlope: {x: 0, y: 0, z: -4.07943106, w: -3.25506854}
         outSlope: {x: 0, y: 0, z: -4.07943106, w: -3.25506854}
-        tangentMode: 1
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_leg_BACK
@@ -81,17 +81,17 @@ AnimationClip:
         value: {x: 0, y: 0, z: .353159279, w: .935563207}
         inSlope: {x: 0, y: 0, z: -14.3328466, w: .820831776}
         outSlope: {x: 0, y: 0, z: -14.3328466, w: .820831776}
-        tangentMode: 0
+        tangentMode: -1087670522
       - time: .0416666679
         value: {x: 0, y: 0, z: -.244042635, w: .969764531}
         inSlope: {x: 0, y: 0, z: .796269894, w: -.0456017852}
         outSlope: {x: 0, y: 0, z: .796269894, w: -.0456017852}
-        tangentMode: 548001436
+        tangentMode: -1037716779
       - time: .0791666657
         value: {x: 0, y: 0, z: .353159279, w: .935563207}
         inSlope: {x: 0, y: 0, z: 15.9253864, w: -.912035346}
         outSlope: {x: 0, y: 0, z: 15.9253864, w: -.912035346}
-        tangentMode: 0
+        tangentMode: -1070147759
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_arm_BACK
@@ -102,17 +102,17 @@ AnimationClip:
         value: {x: 0, y: 0, z: -.697200358, w: .716876328}
         inSlope: {x: 0, y: 0, z: -3.57804537, w: -4.41952372}
         outSlope: {x: 0, y: 0, z: -3.57804537, w: -4.41952372}
-        tangentMode: 260336
+        tangentMode: 1044592098
       - time: .0416666679
         value: {x: 0, y: 0, z: -.846285582, w: .532729506}
         inSlope: {x: 0, y: 0, z: .198780417, w: .245529175}
         outSlope: {x: 0, y: 0, z: .198780417, w: .245529175}
-        tangentMode: 259468
+        tangentMode: 1065353216
       - time: .0791666657
         value: {x: 0, y: 0, z: -.697200358, w: .716876328}
         inSlope: {x: 0, y: 0, z: 3.9756062, w: 4.91058207}
         outSlope: {x: 0, y: 0, z: 3.9756062, w: 4.91058207}
-        tangentMode: 555414284
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_leg_FRONT
@@ -125,7 +125,7 @@ AnimationClip:
         value: {x: 1.97158742, y: -2.12719631, z: .100000001}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 50180
+        tangentMode: 107069272
       - time: .0791666657
         value: {x: 1.97158742, y: -2.12719631, z: .100000001}
         inSlope: {x: 0, y: 0, z: 0}
@@ -141,22 +141,22 @@ AnimationClip:
         value: {x: -2.2710588, y: -1.17288268, z: -.100000001}
         inSlope: {x: 4.76138544, y: -78.5639343, z: 0}
         outSlope: {x: 4.76138544, y: -78.5639343, z: 0}
-        tangentMode: 545783844
+        tangentMode: 0
       - time: .0166666675
         value: {x: -2.19170237, y: -2.48228168, z: -.100000001}
         inSlope: {x: -1.42847896, y: 5.47566986, z: 0}
         outSlope: {x: -1.42847896, y: 5.47566986, z: 0}
-        tangentMode: -1440424
+        tangentMode: 110747132
       - time: .0375000015
         value: {x: -2.35041785, y: -.617380023, z: -.100000001}
         inSlope: {x: -2.85686302, y: 38.0916061, z: 0}
         outSlope: {x: -2.85686302, y: 38.0916061, z: 0}
-        tangentMode: 561557364
+        tangentMode: 1065353216
       - time: .0791666657
         value: {x: -2.2710588, y: -1.17288268, z: -.100000001}
         inSlope: {x: 1.90461743, y: -13.3320646, z: 0}
         outSlope: {x: 1.90461743, y: -13.3320646, z: 0}
-        tangentMode: 545783844
+        tangentMode: 1113325568
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_leg_FRONT
@@ -167,12 +167,12 @@ AnimationClip:
         value: {x: 1.77184308, y: -1.21344638, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 1065353216
+        tangentMode: 110887688
       - time: .0791666657
         value: {x: 1.77184308, y: -1.21344638, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_BODY
@@ -188,17 +188,17 @@ AnimationClip:
         value: {x: -2.06413698, y: -.669784904, z: .00999999885}
         inSlope: {x: 1.42845559, y: 13.5701599, z: 0}
         outSlope: {x: 1.42845559, y: 13.5701599, z: 0}
-        tangentMode: 0
+        tangentMode: 107133744
       - time: .0375000015
         value: {x: -2.10381532, y: -2.33629298, z: .00999999885}
         inSlope: {x: -1.42843437, y: -41.4246407, z: 0}
         outSlope: {x: -1.42843437, y: -41.4246407, z: 0}
-        tangentMode: 560639076
+        tangentMode: 75
       - time: .0791666657
         value: {x: -2.14349484, y: -2.45533013, z: .00999999885}
         inSlope: {x: -.952308714, y: -2.85689187, z: 0}
         outSlope: {x: -.952308714, y: -2.85689187, z: 0}
-        tangentMode: 558965120
+        tangentMode: 2053729385
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_leg_BACK
@@ -209,12 +209,12 @@ AnimationClip:
         value: {x: 1.76896536, y: -.673394263, z: -.200000003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
+        tangentMode: 103284772
       - time: .0791666657
         value: {x: 1.76896536, y: -.673394263, z: -.200000003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 2
+        tangentMode: 1065353216
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: wrahh_arm_FRONT
@@ -290,6 +290,76 @@ AnimationClip:
     attribute: m_Enabled
     path: 
     classID: 60
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 4
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Size.x
+    path: 
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Size.y
+    path: 
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Center.y
+    path: 
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Center.x
+    path: 
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Enabled
+    path: 
+    classID: 61
     script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 240
@@ -1210,6 +1280,76 @@ AnimationClip:
     attribute: m_Enabled
     path: 
     classID: 60
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 4
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Size.x
+    path: 
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Size.y
+    path: 
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Center.y
+    path: 
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Center.x
+    path: 
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Enabled
+    path: 
+    classID: 61
     script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:

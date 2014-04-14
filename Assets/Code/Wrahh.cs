@@ -7,8 +7,7 @@ public class Wrahh : GameCharacters
 	int gunsCollected;
 	int riflesCollected;
 
-	public static bool canCrushEnemy = true;
-
+	public static bool canCrushEnemy = false;
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
@@ -146,14 +145,15 @@ public class Wrahh : GameCharacters
 		{
 			anim.SetBool("HitGround", true);
 			StartCoroutine(waitForFallingAnimation());
-			canCrushEnemy = true;
 		}
 	}
+	
 
 	IEnumerator waitForFallingAnimation(){
 		yield return new WaitForSeconds(1f);
 		anim.SetBool("HitGround", false);
 		anim.SetBool("IsFalling", false);
+		canCrushEnemy = false;
 	}
 
 

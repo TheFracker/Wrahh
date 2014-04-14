@@ -42,10 +42,15 @@ public class Lobster : GameCharacters
 			target = GameObject.FindWithTag("Player").transform; 							//Assign the target to be the whatever object with the tag; "Player"
 			currentDir = enemyTransform.position;
 		
-			if (enemyTransform.position.x < target.position.x &! facingRight)				//Flip according to player's direction
+			if (currentDir.x < target.position.x &! facingRight)
+			{
 				flip(facingRight, this.gameObject);
-			//if (enemyTransform.position.x > target.position.x && facingRight)
-			//	flip(facingRight, this.gameObject);
+			}
+				
+			if (currentDir.x > target.position.x && facingRight)
+			{
+				flip(facingRight, this.gameObject);
+			}
 		
 			if (Vector3.Distance(target.position, enemyTransform.position) < maxDistance)	//If the distance between the target and the enemy is less than the maximum, chaseTarget will be called!
 				chaseTarget();
@@ -86,6 +91,6 @@ public class Lobster : GameCharacters
 			flip(facingRight, this.gameObject);
 			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;
 		}
-		Debug.Log("The enemy returned");
+		Debug.Log("The enemy returns");
 	}
 }

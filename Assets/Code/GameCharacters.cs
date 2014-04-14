@@ -15,10 +15,10 @@ public class GameCharacters : MonoBehaviour
 
 	public static void flip(bool facingRight, GameObject obj)
 	{
-		facingRight = !facingRight;
+		//facingRight = !facingRight;
 		Vector3 direction = obj.transform.localScale;
 		direction.x *= -1;
 		obj.transform.localScale = direction;
-		Debug.Log ("FLIPPED!"); 
+		Debug.Log ("FLIPPED!");
 	}
 }

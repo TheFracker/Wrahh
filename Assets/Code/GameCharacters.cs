@@ -13,9 +13,9 @@ public class GameCharacters : MonoBehaviour
 		Debug.Log("A gameobject was killed..");
 	}
 
-	public static void flip(bool facingRight, GameObject obj)
+	public static void flip(bool isFacingRight, GameObject obj)
 	{
-		//facingRight = !facingRight;
+		isFacingRight = !isFacingRight;
 		Vector3 direction = obj.transform.localScale;
 		direction.x *= -1;
 		obj.transform.localScale = direction;

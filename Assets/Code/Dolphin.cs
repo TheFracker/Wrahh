@@ -1,93 +1,128 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dolphin : MonoBehaviour
-{
-		public float walkSpeed = 2.0f;
-		public float walkRight = 0.0f;
-		public float walkLeft = 1.0f;
-		float walkingDirection = -1.0f;
-		Vector3 walkAmount;
-		int health = 2;
-		Weapon weapon;
-		bool dead;
-		public Transform sightStart, sightEnd;
-		public bool spotted = false;
-		public static bool facingRight = true;
+public class Dolphin : MonoBehaviour {
+
+	int heatlh;
+	float moveSpeed;
+	Weapon weapon;
+
+	public Transform positionedTarget_right = null;
+	public Transform positionedTarget_left = null;
+
+	public float maxDistance = 20.0f;
+	public float shootDistance = 10.0f;
+	public float closeDistance = 0.7f;
 	
-		// Use this for initialization
-		void Start ()
-		{
-			weapon = gameObject.AddComponent<Pistol>();
-			InvokeRepeating ("patrol", 0, 5);
-		}
+	private Transform target;
 	
-		// Update is called once per frame
-		void Update ()
+	private bool playerDead = false;
+	public bool facingRight;
+
+	private Vector3 dir;
+
+	// Use this for initialization
+	void Start () {
+		heatlh = 3;
+		moveSpeed = 5;
+		weapon = gameObject.AddComponent<Pistol> ();
+		facingRight = false;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+	}
+
+	void FixedUpdate()
+	{
+		//Assign the target to be the whatever object with the tag; "Player"
+		target = GameObject.FindWithTag("Player").transform;
+		
+		// If I (the dolphin) can see the escapen prisonar (Wrahh) and I'm not too far away, I will start chasing him.
+		if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x &! facingRight)
+		    || (Vector3.Distance(target.position, this.transform.position) < shootDistance && this.transform.position.x < target.position.x && facingRight))
+			useWeapon(weapon);
+		else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x &! facingRight)
+		        || (Vector3.Distance(target.position, this.transform.position) < maxDistance && this.transform.position.x < target.position.x && facingRight))
+			chaseTarget();
+		else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
+			chaseTarget();
+		else
+			guard ();
+		// If close enough I will shoot at him
+	}
+	
+	void hurt()
+	{
+		int damageTaken = 0;
+		heatlh -= damageTaken;
+		if(heatlh <= 0)
+			die ();
+	}
+
+	void die()
+	{
+
+	}
+
+	void useWeapon(Weapon w)
+	{
+		w.shoot ();
+	}
+
+	void AI()
+	{
+
+	}
+
+	void guard()
+	{
+		// Guard right
+		if(positionedTarget_right == null){
+			Vector2 point = new Vector2 (2, 2);
+			if(this.transform.position.x < point.x && facingRight)
+				this.transform.position += this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x > point.x)
+				flip();
+		}
+		else if (this.transform.position.x < positionedTarget_right.position.x && facingRight)
 		{
-			transform.Translate (walkAmount);
-			raycast ();
-			actions ();
-			//patrol ();
+			this.transform.position += this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x > positionedTarget_right.position.x)
+				flip ();
 		}
-
-		public void die ()
+		
+		// Guard left
+		if(positionedTarget_left == null)
 		{
-
-				dead = true;
-				Debug.Log ("Dead!");
+			Vector2 point = new Vector2(-2,2);
+			if(this.transform.position.x > point.x &! facingRight)
+				this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x < point.x)
+				flip();
 		}
-
-		public void useWeapon (Weapon weapon)
+		else if (this.transform.position.x > positionedTarget_left.position.x &! facingRight)
 		{
-				weapon.shoot ();
+			this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x < positionedTarget_left.position.x)
+				flip();
 		}
+	}
 
-		public void raycast ()
-		{
+	void chaseTarget()
+	{
+		//The enemy's diretion
+		dir = target.position - this.transform.position;
+		dir.Normalize(); //Normalize the direction vector
+		this.transform.position += dir * moveSpeed * 2 * Time.deltaTime; //CHASE THE PLAYER!!!!!
+	}
 
-				Debug.DrawLine (sightStart.position, sightEnd.position, Color.red);
-				spotted = Physics2D.Linecast (sightStart.position, sightEnd.position, 1 << LayerMask.NameToLayer ("Wrahh"));
-		}
-
-		public void patrol ()
-		{ 
-			walkAmount.x = walkingDirection * walkSpeed * Time.deltaTime;
-			Vector3 direction = this.transform.localScale;
-
-			if (walkingDirection < 0.0f && facingRight == true) {
-				walkingDirection *= -1;
-				direction.x *= -1;
-				transform.localScale = direction;
-				facingRight = false;
-				Debug.Log ("Walking Right");
-			} else {
-				walkingDirection *= -1;
-				direction.x *= -1;
-				transform.localScale = direction;
-				facingRight = true;
-				Debug.Log ("Walking Left");
-			}
-		}
-
-		public void actions ()
-		{
-			if (spotted) {
-				useWeapon (weapon);
-			}
-		}
-
-		public void hurt ()
-		{
-				health--;
-		}
-
-		void FixedUpdate ()
-		{
-			if (health <= 0 && !dead) {
-				die ();
-			}
-
-		}
-
+	void flip()
+	{
+		facingRight = !facingRight;
+		Vector3 direction = transform.localScale;
+		direction.x *= -1;
+		transform.localScale = direction;
+	}
 }

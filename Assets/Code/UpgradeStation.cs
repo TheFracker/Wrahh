@@ -161,11 +161,10 @@ public class UpgradeStation : MonoBehaviour {
 	void shieldMenuFunc(int id)
 	{
 		if(GUILayout.Button("Upgrade Protection")){
-			
-			wrahh.LobsterParts = 10;
-			/*if (armor.ProtectionLevel == 0 && armor.ShieldOn && wrahh.LobsterParts >= 5)
+
+			if (armor.ProtectionLevel == 0 && armor.ShieldOn && wrahh.LobsterParts >= 5)
 			{
-		
+				wrahh.LobsterParts -= 5;
 
 			}
 			else

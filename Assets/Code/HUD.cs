@@ -11,8 +11,8 @@ public class HUD : MonoBehaviour {
 
 	}
 
-	void Update () {
-	
+	void FixedUpdate () {
+		OnGUI();
 	}
 
 	void OnGUI()

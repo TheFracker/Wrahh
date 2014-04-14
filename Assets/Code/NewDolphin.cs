@@ -7,27 +7,26 @@ public class NewDolphin : MonoBehaviour {
 	float moveSpeed;
 	Weapon weapon;
 
-	public float speed = 6.0f;
+	public Transform positionedTarget_right = null;
+	public Transform positionedTarget_left = null;
+
 	public float maxDistance = 20.0f;
+	public float shootDistance = 10.0f;
+	public float closeDistance = 0.7f;
 	
 	private Transform target;
-	private Transform enemyTransform;
 	
 	private bool playerDead = false;
 	public bool facingRight;
-	
-	private Vector3 startPos;
+
 	private Vector3 dir;
-	private Vector3 currentDir;
 
 	// Use this for initialization
 	void Start () {
 		heatlh = 3;
 		moveSpeed = 5;
-		weapon = gameObject.AddComponent<Weapon> ();
-		enemyTransform = this.GetComponent<Transform>();
+		weapon = gameObject.AddComponent<Pistol> ();
 		facingRight = false;
-		startPos = enemyTransform.position;
 	}
 	
 	// Update is called once per frame
@@ -39,14 +38,18 @@ public class NewDolphin : MonoBehaviour {
 	{
 		//Assign the target to be the whatever object with the tag; "Player"
 		target = GameObject.FindWithTag("Player").transform;
-		currentDir = enemyTransform.position;
 		
-		// If I (the dolphin) can see the escapen prisonar (Wrahh) and not too far away, I will start chaing him.
-		if ((Vector3.Distance(target.position, enemyTransform.position) < maxDistance && enemyTransform.position.x > target.position.x &! facingRight)
-		    || (Vector3.Distance(target.position, enemyTransform.position) < maxDistance && enemyTransform.position.x < target.position.x && facingRight))
+		// If I (the dolphin) can see the escapen prisonar (Wrahh) and I'm not too far away, I will start chasing him.
+		if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x &! facingRight)
+		    || (Vector3.Distance(target.position, this.transform.position) < shootDistance && this.transform.position.x < target.position.x && facingRight))
+			useWeapon(weapon);
+		else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x &! facingRight)
+		        || (Vector3.Distance(target.position, this.transform.position) < maxDistance && this.transform.position.x < target.position.x && facingRight))
+			chaseTarget();
+		else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
 			chaseTarget();
 		else
-			returnToStartPos();
+			guard ();
 		// If close enough I will shoot at him
 	}
 	
@@ -75,19 +78,44 @@ public class NewDolphin : MonoBehaviour {
 
 	void guard()
 	{
-		// Make the guard walk left and right
-		// start walking left
-
-
-
+		// Guard right
+		if(positionedTarget_right == null){
+			Vector2 point = new Vector2 (2, 2);
+			if(this.transform.position.x < point.x && facingRight)
+				this.transform.position += this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x > point.x)
+				flip();
+		}
+		else if (this.transform.position.x < positionedTarget_right.position.x && facingRight)
+		{
+			this.transform.position += this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x > positionedTarget_right.position.x)
+				flip ();
+		}
+		
+		// Guard left
+		if(positionedTarget_left == null)
+		{
+			Vector2 point = new Vector2(-2,2);
+			if(this.transform.position.x > point.x &! facingRight)
+				this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x < point.x)
+				flip();
+		}
+		else if (this.transform.position.x > positionedTarget_left.position.x &! facingRight)
+		{
+			this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x < positionedTarget_left.position.x)
+				flip();
+		}
 	}
 
 	void chaseTarget()
 	{
 		//The enemy's diretion
-		dir = target.position - enemyTransform.position;
+		dir = target.position - this.transform.position;
 		dir.Normalize(); //Normalize the direction vector
-		enemyTransform.position += dir * speed * Time.deltaTime; //CHASE THE PLAYER!!!!!
+		this.transform.position += dir * moveSpeed * 2 * Time.deltaTime; //CHASE THE PLAYER!!!!!
 	}
 
 	void flip()
@@ -96,15 +124,5 @@ public class NewDolphin : MonoBehaviour {
 		Vector3 direction = transform.localScale;
 		direction.x *= -1;
 		transform.localScale = direction;
-	}
-
-	void returnToStartPos()
-	{
-		if(enemyTransform.position.x < startPos.x &! facingRight) //Must face starting position
-		{
-			flip ();
-			enemyTransform.position += enemyTransform.right * speed * Time.deltaTime;
-		}
-		Debug.Log("The enemy returned");			//Just to make sure it works so far..
 	}
 }

@@ -169,6 +169,7 @@ public class UpgradeStation : MonoBehaviour {
 
 			if (wrahh.LobsterParts >= 5) {
 				wrahh.LobsterParts -= 5;
+				wrahh.Armor += 5;
 				Debug.Log("Upgrading");
 			}
 			else

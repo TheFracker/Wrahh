@@ -3,10 +3,6 @@ using System.Collections;
 
 public class Wrahh : GameCharacters
 {
-	bool facingRight;
-
-	int health; // Three Lives
-	int armor; // No armor to begin with
 
 	int lobsterParts;
 	int gunsCollected;
@@ -36,15 +32,12 @@ public class Wrahh : GameCharacters
 	{
 
 		basicStats();
-		facingRight = true;
 
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
 
 		//From parent:
-		health = 3;
-		armor = 0;
 		moveSpeed = 10000.0f;
 		facingRight = true;
 	}
@@ -56,7 +49,6 @@ public class Wrahh : GameCharacters
 		gunsCollected = 5;
 		lobsterParts = 10;
 		health = 3;
-		armor = 0;
 	}
 
 	//////////////////////////////////

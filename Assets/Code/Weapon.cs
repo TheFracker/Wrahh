@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour {
 	protected float accidentalFire; 	// Critacal chance
 	protected int hitDamage; 			// Damage it gives when using it as a club
 	protected GameObject bullet; 		// The bullet in the champer
+	protected GameObject hitProjectile; // The projectile that will be created when hitting
 	protected Vector3 pos; 				// The position of the barrels mouth
 
 	void Start()

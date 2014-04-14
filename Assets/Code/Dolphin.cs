@@ -17,7 +17,7 @@ public class Dolphin : MonoBehaviour {
 	private Transform target;
 	
 	private bool playerDead = false;
-	public bool facingRight;
+	public static bool facingRight;
 
 	private Vector3 dir;
 
@@ -40,22 +40,22 @@ public class Dolphin : MonoBehaviour {
 		target = GameObject.FindWithTag("Player").transform;
 		
 		// If I (the dolphin) can see the escapen prisonar (Wrahh) and I'm not too far away, I will start chasing him.
-		if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x &! facingRight)
-		    || (Vector3.Distance(target.position, this.transform.position) < shootDistance && this.transform.position.x < target.position.x && facingRight))
-			useWeapon(weapon);
-		else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x &! facingRight)
-		        || (Vector3.Distance(target.position, this.transform.position) < maxDistance && this.transform.position.x < target.position.x && facingRight))
-			chaseTarget();
-		else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
-			chaseTarget();
-		else
-			guard ();
+//		if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x &! facingRight)
+//		    || (Vector3.Distance(target.position, this.transform.position) < shootDistance && this.transform.position.x < target.position.x && facingRight))
+//			useWeapon(weapon);
+//		else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x &! facingRight)
+//		        || (Vector3.Distance(target.position, this.transform.position) < maxDistance && this.transform.position.x < target.position.x && facingRight))
+//			chaseTarget();
+//		else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
+//			chaseTarget();
+//		else
+//			guard ();
 		// If close enough I will shoot at him
 	}
 	
-	void hurt()
+	public void hurt(Projectile p)
 	{
-		int damageTaken = 0;
+		int damageTaken = p.giveDamage ();
 		heatlh -= damageTaken;
 		if(heatlh <= 0)
 			die ();
@@ -63,7 +63,7 @@ public class Dolphin : MonoBehaviour {
 
 	void die()
 	{
-
+		Destroy (this.gameObject);
 	}
 
 	void useWeapon(Weapon w)

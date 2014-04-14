@@ -20,6 +20,7 @@ public class Rifle : Weapon {
 	{
 		// This bullet variable is inherited from Weapon
 		bullet = Resources.Load ("Prefabs/Bullet") as GameObject;
+		hitProjectile = Resources.Load ("Prefabs/hitProjectile") as GameObject;
 	}
 	
 	public override void shoot()
@@ -34,5 +35,11 @@ public class Rifle : Weapon {
 		else{
 			Instantiate(bullet, pos, Quaternion.identity);
 		}
+	}
+
+	public override void hit ()
+	{
+		pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+		Instantiate (hitProjectile, pos, Quaternion.identity);
 	}
 }

@@ -20,7 +20,6 @@ public class HitProjectile : Projectile {
 		if(timeToDie < Time.time)
 		{
 			Destroy(this.gameObject);
-			Debug.Log("dawdwdwadawd");
 		}
 	}
 

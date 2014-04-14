@@ -1501,6 +1501,7 @@ MonoBehaviour:
   defaultPrefab: {fileID: 0}
   shieldPrefab: {fileID: 0}
   helmetPrefab: {fileID: 0}
+  shieldAndHelmetPrefab: {fileID: 0}
 --- !u!95 &1031765899
 Animator:
   serializedVersion: 2

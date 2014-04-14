@@ -46,9 +46,9 @@ public class Dolphin : GameCharacters
 		// If close enough I will shoot at him
 	}
 	
-	void hurt()
+	public void hurt(Projectile p)
 	{
-		int damageTaken = 0;
+		int damageTaken = p.giveDamage();
 		health -= damageTaken;
 		if(health <= 0)
 			die ();

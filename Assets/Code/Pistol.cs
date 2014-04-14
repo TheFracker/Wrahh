@@ -9,12 +9,13 @@ public class Pistol : Weapon {
 		loadPrefab ();
 		name = "Pistol";
 		ammo = 3;
-		MAGAZINE_SIZE = 30;
-		reloadTime = 5.0f;
+		MAGAZINE_SIZE = 3;
+		reloadTime = 1.0f;
 		reloading = false;
 		durability = 3;
 		accidentalFire = 2.0f;
 		hitDamage = 1;
+		cooldown = 0.8f;
 	}
 
 	protected override void loadPrefab()
@@ -25,15 +26,16 @@ public class Pistol : Weapon {
 	
 	public override void shoot()
 	{
-		// Gives the position of where the bullet should be spawned
-		pos = this.transform.position + new Vector3(-2.5f,0.5f,0);
-		// Shoots creates the bullets, the bullets themself give them their speed
-		// There needs to be two kinds of bullets, one for shooting left and one for right
-		if (gameObject.GetComponent<Dolphin>().isFacingRight()){
-			Instantiate(bullet, pos, Quaternion.identity);
-		}
-		else{
-			Instantiate(bullet, pos, Quaternion.identity);
-		}
+		base.shoot ();
+//		// Gives the position of where the bullet should be spawned
+//		pos = this.transform.position + new Vector3(-2.5f,0.5f,0);
+//		// Shoots creates the bullets, the bullets themself give them their speed
+//		// There needs to be two kinds of bullets, one for shooting left and one for right
+//		if (gameObject.GetComponent<Dolphin>().isFacingRight()){
+//			Instantiate(bullet, pos, Quaternion.identity);
+//		}
+//		else{
+//			Instantiate(bullet, pos, Quaternion.identity);
+//		}
 	}
 }

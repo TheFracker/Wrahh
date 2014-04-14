@@ -22,7 +22,7 @@ public class jail : MonoBehaviour {
 		if(other.collider.tag == "Player")
 		{
 
-			anim.GetComponent<Animator>();
+			anim = GetComponent<Animator>();
 			anim.SetBool("DoorHit", true);
 		}
 			

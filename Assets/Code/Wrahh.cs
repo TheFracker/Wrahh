@@ -8,7 +8,12 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 
+
 	Shield shield;
+
+	public static bool canCrushEnemy = true;
+
+
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
@@ -135,12 +140,14 @@ public class Wrahh : GameCharacters
 		if (this.rigidbody2D.velocity.y < -2.5)
 		{
 			anim.SetBool("IsFalling", true);
+			canCrushEnemy = true;
 		}
 
 		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true)
 		{
 			anim.SetBool("HitGround", true);
 			StartCoroutine(waitForFallingAnimation());
+			canCrushEnemy = true;
 		}
 	}
 

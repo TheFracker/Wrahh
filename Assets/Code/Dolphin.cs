@@ -19,7 +19,7 @@ public class Dolphin : GameCharacters
 	
 	void Start ()
 	{
-		weapon = gameObject.AddComponent<Pistol> ();
+		weapon = gameObject.AddComponent<Rifle> ();
 
 	//From parent:
 		health = 3;
@@ -34,10 +34,10 @@ public class Dolphin : GameCharacters
 		
 		// If I (the dolphin) can see the escapen prisonar (Wrahh) and I'm not too far away, I will start chasing him.
 		if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x &! facingRight)
-		    || (Vector3.Distance(target.position, this.transform.position) < shootDistance && this.transform.position.x < target.position.x && facingRight))
+		    || (Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x < target.position.x && facingRight))
 			useWeapon(weapon);
 		else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x &! facingRight)
-		        || (Vector3.Distance(target.position, this.transform.position) < maxDistance && this.transform.position.x < target.position.x && facingRight))
+		        || (Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x < target.position.x && facingRight))
 			chaseTarget();
 		else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
 			chaseTarget();

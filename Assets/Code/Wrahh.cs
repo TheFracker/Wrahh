@@ -16,18 +16,21 @@ public class Wrahh : MonoBehaviour
 	Weapon currentWeapon;
 	int grenades;
 
-	private float moveSpeed = 10000.0f; // initial force
-	private float currentSpeed; // set to public to see current speed
-	private float MAX_MOVE_SPEED = 3.0f; // initial max speed
-	private float standardGravity = 7.42f; // initial gravity
-	private float standardDrag = 5f; // initial drag force
-	private float climbSpeed = 10f;
+	private float moveSpeed = 10000.0f; 					// initial move force
+	private float currentSpeed; 							// set to public to see current speed
+	private float MAX_MOVE_SPEED = 3.0f; 					// initial max speed
+	private float standardGravity = 7.42f; 					// initial gravity
+	private float standardDrag = 5f; 						// initial drag force
+	private float climbSpeed = 5f;
 
-	Animator anim; // Variable of the typ "Animator" to acces the Animator later
+	Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
 
 	public GameObject defaultPrefab, shieldPrefab;
 	private GameObject prefab;
-	
+
+	//////////////////////////////////
+	// START 			    		//
+	//////////////////////////////////
 	void Start ()
 	{
 		facingRight = true;
@@ -39,6 +42,10 @@ public class Wrahh : MonoBehaviour
 		prefab = defaultPrefab;
 	}
 
+
+	//////////////////////////////////
+	// UPDATE 	    				//
+	//////////////////////////////////
 	void Update ()
 	{
 		// Throw grenade
@@ -50,15 +57,25 @@ public class Wrahh : MonoBehaviour
 			useWeapon (currentWeapon);
 	}
 
+	////////////////////////////////////////////
+	// FixedUpdate - used for movement		  //
+	////////////////////////////////////////////
 	void FixedUpdate(){
 
-		float input = 0;
+		float input = 0;																// creates a local variable "input"
+
+
+
 		falling ();
-		if (anim.GetBool("IsFalling") == false){
-			input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
+		Debug.Log(this.rigidbody2D.velocity.y);
+
+		if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
+			input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
+			climbingLadder();															// runs the "climbingLadder" function 
+			crawlMonkeyBars(); 															// runs the "crawlMonkyBars" function 
 		}
 
-		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
+		anim.SetFloat("Speed", Mathf.Abs(input)); 										// The "speed" parameter in the Animator gets values from the variable "input" 
 
 
 
@@ -67,7 +84,7 @@ public class Wrahh : MonoBehaviour
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 		}
 
-		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
+		currentSpeed = rigidbody2D.velocity.x; 											//sets the "currentSpeed" to the movement speed in the x-axis
 
 		// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)
@@ -76,14 +93,13 @@ public class Wrahh : MonoBehaviour
 		if (input > 0 && !facingRight)
 			flip ();
 
-		climbingLadder();
-		crawlMonkeyBars(); // runs the "crawlMonkyBars" function 
-
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
 	}
 
-	//controlls physics and animtion when the player gets on or off the monkey bars
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void crawlMonkeyBars(){
 
 		//checks if the boolean from "MonkeyBars.cs" are true
@@ -101,6 +117,10 @@ public class Wrahh : MonoBehaviour
 		}
 	}
 
+
+	//////////////////////////////////////////////
+	// CLIMB LADDEER							//
+	/////////////////////////////////////////////
 	void climbingLadder(){
 
 		if (Ladder.canClimb == true){
@@ -110,21 +130,31 @@ public class Wrahh : MonoBehaviour
 	}
 
 
+	//////////////////////////////////////
+	// FALLING							//
+	//////////////////////////////////////
 	void falling(){
-
-		if (this.rigidbody2D.velocity.y < -2.5){
+		if (this.rigidbody2D.velocity.y < -2.5f){
 			anim.SetBool("IsFalling", true);
-			anim.SetBool("HitGround", false);
 		}
 
-		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true){
-			anim.SetBool("IsFalling", false);
+		if (this.rigidbody2D.velocity.y > -0.5f && anim.GetBool("IsFalling") == true){
+			Debug.Log("I get here");
 			anim.SetBool("HitGround", true);
+			StartCoroutine(waitForFallingAnimation());
 		}
-
-
 	}
 
+	IEnumerator waitForFallingAnimation(){
+		yield return new WaitForSeconds(1f);
+		anim.SetBool("HitGround", false);
+		anim.SetBool("IsFalling", false);
+	}
+
+
+	//////////////////////////////////////
+	// WEAPONS							//
+	//////////////////////////////////////
 	void useWeapon(Weapon currentWeapon)
 	{
 		Debug.Log ("Hitting with this weird club");
@@ -142,6 +172,9 @@ public class Wrahh : MonoBehaviour
 		Debug.Log ("Don't have anything to throw");
 	}
 
+	//////////////////////////////////
+	// DIE							//
+	//////////////////////////////////
 	void die()
 	{
 		Debug.Log ("Dying");

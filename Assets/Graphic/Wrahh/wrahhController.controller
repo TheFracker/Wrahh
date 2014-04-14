@@ -74,13 +74,9 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: Speed
+    m_ConditionEvent: HitGround
     m_EventTreshold: .5
     m_ExitTime: .5
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsFalling
-    m_EventTreshold: .5
-    m_ExitTime: 0
   - m_ConditionMode: 1
     m_ConditionEvent: HitGround
     m_EventTreshold: .5
@@ -488,10 +484,6 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110224214}
-      second:
-      - {fileID: 110195884}
-    data:
       first: {fileID: 0}
       second: []
     data:
@@ -524,6 +516,10 @@ StateMachine:
       first: {fileID: 110245984}
       second:
       - {fileID: 110100447}
+    data:
+      first: {fileID: 110224214}
+      second:
+      - {fileID: 110195884}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 12, y: 204, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

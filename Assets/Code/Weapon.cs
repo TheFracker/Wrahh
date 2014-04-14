@@ -40,11 +40,6 @@ public class Weapon : MonoBehaviour {
 
 	public virtual void shoot()
 	{
-//		if (ammo > 0 &! reloading) {
-//			ammo--;
-//		} else {
-//			StartCoroutine (reload ());
-//		}
 		if(!shooting)
 		{
 			shooting = true;
@@ -72,10 +67,10 @@ public class Weapon : MonoBehaviour {
 		reloading = true;
 		yield return new WaitForSeconds (reloadTime);
 		reloading = false;
-		ammo = MAGAZINE_SIZE;
+		ammo = MAGAZINE_SIZE - 1;
 	}
 
-	public IEnumerator shot()
+	IEnumerator shot()
 	{
 		while(shooting)
 		{

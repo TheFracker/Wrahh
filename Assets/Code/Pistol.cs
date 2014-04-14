@@ -15,7 +15,7 @@ public class Pistol : Weapon {
 		durability = 3;
 		accidentalFire = 2.0f;
 		hitDamage = 1;
-		cooldown = 0.8f;
+		delay = 0.8f;
 	}
 
 	protected override void loadPrefab()

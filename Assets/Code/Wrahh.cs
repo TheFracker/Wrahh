@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Wrahh : MonoBehaviour
+public class Wrahh : GameCharacters
 {
 	bool facingRight;
 
@@ -12,20 +12,20 @@ public class Wrahh : MonoBehaviour
 	int gunsCollected;
 	int riflesCollected;
 
+
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-
-	private float moveSpeed = 10000.0f; 					// initial move force
-	private float currentSpeed; 							// set to public to see current speed
-	private float MAX_MOVE_SPEED = 3.0f; 					// initial max speed
+	
+	private float currentSpeed;								// set to public to see current speed
+	private float MAX_MOVE_SPEED = 30.0f; 					// initial max speed
 	private float standardGravity = 7.42f; 					// initial gravity
 	private float standardDrag = 5f; 						// initial drag force
 	private float climbSpeed = 5f;
 
 	Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
 
-	public GameObject defaultPrefab, shieldPrefab, helmetPrefab;
+	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmetPrefab;
 	private GameObject prefab;
 	
 
@@ -34,11 +34,19 @@ public class Wrahh : MonoBehaviour
 	//////////////////////////////////
 	void Start ()
 	{
+
 		basicStats();
 		facingRight = true;
+
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
+
+		//From parent:
+		health = 3;
+		armor = 0;
+		moveSpeed = 10000.0f;
+		facingRight = true;
 	}
 
 	public void basicStats()
@@ -99,8 +107,6 @@ public class Wrahh : MonoBehaviour
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 	void crawlMonkeyBars()	//controlls physics and animtion when the player gets on or off the monkey bars
 	{
 		//checks if the boolean from "MonkeyBars.cs" are true
@@ -132,7 +138,6 @@ public class Wrahh : MonoBehaviour
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}
-
 
 	//////////////////////////////////////
 	// FALLING							//
@@ -178,21 +183,9 @@ public class Wrahh : MonoBehaviour
 		Debug.Log ("Don't have anything to throw");
 	}
 
-
-	//////////////////////////////////
-	// DIE							//
-	//////////////////////////////////
-	public static void die()
-	{
-		Debug.Log ("Dying");
-		///////////////////////////////////////
-		// TO-DO:
-		// ---
-		// Make respawn point and function
-		// Decrease points
-		///////////////////////////////////////
-	}
-
+	//////////////////////////////////////
+	// PICK UP ITEMS					//
+	//////////////////////////////////////
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if (c.tag == "Weapon")													// Pick up weapon

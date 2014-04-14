@@ -1,20 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class GameCharacters : MonoBehaviour
+public class GameCharacters : MonoBehaviour
 {
-	public int health;
-	public int armor;
-	public float moveSpeed;
-	public bool facingRight;
+	protected int health;
+	protected int armor;
+	protected float moveSpeed;
+	protected bool facingRight;
 
-	void Start ()
+	public static void die()
 	{
-	
+		Debug.Log("A gameobject was killed..");
 	}
 
-	void Update ()
+	public static void flip(GameObject obj)
 	{
-	
+		//isFacingRight = !isFacingRight;
+		Vector3 direction = obj.transform.localScale;
+		direction.x *= -1;
+		obj.transform.localScale = direction;
+		Debug.Log ("FLIPPED!");
 	}
 }

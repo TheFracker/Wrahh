@@ -173,6 +173,7 @@ public class UpgradeStation : MonoBehaviour {
 			}
 			else
 			Debug.Log("Cannot Upgrade");
+
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){

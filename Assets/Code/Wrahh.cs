@@ -5,7 +5,7 @@ public class Wrahh : MonoBehaviour
 {
 	bool facingRight;
 
-	int health = 3; // Three Lives
+	int health = 0; // Three Lives
 	int armor = 0; // No armor to begin with
 
 	int lobsterParts = 5;
@@ -30,6 +30,7 @@ public class Wrahh : MonoBehaviour
 	
 	void Start ()
 	{
+		health = 3;
 		facingRight = true;
 		grenades = 0; 										// Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
@@ -39,11 +40,11 @@ public class Wrahh : MonoBehaviour
 
 	void Update ()
 	{
-		// Throw grenade
+	// Throw grenade
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
 
-		// Shooting
+	// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
 	}
@@ -52,6 +53,7 @@ public class Wrahh : MonoBehaviour
 	{
 		float input = 0;
 		falling ();
+
 		if (anim.GetBool("IsFalling") == false)
 			input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
 		
@@ -59,10 +61,9 @@ public class Wrahh : MonoBehaviour
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 
 		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
-
 		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
 
-		// Turn the direction Wrahh is walking
+	// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)
 			flip ();
 
@@ -72,12 +73,11 @@ public class Wrahh : MonoBehaviour
 		climbingLadder();
 		crawlMonkeyBars(); // runs the "crawlMonkyBars" function 
 
-		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
+	//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
 	}
 
-	//controlls physics and animtion when the player gets on or off the monkey bars
-	void crawlMonkeyBars()
+	void crawlMonkeyBars()	//controlls physics and animtion when the player gets on or off the monkey bars
 	{
 		//checks if the boolean from "MonkeyBars.cs" are true
 		if (MonkeyBars.onMonkeyBar == true)
@@ -136,9 +136,15 @@ public class Wrahh : MonoBehaviour
 		Debug.Log ("Don't have anything to throw");
 	}
 
-	void die()
+	public static void die()
 	{
 		Debug.Log ("Dying");
+		///////////////////////////////////////
+		// TO-DO:
+		// ---
+		// Make respawn point and function
+		// Decrease points
+		///////////////////////////////////////
 	}
 
 	void OnTriggerEnter2D(Collider2D c)
@@ -170,8 +176,7 @@ public class Wrahh : MonoBehaviour
 		direction.x *= -1;
 		transform.localScale = direction;
 	}
-
-
+	
 	public void hurt(Projectile p)
 	{
 		int damageTaken = p.giveDamage ();

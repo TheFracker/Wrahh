@@ -145,7 +145,7 @@ public class Wrahh : MonoBehaviour
 	{
 		if (c.tag == "Weapon")													// Pick up weapon
 		{
-			Debug.Log ("Picking up this thing");
+			Debug.Log ("Picking up this weapon");
 			Destroy(c.gameObject);
 		}
 

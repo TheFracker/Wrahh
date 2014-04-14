@@ -409,6 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultPrefab: {fileID: 1351520317}
   shieldPrefab: {fileID: 100016, guid: c42b6ee6d1c7dce44b04440d66cf406d, type: 2}
+  helmetPrefab: {fileID: 0}
 --- !u!95 &1351520321
 Animator:
   serializedVersion: 2
@@ -538,7 +539,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.7510681
+  orthographic size: 19.0772953
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -554,7 +555,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1368684451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.9514008, y: 11.7705765, z: -10}
+  m_LocalPosition: {x: 13.0957012, y: 11.7705765, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

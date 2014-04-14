@@ -291,10 +291,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 150
+  m_LinearDrag: 5
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 7.42000008
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -358,9 +358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d7dcccd6d090042b1b8e1a97d5b175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPrefab: {fileID: 100000, guid: ea161d52854926b41aa3bd946937bef2, type: 2}
+  defaultPrefab: {fileID: 100014, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
   shieldPrefab: {fileID: 100016, guid: c42b6ee6d1c7dce44b04440d66cf406d, type: 2}
-  helmetPrefab: {fileID: 0}
+  helmetPrefab: {fileID: 100002, guid: 11a7853961b1c144d9460f683d9185f3, type: 2}
+  shieldAndHelmetPrefab: {fileID: 100004}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

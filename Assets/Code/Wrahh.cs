@@ -19,7 +19,7 @@ public class Wrahh : GameCharacters
 
 	Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
 
-	public GameObject defaultPrefab, shieldPrefab, helmetPrefab;
+	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmetPrefab;
 	private GameObject prefab;
 
 	//////////////////////////////////

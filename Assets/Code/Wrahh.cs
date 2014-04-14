@@ -287,29 +287,64 @@ public class Wrahh : MonoBehaviour
 			die ();
 	}
 
-	public int getHealth()
+	public int Health
 	{
-		return health;
+		get
+		{
+			return health;
+		}
+		set
+		{
+			health = value;
+		}
 	}
 
-	public int getArmor()
+	public int Armor
 	{
-		return armor;
+		get
+		{
+			return armor;
+		}
+		set
+		{
+			armor = value;
+		}
 	}
 
-	public int getLobsterParts()
+	public int LobsterParts
 	{
-		return lobsterParts;
+		get
+		{
+			return lobsterParts;
+		}
+		set
+		{
+			lobsterParts += value;
+		}
 	}
 
-	public int getRiflesCollected()
+	public int RiflesCollected
 	{
-		return riflesCollected;
+		get
+		{
+			return riflesCollected;
+		}
+		set
+		{
+			riflesCollected = value;
+		}
 	}
 
-	public int getGunsCollected()
+	public int GunsCollected
 	{
-		return gunsCollected;
+		get
+		{
+			return gunsCollected;
+		}
+		set
+		{
+			gunsCollected = value;
+		}
 	}
 
 }

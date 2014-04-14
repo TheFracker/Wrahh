@@ -29,7 +29,7 @@ public class Rifle : Weapon {
 		pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
 		// Shoots creates the bullets, the bullets themself give them their speed
 		// There needs to be two kinds of bullets, one for shooting left and one for right
-		if (Dolphin.facingRight){
+		if (gameObject.GetComponent<Dolphin>().isFacingRight()){
 			Instantiate(bullet, pos, Quaternion.identity);
 		}
 		else{

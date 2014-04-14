@@ -128,7 +128,6 @@ public class Wrahh : GameCharacters
 		if (Ladder.canClimb == true)
 		{
 
-			Debug.Log("im should move now");
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}

@@ -62,27 +62,27 @@ public class Weapon : MonoBehaviour {
 		return name;
 	}
 
-	IEnumerator reload()
-	{
-		reloading = true;
-		yield return new WaitForSeconds (reloadTime);
-		reloading = false;
-		ammo = MAGAZINE_SIZE - 1;
-	}
-
 	IEnumerator shot()
 	{
 		while(shooting)
 		{
 			if (ammo > 0 &! reloading) {
-				Debug.Log (ammo);
 				Instantiate(bullet, pos, Quaternion.identity);
 				ammo--;
+				yield return new WaitForSeconds(delay);
+				shooting = false;
+				Debug.Log (ammo);
 			} else {
-				StartCoroutine (reload ());
+				yield return new WaitForSeconds(reloadTime);
+				shooting = false;
+				ammo = MAGAZINE_SIZE;
 			}
-			yield return new WaitForSeconds(delay);
 		}
-		shooting = false;
+	}
+
+	public void done()
+	{
+		ammo = 1;
+		Debug.Log ("HERE I AM");
 	}
 }

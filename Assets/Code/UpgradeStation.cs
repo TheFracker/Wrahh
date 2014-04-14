@@ -3,6 +3,12 @@ using System.Collections;
 
 public class UpgradeStation : MonoBehaviour {
 
+<<<<<<< HEAD
+=======
+	public Wrahh wrahh = new Wrahh();
+	//Armor armor = new Armor();
+
+>>>>>>> ba454fcac06952d914c14e2150964fccf2d55699
 	public GUISkin mySkin;
 	Rect window300X300, statsWindow;
 	bool menuShow = false;
@@ -174,7 +180,6 @@ public class UpgradeStation : MonoBehaviour {
 			}
 			else
 				Debug.Log ("Cannot Upgrade");
-			Debug.Log (armor.ProtectionLevel);
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){

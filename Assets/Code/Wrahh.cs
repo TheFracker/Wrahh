@@ -56,47 +56,25 @@ public class Wrahh : MonoBehaviour
 			useWeapon (currentWeapon);
 	}
 
-<<<<<<< HEAD
+
 	////////////////////////////////////////////
 	// FixedUpdate - used for movement		  //
 	////////////////////////////////////////////
-	void FixedUpdate(){
-
-		float input = 0;																// creates a local variable "input"
-
-
-
-		falling ();
-		Debug.Log(this.rigidbody2D.velocity.y);
-
-		if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
-			input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
-			climbingLadder();															// runs the "climbingLadder" function 
-			crawlMonkeyBars(); 															// runs the "crawlMonkyBars" function 
-		}
-
-		anim.SetFloat("Speed", Mathf.Abs(input)); 										// The "speed" parameter in the Animator gets values from the variable "input" 
-
-
-=======
 	void FixedUpdate()
 	{
-		float input = 0;
+		float input = 0;																	// creates a local variable "input"
 		falling ();
->>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 
-		if (anim.GetBool("IsFalling") == false)
-			input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
+			if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
+				input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
+				climbingLadder();															// runs the "climbingLadder" function 
+				crawlMonkeyBars(); 															// runs the "crawlMonkyBars" function 
+			}
 		
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
-
-<<<<<<< HEAD
-		currentSpeed = rigidbody2D.velocity.x; 											//sets the "currentSpeed" to the movement speed in the x-axis
-=======
+		
 		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
-		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
->>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 
 	// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)
@@ -104,8 +82,7 @@ public class Wrahh : MonoBehaviour
 
 		if (input > 0 && !facingRight)
 			flip ();
-
-<<<<<<< HEAD
+		
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
 	}
@@ -113,19 +90,10 @@ public class Wrahh : MonoBehaviour
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-	void crawlMonkeyBars(){
 
-=======
-		climbingLadder();
-		crawlMonkeyBars(); // runs the "crawlMonkyBars" function 
-
-	//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
-		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
-	}
 
 	void crawlMonkeyBars()	//controlls physics and animtion when the player gets on or off the monkey bars
 	{
->>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 		//checks if the boolean from "MonkeyBars.cs" are true
 		if (MonkeyBars.onMonkeyBar == true)
 		{
@@ -143,61 +111,41 @@ public class Wrahh : MonoBehaviour
 		}
 	}
 
-<<<<<<< HEAD
-
 	//////////////////////////////////////////////
 	// CLIMB LADDEER							//
 	/////////////////////////////////////////////
-	void climbingLadder(){
-
-		if (Ladder.canClimb == true){
-=======
 	void climbingLadder()
 	{
 		if (Ladder.canClimb == true)
 		{
->>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
+
 			Debug.Log("im should move now");
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}
 
-<<<<<<< HEAD
 
 	//////////////////////////////////////
 	// FALLING							//
 	//////////////////////////////////////
-	void falling(){
-		if (this.rigidbody2D.velocity.y < -2.5f){
-=======
 	void falling()
 	{
 		if (this.rigidbody2D.velocity.y < -2.5)
 		{
->>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 			anim.SetBool("IsFalling", true);
 		}
-<<<<<<< HEAD
 
-		if (this.rigidbody2D.velocity.y > -0.5f && anim.GetBool("IsFalling") == true){
-			Debug.Log("I get here");
-=======
 		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true)
 		{
-			anim.SetBool("IsFalling", false);
->>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 			anim.SetBool("HitGround", true);
 			StartCoroutine(waitForFallingAnimation());
 		}
-<<<<<<< HEAD
 	}
 
 	IEnumerator waitForFallingAnimation(){
 		yield return new WaitForSeconds(1f);
 		anim.SetBool("HitGround", false);
 		anim.SetBool("IsFalling", false);
-=======
->>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 	}
 
 
@@ -221,14 +169,11 @@ public class Wrahh : MonoBehaviour
 		Debug.Log ("Don't have anything to throw");
 	}
 
-<<<<<<< HEAD
+
 	//////////////////////////////////
 	// DIE							//
 	//////////////////////////////////
-	void die()
-=======
 	public static void die()
->>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 	{
 		Debug.Log ("Dying");
 		///////////////////////////////////////

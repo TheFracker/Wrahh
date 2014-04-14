@@ -3,6 +3,8 @@ using System.Collections;
 
 public class jail : MonoBehaviour {
 
+	Animator anim;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,7 +21,7 @@ public class jail : MonoBehaviour {
 	{
 		if(other.collider.tag == "Player")
 		{
-			Animator anim;
+
 			anim.GetComponent<Animator>();
 			anim.SetBool("DoorHit", true);
 		}

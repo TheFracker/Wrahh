@@ -25,7 +25,7 @@ public class Wrahh : MonoBehaviour
 
 	Animator anim; // Variable of the typ "Animator" to acces the Animator later
 
-	public GameObject defaultPrefab, shieldPrefab;
+	public GameObject defaultPrefab, shieldPrefab, helmetPrefab;
 	private GameObject prefab;
 	
 	void Start ()
@@ -48,22 +48,17 @@ public class Wrahh : MonoBehaviour
 			useWeapon (currentWeapon);
 	}
 
-	void FixedUpdate(){
-
+	void FixedUpdate()
+	{
 		float input = 0;
 		falling ();
-		if (anim.GetBool("IsFalling") == false){
+		if (anim.GetBool("IsFalling") == false)
 			input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
-		}
+		
+		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
+			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 
 		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
-
-
-
-
-		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED){
-			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
-		}
 
 		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
 
@@ -82,45 +77,46 @@ public class Wrahh : MonoBehaviour
 	}
 
 	//controlls physics and animtion when the player gets on or off the monkey bars
-	void crawlMonkeyBars(){
-
+	void crawlMonkeyBars()
+	{
 		//checks if the boolean from "MonkeyBars.cs" are true
-		if (MonkeyBars.onMonkeyBar == true){
+		if (MonkeyBars.onMonkeyBar == true)
+		{
 			anim.SetBool("Crawling", true); //The "Crawling" parameter in the Animator gets the value true to start crawling animations 
 			this.rigidbody2D.gravityScale = 0; //sets gravity to 0, so it simulates if the player was hanging in the arms
 			this.rigidbody2D.drag = 25; //Sets the drag up, to make it feel like there is som ressistens and you are not in a zero gravity space 
 		}
 
 		//checks if the boolean from "MonkeyBars.cs" are false
-		else if (MonkeyBars.onMonkeyBar == false){
-				anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
-				this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
+		else if (MonkeyBars.onMonkeyBar == false)
+		{
+			anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
+			this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
 			this.rigidbody2D.drag = standardDrag; //sets drag to initial
 		}
 	}
 
-	void climbingLadder(){
-
-		if (Ladder.canClimb == true){
+	void climbingLadder()
+	{
+		if (Ladder.canClimb == true)
+		{
 			Debug.Log("im should move now");
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}
 
-
-	void falling(){
-
-		if (this.rigidbody2D.velocity.y < -2.5){
+	void falling()
+	{
+		if (this.rigidbody2D.velocity.y < -2.5)
+		{
 			anim.SetBool("IsFalling", true);
 			anim.SetBool("HitGround", false);
 		}
-
-		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true){
+		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true)
+		{
 			anim.SetBool("IsFalling", false);
 			anim.SetBool("HitGround", true);
 		}
-
-
 	}
 
 	void useWeapon(Weapon currentWeapon)
@@ -147,9 +143,9 @@ public class Wrahh : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.tag == "Weapon")												// Pick up weapon
+		if (c.tag == "Weapon")													// Pick up weapon
 		{
-			Debug.Log ("Picking up this thing");
+			Debug.Log ("Picking up this weapon");
 			Destroy(c.gameObject);
 		}
 

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
-	int damage;
-	float speed;
+	protected int damage;
+	protected float speed;
 
 	// Use this for initialization
 	void Start () {
@@ -22,13 +22,14 @@ public class Projectile : MonoBehaviour {
 		return damage;
 	}
 
-	void OnCollisionEnter2D(Collision2D c)
+	protected virtual void OnCTriggerStay2D(Collider c)
 	{
-		if(c.collider.tag == "Player")
+		if(c.tag == "Player")
 		{
 			c.gameObject.GetComponent<Wrahh>().hurt(this);
 			Destroy (this.gameObject);
 		}
+
 	}
 
 	void move ()

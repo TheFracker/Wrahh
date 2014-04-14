@@ -15,7 +15,7 @@ public class GameCharacters : MonoBehaviour
 
 	public static void flip(GameObject obj)
 	{
-		//isFacingRight = !isFacingRight;
+		//facingRight = !facingRight;
 		Vector3 direction = obj.transform.localScale;
 		direction.x *= -1;
 		obj.transform.localScale = direction;

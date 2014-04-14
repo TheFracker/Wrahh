@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Wrahh : GameCharacters
 {
-
 	int lobsterParts;
 	int gunsCollected;
 	int riflesCollected;
+
 
 
 	Weapon[] weapons;
@@ -23,7 +23,6 @@ public class Wrahh : GameCharacters
 
 	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmetPrefab;
 	private GameObject prefab;
-	
 
 	//////////////////////////////////
 	// START 			    		//
@@ -32,7 +31,7 @@ public class Wrahh : GameCharacters
 	{
 
 		basicStats();
-
+	
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
@@ -50,6 +49,7 @@ public class Wrahh : GameCharacters
 		lobsterParts = 10;
 		health = 3;
 	}
+
 
 	//////////////////////////////////
 	// UPDATE 	    				//
@@ -258,7 +258,7 @@ public class Wrahh : GameCharacters
 		}
 		set
 		{
-			lobsterParts = value;
+			lobsterParts += value;
 		}
 	}
 

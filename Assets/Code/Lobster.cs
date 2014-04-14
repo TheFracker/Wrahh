@@ -81,7 +81,7 @@ public class Lobster : GameCharacters
 		Vector3 direction = transform.localScale;
 		direction.x *= -1;
 		transform.localScale = direction;
-		Debug.Log ("FLIPPED!"); 															//Just to make sure it works so far..
+		Debug.Log ("FLIPPED!"); 		 HELLO!													//Just to make sure it works so far..
 	}*/
 
 	void returnToStartPos()

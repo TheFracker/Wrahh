@@ -3,20 +3,10 @@ using System.Collections;
 
 public class Armor : MonoBehaviour
 {
-	private int durabilityLevel;
-	private int protectionLevel;
-	bool shieldOn;
+	private int durabilityLevel = 0;
+	private int protectionLevel = 0;
+	bool shieldOn = true;
 
-	void Start(){
-		basicStats();
-	}
-	public void basicStats(){
-
-		durabilityLevel = 0;
-		protectionLevel = 0;
-		shieldOn = true;
-
-	}
 	void Update()
 	{
 		if (gameObject.tag == "Shield" && protectionLevel == 0)

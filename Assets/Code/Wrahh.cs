@@ -258,7 +258,7 @@ public class Wrahh : GameCharacters
 		}
 		set
 		{
-			lobsterParts += value;
+			lobsterParts = value;
 		}
 	}
 

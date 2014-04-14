@@ -1194,7 +1194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 0}
-  wrahh: {fileID: 1075421145}
 --- !u!4 &773714948
 Transform:
   m_ObjectHideFlags: 0
@@ -1623,11 +1622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d7dcccd6d090042b1b8e1a97d5b175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPrefab: {fileID: 1075421143}
-  shieldPrefab: {fileID: 100016, guid: c42b6ee6d1c7dce44b04440d66cf406d, type: 2}
-  helmetPrefab: {fileID: 100002, guid: 11a7853961b1c144d9460f683d9185f3, type: 2}
-  shieldAndHelmetPrefab: {fileID: 100004, guid: 205627b55d767af4993fbf106056301d,
-    type: 2}
+  defaultPrefab: {fileID: 0}
+  shieldPrefab: {fileID: 0}
 --- !u!95 &1075421146
 Animator:
   serializedVersion: 2
@@ -2040,7 +2036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09909ea859aa474985a60eaddda99c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wrahh: {fileID: 1075421145}
   mySkin: {fileID: 11400000, guid: 25064b85148b0134496206350b22bb62, type: 2}
 --- !u!61 &1242446479
 BoxCollider2D:
@@ -3251,7 +3246,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 16b4dc50a44fec84e984313f99234590, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

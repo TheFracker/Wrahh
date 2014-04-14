@@ -18,7 +18,6 @@ public class playButton : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		//Application.LoadLevel("Level1");	//This line is ready for use!
-		Application.LoadLevel(Application.loadedLevel+1);
+		Application.LoadLevel("Level1");	//This line is ready for use!
 	}
 }

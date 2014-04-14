@@ -122,7 +122,7 @@ public class Wrahh : MonoBehaviour
 	void useWeapon(Weapon currentWeapon)
 	{
 		Debug.Log ("Hitting with this weird club");
-		currentWeapon.shoot ();
+		currentWeapon.hit ();
 	}
 
 	void throwGrenade()

@@ -6,9 +6,9 @@ public class Wrahh : GameCharacters
 	int lobsterParts;
 	int gunsCollected;
 	int riflesCollected;
+	bool shieldOn;
 
-
-
+	Shield shield;
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
@@ -29,9 +29,14 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////
 	void Start ()
 	{
+		shieldOn = true;
+		grenades = 0;
+		riflesCollected = 5;
+		gunsCollected = 5;
+		lobsterParts = 10;
+		health = 3;
 
-		basicStats();
-	
+		shield = gameObject.AddComponent<Shield>();
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
@@ -40,16 +45,7 @@ public class Wrahh : GameCharacters
 		moveSpeed = 10000.0f;
 		facingRight = true;
 	}
-
-	public void basicStats()
-	{
-		grenades = 0;
-		riflesCollected = 5;
-		gunsCollected = 5;
-		lobsterParts = 10;
-		health = 3;
-	}
-
+	
 
 	//////////////////////////////////
 	// UPDATE 	    				//
@@ -194,8 +190,12 @@ public class Wrahh : GameCharacters
 				prefab = shieldPrefab;											// Store new prefab in variable
 				Destroy(gameObject);											// Delete old game object
 				Instantiate (prefab, transform.position, Quaternion.identity);	// Change to new prefab
-				armor += 3;														// Add additional armor to the player
-				Destroy(c.gameObject);											// Removed the item from the scene
+				//shield.something();
+				shield.ProtectionLevel = 1;
+				shield.DurabillityLevel = 1;
+				Destroy(c.gameObject);// Removed the item from the scene
+				shieldOn = true;
+				Debug.Log(shieldOn);
 			}
 		}
 	}
@@ -283,6 +283,17 @@ public class Wrahh : GameCharacters
 		set
 		{
 			gunsCollected = value;
+		}
+	}
+	public bool ShieldOn
+	{
+		get
+		{
+			return shieldOn;
+		}
+		set
+		{
+			shieldOn = value;
 		}
 	}
 

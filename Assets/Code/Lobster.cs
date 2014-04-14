@@ -44,12 +44,12 @@ public class Lobster : GameCharacters
 		
 			if (currentDir.x < target.position.x &! facingRight)
 			{
-				flip(this.gameObject);
+				flip(gameObject);
 			}
 				
 			if (currentDir.x > target.position.x && facingRight)
 			{
-				flip(this.gameObject);
+				flip(gameObject);
 			}
 		
 			if (Vector3.Distance(target.position, enemyTransform.position) < maxDistance)	//If the distance between the target and the enemy is less than the maximum, chaseTarget will be called!
@@ -63,8 +63,7 @@ public class Lobster : GameCharacters
 	{
 		if (c.tag == "Player") 																//If the collission is with the game obejct tagged; "Player"..
 		{
-			playerDead = true; 																//When playerDeadr is true, the enemy stops moving because it killed the player.
-			Wrahh.die();
+			return playerDead = true; 																//When playerDeadr is true, the enemy stops moving because it killed the player.
 		}
 	}
 
@@ -88,7 +87,7 @@ public class Lobster : GameCharacters
 	{
 		if(enemyTransform.position.x < startPos.x &! facingRight) 							//Must face starting position
 		{
-			flip(this.gameObject);
+			flip(gameObject);
 			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;
 		}
 		Debug.Log("The enemy returns");

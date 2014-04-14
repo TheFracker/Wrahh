@@ -51,7 +51,7 @@ public class Dolphin : GameCharacters
 		int damageTaken = p.giveDamage();
 		health -= damageTaken;
 		if(health <= 0)
-			die ();
+			die (this.gameObject);
 	}
 
 	void useWeapon(Weapon w)

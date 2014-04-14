@@ -8,8 +8,9 @@ public class GameCharacters : MonoBehaviour
 	protected float moveSpeed;
 	protected bool facingRight;
 
-	public static void die()
+	public static void die(GameObject obj)
 	{
+		Destroy(obj);
 		Debug.Log("A gameobject was killed..");
 	}
 

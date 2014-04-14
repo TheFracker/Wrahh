@@ -61,10 +61,10 @@ public class Lobster : GameCharacters
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.tag == "Player") 																//If the collission is with the game obejct tagged; "Player"..
+	/*	if (c.tag == "Player") 																//If the collission is with the game obejct tagged; "Player"..
 		{
 			return playerDead = true; 																//When playerDeadr is true, the enemy stops moving because it killed the player.
-		}
+		}*/
 	}
 
 	void chaseTarget()

@@ -10,9 +10,8 @@ public class UpgradeStation : MonoBehaviour {
 	bool armorShow = false, helmShow = false, shieldShow = false;
 	bool weaponShow = false, pistolShow = false, rifleShow = false;
 
-	int lobsterParts = 10;
-	int guns = 10;
-	int rifles = 10;
+	Wrahh wrahh = new Wrahh();
+	Armor armor = new Armor();
 
 	int helmDurabillityLevel = 0; 
 	int shieldDurabillityLevel = 0;
@@ -70,7 +69,6 @@ public class UpgradeStation : MonoBehaviour {
 		if(helmShow){
 			window300X300 = GUI.Window(4, window300X300, helmMenuFunc, "Helm Upgrades");
 		}
-
 		if(weaponShow){
 			window300X300 = GUI.Window(5, window300X300, weaponMenuFunc, "Weapon Upgrades");
 
@@ -89,8 +87,8 @@ public class UpgradeStation : MonoBehaviour {
 	{
 		if(GUILayout.Button("Repair"))
 		{
-				
 		}
+
 		if(GUILayout.Button("Weapon Upgrades"))
 		{
 			menuShow = false;
@@ -139,7 +137,7 @@ public class UpgradeStation : MonoBehaviour {
 	void helmMenuFunc(int id)
 	{
 		if(GUILayout.Button("Upgrade Protection")){
-			lobsterParts -= 5;
+
 			Debug.Log("Helm protection is now: ");
 		}
 		
@@ -163,7 +161,15 @@ public class UpgradeStation : MonoBehaviour {
 	void shieldMenuFunc(int id)
 	{
 		if(GUILayout.Button("Upgrade Protection")){
-			Debug.Log("Shield protection is now: ");
+
+			if (armor.ProtectionLevel == 0 && armor.ShieldOn && wrahh.LobsterParts >= 5)
+			{
+				wrahh.LobsterParts -= 5;
+
+			}
+			else
+				Debug.Log ("Cannot Upgrade");*/
+			Debug.Log (armor.ProtectionLevel);
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){

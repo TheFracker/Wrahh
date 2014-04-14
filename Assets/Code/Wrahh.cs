@@ -5,7 +5,7 @@ public class Wrahh : MonoBehaviour
 {
 	bool facingRight;
 
-	int health = 3; // Three Lives
+	int health = 0; // Three Lives
 	int armor = 0; // No armor to begin with
 
 	int lobsterParts = 5;
@@ -16,20 +16,24 @@ public class Wrahh : MonoBehaviour
 	Weapon currentWeapon;
 	int grenades;
 
-	private float moveSpeed = 10000.0f; // initial force
-	private float currentSpeed; // set to public to see current speed
-	private float MAX_MOVE_SPEED = 3.0f; // initial max speed
-	private float standardGravity = 7.42f; // initial gravity
-	private float standardDrag = 5f; // initial drag force
-	private float climbSpeed = 10f;
+	private float moveSpeed = 10000.0f; 					// initial move force
+	private float currentSpeed; 							// set to public to see current speed
+	private float MAX_MOVE_SPEED = 3.0f; 					// initial max speed
+	private float standardGravity = 7.42f; 					// initial gravity
+	private float standardDrag = 5f; 						// initial drag force
+	private float climbSpeed = 5f;
 
-	Animator anim; // Variable of the typ "Animator" to acces the Animator later
+	Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
 
-	public GameObject defaultPrefab, shieldPrefab;
+	public GameObject defaultPrefab, shieldPrefab, helmetPrefab;
 	private GameObject prefab;
-	
+
+	//////////////////////////////////
+	// START 			    		//
+	//////////////////////////////////
 	void Start ()
 	{
+		health = 3;
 		facingRight = true;
 		grenades = 0; 										// Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
@@ -37,96 +41,121 @@ public class Wrahh : MonoBehaviour
 		prefab = defaultPrefab;
 	}
 
+
+	//////////////////////////////////
+	// UPDATE 	    				//
+	//////////////////////////////////
 	void Update ()
 	{
-		// Throw grenade
+	// Throw grenade
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
 
-		// Shooting
+	// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
 	}
 
-	void FixedUpdate(){
 
-		float input = 0;
+	////////////////////////////////////////////
+	// FixedUpdate - used for movement		  //
+	////////////////////////////////////////////
+	void FixedUpdate()
+	{
+		float input = 0;																	// creates a local variable "input"
 		falling ();
-		if (anim.GetBool("IsFalling") == false){
-			input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
-		}
 
+			if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
+				input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
+				climbingLadder();															// runs the "climbingLadder" function 
+				crawlMonkeyBars(); 															// runs the "crawlMonkyBars" function 
+			}
+		
+		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
+			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
+		
 		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
 
-
-
-
-		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED){
-			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
-		}
-
-		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
-
-		// Turn the direction Wrahh is walking
+	// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)
 			flip ();
 
 		if (input > 0 && !facingRight)
 			flip ();
-
-		climbingLadder();
-		crawlMonkeyBars(); // runs the "crawlMonkyBars" function 
-
+		
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
 	}
 
-	//controlls physics and animtion when the player gets on or off the monkey bars
-	void crawlMonkeyBars(){
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+	void crawlMonkeyBars()	//controlls physics and animtion when the player gets on or off the monkey bars
+	{
 		//checks if the boolean from "MonkeyBars.cs" are true
-		if (MonkeyBars.onMonkeyBar == true){
+		if (MonkeyBars.onMonkeyBar == true)
+		{
 			anim.SetBool("Crawling", true); //The "Crawling" parameter in the Animator gets the value true to start crawling animations 
 			this.rigidbody2D.gravityScale = 0; //sets gravity to 0, so it simulates if the player was hanging in the arms
 			this.rigidbody2D.drag = 25; //Sets the drag up, to make it feel like there is som ressistens and you are not in a zero gravity space 
 		}
 
 		//checks if the boolean from "MonkeyBars.cs" are false
-		else if (MonkeyBars.onMonkeyBar == false){
-				anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
-				this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
+		else if (MonkeyBars.onMonkeyBar == false)
+		{
+			anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
+			this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
 			this.rigidbody2D.drag = standardDrag; //sets drag to initial
 		}
 	}
 
-	void climbingLadder(){
+	//////////////////////////////////////////////
+	// CLIMB LADDEER							//
+	/////////////////////////////////////////////
+	void climbingLadder()
+	{
+		if (Ladder.canClimb == true)
+		{
 
-		if (Ladder.canClimb == true){
 			Debug.Log("im should move now");
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}
 
 
-	void falling(){
-
-		if (this.rigidbody2D.velocity.y < -2.5){
+	//////////////////////////////////////
+	// FALLING							//
+	//////////////////////////////////////
+	void falling()
+	{
+		if (this.rigidbody2D.velocity.y < -2.5)
+		{
 			anim.SetBool("IsFalling", true);
-			anim.SetBool("HitGround", false);
 		}
 
-		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true){
-			anim.SetBool("IsFalling", false);
+		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true)
+		{
 			anim.SetBool("HitGround", true);
+			StartCoroutine(waitForFallingAnimation());
 		}
-
-
 	}
 
+	IEnumerator waitForFallingAnimation(){
+		yield return new WaitForSeconds(1f);
+		anim.SetBool("HitGround", false);
+		anim.SetBool("IsFalling", false);
+	}
+
+
+	//////////////////////////////////////
+	// WEAPONS							//
+	//////////////////////////////////////
 	void useWeapon(Weapon currentWeapon)
 	{
 		Debug.Log ("Hitting with this weird club");
-		currentWeapon.shoot ();
+		currentWeapon.hit ();
 	}
 
 	void throwGrenade()
@@ -140,16 +169,26 @@ public class Wrahh : MonoBehaviour
 		Debug.Log ("Don't have anything to throw");
 	}
 
-	void die()
+
+	//////////////////////////////////
+	// DIE							//
+	//////////////////////////////////
+	public static void die()
 	{
 		Debug.Log ("Dying");
+		///////////////////////////////////////
+		// TO-DO:
+		// ---
+		// Make respawn point and function
+		// Decrease points
+		///////////////////////////////////////
 	}
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.tag == "Weapon")												// Pick up weapon
+		if (c.tag == "Weapon")													// Pick up weapon
 		{
-			Debug.Log ("Picking up this thing");
+			Debug.Log ("Picking up this weapon");
 			Destroy(c.gameObject);
 		}
 
@@ -174,8 +213,7 @@ public class Wrahh : MonoBehaviour
 		direction.x *= -1;
 		transform.localScale = direction;
 	}
-
-
+	
 	public void hurt(Projectile p)
 	{
 		int damageTaken = p.giveDamage ();
@@ -194,29 +232,64 @@ public class Wrahh : MonoBehaviour
 			die ();
 	}
 
-	public int getHealth()
+	public int Health
 	{
-		return health;
+		get
+		{
+			return health;
+		}
+		set
+		{
+			health = value;
+		}
 	}
 
-	public int getArmor()
+	public int Armor
 	{
-		return armor;
+		get
+		{
+			return armor;
+		}
+		set
+		{
+			armor = value;
+		}
 	}
 
-	public int getLobsterParts()
+	public int LobsterParts
 	{
-		return lobsterParts;
+		get
+		{
+			return lobsterParts;
+		}
+		set
+		{
+			lobsterParts += value;
+		}
 	}
 
-	public int getRiflesCollected()
+	public int RiflesCollected
 	{
-		return riflesCollected;
+		get
+		{
+			return riflesCollected;
+		}
+		set
+		{
+			riflesCollected = value;
+		}
 	}
 
-	public int getGunsCollected()
+	public int GunsCollected
 	{
-		return gunsCollected;
+		get
+		{
+			return gunsCollected;
+		}
+		set
+		{
+			gunsCollected = value;
+		}
 	}
 
 }

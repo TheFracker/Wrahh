@@ -3,33 +3,55 @@ using System.Collections;
 
 public class Armor : MonoBehaviour
 {
-	public static void getArmor(string armor)
+	private int durabilityLevel = 0;
+	private int protectionLevel = 0;
+	bool shieldOn = true;
+
+	void Update()
 	{
-		if (armor == "shield")
+		if (gameObject.tag == "Shield" && protectionLevel == 0)
+			Debug.Log ("Shield is at default level!");
+		else if (gameObject.tag == "Shield" && protectionLevel == 1)
+			Debug.Log("Shield is level 1!");
+		else if (gameObject.tag == "Shield" && protectionLevel == 2)
+			Debug.Log ("Shield is level 2!");
+		else if (gameObject.tag == "Shield" && protectionLevel == 3)
+			Debug.Log ("Shield is level 3!");
+	}
+	public int DurabillityLevel
+	{
+		get
 		{
-			Debug.Log ("I got a shield!");
+			return durabilityLevel;
 		}
-		if (armor == "helmet")
-			Debug.Log ("I got a helmet!");
+		set
+		{
+			durabilityLevel = value;
+		}
 	}
 
-	void OnTriggerEnter2D(Collider2D c)
+	public int ProtectionLevel
 	{
-
-			///////////////////////////////////
-			// TO-DO:						 //
-			// --							 //
-			// Shield should be collected	 //
-			// Delete shield from scene		 //
-			// Add shield to Wrahh's sprite  //
-			///////////////////////////////////
-			
-			///////////////////////////////////
-			// TO-DO:						 //
-			// --							 //
-			// Helmet should be collected	 //
-			// Delete helmet from scene		 //
-			// Add helmet to Wrahh's sprite  //
-			///////////////////////////////////
+		get
+		{
+			return protectionLevel;
+		}
+		set
+		{
+			protectionLevel = value;
+		}
 	}
+
+	public bool ShieldOn
+	{
+		get
+		{
+			return shieldOn;
+		}
+		set
+		{
+			shieldOn = value;
+		}
+	}
+
 }

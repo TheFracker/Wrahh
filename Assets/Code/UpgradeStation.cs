@@ -165,7 +165,12 @@ public class UpgradeStation : MonoBehaviour {
 			if (armor.ProtectionLevel == 0 && armor.ShieldOn && wrahh.LobsterParts >= 5)
 			{
 				wrahh.LobsterParts -= 5;
+<<<<<<< HEAD
+				wrahh.Armor += 5;
+				Debug.Log("Upgrading");
+=======
 
+>>>>>>> e82f0687415b71592dd29a43e3365b1fcf450ba7
 			}
 			else
 				Debug.Log ("Cannot Upgrade");

@@ -5,12 +5,12 @@ public class Wrahh : MonoBehaviour
 {
 	bool facingRight;
 
-	int health = 0; // Three Lives
-	int armor = 0; // No armor to begin with
+	int health; // Three Lives
+	int armor; // No armor to begin with
 
-	int lobsterParts = 5;
-	int gunsCollected = 10;
-	int riflesCollected = 5;
+	int lobsterParts;
+	int gunsCollected;
+	int riflesCollected;
 
 	Weapon[] weapons;
 	Weapon currentWeapon;
@@ -27,20 +27,29 @@ public class Wrahh : MonoBehaviour
 
 	public GameObject defaultPrefab, shieldPrefab, helmetPrefab;
 	private GameObject prefab;
+	
 
 	//////////////////////////////////
 	// START 			    		//
 	//////////////////////////////////
 	void Start ()
 	{
-		health = 3;
+		basicStats();
 		facingRight = true;
-		grenades = 0; 										// Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
 	}
 
+	public void basicStats()
+	{
+		grenades = 0;
+		riflesCollected = 5;
+		gunsCollected = 5;
+		lobsterParts = 10;
+		health = 3;
+		armor = 0;
+	}
 
 	//////////////////////////////////
 	// UPDATE 	    				//
@@ -264,7 +273,7 @@ public class Wrahh : MonoBehaviour
 		}
 		set
 		{
-			lobsterParts += value;
+			lobsterParts = value;
 		}
 	}
 

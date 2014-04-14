@@ -3,11 +3,6 @@ using System.Collections;
 
 public class Wrahh : GameCharacters
 {
-	bool facingRight;
-
-	int health = 0; // Three Lives
-	int armor = 0; // No armor to begin with
-
 	int lobsterParts = 5;
 	int gunsCollected = 10;
 	int riflesCollected = 5;
@@ -15,10 +10,9 @@ public class Wrahh : GameCharacters
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
-
-	private float moveSpeed = 10000.0f; 					// initial move force
-	private float currentSpeed; 							// set to public to see current speed
-	private float MAX_MOVE_SPEED = 3.0f; 					// initial max speed
+	
+	private float currentSpeed;								// set to public to see current speed
+	private float MAX_MOVE_SPEED = 30.0f; 					// initial max speed
 	private float standardGravity = 7.42f; 					// initial gravity
 	private float standardDrag = 5f; 						// initial drag force
 	private float climbSpeed = 5f;
@@ -33,12 +27,16 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////
 	void Start ()
 	{
-		health = 3;
-		facingRight = true;
 		grenades = 0; 										// Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
+
+		//From parent:
+		health = 3;
+		armor = 0;
+		moveSpeed = 10000.0f;
+		facingRight = true;
 	}
 
 
@@ -90,8 +88,6 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 	void crawlMonkeyBars()	//controlls physics and animtion when the player gets on or off the monkey bars
 	{
 		//checks if the boolean from "MonkeyBars.cs" are true
@@ -123,7 +119,6 @@ public class Wrahh : GameCharacters
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}
-
 
 	//////////////////////////////////////
 	// FALLING							//
@@ -169,21 +164,9 @@ public class Wrahh : GameCharacters
 		Debug.Log ("Don't have anything to throw");
 	}
 
-
-	//////////////////////////////////
-	// DIE							//
-	//////////////////////////////////
-	/*public static void die()
-	{
-		Debug.Log ("Dying");
-		///////////////////////////////////////
-		// TO-DO:
-		// ---
-		// Make respawn point and function
-		// Decrease points
-		///////////////////////////////////////
-	}*/
-
+	//////////////////////////////////////
+	// PICK UP ITEMS					//
+	//////////////////////////////////////
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if (c.tag == "Weapon")													// Pick up weapon

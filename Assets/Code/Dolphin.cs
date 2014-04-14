@@ -1,37 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dolphin : MonoBehaviour {
-
-	int heatlh;
-	float moveSpeed;
+public class Dolphin : GameCharacters
+{
 	Weapon weapon;
 
 	public Transform positionedTarget_right = null;
 	public Transform positionedTarget_left = null;
+	private Transform target;
 
 	public float maxDistance = 20.0f;
 	public float shootDistance = 10.0f;
 	public float closeDistance = 0.7f;
 	
-	private Transform target;
-	
 	private bool playerDead = false;
-	public bool facingRight;
 
 	private Vector3 dir;
-
-	// Use this for initialization
-	void Start () {
-		heatlh = 3;
-		moveSpeed = 5;
-		weapon = gameObject.AddComponent<Pistol> ();
-		facingRight = false;
-	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Start ()
+	{
+		weapon = gameObject.AddComponent<Pistol> ();
 
+	//From parent:
+		health = 3;
+		moveSpeed = 5;
+		facingRight = false;
 	}
 
 	void FixedUpdate()
@@ -56,24 +49,14 @@ public class Dolphin : MonoBehaviour {
 	void hurt()
 	{
 		int damageTaken = 0;
-		heatlh -= damageTaken;
-		if(heatlh <= 0)
+		health -= damageTaken;
+		if(health <= 0)
 			die ();
-	}
-
-	void die()
-	{
-
 	}
 
 	void useWeapon(Weapon w)
 	{
 		w.shoot ();
-	}
-
-	void AI()
-	{
-
 	}
 
 	void guard()
@@ -124,5 +107,10 @@ public class Dolphin : MonoBehaviour {
 		Vector3 direction = transform.localScale;
 		direction.x *= -1;
 		transform.localScale = direction;
+	}
+
+	public bool isFacingRight()
+	{
+		return facingRight;
 	}
 }

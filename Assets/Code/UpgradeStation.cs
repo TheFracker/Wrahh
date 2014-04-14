@@ -168,7 +168,7 @@ public class UpgradeStation : MonoBehaviour {
 
 			}
 			else
-				Debug.Log ("Cannot Upgrade");*/
+				Debug.Log ("Cannot Upgrade");
 			Debug.Log (armor.ProtectionLevel);
 		}
 		

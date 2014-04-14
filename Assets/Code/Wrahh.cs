@@ -5,12 +5,12 @@ public class Wrahh : MonoBehaviour
 {
 	bool facingRight;
 
-	int health;
-	int armor;
+	int health = 0; // Three Lives
+	int armor = 0; // No armor to begin with
 
-	int lobsterParts;
-	int gunsCollected;
-	int riflesCollected;
+	int lobsterParts = 5;
+	int gunsCollected = 10;
+	int riflesCollected = 5;
 
 	Weapon[] weapons;
 	Weapon currentWeapon;
@@ -25,7 +25,7 @@ public class Wrahh : MonoBehaviour
 
 	Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
 
-	public GameObject defaultPrefab, shieldPrefab;
+	public GameObject defaultPrefab, shieldPrefab, helmetPrefab;
 	private GameObject prefab;
 
 	//////////////////////////////////
@@ -33,9 +33,8 @@ public class Wrahh : MonoBehaviour
 	//////////////////////////////////
 	void Start ()
 	{
+		health = 3;
 		facingRight = true;
-		health = 3;  										// Three hearts
-		armor = 0; 											// No armor to start with
 		grenades = 0; 										// Nothing to throw yet
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
@@ -48,15 +47,16 @@ public class Wrahh : MonoBehaviour
 	//////////////////////////////////
 	void Update ()
 	{
-		// Throw grenade
+	// Throw grenade
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
 
-		// Shooting
+	// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
 	}
 
+<<<<<<< HEAD
 	////////////////////////////////////////////
 	// FixedUpdate - used for movement		  //
 	////////////////////////////////////////////
@@ -78,21 +78,34 @@ public class Wrahh : MonoBehaviour
 		anim.SetFloat("Speed", Mathf.Abs(input)); 										// The "speed" parameter in the Animator gets values from the variable "input" 
 
 
+=======
+	void FixedUpdate()
+	{
+		float input = 0;
+		falling ();
+>>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 
-
-		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED){
+		if (anim.GetBool("IsFalling") == false)
+			input = Input.GetAxis ("Horizontal"); //local variable (a float going from 0-1)
+		
+		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
-		}
 
+<<<<<<< HEAD
 		currentSpeed = rigidbody2D.velocity.x; 											//sets the "currentSpeed" to the movement speed in the x-axis
+=======
+		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
+		currentSpeed = rigidbody2D.velocity.x; //sets the "currentSpeed" to the movement speed in the x-axis
+>>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 
-		// Turn the direction Wrahh is walking
+	// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)
 			flip ();
 
 		if (input > 0 && !facingRight)
 			flip ();
 
+<<<<<<< HEAD
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
 	}
@@ -102,21 +115,35 @@ public class Wrahh : MonoBehaviour
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void crawlMonkeyBars(){
 
+=======
+		climbingLadder();
+		crawlMonkeyBars(); // runs the "crawlMonkyBars" function 
+
+	//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
+		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
+	}
+
+	void crawlMonkeyBars()	//controlls physics and animtion when the player gets on or off the monkey bars
+	{
+>>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 		//checks if the boolean from "MonkeyBars.cs" are true
-		if (MonkeyBars.onMonkeyBar == true){
+		if (MonkeyBars.onMonkeyBar == true)
+		{
 			anim.SetBool("Crawling", true); //The "Crawling" parameter in the Animator gets the value true to start crawling animations 
 			this.rigidbody2D.gravityScale = 0; //sets gravity to 0, so it simulates if the player was hanging in the arms
 			this.rigidbody2D.drag = 25; //Sets the drag up, to make it feel like there is som ressistens and you are not in a zero gravity space 
 		}
 
 		//checks if the boolean from "MonkeyBars.cs" are false
-		else if (MonkeyBars.onMonkeyBar == false){
-				anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
-				this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
+		else if (MonkeyBars.onMonkeyBar == false)
+		{
+			anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
+			this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
 			this.rigidbody2D.drag = standardDrag; //sets drag to initial
 		}
 	}
 
+<<<<<<< HEAD
 
 	//////////////////////////////////////////////
 	// CLIMB LADDEER							//
@@ -124,31 +151,53 @@ public class Wrahh : MonoBehaviour
 	void climbingLadder(){
 
 		if (Ladder.canClimb == true){
+=======
+	void climbingLadder()
+	{
+		if (Ladder.canClimb == true)
+		{
+>>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 			Debug.Log("im should move now");
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}
 
+<<<<<<< HEAD
 
 	//////////////////////////////////////
 	// FALLING							//
 	//////////////////////////////////////
 	void falling(){
 		if (this.rigidbody2D.velocity.y < -2.5f){
+=======
+	void falling()
+	{
+		if (this.rigidbody2D.velocity.y < -2.5)
+		{
+>>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 			anim.SetBool("IsFalling", true);
 		}
+<<<<<<< HEAD
 
 		if (this.rigidbody2D.velocity.y > -0.5f && anim.GetBool("IsFalling") == true){
 			Debug.Log("I get here");
+=======
+		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true)
+		{
+			anim.SetBool("IsFalling", false);
+>>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 			anim.SetBool("HitGround", true);
 			StartCoroutine(waitForFallingAnimation());
 		}
+<<<<<<< HEAD
 	}
 
 	IEnumerator waitForFallingAnimation(){
 		yield return new WaitForSeconds(1f);
 		anim.SetBool("HitGround", false);
 		anim.SetBool("IsFalling", false);
+=======
+>>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 	}
 
 
@@ -172,19 +221,29 @@ public class Wrahh : MonoBehaviour
 		Debug.Log ("Don't have anything to throw");
 	}
 
+<<<<<<< HEAD
 	//////////////////////////////////
 	// DIE							//
 	//////////////////////////////////
 	void die()
+=======
+	public static void die()
+>>>>>>> 92f4f63800def4c9088604635d4dc1636d7d929f
 	{
 		Debug.Log ("Dying");
+		///////////////////////////////////////
+		// TO-DO:
+		// ---
+		// Make respawn point and function
+		// Decrease points
+		///////////////////////////////////////
 	}
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.tag == "Weapon")												// Pick up weapon
+		if (c.tag == "Weapon")													// Pick up weapon
 		{
-			Debug.Log ("Picking up this thing");
+			Debug.Log ("Picking up this weapon");
 			Destroy(c.gameObject);
 		}
 
@@ -209,8 +268,7 @@ public class Wrahh : MonoBehaviour
 		direction.x *= -1;
 		transform.localScale = direction;
 	}
-
-
+	
 	public void hurt(Projectile p)
 	{
 		int damageTaken = p.giveDamage ();

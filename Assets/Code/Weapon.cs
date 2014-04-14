@@ -13,10 +13,13 @@ public class Weapon : MonoBehaviour {
 	protected int hitDamage; 			// Damage it gives when using it as a club
 	protected GameObject bullet; 		// The bullet in the champer
 	protected Vector3 pos; 				// The position of the barrels mouth
+	protected bool shooting;			// If the Dolphin is pressing the trigger or not
+	protected float delay;				// The time between each shot
 
 	void Start()
 	{
 		loadPrefab ();
+		shooting = false;
 	}
 
 	public virtual void hit()
@@ -27,7 +30,7 @@ public class Weapon : MonoBehaviour {
 	
 	void Update()
 	{
-
+		pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
 	}
 
 	protected virtual void loadPrefab()
@@ -35,20 +38,13 @@ public class Weapon : MonoBehaviour {
 		bullet = Resources.Load ("Prefabs/Bullet") as GameObject;
 	}
 
-	public void pew()
-	{
-		shoot ();
-	}
-
 	public virtual void shoot()
 	{
-		if (ammo > 0) {
-			//Instantiate(bullet, this.transform.position, Quaternion.identity);
-			ammo--;
-		} else {
-			StartCoroutine (reload ());
+		if(!shooting)
+		{
+			shooting = true;
+			StartCoroutine ("shot");
 		}
-
 	}
 
 	public bool isReloading()
@@ -66,10 +62,27 @@ public class Weapon : MonoBehaviour {
 		return name;
 	}
 
-	IEnumerator reload()
+	IEnumerator shot()
 	{
-		reloading = true;
-		yield return new WaitForSeconds (reloadTime);
-		reloading = false;
+		while(shooting)
+		{
+			if (ammo > 0 &! reloading) {
+				Instantiate(bullet, pos, Quaternion.identity);
+				ammo--;
+				yield return new WaitForSeconds(delay);
+				shooting = false;
+				Debug.Log (ammo);
+			} else {
+				yield return new WaitForSeconds(reloadTime);
+				shooting = false;
+				ammo = MAGAZINE_SIZE;
+			}
+		}
+	}
+
+	public void done()
+	{
+		ammo = 1;
+		Debug.Log ("HERE I AM");
 	}
 }

@@ -5,14 +5,14 @@ public class HUD : MonoBehaviour {
 	public GUISkin mySkin;
 	bool hudOn;
 
-	Wrahh wrahh = new Wrahh();
+	public Wrahh wrahh = new Wrahh();
 
 	void Start () {
 
 	}
 
 	void FixedUpdate () {
-		OnGUI();
+		Debug.Log (wrahh.Armor + " ddawdawnkdwadklwadkwldklaw");
 	}
 
 	void OnGUI()

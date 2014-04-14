@@ -22,14 +22,10 @@ public class Projectile : MonoBehaviour {
 		return damage;
 	}
 
-	protected virtual void OnCTriggerStay2D(Collider c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Player")
-		{
-			c.gameObject.GetComponent<Wrahh>().hurt(this);
 			Destroy (this.gameObject);
-		}
-
 	}
 
 	void move ()

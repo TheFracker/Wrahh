@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Wrahh : MonoBehaviour
+public class Wrahh : GameCharacters
 {
 	bool facingRight;
 
@@ -173,7 +173,7 @@ public class Wrahh : MonoBehaviour
 	//////////////////////////////////
 	// DIE							//
 	//////////////////////////////////
-	public static void die()
+	/*public static void die()
 	{
 		Debug.Log ("Dying");
 		///////////////////////////////////////
@@ -182,7 +182,7 @@ public class Wrahh : MonoBehaviour
 		// Make respawn point and function
 		// Decrease points
 		///////////////////////////////////////
-	}
+	}*/
 
 	void OnTriggerEnter2D(Collider2D c)
 	{

@@ -6,7 +6,7 @@ public class UpgradeStation : MonoBehaviour {
 <<<<<<< HEAD
 =======
 	public Wrahh wrahh = new Wrahh();
-	//Armor armor = new Armor();
+	Armor armor = new Armor();
 
 >>>>>>> ba454fcac06952d914c14e2150964fccf2d55699
 	public GUISkin mySkin;

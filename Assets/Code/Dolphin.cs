@@ -19,7 +19,7 @@ public class Dolphin : GameCharacters
 	
 	void Start ()
 	{
-		weapon = gameObject.AddComponent<Pistol> ();
+		weapon = gameObject.AddComponent<Rifle> ();
 
 	//From parent:
 		health = 3;

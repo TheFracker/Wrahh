@@ -1194,6 +1194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 0}
+  wrahh: {fileID: 0}
 --- !u!4 &773714948
 Transform:
   m_ObjectHideFlags: 0
@@ -1201,7 +1202,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 773714945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .600000024}
+  m_LocalPosition: {x: 0, y: 5.32121944, z: .600000024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1624,6 +1625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultPrefab: {fileID: 0}
   shieldPrefab: {fileID: 0}
+  helmetPrefab: {fileID: 0}
 --- !u!95 &1075421146
 Animator:
   serializedVersion: 2

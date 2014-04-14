@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class UpgradeStation : MonoBehaviour {
+	public Wrahh wrahh = new Wrahh();
+	//public Armor armor = new Armor();
 
 	public GUISkin mySkin;
 	Rect window300X300, statsWindow;
@@ -10,8 +12,6 @@ public class UpgradeStation : MonoBehaviour {
 	bool armorShow = false, helmShow = false, shieldShow = false;
 	bool weaponShow = false, pistolShow = false, rifleShow = false;
 
-	Wrahh wrahh = new Wrahh();
-	Armor armor = new Armor();
 
 	int helmDurabillityLevel = 0; 
 	int shieldDurabillityLevel = 0;
@@ -35,6 +35,11 @@ public class UpgradeStation : MonoBehaviour {
 	void Start()
 	{
 		window300X300 = new Rect (Screen.width / 2-250, Screen.height / 2 - 100, 300,300);
+		wrahh.basicStats();
+		//armor.basicStats ();
+	}
+	void Update()
+	{
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -162,14 +167,13 @@ public class UpgradeStation : MonoBehaviour {
 	{
 		if(GUILayout.Button("Upgrade Protection")){
 
-			if (armor.ProtectionLevel == 0 && armor.ShieldOn && wrahh.LobsterParts >= 5)
-			{
+			if (wrahh.LobsterParts >= 5) {
 				wrahh.LobsterParts -= 5;
-
+				Debug.Log("Upgrading");
 			}
 			else
-				Debug.Log ("Cannot Upgrade");
-			Debug.Log (armor.ProtectionLevel);
+			Debug.Log("Cannot Upgrade");
+
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){

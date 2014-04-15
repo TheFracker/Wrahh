@@ -14,7 +14,6 @@ public class Shield : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		Debug.Log(protection);
 		if (protection == 1){
 			protectionLevel1();
 		}

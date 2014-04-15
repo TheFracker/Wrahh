@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour {
 		move ();
 	}
 	
-	public int giveDamage()
+	public virtual int giveDamage()
 	{
 		return damage;
 	}

@@ -38,7 +38,6 @@ public class HitProjectile : Projectile {
 	{
 		if(Random.Range(0,100) < criticalChange)
 			damage *= 3;
-		Debug.Log (damage);
 		return damage; 
 	}
 }

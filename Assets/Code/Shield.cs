@@ -4,18 +4,47 @@ using System.Collections;
 public class Shield : MonoBehaviour
 {
 	public Wrahh wrahh = new Wrahh();
-	private int durabilityLevel;
-	private int protectionLevel;
+	private int durabillity = 0;
+	private int protection = 0;
 
 	void Start()
 	{
+		wrahh.Armor = 3;
+	}
+
+	void FixedUpdate()
+	{
+		Debug.Log(protection);
+		if (protection == 1){
+			protectionLevel1();
+		}
+		else if (protection == 2){
+			protectionLevel2();
+		}
+	}
+
+	void protectionLevel1()
+	{
+
+		Debug.Log("Im here, Protection level 1");
+	}
+
+	void protectionLevel2()
+	{
+		wrahh.Armor = 5;
+		Debug.Log(wrahh.Armor);
+		Debug.Log("Im here, Protection level 2");
+	}
+	public void something()
+	{
+		/*
 		if (protectionLevel == 1){
+			wrahh.Armor = 3;
 			Debug.Log("I'm Here");
 		}
 		else if (protectionLevel == 2){
-			wrahh.Armor = 5;
+			wrahh.Armor = 6;
 			Debug.Log(wrahh.Armor);
-			Debug.Log("Shield is level 1!dawdadawdadawdawdawdw");
 		}
 		else if (protectionLevel == 3){
 			Debug.Log ("Shield is level 2!");
@@ -23,18 +52,8 @@ public class Shield : MonoBehaviour
 		else if (protectionLevel == 4){
 			Debug.Log ("Shield is level 3!");
 		}
-	}
-
-	void Update()
-	{
-
-	}
-
-	public void something()
-	{
-
 		
-		/*if (durabilityLevel == 0){
+		if (durabilityLevel == 0){
 			Debug.Log ("Shield is at default level!");
 		}
 		else if (durabilityLevel == 1){
@@ -47,27 +66,27 @@ public class Shield : MonoBehaviour
 		}*/
 	}
 
-	public int DurabillityLevel
+	public int Durabillity
 	{
 		get
 		{
-			return durabilityLevel;
+			return durabillity;
 		}
 		set
 		{
-			durabilityLevel = value;
+			durabillity = value;
 		}
 	}
 
-	public int ProtectionLevel
+	public int Protection
 	{
 		get
 		{
-			return protectionLevel;
+			return protection;
 		}
 		set
 		{
-			protectionLevel = value;
+			protection = value;
 		}
 	}
 

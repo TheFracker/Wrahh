@@ -12,7 +12,6 @@ public class HUD : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		Debug.Log (wrahh.Armor + " ddawdawnkdwadklwadkwldklaw");
 	}
 
 	void OnGUI()

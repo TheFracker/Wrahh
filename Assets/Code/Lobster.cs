@@ -44,12 +44,12 @@ public class Lobster : GameCharacters
 		
 			if (currentDir.x < target.position.x &! facingRight)
 			{
-				flip(gameObject);
+				flip();
 			}
 				
 			if (currentDir.x > target.position.x && facingRight)
 			{
-				flip(gameObject);
+				flip();
 			}
 		
 			if (Vector3.Distance(target.position, enemyTransform.position) < maxDistance)	//If the distance between the target and the enemy is less than the maximum, chaseTarget will be called!
@@ -87,7 +87,7 @@ public class Lobster : GameCharacters
 	{
 		if(enemyTransform.position.x < startPos.x &! facingRight) 							//Must face starting position
 		{
-			flip(gameObject);
+			flip();
 			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;
 		}
 		Debug.Log("The enemy returns");

@@ -23,10 +23,13 @@ public class Dolphin : GameCharacters
 	{
 		weapon = gameObject.AddComponent<Rifle> ();
 
-	//From parent:
-		health = 3;
-		moveSpeed = 5;
+		//From parent "GameCharacters.cs":
+		moveSpeed = 10000.0f;
 		facingRight = false;
+		MAX_MOVE_SPEED = 30.0f;
+		health = 3;
+		setStandardPhysics();
+
 		anim = GetComponent<Animator>();
 
 	}
@@ -58,7 +61,7 @@ public class Dolphin : GameCharacters
 		int damageTaken = p.giveDamage();
 		health -= damageTaken;
 		if(health <= 0)
-			die (this.gameObject);
+			die ();
 	}
 
 	void useWeapon(Weapon w)

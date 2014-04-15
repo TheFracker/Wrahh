@@ -34,6 +34,6 @@ public class GameCharacters : MonoBehaviour
 
 	public bool isFacingRight()
 	{
-		return isFacingRight;
+		return facingRight;
 	}
 }

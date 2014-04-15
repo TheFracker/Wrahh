@@ -48,7 +48,6 @@ public class Wrahh : GameCharacters
 		MAX_MOVE_SPEED = 30.0f;
 		health = 3;
 		setStandardPhysics();
-		//anim = GetComponent<Animator>();
 		accesAnimator();
 	}
 	

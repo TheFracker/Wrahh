@@ -23,7 +23,7 @@ public class HitProjectile : Projectile {
 		}
 	}
 
-	protected virtual void OnTriggerStay2D(Collider2D c)
+	protected virtual void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Enemy")
 		{

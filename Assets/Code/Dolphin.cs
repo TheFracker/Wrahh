@@ -17,7 +17,7 @@ public class Dolphin : GameCharacters
 
 	private Vector3 dir;
 
-	Animator anim;
+	protected Animator anim;
 	
 	void Start ()
 	{
@@ -29,8 +29,7 @@ public class Dolphin : GameCharacters
 		MAX_MOVE_SPEED = 30.0f;
 		health = 3;
 		setStandardPhysics();
-
-		anim = GetComponent<Animator>();
+		accesAnimator();
 
 	}
 

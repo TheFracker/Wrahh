@@ -8,7 +8,6 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 
-	Shield shield;
 
 	public static bool canCrushEnemy = false;
 
@@ -33,10 +32,9 @@ public class Wrahh : GameCharacters
 		grenades = 0;
 		riflesCollected = 5;
 		gunsCollected = 5;
-		lobsterParts = 10;
+		lobsterParts = 155;
 
 
-		shield = gameObject.AddComponent<Shield>();
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
@@ -63,7 +61,6 @@ public class Wrahh : GameCharacters
 	// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
-		Debug.Log(armor + "aljlfajlhsafklhsafklsafklj");
 	}
 
 
@@ -193,11 +190,13 @@ public class Wrahh : GameCharacters
 			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
-				prefab = shieldPrefab;											// Store new prefab in variable
-				Destroy(gameObject);											// Delete old game object
-				Instantiate (prefab, transform.position, Quaternion.identity);	// Change to new prefab
-				shield.Protection = 1;
-				shield.Durabillity = 1;
+				//prefab = shieldPrefab;											// Store new prefab in variable
+				//Destroy(gameObject);											// Delete old game object
+				//Instantiate (prefab, transform.position, Quaternion.identity);	// Change to new prefab
+				//GetComponentsInChildren<shield_rotation_FRONT>.setActive(true);
+				armor = 3;
+				//this.transform.GetChild.Find("shield_rotation_FRONT").SetActive(true); //Equip shield without deleting Wrahh
+				this.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true);
 				Destroy(c.gameObject);// Removed the item from the scene
 				shieldOn = true;
 				Debug.Log(shieldOn);

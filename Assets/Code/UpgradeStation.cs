@@ -4,7 +4,7 @@ using System.Collections;
 public class UpgradeStation : MonoBehaviour {
 
 	public Wrahh wrahh = new Wrahh();
-	Shield shield;
+	public Shield shield = new Shield();
 
 	public GUISkin mySkin;
 	Rect window300X300, statsWindow;
@@ -19,7 +19,6 @@ public class UpgradeStation : MonoBehaviour {
 
 	void Start()
 	{
-		shield = gameObject.AddComponent<Shield>();
 		window300X300 = new Rect (Screen.width / 2-250, Screen.height / 2 - 100, 300,300);
 	}
 
@@ -148,12 +147,30 @@ public class UpgradeStation : MonoBehaviour {
 	{
 		if(GUILayout.Button("Upgrade Protection")){
 
-			//if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn)
-			//{
+			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 0)
+			{
+				shield.Protection = 1;
+				wrahh.LobsterParts -= 5;
+				shield.upgrade();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 1)
+			{
 				shield.Protection = 2;
-			//}
-			//else
-			//	Debug.Log ("Cannot Upgrade");
+				wrahh.LobsterParts -= 5;
+				shield.upgrade();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 2)
+			{
+				shield.Protection = 3;
+				wrahh.LobsterParts -= 5;
+				shield.upgrade();
+			}
+			else if (shield.Protection == 3)
+			{
+				Debug.Log ("Max Level!");
+			}
+			else
+				Debug.Log ("Cannot Upgrade");
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){

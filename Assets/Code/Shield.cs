@@ -9,61 +9,37 @@ public class Shield : MonoBehaviour
 
 	void Start()
 	{
-		wrahh.Armor = 3;
 	}
 
-	void FixedUpdate()
+
+	public void upgrade()
 	{
-		Debug.Log(protection);
-		if (protection == 1){
+		if(protection == 1){
 			protectionLevel1();
 		}
 		else if (protection == 2){
 			protectionLevel2();
 		}
+		else if (protection == 3){
+			protectionLevel3();
+		}
 	}
 
 	void protectionLevel1()
 	{
-
+		wrahh.Armor += 2;
 		Debug.Log("Im here, Protection level 1");
 	}
-
 	void protectionLevel2()
 	{
-		wrahh.Armor = 5;
-		Debug.Log(wrahh.Armor);
+		wrahh.Armor += 3;
 		Debug.Log("Im here, Protection level 2");
 	}
-	public void something()
+
+	void protectionLevel3()
 	{
-		/*
-		if (protectionLevel == 1){
-			wrahh.Armor = 3;
-			Debug.Log("I'm Here");
-		}
-		else if (protectionLevel == 2){
-			wrahh.Armor = 6;
-			Debug.Log(wrahh.Armor);
-		}
-		else if (protectionLevel == 3){
-			Debug.Log ("Shield is level 2!");
-		}
-		else if (protectionLevel == 4){
-			Debug.Log ("Shield is level 3!");
-		}
-		
-		if (durabilityLevel == 0){
-			Debug.Log ("Shield is at default level!");
-		}
-		else if (durabilityLevel == 1){
-		}
-		else if (durabilityLevel == 2){
-			Debug.Log ("Shield is level 2!");
-		}
-		else if (durabilityLevel == 3){
-			Debug.Log ("Shield is level 3!");
-		}*/
+		wrahh.Armor += 5;
+		Debug.Log("Im here, Protection level 2");
 	}
 
 	public int Durabillity
@@ -89,5 +65,4 @@ public class Shield : MonoBehaviour
 			protection = value;
 		}
 	}
-
 }

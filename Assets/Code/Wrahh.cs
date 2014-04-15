@@ -8,19 +8,15 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 
-
 	Shield shield;
 
 	public static bool canCrushEnemy = false;
-
-
 
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
 	
 	private float currentSpeed;								// set to public to see current speed
-	private float standardDrag = 5f; 						// initial drag force
 	private float climbSpeed = 5f;
 
 	Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
@@ -38,7 +34,7 @@ public class Wrahh : GameCharacters
 		riflesCollected = 5;
 		gunsCollected = 5;
 		lobsterParts = 10;
-		health = 3;
+
 
 		shield = gameObject.AddComponent<Shield>();
 		currentWeapon = gameObject.AddComponent<Rifle>();
@@ -46,14 +42,12 @@ public class Wrahh : GameCharacters
 		prefab = defaultPrefab;
 	
 
-		//From parent:
+		//From parent "GameCharacters.cs":
 		moveSpeed = 10000.0f;
 		facingRight = true;
 		MAX_MOVE_SPEED = 30.0f;
-		setStandardPhysics(this.gameObject);
-
-		//this.rigidbody2D.gravityScale = standardGravity;
-
+		health = 3;
+		setStandardPhysics();
 	}
 	
 
@@ -119,8 +113,7 @@ public class Wrahh : GameCharacters
 		else if (MonkeyBars.onMonkeyBar == false)
 		{
 			anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
-			this.rigidbody2D.gravityScale = standardGravity; //sets gravity to initial
-			this.rigidbody2D.drag = standardDrag; //sets drag to initial
+			setStandardPhysics();
 		}
 	}
 
@@ -211,15 +204,8 @@ public class Wrahh : GameCharacters
 			}
 		}
 	}
-
-	void flip()
-	{
-		facingRight = !facingRight;
-		Vector3 direction = transform.localScale;
-		direction.x *= -1;
-		transform.localScale = direction;
-	}
 	
+
 	public void hurt(Projectile p)
 	{
 		int damageTaken = p.giveDamage ();
@@ -235,7 +221,7 @@ public class Wrahh : GameCharacters
 		}
 		health -= damageTaken;
 		if (health <= 0)
-			die (this.gameObject);
+			die ();
 	}
 
 	public int Health

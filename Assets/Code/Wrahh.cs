@@ -50,7 +50,7 @@ public class Wrahh : GameCharacters
 		moveSpeed = 10000.0f;
 		facingRight = true;
 		MAX_MOVE_SPEED = 30.0f;
-		setStandardPhysics();
+		setStandardPhysics(this.gameObject);
 
 		//this.rigidbody2D.gravityScale = standardGravity;
 

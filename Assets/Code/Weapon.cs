@@ -11,7 +11,9 @@ public class Weapon : MonoBehaviour {
 	protected int durability; 			// How many hits it can take
 	protected float accidentalFire; 	// Critacal chance
 	protected int hitDamage; 			// Damage it gives when using it as a club
-	protected GameObject bullet; 		// The bullet in the champer
+	protected GameObject bulletRight; 	// The bullet in the champer when shooting right;
+	protected GameObject bulletLeft;	// The bullet in the champer when shooting left;
+	protected GameObject hitProjectile; // Projectile created when hitting with the weapon;
 	protected Vector3 pos; 				// The position of the barrels mouth
 	protected bool shooting;			// If the Dolphin is pressing the trigger or not
 	protected float delay;				// The time between each shot
@@ -35,7 +37,9 @@ public class Weapon : MonoBehaviour {
 
 	protected virtual void loadPrefab()
 	{
-		bullet = Resources.Load ("Prefabs/Bullet") as GameObject;
+		bulletRight = Resources.Load ("Prefabs/BulletRight") as GameObject;
+		bulletLeft =  Resources.Load ("Prefabs/BulletLeft") as GameObject;
+		hitProjectile =  Resources.Load ("Prefabs/hitProjectile") as GameObject;
 	}
 
 	public virtual void shoot()
@@ -67,7 +71,10 @@ public class Weapon : MonoBehaviour {
 		while(shooting)
 		{
 			if (ammo > 0 &! reloading) {
-				Instantiate(bullet, pos, Quaternion.identity);
+				if(gameObject.GetComponent<Dolphin>().isFacingRight())
+					Instantiate(bulletRight, pos, Quaternion.identity);
+				else
+					Instantiate(bulletLeft, pos, Quaternion.identity);
 				ammo--;
 				yield return new WaitForSeconds(delay);
 				shooting = false;

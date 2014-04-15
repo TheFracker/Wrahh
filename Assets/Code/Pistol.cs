@@ -27,6 +27,7 @@ public class Pistol : Weapon {
 	
 	public override void shoot()
 	{
+
 		base.shoot ();
 //		// Gives the position of where the bullet should be spawned
 //		pos = this.transform.position + new Vector3(-2.5f,0.5f,0);

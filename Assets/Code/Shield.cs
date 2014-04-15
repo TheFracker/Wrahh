@@ -15,6 +15,7 @@ public class Shield : MonoBehaviour
 	public void upgrade()
 	{
 		if(protection == 1){
+
 			protectionLevel1();
 		}
 		else if (protection == 2){

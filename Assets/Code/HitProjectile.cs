@@ -5,6 +5,7 @@ public class HitProjectile : Projectile {
 
 	float liveTime;
 	float timeToDie;
+	float criticalChange;
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +13,7 @@ public class HitProjectile : Projectile {
 		damage = 1;
 		liveTime = 1.0f;
 		timeToDie = Time.time + liveTime;
+		criticalChange = 5;
 	}
 
 	// Update is called once per frame
@@ -30,5 +32,12 @@ public class HitProjectile : Projectile {
 			c.gameObject.GetComponent<Dolphin>().hurt(this);
 			Destroy (this.gameObject);
 		}
+	}
+
+	public override int giveDamage ()
+	{
+		if(Random.Range(0,100) < criticalChange)
+			damage *= 3;
+		return damage; 
 	}
 }

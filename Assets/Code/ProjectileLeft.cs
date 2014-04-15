@@ -25,7 +25,7 @@ public class ProjectileLeft : Projectile {
 			Destroy (this.gameObject);
 	}
 	
-	void move ()
+	protected override void move ()
 	{
 		this.rigidbody2D.velocity = Vector2.right * -speed;
 	}

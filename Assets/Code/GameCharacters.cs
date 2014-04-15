@@ -11,7 +11,12 @@ public class GameCharacters : MonoBehaviour
 	protected float MAX_MOVE_SPEED; 						
 	protected float standardDrag = 5f; 						// initial drag force
 	
-	Animator anim; 
+	protected Animator anim;
+
+	protected void accesAnimator()
+	{
+		anim = GetComponent<Animator>(); 
+	}
 
 	protected void die()
 	{

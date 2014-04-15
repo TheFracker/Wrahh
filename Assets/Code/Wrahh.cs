@@ -20,8 +20,6 @@ public class Wrahh : GameCharacters
 	int grenades;
 	
 	private float currentSpeed;								// set to public to see current speed
-	private float MAX_MOVE_SPEED = 30.0f; 					// initial max speed
-	//private float standardGravity = 7.42f; 					// initial gravity
 	private float standardDrag = 5f; 						// initial drag force
 	private float climbSpeed = 5f;
 
@@ -51,7 +49,11 @@ public class Wrahh : GameCharacters
 		//From parent:
 		moveSpeed = 10000.0f;
 		facingRight = true;
-		this.rigidbody2D.gravityScale = standardGravity;
+		MAX_MOVE_SPEED = 30.0f;
+		setStandardPhysics();
+
+		//this.rigidbody2D.gravityScale = standardGravity;
+
 	}
 	
 

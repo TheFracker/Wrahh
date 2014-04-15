@@ -8,14 +8,17 @@ public class GameCharacters : MonoBehaviour
 	protected float moveSpeed;
 	protected bool facingRight;
 	protected float standardGravity = 7.42f; 
+	protected float MAX_MOVE_SPEED; 
 
-	public static void die(GameObject obj)
+
+
+	protected void die(GameObject obj)
 	{
 		Destroy(obj);
 		Debug.Log("A gameobject was killed..");
 	}
 
-	public static void flip(GameObject obj)
+	protected void flip(GameObject obj)
 	{
 		//facingRight = !facingRight;
 		Vector3 direction = obj.transform.localScale;
@@ -23,4 +26,12 @@ public class GameCharacters : MonoBehaviour
 		obj.transform.localScale = direction;
 		Debug.Log ("FLIPPED!");
 	}
+
+	protected void setStandardPhysics (GameObject obj)
+	{
+		obj.rigidbody2D.gravityScale = standardGravity;
+	}
+
+
 }
+

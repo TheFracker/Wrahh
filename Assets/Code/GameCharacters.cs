@@ -7,6 +7,7 @@ public class GameCharacters : MonoBehaviour
 	protected int armor;
 	protected float moveSpeed;
 	protected bool facingRight;
+	protected float standardGravity = 7.42f; 
 
 	public static void die(GameObject obj)
 	{

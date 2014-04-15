@@ -11,10 +11,10 @@ public class Weapon : MonoBehaviour {
 	protected int durability; 			// How many hits it can take
 	protected float accidentalFire; 	// Critacal chance
 	protected int hitDamage; 			// Damage it gives when using it as a club
-	protected GameObject bulletRight; 	// The bullet in the champer when shooting right;
-	protected GameObject bulletLeft;	// The bullet in the champer when shooting left;
-	protected GameObject hitProjectile; // Projectile created when hitting with the weapon;
-	protected Vector3 pos; 				// The position of the barrels mouth
+	protected GameObject bulletRight; 	// The bullet in the champer when shooting right
+	protected GameObject bulletLeft;	// The bullet in the champer when shooting left
+	protected GameObject hitProjectile; // Projectile created when hitting with the weapon
+	protected Vector3 pos; 				// The position where the projectile should spawn
 	protected bool shooting;			// If the Dolphin is pressing the trigger or not
 	protected float delay;				// The time between each shot
 
@@ -33,11 +33,6 @@ public class Weapon : MonoBehaviour {
 			pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
 		Instantiate(hitProjectile, pos, Quaternion.identity);
 		durability--;
-	}
-	
-	void Update()
-	{
-		//pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
 	}
 
 	protected virtual void loadPrefab()

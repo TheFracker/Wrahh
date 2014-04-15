@@ -12,12 +12,13 @@ public class Dolphin : GameCharacters
 	public float maxDistance = 20.0f;
 	public float shootDistance = 10.0f;
 	public float closeDistance = 0.7f;
+	public float heightDistance = 0.4f;
 	
 	private bool playerDead = false;
 
 	private Vector3 dir;
 
-	protected Animator anim;
+	Animator anim;
 	
 	void Start ()
 	{
@@ -28,7 +29,8 @@ public class Dolphin : GameCharacters
 		facingRight = false;
 		health = 3;
 		setStandardPhysics();
-		accesAnimator();
+
+		anim = GetComponent<Animator>();
 
 	}
 
@@ -39,15 +41,17 @@ public class Dolphin : GameCharacters
 			//Assign the target to be the whatever object with the tag; "Player"
 			target = GameObject.FindWithTag("Player").transform;
 
+			bool withinSameHeight = this.transform.position.y + heightDistance >= target.position.y && this.transform.position.y - heightDistance <= target.position.y;
+
 			// If I (the dolphin) can see the escapen prisonar (Wrahh) and I'm not too far away, I will start chasing him.
-			if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x &! facingRight)
-			    || (Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x < target.position.x && facingRight))
+			if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x && withinSameHeight &! facingRight)
+			    || (Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x < target.position.x && withinSameHeight && facingRight))
 				useWeapon(weapon);
-			else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x &! facingRight)
-			        || (Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x < target.position.x && facingRight))
+			else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x && withinSameHeight &! facingRight)
+			        || (Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x < target.position.x && withinSameHeight && facingRight))
 				chaseTarget();
-			else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
-				chaseTarget();
+			//else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
+			//	chaseTarget();
 			else
 				guard ();
 		// If close enough I will shoot at him

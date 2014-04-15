@@ -17,7 +17,7 @@ public class Dolphin : GameCharacters
 
 	private Vector3 dir;
 
-	Animator anim;
+	protected Animator anim;
 	
 	void Start ()
 	{
@@ -28,8 +28,7 @@ public class Dolphin : GameCharacters
 		facingRight = false;
 		health = 3;
 		setStandardPhysics();
-
-		anim = GetComponent<Animator>();
+		accesAnimator();
 
 	}
 

@@ -19,7 +19,7 @@ public class Wrahh : GameCharacters
 	private float currentSpeed;								// set to public to see current speed
 	private float climbSpeed = 5f;
 
-	Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
+	//Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
 
 	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmetPrefab;
 	private GameObject prefab;
@@ -38,7 +38,7 @@ public class Wrahh : GameCharacters
 
 		shield = gameObject.AddComponent<Shield>();
 		currentWeapon = gameObject.AddComponent<Rifle>();
-		anim = GetComponent<Animator>();
+		//anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
 	
 
@@ -48,6 +48,8 @@ public class Wrahh : GameCharacters
 		MAX_MOVE_SPEED = 30.0f;
 		health = 3;
 		setStandardPhysics();
+		//anim = GetComponent<Animator>();
+		accesAnimator();
 	}
 	
 

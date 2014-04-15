@@ -89,7 +89,6 @@ public class Weapon : MonoBehaviour {
 				ammo--;
 				yield return new WaitForSeconds(delay);
 				shooting = false;
-				Debug.Log (ammo);
 			} else {
 				yield return new WaitForSeconds(reloadTime);
 				shooting = false;

@@ -25,7 +25,7 @@ public class ProjectileRight : Projectile {
 			Destroy (this.gameObject);
 	}
 
-	override void move ()
+	protected override void move ()
 	{
 		base.move ();
 	}

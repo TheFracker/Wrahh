@@ -24,9 +24,8 @@ public class Dolphin : GameCharacters
 		weapon = gameObject.AddComponent<Rifle> ();
 
 		//From parent "GameCharacters.cs":
-		moveSpeed = 10000.0f;
+		moveSpeed = 10;
 		facingRight = false;
-		MAX_MOVE_SPEED = 30.0f;
 		health = 3;
 		setStandardPhysics();
 
@@ -36,22 +35,22 @@ public class Dolphin : GameCharacters
 
 	void FixedUpdate()
 	{
-		if (anim.GetBool("Crushing")==false)
-		    {
-		//Assign the target to be the whatever object with the tag; "Player"
-		target = GameObject.FindWithTag("Player").transform;
-		
-		// If I (the dolphin) can see the escapen prisonar (Wrahh) and I'm not too far away, I will start chasing him.
-		if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x &! facingRight)
-		    || (Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x < target.position.x && facingRight))
-			useWeapon(weapon);
-		else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x &! facingRight)
-		        || (Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x < target.position.x && facingRight))
-			chaseTarget();
-		else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
-			chaseTarget();
-		else
-			guard ();
+		//if (anim.GetBool("Crushing")==false)
+		{
+			//Assign the target to be the whatever object with the tag; "Player"
+			target = GameObject.FindWithTag("Player").transform;
+
+			// If I (the dolphin) can see the escapen prisonar (Wrahh) and I'm not too far away, I will start chasing him.
+			if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x &! facingRight)
+			    || (Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x < target.position.x && facingRight))
+				useWeapon(weapon);
+			else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x &! facingRight)
+			        || (Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x < target.position.x && facingRight))
+				chaseTarget();
+			else if (Vector3.Distance(target.position, this.transform.position) <= closeDistance)
+				chaseTarget();
+			else
+				guard ();
 		// If close enough I will shoot at him
 		}
 	}
@@ -73,7 +72,7 @@ public class Dolphin : GameCharacters
 	{
 		// Guard right
 		if(positionedTarget_right == null){
-			Vector2 point = new Vector2 (2, 2);
+			Vector2 point = new Vector2 (5, 2);
 			if(this.transform.position.x < point.x && facingRight)
 				this.transform.position += this.transform.right * moveSpeed * Time.deltaTime;
 			if(this.transform.position.x > point.x)
@@ -89,7 +88,7 @@ public class Dolphin : GameCharacters
 		// Guard left
 		if(positionedTarget_left == null)
 		{
-			Vector2 point = new Vector2(-2,2);
+			Vector2 point = new Vector2(-5,2);
 			if(this.transform.position.x > point.x &! facingRight)
 				this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;
 			if(this.transform.position.x < point.x)

@@ -32,6 +32,8 @@ public class GameCharacters : MonoBehaviour
 		obj.rigidbody2D.gravityScale = standardGravity;
 	}
 
-
+	public bool isFacingRight()
+	{
+		return isFacingRight;
+	}
 }
-

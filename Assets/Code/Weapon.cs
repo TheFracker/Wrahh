@@ -27,12 +27,17 @@ public class Weapon : MonoBehaviour {
 	public virtual void hit()
 	{
 		Debug.Log ("Hitting");
+		if(gameObject.GetComponent<Wrahh>().isFacingRight())
+			pos = this.transform.position + new Vector3(1.5f,0.5f,0);
+		else
+			pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+		Instantiate(hitProjectile, pos, Quaternion.identity);
 		durability--;
 	}
 	
 	void Update()
 	{
-		pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+		//pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
 	}
 
 	protected virtual void loadPrefab()
@@ -72,9 +77,15 @@ public class Weapon : MonoBehaviour {
 		{
 			if (ammo > 0 &! reloading) {
 				if(gameObject.GetComponent<Dolphin>().isFacingRight())
+				{
 					Instantiate(bulletRight, pos, Quaternion.identity);
+					pos = this.transform.position + new Vector3(1.5f,0.5f,0);
+				}
 				else
+				{
 					Instantiate(bulletLeft, pos, Quaternion.identity);
+					pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+				}
 				ammo--;
 				yield return new WaitForSeconds(delay);
 				shooting = false;

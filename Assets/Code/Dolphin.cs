@@ -126,12 +126,4 @@ public class Dolphin : GameCharacters
 			anim.SetBool("Crushing", true);
 		}
 	}
-
-
-	public bool isFacingRight()
-	{
-		return facingRight;
-	}
-
-
 }

@@ -12,22 +12,6 @@ public class UpgradeStation : MonoBehaviour {
 	bool statsShow = false;
 	bool armorShow = false, helmShow = false, shieldShow = false;
 	bool weaponShow = false, pistolShow = false, rifleShow = false;
-
-
-	int helmDurabillityLevel = 0; 
-	int shieldDurabillityLevel = 0;
-
-	int helmProtectionLevel = 0; 
-	int shieldProtectionLevel = 0;
-
-	int pistolDamageLevel = 0; 
-	int rifleDamageLevel = 0;
-
-	int pistolDurabillityLevel = 0; 
-	int rifleDurabillityLevel = 0;
-
-	float rifleAccidentalTriggerLevel = 0f; 
-	float pistolAccidentalTriggerLevel = 0f;
 		
 	int repairPrice;
 
@@ -47,7 +31,7 @@ public class UpgradeStation : MonoBehaviour {
 		if (other.tag == "Player"&&playerEnter){
 			menuShow = true;
 			statsShow = true;
-			Time.timeScale = 0;
+			//Time.timeScale = 0;
 			playerEnter = false;
 		}
 	
@@ -164,14 +148,12 @@ public class UpgradeStation : MonoBehaviour {
 	{
 		if(GUILayout.Button("Upgrade Protection")){
 
-			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn)
-			{
-				shield.ProtectionLevel = 2;
-				wrahh.LobsterParts -= 5;
-				Debug.Log("Upgrading");
-			}
-			else
-				Debug.Log ("Cannot Upgrade");
+			//if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn)
+			//{
+				shield.Protection = 2;
+			//}
+			//else
+			//	Debug.Log ("Cannot Upgrade");
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){

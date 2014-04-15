@@ -33,7 +33,7 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////
 	void Start ()
 	{
-		shieldOn = true;
+		shieldOn = false;
 		grenades = 0;
 		riflesCollected = 5;
 		gunsCollected = 5;
@@ -69,6 +69,7 @@ public class Wrahh : GameCharacters
 	// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
+		Debug.Log(armor + "aljlfajlhsafklhsafklsafklj");
 	}
 
 
@@ -202,9 +203,8 @@ public class Wrahh : GameCharacters
 				prefab = shieldPrefab;											// Store new prefab in variable
 				Destroy(gameObject);											// Delete old game object
 				Instantiate (prefab, transform.position, Quaternion.identity);	// Change to new prefab
-				//shield.something();
-				shield.ProtectionLevel = 1;
-				shield.DurabillityLevel = 1;
+				shield.Protection = 1;
+				shield.Durabillity = 1;
 				Destroy(c.gameObject);// Removed the item from the scene
 				shieldOn = true;
 				Debug.Log(shieldOn);

@@ -5,6 +5,7 @@ public class UpgradeStation : MonoBehaviour {
 
 	public Wrahh wrahh = new Wrahh();
 	public Shield shield = new Shield();
+	public Helm helm = new Helm();
 
 	public GUISkin mySkin;
 	Rect window300X300, statsWindow;
@@ -123,11 +124,58 @@ public class UpgradeStation : MonoBehaviour {
 	{
 		if(GUILayout.Button("Upgrade Protection")){
 
-			Debug.Log("Helm protection is now: ");
+			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 0)
+			{
+				helm.Protection = 1;
+				wrahh.LobsterParts -= 5;
+				helm.upgradeProtection();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 1)
+			{
+				helm.Protection = 2;
+				wrahh.LobsterParts -= 5;
+				helm.upgradeProtection();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && helm.Protection == 2)
+			{
+				helm.Protection = 3;
+				wrahh.LobsterParts -= 5;
+				helm.upgradeProtection();
+			}
+			else if (helm.Protection == 3)
+			{
+				Debug.Log ("Max Level!");
+			}
+			else
+				Debug.Log ("Cannot Upgrade");
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){
-			Debug.Log("Helm Durabillity is now: ");
+
+			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Durabillity == 0)
+			{
+				helm.Durabillity = 1;
+				wrahh.LobsterParts -= 5;
+				helm.upgradeDurabillity();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Durabillity == 1)
+			{
+				helm.Durabillity = 2;
+				wrahh.LobsterParts -= 5;
+				helm.upgradeDurabillity();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Durabillity == 2)
+			{
+				helm.Durabillity = 3;
+				wrahh.LobsterParts -= 5;
+				helm.upgradeDurabillity();
+			}
+			else if (helm.Durabillity == 3)
+			{
+				Debug.Log ("Max Level!");
+			}
+			else
+				Debug.Log ("Cannot Upgrade");
 		}
 		
 		if(GUILayout.Button("Return")){
@@ -174,6 +222,7 @@ public class UpgradeStation : MonoBehaviour {
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){
+
 			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Durabillity == 0)
 			{
 				shield.Durabillity = 1;
@@ -244,7 +293,11 @@ public class UpgradeStation : MonoBehaviour {
 		if(GUILayout.Button("Upgrade damage")){
 			Debug.Log("Pistol damage is now: ");
 		}
-		
+
+		if(GUILayout.Button("Upgrade Durabillity")){
+			Debug.Log("Pistol Durabillity is now: ");
+		}
+
 		if(GUILayout.Button("Upgrade range")){
 			Debug.Log("Pistol range is now: ");
 		}

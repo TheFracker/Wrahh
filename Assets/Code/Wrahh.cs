@@ -7,8 +7,9 @@ public class Wrahh : GameCharacters
 	int gunsCollected;
 	int riflesCollected;
 	bool shieldOn;
+	bool helmOn;
 	int shieldDura;
-
+	int helmDura;
 
 	public static bool canCrushEnemy = false;
 
@@ -30,12 +31,13 @@ public class Wrahh : GameCharacters
 	void Start ()
 	{
 		shieldOn = false;
+		helmOn = false;
 		grenades = 0;
 		riflesCollected = 5;
 		gunsCollected = 5;
 		lobsterParts = 155;
 		shieldDura = 0;
-
+		helmDura = 0;
 
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		//anim = GetComponent<Animator>();
@@ -193,12 +195,22 @@ public class Wrahh : GameCharacters
 			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
-				armor = 3;
+				armor += 3;
 				shieldDura = 10;
 				this.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true);
 				Destroy(c.gameObject);// Removed the item from the scene
 				shieldOn = true;
 				Debug.Log(shieldOn);
+			}
+			if(c.gameObject.name == "helmet")
+			{
+				Debug.Log ("helm obtained!");									// Check if 'shield' was registered
+				armor += 2;
+				helmDura = 10;
+				this.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(true);
+				Destroy(c.gameObject);// Removed the item from the scene
+				helmOn = true;
+				Debug.Log(helmOn);
 			}
 		}
 	}
@@ -243,6 +255,18 @@ public class Wrahh : GameCharacters
 		set
 		{
 			shieldDura = value;
+		}
+	}
+
+	public int HelmDura
+	{
+		get
+		{
+			return helmDura;
+		}
+		set
+		{
+			helmDura = value;
 		}
 	}
 
@@ -302,6 +326,18 @@ public class Wrahh : GameCharacters
 		set
 		{
 			shieldOn = value;
+		}
+	}
+
+	public bool HelmOn
+	{
+		get
+		{
+			return helmOn;
+		}
+		set
+		{
+			helmOn = value;
 		}
 	}
 

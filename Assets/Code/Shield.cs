@@ -12,10 +12,9 @@ public class Shield : MonoBehaviour
 	}
 
 
-	public void upgrade()
+	public void upgradeProtection()
 	{
 		if(protection == 1){
-
 			protectionLevel1();
 		}
 		else if (protection == 2){
@@ -23,6 +22,20 @@ public class Shield : MonoBehaviour
 		}
 		else if (protection == 3){
 			protectionLevel3();
+		}
+
+	}
+
+	public void upgradeDurabillity()
+	{
+		if(durabillity == 1){
+			durabillityLevel1();
+		}
+		else if (durabillity == 2){
+			durabillityLevel2();
+		}
+		else if (durabillity == 3){
+			durabillityLevel3();
 		}
 	}
 
@@ -42,6 +55,24 @@ public class Shield : MonoBehaviour
 		wrahh.Armor += 5;
 		Debug.Log("Im here, Protection level 2");
 	}
+
+	void durabillityLevel1()
+	{
+		wrahh.ShieldDura += 5;
+		Debug.Log("Im here, Durabillity level 1");
+	}
+	void durabillityLevel2()
+	{
+		wrahh.ShieldDura += 5;
+		Debug.Log("Im here, Durabillity level 2");
+	}
+	
+	void durabillityLevel3()
+	{
+		wrahh.ShieldDura += 5;
+		Debug.Log("Im here, Durabillity level 2");
+	}
+
 
 	public int Durabillity
 	{

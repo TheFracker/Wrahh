@@ -30,7 +30,7 @@ public class UpgradeStation : MonoBehaviour {
 		if (other.tag == "Player"&&playerEnter){
 			menuShow = true;
 			statsShow = true;
-			//Time.timeScale = 0;
+			Time.timeScale = 0;
 			playerEnter = false;
 		}
 	
@@ -151,19 +151,19 @@ public class UpgradeStation : MonoBehaviour {
 			{
 				shield.Protection = 1;
 				wrahh.LobsterParts -= 5;
-				shield.upgrade();
+				shield.upgradeProtection();
 			}
 			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 1)
 			{
 				shield.Protection = 2;
 				wrahh.LobsterParts -= 5;
-				shield.upgrade();
+				shield.upgradeProtection();
 			}
 			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 2)
 			{
 				shield.Protection = 3;
 				wrahh.LobsterParts -= 5;
-				shield.upgrade();
+				shield.upgradeProtection();
 			}
 			else if (shield.Protection == 3)
 			{
@@ -174,7 +174,30 @@ public class UpgradeStation : MonoBehaviour {
 		}
 		
 		if(GUILayout.Button("Upgrade Durabillity")){
-			Debug.Log("Shield Durabillity is now: ");
+			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Durabillity == 0)
+			{
+				shield.Durabillity = 1;
+				wrahh.LobsterParts -= 5;
+				shield.upgradeDurabillity();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Durabillity == 1)
+			{
+				shield.Durabillity = 2;
+				wrahh.LobsterParts -= 5;
+				shield.upgradeDurabillity();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Durabillity == 2)
+			{
+				shield.Durabillity = 3;
+				wrahh.LobsterParts -= 5;
+				shield.upgradeDurabillity();
+			}
+			else if (shield.Durabillity == 3)
+			{
+				Debug.Log ("Max Level!");
+			}
+			else
+				Debug.Log ("Cannot Upgrade");
 		}
 		
 		if(GUILayout.Button("Return")){

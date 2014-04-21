@@ -7,6 +7,7 @@ public class Wrahh : GameCharacters
 	int gunsCollected;
 	int riflesCollected;
 	bool shieldOn;
+	int shieldDura;
 
 
 	public static bool canCrushEnemy = false;
@@ -33,6 +34,7 @@ public class Wrahh : GameCharacters
 		riflesCollected = 5;
 		gunsCollected = 5;
 		lobsterParts = 155;
+		shieldDura = 0;
 
 
 		currentWeapon = gameObject.AddComponent<Rifle>();
@@ -191,12 +193,8 @@ public class Wrahh : GameCharacters
 			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
-				//prefab = shieldPrefab;											// Store new prefab in variable
-				//Destroy(gameObject);											// Delete old game object
-				//Instantiate (prefab, transform.position, Quaternion.identity);	// Change to new prefab
-				//GetComponentsInChildren<shield_rotation_FRONT>.setActive(true);
 				armor = 3;
-				//this.transform.GetChild.Find("shield_rotation_FRONT").SetActive(true); //Equip shield without deleting Wrahh
+				shieldDura = 10;
 				this.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true);
 				Destroy(c.gameObject);// Removed the item from the scene
 				shieldOn = true;
@@ -233,6 +231,18 @@ public class Wrahh : GameCharacters
 		set
 		{
 			health = value;
+		}
+	}
+
+	public int ShieldDura
+	{
+		get
+		{
+			return shieldDura;
+		}
+		set
+		{
+			shieldDura = value;
 		}
 	}
 

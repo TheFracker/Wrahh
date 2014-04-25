@@ -24,7 +24,7 @@ public class Wrahh : GameCharacters
 
 	//Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
 	private GameObject prefab;
-
+	public GameObject defaultPrefab;
 	//////////////////////////////////
 	// START 			    		//
 	//////////////////////////////////

@@ -17,7 +17,7 @@ public class Wrahh : GameCharacters
 	Weapon currentWeapon;
 	int grenades;
 	
-	private float currentSpeed;								// set to public to see current speed
+	private float currentSpeed;									// Set to public to see current speed
 	private float climbSpeed = 5f;
 
 	//Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
@@ -40,7 +40,6 @@ public class Wrahh : GameCharacters
 		helmDura = 0;
 
 		currentWeapon = gameObject.AddComponent<Rifle>();
-		//anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
 	
 
@@ -64,7 +63,7 @@ public class Wrahh : GameCharacters
 			throwGrenade ();
 
 	// Shooting
-		if (Input.GetKeyUp (KeyCode.Space))
+		if (Input.GetKeyUp(KeyCode.Space))
 			useWeapon (currentWeapon);
 	}
 
@@ -126,10 +125,7 @@ public class Wrahh : GameCharacters
 	void climbingLadder()
 	{
 		if (Ladder.canClimb == true)
-		{
-
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
-		}
 	}
 
 	//////////////////////////////////////
@@ -149,9 +145,9 @@ public class Wrahh : GameCharacters
 			StartCoroutine(waitForFallingAnimation());
 		}
 	}
-	
 
-	IEnumerator waitForFallingAnimation(){
+	IEnumerator waitForFallingAnimation()
+	{
 		yield return new WaitForSeconds(1f);
 		anim.SetBool("HitGround", false);
 		anim.SetBool("IsFalling", false);
@@ -164,8 +160,10 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	void useWeapon(Weapon currentWeapon)
 	{
+		this.anim.SetBool("isAttacking", true);
 		Debug.Log ("Hitting with this weird club");
 		currentWeapon.hit ();
+		//this.anim.SetBool("isAttacking", false);
 	}
 
 	void throwGrenade()
@@ -198,7 +196,7 @@ public class Wrahh : GameCharacters
 				armor += 3;
 				shieldDura = 10;
 				this.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true);
-				Destroy(c.gameObject);// Removed the item from the scene
+				Destroy(c.gameObject);											// Removed the item from the scene
 				shieldOn = true;
 				Debug.Log(shieldOn);
 			}

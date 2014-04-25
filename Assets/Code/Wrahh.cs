@@ -115,7 +115,7 @@ public class Wrahh : GameCharacters
 		//checks if the boolean from "MonkeyBars.cs" are false
 		else if (MonkeyBars.onMonkeyBar == false)
 		{
-			anim.SetBool("Crawling", false) //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
+			anim.SetBool("Crawling", false); //The "Crawling" parameter in the Animator gets the value false to stop crawling animations 
 			setStandardPhysics();
 		}
 	}

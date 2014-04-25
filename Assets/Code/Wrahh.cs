@@ -127,6 +127,7 @@ public class Wrahh : GameCharacters
 		if (Ladder.canClimb == true)
 		{
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
+			Ladder.canClimb = false;
 		}
 	}
 	

@@ -128,6 +128,7 @@ GameObject:
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
+  - 61: {fileID: 6100002}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -289,7 +290,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.83940101, y: 1.37362957, z: 0}
+  m_LocalPosition: {x: -5.75625134, y: 6.17241812, z: 0}
   m_LocalScale: {x: .190635234, y: .190635234, z: .190635234}
   m_Children:
   - {fileID: 400008}
@@ -394,6 +395,17 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .5, y: .5}
   m_Center: {x: 0, y: -3.25}
+--- !u!61 &6100002
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 9.99999975e-05, y: 9.99999975e-05}
+  m_Center: {x: 0, y: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2

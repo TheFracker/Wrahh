@@ -30,13 +30,12 @@ public class Dolphin : GameCharacters
 		health = 3;
 		setStandardPhysics();
 
-		anim = GetComponent<Animator>();
 
 	}
 
 	void FixedUpdate()
 	{
-		//if (anim.GetBool("Crushing")==false)
+		if (DolphineDeath.isCrushed == false)
 		{
 			//Assign the target to be the whatever object with the tag; "Player"
 			target = GameObject.FindWithTag("Player").transform;
@@ -56,8 +55,15 @@ public class Dolphin : GameCharacters
 				guard ();
 		// If close enough I will shoot at him
 		}
+
+		if (DolphineDeath.isCrushed == true)
+		{
+			this.collider2D.enabled = false;
+		}
 	}
-	
+
+
+
 	public void hurt(Projectile p)
 	{
 		int damageTaken = p.giveDamage();
@@ -121,14 +127,4 @@ public class Dolphin : GameCharacters
 		transform.localScale = direction;
 	}
 
-
-
-	void OnCollisionEnter2D (Collision2D other)
-	{
-
-		if(other.collider.tag == "Player" && Wrahh.canCrushEnemy == true)
-		{
-			anim.SetBool("Crushing", true);
-		}
-	}
 }

@@ -8,6 +8,7 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 	bool helmOn;
+	public bool isAttacking;
 	int shieldDura;
 	int helmDura;
 
@@ -38,6 +39,7 @@ public class Wrahh : GameCharacters
 		lobsterParts = 155;
 		shieldDura = 0;
 		helmDura = 0;
+		isAttacking = false;
 
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		prefab = defaultPrefab;
@@ -154,16 +156,22 @@ public class Wrahh : GameCharacters
 		canCrushEnemy = false;
 	}
 
+	IEnumerator waitForAttackingAnimation()
+	{
+		yield return new WaitForSeconds(0.1f);
+		anim.SetBool("isAttacking", false);
+	}
+
 
 	//////////////////////////////////////
 	// WEAPONS							//
 	//////////////////////////////////////
 	void useWeapon(Weapon currentWeapon)
 	{
-		this.anim.SetBool("isAttacking", true);
+		anim.SetBool("isAttacking", true);
+		StartCoroutine(waitForAttackingAnimation());
 		Debug.Log ("Hitting with this weird club");
 		currentWeapon.hit ();
-		//this.anim.SetBool("isAttacking", false);
 	}
 
 	void throwGrenade()

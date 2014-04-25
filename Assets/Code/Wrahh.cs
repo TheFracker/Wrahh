@@ -8,7 +8,6 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 	bool helmOn;
-	public bool isAttacking;
 	int shieldDura;
 	int helmDura;
 	
@@ -20,17 +19,10 @@ public class Wrahh : GameCharacters
 	
 	private float currentSpeed;									// Set to public to see current speed
 	private float climbSpeed = 5f;
-	
-	//Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
-<<<<<<< HEAD
-	
-	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmetPrefab;
-	private GameObject prefab;
-	
-=======
+
 	private GameObject prefab;
 	public GameObject defaultPrefab;
->>>>>>> 741bfb654f4cc51102f71d7bce4ba9ae157ed913
+
 	//////////////////////////////////
 	// START 			    		//
 	//////////////////////////////////
@@ -44,7 +36,6 @@ public class Wrahh : GameCharacters
 		lobsterParts = 155;
 		shieldDura = 0;
 		helmDura = 0;
-		isAttacking = false;
 		
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		prefab = defaultPrefab;

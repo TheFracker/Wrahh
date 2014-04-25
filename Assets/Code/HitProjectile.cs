@@ -3,9 +3,9 @@ using System.Collections;
 
 public class HitProjectile : Projectile {
 
-	float liveTime;
-	float timeToDie;
-	float criticalChange;
+	protected float liveTime;
+	protected float timeToDie;
+	protected float criticalChange;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +17,8 @@ public class HitProjectile : Projectile {
 	}
 
 	// Update is called once per frame
-	void Update () {
-
+	void Update () 
+	{
 		if(timeToDie < Time.time)
 		{
 			Destroy(this.gameObject);

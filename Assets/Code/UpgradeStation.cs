@@ -122,6 +122,22 @@ public class UpgradeStation : MonoBehaviour {
 	}
 	void helmMenuFunc(int id)
 	{
+		if(GUILayout.Button("Craft Helm"))
+		{
+			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn == false)
+			{
+				wrahh.LobsterParts -= 5;
+				wrahh.HelmOn = true;
+				wrahh.Armor += 2;
+				wrahh.HelmDura = 10;
+				wrahh.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(true);
+			}
+			else
+			{
+				Debug.Log("Helm Already Equiped");
+			}
+		}
+
 		if(GUILayout.Button("Upgrade Protection")){
 
 			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 0)

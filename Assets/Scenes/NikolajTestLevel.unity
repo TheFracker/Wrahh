@@ -389,7 +389,7 @@ GameObject:
   - 33: {fileID: 162313010}
   - 23: {fileID: 162313009}
   - 61: {fileID: 162313008}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - 4: {fileID: 254048869}
   m_Layer: 0
   m_Name: OneWayPlatform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -632,7 +632,7 @@ GameObject:
   - 33: {fileID: 435801418}
   - 23: {fileID: 435801417}
   - 61: {fileID: 435801416}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ GameObject:
   - 61: {fileID: 762841937}
   m_Layer: 0
   m_Name: floorShort
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1578,6 +1578,7 @@ GameObject:
   - 61: {fileID: 1075421151}
   - 114: {fileID: 1075421149}
   - 114: {fileID: 1075421152}
+  - 61: {fileID: 1075421153}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -1614,10 +1615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPrefab: {fileID: 1075421143}
-  shieldPrefab: {fileID: 100016, guid: c42b6ee6d1c7dce44b04440d66cf406d, type: 2}
-  helmetPrefab: {fileID: 100002, guid: 11a7853961b1c144d9460f683d9185f3, type: 2}
-  shieldAndHelmetPrefab: {fileID: 100004, guid: 205627b55d767af4993fbf106056301d,
-    type: 2}
 --- !u!95 &1075421146
 Animator:
   serializedVersion: 2
@@ -1738,6 +1735,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wrahh: {fileID: 1075421145}
+--- !u!61 &1075421153
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100002, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2069139829}
+  m_GameObject: {fileID: 1075421143}
+  m_Enabled: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 9.99999975e-05, y: 9.99999975e-05}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1122829167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2185,7 @@ GameObject:
   - 4: {fileID: 1346280814}
   m_Layer: 0
   m_Name: OneWayPlatform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2351,7 +2360,7 @@ GameObject:
   - 33: {fileID: 1491032951}
   - 23: {fileID: 1491032950}
   - 61: {fileID: 1491032949}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2532,7 +2541,7 @@ GameObject:
   - 4: {fileID: 1555302752}
   m_Layer: 0
   m_Name: OneWayPlatform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -247,7 +247,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 223705136}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 340455864}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -906,7 +906,7 @@ GameObject:
   - 33: {fileID: 403561868}
   - 23: {fileID: 403561867}
   - 61: {fileID: 403561866}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1017,7 @@ GameObject:
   - 33: {fileID: 415869441}
   - 23: {fileID: 415869440}
   - 61: {fileID: 415869439}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1461,7 +1461,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 546181859}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1965,7 +1965,7 @@ GameObject:
   - 33: {fileID: 662181235}
   - 23: {fileID: 662181234}
   - 61: {fileID: 662181233}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2802,6 +2802,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.size
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
       propertyPath: m_LocalPosition.x
       value: -5.75625134
@@ -2846,6 +2850,62 @@ Prefab:
       propertyPath: m_Center.y
       value: -3.4000001
       objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[9].y
+      value: -2.4658556
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[9].x
+      value: 1.51587689
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[10].y
+      value: -2.74380589
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[10].x
+      value: .795002818
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[11].x
+      value: -.737172604
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[11].y
+      value: -2.78051758
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[12].x
+      value: -1.32527983
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[12].y
+      value: -2.83910823
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[13].x
+      value: -2.13184619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[13].y
+      value: -1.23299408
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[14].x
+      value: -2.6766696
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[14].y
+      value: -.913337111
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[15].x
+      value: -2.61092901
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Poly.m_Paths.Array.data[0].Array.data[15].y
+      value: .411477447
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6100002, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
@@ -2863,7 +2923,7 @@ GameObject:
   - 33: {fileID: 976170197}
   - 23: {fileID: 976170196}
   - 61: {fileID: 976170195}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3394,7 +3454,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1153498034}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3421,7 +3481,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1253150422}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3674,7 +3734,7 @@ GameObject:
   - 33: {fileID: 1323271325}
   - 23: {fileID: 1323271324}
   - 61: {fileID: 1323271323}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4019,7 +4079,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1386656429}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4927,7 +4987,7 @@ GameObject:
   - 33: {fileID: 1778485503}
   - 23: {fileID: 1778485502}
   - 61: {fileID: 1778485501}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5691,7 +5751,7 @@ GameObject:
   - 33: {fileID: 1988713707}
   - 23: {fileID: 1988713706}
   - 61: {fileID: 1988713705}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayCollesion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6016,7 +6076,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2098270903}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OneWayPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6102,6 +6162,7 @@ GameObject:
   - 61: {fileID: 2116705651}
   - 114: {fileID: 2116705650}
   - 114: {fileID: 2116705649}
+  - 58: {fileID: 2116705648}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -6146,8 +6207,9 @@ PolygonCollider2D:
       - {x: 2.10942316, y: 1.63955402}
       - {x: 2.7133913, y: .227046102}
       - {x: 1.69833469, y: -2.45244122}
-      - {x: 2.02224398, y: -3.75990152}
-      - {x: -1.24353707, y: -3.82138133}
+      - {x: 1.51587689, y: -2.4658556}
+      - {x: .795002818, y: -2.74380589}
+      - {x: -.737172604, y: -2.78051758}
       - {x: -1.32527983, y: -2.83910823}
       - {x: -2.13184619, y: -1.23299408}
       - {x: -2.6766696, y: -.913337111}
@@ -6220,6 +6282,17 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!58 &2116705648
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2116705641}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: 1.5
+  m_Center: {x: 0, y: -2.29999995}
 --- !u!114 &2116705649
 MonoBehaviour:
   m_ObjectHideFlags: 0

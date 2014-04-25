@@ -24,7 +24,7 @@ public class Wrahh : GameCharacters
 
 	private GameObject prefab;
 	public GameObject defaultPrefab;
-	//
+
 	//////////////////////////////////
 	// START 			    		//
 	//////////////////////////////////
@@ -63,7 +63,7 @@ public class Wrahh : GameCharacters
 		// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
-
+		falling ();
 
 	}
 	
@@ -76,7 +76,6 @@ public class Wrahh : GameCharacters
 		float input = 0;																	// creates a local variable "input"
 
 		falling ();
-		
 		if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
 			input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
 			climbingLadder();															// runs the "climbingLadder" function 

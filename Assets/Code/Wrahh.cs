@@ -68,7 +68,6 @@ public class Wrahh : GameCharacters
 	// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
-		Debug.Log(shieldMaxArmor);
 	}
 
 

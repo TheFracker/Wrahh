@@ -22,10 +22,15 @@ public class Wrahh : GameCharacters
 	private float climbSpeed = 5f;
 	
 	//Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
+<<<<<<< HEAD
 	
 	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmetPrefab;
 	private GameObject prefab;
 	
+=======
+	private GameObject prefab;
+	public GameObject defaultPrefab;
+>>>>>>> 741bfb654f4cc51102f71d7bce4ba9ae157ed913
 	//////////////////////////////////
 	// START 			    		//
 	//////////////////////////////////

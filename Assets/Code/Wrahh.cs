@@ -135,7 +135,7 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	void falling()
 	{
-		if (this.rigidbody2D.velocity.y < -1.5)
+		if (this.rigidbody2D.velocity.y < -2.5)
 		{
 			anim.SetBool("IsFalling", true);
 			canCrushEnemy = true;

@@ -20,7 +20,7 @@ public class Rifle : Weapon {
 	protected override void loadPrefab()
 	{
 		base.loadPrefab ();
-		hitProjectile = Resources.Load ("Prefabs/hitRifleProjectile");
+		hitProjectile = Resources.Load ("Prefabs/hitRifleProjectile") as GameObject;
 	}
 	
 	public override void shoot()

@@ -122,6 +122,30 @@ public class UpgradeStation : MonoBehaviour {
 	}
 	void helmMenuFunc(int id)
 	{
+		if(GUILayout.Button("Craft Helm"))
+		{
+			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn == false)
+			{
+				wrahh.LobsterParts -= 5;
+				wrahh.HelmOn = true;
+				wrahh.HelmMaxArmor = 5;
+				wrahh.HelmArmor = 5;
+				wrahh.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(true);
+			}
+			else
+			{
+				Debug.Log("Helm Already Equiped");
+			}
+		}
+
+		if(GUILayout.Button("Repair Helm"))
+		{
+			if (wrahh.HelmArmor < wrahh.HelmMaxArmor && wrahh.LobsterParts >= 5){
+				wrahh.LobsterParts -= 5;
+				wrahh.HelmArmor = wrahh.HelmMaxArmor;
+			}
+		}
+
 		if(GUILayout.Button("Upgrade Protection")){
 
 			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 0)
@@ -149,35 +173,7 @@ public class UpgradeStation : MonoBehaviour {
 			else
 				Debug.Log ("Cannot Upgrade");
 		}
-		
-		if(GUILayout.Button("Upgrade Durabillity")){
 
-			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Durabillity == 0)
-			{
-				helm.Durabillity = 1;
-				wrahh.LobsterParts -= 5;
-				helm.upgradeDurabillity();
-			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Durabillity == 1)
-			{
-				helm.Durabillity = 2;
-				wrahh.LobsterParts -= 5;
-				helm.upgradeDurabillity();
-			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Durabillity == 2)
-			{
-				helm.Durabillity = 3;
-				wrahh.LobsterParts -= 5;
-				helm.upgradeDurabillity();
-			}
-			else if (helm.Durabillity == 3)
-			{
-				Debug.Log ("Max Level!");
-			}
-			else
-				Debug.Log ("Cannot Upgrade");
-		}
-		
 		if(GUILayout.Button("Return")){
 			helmShow = false;
 			armorShow = true;
@@ -193,6 +189,14 @@ public class UpgradeStation : MonoBehaviour {
 	
 	void shieldMenuFunc(int id)
 	{
+		if(GUILayout.Button("Repair Shield"))
+		{
+			if (wrahh.ShieldArmor < wrahh.ShieldMaxArmor && wrahh.LobsterParts >= 5){
+				wrahh.LobsterParts -= 5;
+				wrahh.ShieldArmor = wrahh.ShieldMaxArmor;
+			}
+		}
+
 		if(GUILayout.Button("Upgrade Protection")){
 
 			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 0)
@@ -214,34 +218,6 @@ public class UpgradeStation : MonoBehaviour {
 				shield.upgradeProtection();
 			}
 			else if (shield.Protection == 3)
-			{
-				Debug.Log ("Max Level!");
-			}
-			else
-				Debug.Log ("Cannot Upgrade");
-		}
-		
-		if(GUILayout.Button("Upgrade Durabillity")){
-
-			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Durabillity == 0)
-			{
-				shield.Durabillity = 1;
-				wrahh.LobsterParts -= 5;
-				shield.upgradeDurabillity();
-			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Durabillity == 1)
-			{
-				shield.Durabillity = 2;
-				wrahh.LobsterParts -= 5;
-				shield.upgradeDurabillity();
-			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Durabillity == 2)
-			{
-				shield.Durabillity = 3;
-				wrahh.LobsterParts -= 5;
-				shield.upgradeDurabillity();
-			}
-			else if (shield.Durabillity == 3)
 			{
 				Debug.Log ("Max Level!");
 			}

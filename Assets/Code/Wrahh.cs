@@ -8,11 +8,13 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 	bool helmOn;
-	int shieldDura;
-	int helmDura;
-
+	int shieldMaxArmor;
+	int helmMaxArmor;
+	int shieldArmor;
+	int helmArmor;
+	
 	public static bool canCrushEnemy = false;
-
+	
 	Weapon[] weapons;
 	Weapon currentWeapon;
 	int grenades;
@@ -20,10 +22,8 @@ public class Wrahh : GameCharacters
 	private float currentSpeed;								// set to public to see current speed
 	private float climbSpeed = 5f;
 
-	//Animator anim; 										 	// Variable of the typ "Animator" to acces the Animator later
-
-	public GameObject defaultPrefab, shieldPrefab, helmetPrefab, shieldAndHelmetPrefab;
 	private GameObject prefab;
+	public GameObject defaultPrefab;
 
 	//////////////////////////////////
 	// START 			    		//
@@ -36,13 +36,11 @@ public class Wrahh : GameCharacters
 		riflesCollected = 5;
 		gunsCollected = 5;
 		lobsterParts = 155;
-		shieldDura = 0;
-		helmDura = 0;
-
+		shieldArmor = 0;
+		helmArmor = 0;
+		
 		currentWeapon = gameObject.AddComponent<Rifle>();
-		//anim = GetComponent<Animator>();
 		prefab = defaultPrefab;
-	
 
 		//From parent "GameCharacters.cs":
 		moveSpeed = 10000.0f;
@@ -53,53 +51,62 @@ public class Wrahh : GameCharacters
 		accesAnimator();
 	}
 	
-
 	//////////////////////////////////
 	// UPDATE 	    				//
 	//////////////////////////////////
 	void Update ()
 	{
-	// Throw grenade
+		// Throw grenade
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
-
-	// Shooting
+		
+		// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
 		falling ();
 
 	}
-
-
+	
+	
 	////////////////////////////////////////////
 	// FixedUpdate - used for movement		  //
 	////////////////////////////////////////////
 	void FixedUpdate()
 	{
 		float input = 0;																	// creates a local variable "input"
+<<<<<<< HEAD
 
 			if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
 				input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
 				climbingLadder();															// runs the "climbingLadder" function 
 				crawlMonkeyBars(); 															// runs the "crawlMonkyBars" function 
 			}
+=======
+		falling ();
+		
+		if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
+			input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
+			climbingLadder();															// runs the "climbingLadder" function 
+			crawlMonkeyBars(); 															// runs the "crawlMonkyBars" function 
+		}
+>>>>>>> 4e37bc6bfb7f98beb7534be1d3887f14dd13cb39
 		
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 		
 		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
-
-	// Turn the direction Wrahh is walking
+		
+		// Turn the direction Wrahh is walking
 		if (input < 0 && facingRight)
 			flip ();
-
+		
 		if (input > 0 && !facingRight)
 			flip ();
 		
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
 	}
-
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,7 +119,7 @@ public class Wrahh : GameCharacters
 			this.rigidbody2D.gravityScale = 0; //sets gravity to 0, so it simulates if the player was hanging in the arms
 			this.rigidbody2D.drag = 25; //Sets the drag up, to make it feel like there is som ressistens and you are not in a zero gravity space 
 		}
-
+		
 		//checks if the boolean from "MonkeyBars.cs" are false
 		else if (MonkeyBars.onMonkeyBar == false)
 		{
@@ -120,7 +127,7 @@ public class Wrahh : GameCharacters
 			setStandardPhysics();
 		}
 	}
-
+	
 	//////////////////////////////////////////////
 	// CLIMB LADDEER							//
 	/////////////////////////////////////////////
@@ -128,10 +135,14 @@ public class Wrahh : GameCharacters
 	{
 		if (Ladder.canClimb == true)
 		{
+<<<<<<< HEAD
+=======
+			
+>>>>>>> 4e37bc6bfb7f98beb7534be1d3887f14dd13cb39
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}
-
+	
 	//////////////////////////////////////
 	// FALLING							//
 	//////////////////////////////////////
@@ -142,7 +153,7 @@ public class Wrahh : GameCharacters
 			anim.SetBool("IsFalling", true);
 			canCrushEnemy = true;
 		}
-
+		
 		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true)
 		{
 			anim.SetBool("HitGround", true);
@@ -150,24 +161,33 @@ public class Wrahh : GameCharacters
 		}
 	}
 	
-
-	IEnumerator waitForFallingAnimation(){
+	
+	IEnumerator waitForFallingAnimation()
+	{
 		yield return new WaitForSeconds(1f);
 		anim.SetBool("HitGround", false);
 		anim.SetBool("IsFalling", false);
 		canCrushEnemy = false;
 	}
 
-
+	IEnumerator waitForAttackingAnimation()
+	{
+		yield return new WaitForSeconds(0.08f);
+		anim.SetBool("isAttacking", false);
+	}
+	
+	
 	//////////////////////////////////////
 	// WEAPONS							//
 	//////////////////////////////////////
 	void useWeapon(Weapon currentWeapon)
 	{
+		anim.SetBool("isAttacking", true);
+		StartCoroutine(waitForAttackingAnimation());
 		Debug.Log ("Hitting with this weird club");
 		currentWeapon.hit ();
 	}
-
+	
 	void throwGrenade()
 	{
 		if (grenades > 0)
@@ -178,7 +198,7 @@ public class Wrahh : GameCharacters
 		}
 		Debug.Log ("Don't have anything to throw");
 	}
-
+	
 	//////////////////////////////////////
 	// PICK UP ITEMS					//
 	//////////////////////////////////////
@@ -189,33 +209,23 @@ public class Wrahh : GameCharacters
 			Debug.Log ("Picking up this weapon");
 			Destroy(c.gameObject);
 		}
-
+		
 		if (c.tag == "Armor")													// Pick up armor
 		{																		
 			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
-				armor += 3;
-				shieldDura = 10;
+				shieldMaxArmor = 5;
+				shieldArmor = 5;
 				this.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true);
 				Destroy(c.gameObject);// Removed the item from the scene
 				shieldOn = true;
 				Debug.Log(shieldOn);
 			}
-			if(c.gameObject.name == "helmet")
-			{
-				Debug.Log ("helm obtained!");									// Check if 'shield' was registered
-				armor += 2;
-				helmDura = 10;
-				this.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(true);
-				Destroy(c.gameObject);// Removed the item from the scene
-				helmOn = true;
-				Debug.Log(helmOn);
-			}
 		}
 	}
 	
-
+	
 	public void hurt(Projectile p)
 	{
 		int damageTaken = p.giveDamage ();
@@ -233,7 +243,7 @@ public class Wrahh : GameCharacters
 		if (health <= 0)
 			die ();
 	}
-
+	
 	public int Health
 	{
 		get
@@ -245,43 +255,54 @@ public class Wrahh : GameCharacters
 			health = value;
 		}
 	}
-
-	public int ShieldDura
+	
+	public int ShieldMaxArmor
 	{
 		get
 		{
-			return shieldDura;
+			return shieldMaxArmor;
 		}
 		set
 		{
-			shieldDura = value;
+			shieldMaxArmor = value;
 		}
 	}
-
-	public int HelmDura
+	
+	public int HelmMaxArmor
 	{
 		get
 		{
-			return helmDura;
+			return helmMaxArmor;
 		}
 		set
 		{
-			helmDura = value;
+			helmMaxArmor = value;
 		}
 	}
-
-	public int Armor
+	
+	public int ShieldArmor
 	{
 		get
 		{
-			return armor;
+			return shieldArmor;
 		}
 		set
 		{
-			armor = value;
+			shieldArmor = value;
 		}
 	}
-
+	public int HelmArmor
+	{
+		get
+		{
+			return helmArmor;
+		}
+		set
+		{
+			helmArmor = value;
+		}
+	}
+	
 	public int LobsterParts
 	{
 		get
@@ -293,7 +314,7 @@ public class Wrahh : GameCharacters
 			lobsterParts = value;
 		}
 	}
-
+	
 	public int RiflesCollected
 	{
 		get
@@ -305,7 +326,7 @@ public class Wrahh : GameCharacters
 			riflesCollected = value;
 		}
 	}
-
+	
 	public int GunsCollected
 	{
 		get
@@ -328,7 +349,7 @@ public class Wrahh : GameCharacters
 			shieldOn = value;
 		}
 	}
-
+	
 	public bool HelmOn
 	{
 		get
@@ -340,5 +361,5 @@ public class Wrahh : GameCharacters
 			helmOn = value;
 		}
 	}
-
+	
 }

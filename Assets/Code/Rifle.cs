@@ -20,8 +20,7 @@ public class Rifle : Weapon {
 	protected override void loadPrefab()
 	{
 		base.loadPrefab ();
-		// This bullet variable is inherited from Weapon
-		//bullet = Resources.Load ("Prefabs/Bullet") as GameObject;
+		hitProjectile = Resources.Load ("Prefabs/hitRifleProjectile") as GameObject;
 	}
 	
 	public override void shoot()

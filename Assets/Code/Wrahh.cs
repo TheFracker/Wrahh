@@ -66,6 +66,8 @@ public class Wrahh : GameCharacters
 	// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
+		falling ();
+
 	}
 
 
@@ -75,7 +77,6 @@ public class Wrahh : GameCharacters
 	void FixedUpdate()
 	{
 		float input = 0;																	// creates a local variable "input"
-		falling ();
 
 			if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
 				input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
@@ -127,7 +128,6 @@ public class Wrahh : GameCharacters
 	{
 		if (Ladder.canClimb == true)
 		{
-
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
 		}
 	}
@@ -137,7 +137,7 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	void falling()
 	{
-		if (this.rigidbody2D.velocity.y < -2.5)
+		if (this.rigidbody2D.velocity.y < -1.5)
 		{
 			anim.SetBool("IsFalling", true);
 			canCrushEnemy = true;

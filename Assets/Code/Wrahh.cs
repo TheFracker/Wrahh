@@ -8,8 +8,10 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 	bool helmOn;
-	int shieldDura;
-	int helmDura;
+	int shieldMaxArmor;
+	int helmMaxArmor;
+	int shieldArmor;
+	int helmArmor;
 
 	public static bool canCrushEnemy = false;
 
@@ -36,8 +38,8 @@ public class Wrahh : GameCharacters
 		riflesCollected = 5;
 		gunsCollected = 5;
 		lobsterParts = 155;
-		shieldDura = 0;
-		helmDura = 0;
+		shieldArmor = 0;
+		helmArmor = 0;
 
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		//anim = GetComponent<Animator>();
@@ -66,6 +68,7 @@ public class Wrahh : GameCharacters
 	// Shooting
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
+		Debug.Log(shieldMaxArmor);
 	}
 
 
@@ -195,22 +198,12 @@ public class Wrahh : GameCharacters
 			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
-				armor += 3;
-				shieldDura = 10;
+				shieldMaxArmor = 5;
+				shieldArmor = 5;
 				this.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true);
 				Destroy(c.gameObject);// Removed the item from the scene
 				shieldOn = true;
 				Debug.Log(shieldOn);
-			}
-			if(c.gameObject.name == "helmet")
-			{
-				Debug.Log ("helm obtained!");									// Check if 'shield' was registered
-				armor += 2;
-				helmDura = 10;
-				this.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(true);
-				Destroy(c.gameObject);// Removed the item from the scene
-				helmOn = true;
-				Debug.Log(helmOn);
 			}
 		}
 	}
@@ -246,42 +239,53 @@ public class Wrahh : GameCharacters
 		}
 	}
 
-	public int ShieldDura
+	public int ShieldMaxArmor
 	{
 		get
 		{
-			return shieldDura;
+			return shieldMaxArmor;
 		}
 		set
 		{
-			shieldDura = value;
+			shieldMaxArmor = value;
 		}
 	}
 
-	public int HelmDura
+	public int HelmMaxArmor
 	{
 		get
 		{
-			return helmDura;
+			return helmMaxArmor;
 		}
 		set
 		{
-			helmDura = value;
+			helmMaxArmor = value;
 		}
 	}
 
-	public int Armor
+	public int ShieldArmor
 	{
 		get
 		{
-			return armor;
+			return shieldArmor;
 		}
 		set
 		{
-			armor = value;
+			shieldArmor = value;
 		}
 	}
-
+	public int HelmArmor
+	{
+		get
+		{
+			return helmArmor;
+		}
+		set
+		{
+			helmArmor = value;
+		}
+	}
+	
 	public int LobsterParts
 	{
 		get

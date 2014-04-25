@@ -21,7 +21,7 @@ public class Pistol : Weapon {
 	protected override void loadPrefab()
 	{
 		base.loadPrefab ();
-		hitProjectile = Resources.Load ("Prefabs/hitGunProjectile");
+		hitProjectile = Resources.Load ("Prefabs/hitGunProjectile") as GameObject;
 	}
 	
 	public override void shoot()

@@ -181,10 +181,4 @@ public class Weapon : MonoBehaviour {
 			}
 		}
 	}
-
-	public void done()
-	{
-		ammo = 1;
-		Debug.Log ("HERE I AM");
-	}
 }

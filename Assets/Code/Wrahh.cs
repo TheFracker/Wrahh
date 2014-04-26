@@ -95,6 +95,7 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////
 	void Update ()
 	{
+		Debug.Log (health);
 		// Throw grenade
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();

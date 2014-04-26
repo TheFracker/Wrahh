@@ -95,7 +95,6 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////
 	void Update ()
 	{
-		Debug.Log (health);
 		// Throw grenade
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
@@ -248,7 +247,6 @@ public class Wrahh : GameCharacters
 		Debug.Log (currentWeapon.getDura ());
 		if(CurrentWeapon.getDura() <= 0)
 		{
-			Debug.Log ("I AM HERE");
 			weapons[currentSlot] = gameObject.AddComponent<Weapon>();
 			this.currentWeapon = weapons[currentSlot];
 		}

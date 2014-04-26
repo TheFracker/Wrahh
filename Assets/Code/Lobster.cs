@@ -18,17 +18,14 @@ public class Lobster : GameCharacters
 	private Transform enemyTransform;
 
 	private bool playerDead = false;
-	
+
 	private Vector3 startPos;
 	private Vector3 dir;
 	private Vector3 currentDir;
-
-	GameObject other;
 		
 	void Start()
 	{
 		enemyTransform = this.GetComponent<Transform>();
-		other = GetComponent<Wrahh>();
 		startPos = enemyTransform.position;
 
 	//Set from parent
@@ -46,14 +43,10 @@ public class Lobster : GameCharacters
 			currentDir = enemyTransform.position;
 		
 			if (currentDir.x < target.position.x &! facingRight)
-			{
 				flip();
-			}
 				
 			if (currentDir.x > target.position.x && facingRight)
-			{
 				flip();
-			}
 		
 			if (Vector3.Distance(target.position, enemyTransform.position) < maxDistance)	//If the distance between the target and the enemy is less than the maximum, chaseTarget will be called!
 				chaseTarget();
@@ -64,35 +57,23 @@ public class Lobster : GameCharacters
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		/*if (c.tag == "Player") 																	//If the collission is with the game obejct tagged; "Player"..
-		{
-			return playerDead = true;																//When playerDeadr is true, the enemy stops moving because it killed the player.
-		}*/
+		if (c.tag == "Player") 																	//If the collission is with the game obejct tagged; "Player"..
+			Debug.Log("Lobster kills the player");												//When playerDead is true, the enemy stops moving because it killed the player.
 	}
 
 	void chaseTarget()
 	{
 		dir = target.position - enemyTransform.position; 									//The enemy's diretion
 		dir.Normalize();																	//Normalize the direction vector
-		enemyTransform.position += dir * moveSpeed * Time.deltaTime; 							//CHASE THE PLAYER!!!!!
+		enemyTransform.position += dir * moveSpeed * Time.deltaTime; 						//CHASE THE PLAYER!!!!!
 	}
-
-	/*void flip() 																			//The lobster should face the player
-	{
-		facingRight = !facingRight;
-		Vector3 direction = transform.localScale;
-		direction.x *= -1;
-		transform.localScale = direction;
-		Debug.Log ("FLIPPED!"); 		 HELLO!													//Just to make sure it works so far..
-	}*/
 
 	void returnToStartPos()
 	{
 		if(enemyTransform.position.x < startPos.x &! facingRight) 							//Must face starting position
 		{
 			flip();
-			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;
+			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	//Enemy returns to start position
 		}
-		Debug.Log("The enemy returns");
 	}	
 }

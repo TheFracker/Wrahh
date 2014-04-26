@@ -128,6 +128,7 @@ public class Wrahh : GameCharacters
 		if (Ladder.canClimb == true)
 		{
 			this.rigidbody2D.velocity = new Vector2(0,climbSpeed);
+			Ladder.canClimb = false;
 		}
 	}
 	
@@ -136,7 +137,7 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	void falling()
 	{
-		if (this.rigidbody2D.velocity.y < -1.5)
+		if (this.rigidbody2D.velocity.y < -2.5)
 		{
 			anim.SetBool("IsFalling", true);
 			canCrushEnemy = true;

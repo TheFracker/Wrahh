@@ -8,11 +8,14 @@ public class UpgradeStation : MonoBehaviour {
 	public Helm helm = new Helm();
 
 	public GUISkin mySkin;
+
+	int currentWeapon;
+
 	Rect window300X300, statsWindow;
 	bool menuShow = false;
 	bool statsShow = false;
 	bool armorShow = false, helmShow = false, shieldShow = false;
-	bool weaponShow = false, pistolShow = false, rifleShow = false;
+	bool weaponShow = false, weaponUpgradeShow = false, rifleShow = false;
 		
 	int repairPrice;
 
@@ -59,23 +62,17 @@ public class UpgradeStation : MonoBehaviour {
 			window300X300 = GUI.Window(5, window300X300, weaponMenuFunc, "Weapon Upgrades");
 
 		}
-		if(pistolShow){
-			window300X300 = GUI.Window(6, window300X300, pistolMenuFunc, "Pistol Upgrades");
+		if(weaponUpgradeShow){
+			window300X300 = GUI.Window(6, window300X300, weaponUpgradeFunc, "Weapon Upgrades");
 		}
-		if(rifleShow){
-			window300X300 = GUI.Window(7, window300X300, rifleMenuFunc, "Rifle Upgrades");
-		} 
 
 
 	}
 	
 	void mainWindowFunc(int id)
 	{
-		if(GUILayout.Button("Repair"))
-		{
-		}
 
-		if(GUILayout.Button("Weapon Upgrades"))
+		if(GUILayout.Button("Weapon Upgrades Avaliable"))
 		{
 			menuShow = false;
 			weaponShow = true;
@@ -247,20 +244,46 @@ public class UpgradeStation : MonoBehaviour {
 
 	void weaponMenuFunc(int id)
 	{
-		if(GUILayout.Button("Pistol")){
+		if(wrahh.Weapons[0].getName() != "weapon")
+		if(GUILayout.Button(wrahh.Weapons[0].getName())){
+			currentWeapon = 0;
 			weaponShow = false;
-			pistolShow = true;
-		}
-		
-		if(GUILayout.Button("Rifle")){
-			weaponShow = false;
-			rifleShow = true;
+			weaponUpgradeShow = true;
 		}
 
+		if(wrahh.Weapons[1].getName() != "weapon")
+		if(GUILayout.Button(wrahh.Weapons[1].getName())){
+			currentWeapon = 1;
+			weaponShow = false;
+			weaponUpgradeShow = true;
+		}
+
+		if(wrahh.Weapons[2].getName() != "weapon")
+		if (GUILayout.Button(wrahh.Weapons[2].getName())){
+			currentWeapon = 2;
+			weaponShow = false;
+			weaponUpgradeShow = true;
+		}
+
+		if(wrahh.Weapons[3].getName() != "weapon")
+		if (GUILayout.Button( wrahh.Weapons[3].getName())){
+			currentWeapon = 3;
+			weaponShow = false;
+			weaponUpgradeShow = true;
+		}
+
+		if(wrahh.Weapons[4].getName() != "weapon")
+		if (GUILayout.Button(wrahh.Weapons[4].getName())){
+			currentWeapon = 4;
+			weaponShow = false;
+			weaponUpgradeShow = true;
+		}
+	
 		if(GUILayout.Button("Return")){
 			weaponShow = false;
 			menuShow = true;
 		}
+
 		if(GUILayout.Button("I'm Done Upgrading!!"))
 		{
 			paused = false;
@@ -270,33 +293,38 @@ public class UpgradeStation : MonoBehaviour {
 		}
 	}
 
-	void pistolMenuFunc(int id)
+	void weaponUpgradeFunc(int id)
 	{
-		if(GUILayout.Button("Upgrade damage")){
-			Debug.Log("Pistol damage is now: ");
+		if(GUILayout.Button("Repair"))
+		{
+			Debug.Log(wrahh.Weapons[currentWeapon].getName());
 		}
 
 		if(GUILayout.Button("Upgrade Durabillity")){
-			Debug.Log("Pistol Durabillity is now: ");
+			Debug.Log("Durabillity is now: ");
 		}
 
 		if(GUILayout.Button("Upgrade range")){
-			Debug.Log("Pistol range is now: ");
+			Debug.Log("Range is now: ");
 		}
 
-		if(GUILayout.Button("Upgrade accidental trigger")){
-			Debug.Log("Pistols chance to accidental trigger: ");
-		}
 		
+		if(GUILayout.Button("Disassemble for: " + wrahh.Weapons[currentWeapon].getDura() + " weapon Parts")){
+			wrahh.WeaponParts += wrahh.Weapons[currentWeapon].getDura();
+			wrahh.Weapons[currentWeapon] = gameObject.AddComponent<Weapon>();
+			weaponShow = true;
+			weaponUpgradeShow = false;
+		}
+
 		if(GUILayout.Button("Return")){
-			pistolShow = false;
+			weaponUpgradeShow = false;
 			weaponShow = true;
 		}
 		
 		if(GUILayout.Button("I'm Done Upgrading!!"))
 		{
 			paused = false;
-			pistolShow = false;
+			weaponUpgradeShow = false;
 			statsShow = false;
 			Time.timeScale = 1;
 		}
@@ -304,18 +332,19 @@ public class UpgradeStation : MonoBehaviour {
 
 	void rifleMenuFunc(int id)
 	{
-		if(GUILayout.Button("Upgrade damage")){
-			Debug.Log("Rifle damage is now: ");
+		if(GUILayout.Button("Repair"))
+		{
+		}
+		
+		if(GUILayout.Button("Upgrade Durabillity")){
+			Debug.Log("Pistol Durabillity is now: ");
 		}
 		
 		if(GUILayout.Button("Upgrade range")){
 			Debug.Log("Rifle range is now: ");
 		}
-
-		if(GUILayout.Button("Upgrade Accidental Trigger")){
-			Debug.Log("Rifle chance to trigger is now: ");
-		}
 		
+
 		if(GUILayout.Button("Return")){
 			rifleShow = false;
 			weaponShow = true;

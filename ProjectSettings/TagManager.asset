@@ -26,7 +26,7 @@ TagManager:
   User Layer 11: Ladder
   User Layer 12: OneWayCollider
   User Layer 13: Armor
-  User Layer 14: 
+  User Layer 14: Wall
   User Layer 15: 
   User Layer 16: 
   User Layer 17: 
@@ -48,6 +48,14 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Wall
+    userID: 3
+    uniqueID: 4057221669
+    locked: 0
+  - name: Player
+    userID: 2
+    uniqueID: 1553996143
     locked: 0
   - name: Armor
     userID: 1

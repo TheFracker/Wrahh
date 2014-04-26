@@ -22,7 +22,12 @@ public class Rifle : Weapon {
 		base.loadPrefab ();
 		hitProjectile = Resources.Load ("Prefabs/hitRifleProjectile") as GameObject;
 	}
-	
+
+	public override void hit ()
+	{
+		base.hit ();
+	}
+
 	public override void shoot()
 	{
 		base.shoot ();

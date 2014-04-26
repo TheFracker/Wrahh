@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour {
 	protected float reloadTime = 2; 	// The time it takes to reload
 	protected bool reloading; 			// If reloading, this will be true
 	protected int durability; 			// How many hits it can take
+	protected int MAX_DURABILITY;		// The maximum amount of hits the weapon can take
 	protected float accidentalFire; 	// Critacal chance
 	protected int hitDamage; 			// Damage it gives when using it as a club
 	protected GameObject bulletRight; 	// The bullet in the champer when shooting right
@@ -21,6 +22,7 @@ public class Weapon : MonoBehaviour {
 	void Start()
 	{
 		loadPrefab ();
+		name = "weapon";
 		shooting = false;
 	}
 
@@ -32,7 +34,6 @@ public class Weapon : MonoBehaviour {
 		else
 			pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
 		Instantiate(hitProjectile, pos, Quaternion.identity);
-		durability--;
 	}
 
 	protected virtual void loadPrefab()
@@ -65,7 +66,26 @@ public class Weapon : MonoBehaviour {
 	{
 		return name;
 	}
+	public int getDura()
+	{
+		return durability;
+	}
 
+	public void setDura(int value)
+	{
+		durability = value;
+	}
+
+	public int getMAXDura()
+	{
+		return MAX_DURABILITY;
+	}
+
+	public void addToMAXDura(int value)
+	{
+		MAX_DURABILITY += value;
+	}
+	
 	IEnumerator shot()
 	{
 		while(shooting)

@@ -3,46 +3,71 @@ using System.Collections;
 
 public class Shield : MonoBehaviour
 {
-	public Wrahh wrahh = new Wrahh();
+
+	public Wrahh wrahh;
 	private int protection = 0;
 
 	void Start()
 	{
+		if(wrahh == null)
+			wrahh = new Wrahh();
 	}
 
 
 	public void upgradeProtection()
 	{
+		if (protection == 0)
+		{
+			protectionLevel0();
+		}
 		if(protection == 1){
-			protectionLevel1();
+			protectionLevelEquip();
 		}
 		else if (protection == 2){
-			protectionLevel2();
+			protectionLevel1();
 		}
 		else if (protection == 3){
+			protectionLevel2();
+		}
+		else if (protection == 4){
 			protectionLevel3();
 		}
 
 	}
 
-	void protectionLevel1()
+	void protectionLevel0()
 	{
-		wrahh.ShieldMaxArmor +=2;
-		wrahh.ShieldArmor += 2;
+		wrahh.ShieldOn = false;
+		wrahh.ShieldMaxArmor = 0;
+		wrahh.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(false);
+		Debug.Log("Im here, Protection level 0");
+	}
+
+	void protectionLevelEquip()
+	{
+		wrahh.ShieldMaxArmor +=5;
+		wrahh.ShieldArmor += 5;
+		wrahh.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true);
 		Debug.Log("Im here, Protection level 1");
 	}
-	void protectionLevel2()
+	void protectionLevel1()
 	{
 		wrahh.ShieldMaxArmor +=3;
 		wrahh.ShieldArmor += 3;
 		Debug.Log("Im here, Protection level 2");
 	}
 
-	void protectionLevel3()
+	void protectionLevel2()
 	{
 		wrahh.ShieldMaxArmor +=4;
 		wrahh.ShieldArmor += 4;
 		Debug.Log("Im here, Protection level 3");
+	}
+	void protectionLevel3()
+	{
+		wrahh.ShieldMaxArmor +=4;
+		wrahh.ShieldArmor += 4;
+		Debug.Log("Im here, Protection level 4");
 	}
 
 	

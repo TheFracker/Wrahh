@@ -22,7 +22,10 @@ public class ProjectileLeft : Projectile {
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Player")
+		{
 			Destroy (this.gameObject);
+			c.gameObject.GetComponent<Wrahh>().hurt(this);
+		}
 	}
 	
 	protected override void move ()

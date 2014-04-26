@@ -19,7 +19,10 @@ public class Projectile : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Player")
+		{
 			Destroy (this.gameObject);
+			c.gameObject.GetComponent<Wrahh>().hurt(this);
+		}
 	}
 	
 	protected virtual void move ()

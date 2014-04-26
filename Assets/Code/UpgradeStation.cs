@@ -127,9 +127,9 @@ public class UpgradeStation : MonoBehaviour {
 			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn == false)
 			{
 				wrahh.LobsterParts -= 5;
+				helm.Protection = 1;
+				helm.upgradeProtection();
 				wrahh.HelmOn = true;
-				wrahh.HelmMaxArmor = 5;
-				wrahh.HelmArmor = 5;
 				wrahh.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(true);
 			}
 			else
@@ -148,25 +148,31 @@ public class UpgradeStation : MonoBehaviour {
 
 		if(GUILayout.Button("Upgrade Protection")){
 
-			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 0)
-			{
-				helm.Protection = 1;
-				wrahh.LobsterParts -= 5;
-				helm.upgradeProtection();
-			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 1)
+			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 1)
 			{
 				helm.Protection = 2;
 				wrahh.LobsterParts -= 5;
 				helm.upgradeProtection();
 			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && helm.Protection == 2)
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 2)
 			{
 				helm.Protection = 3;
 				wrahh.LobsterParts -= 5;
 				helm.upgradeProtection();
 			}
-			else if (helm.Protection == 3)
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 3)
+			{
+				helm.Protection = 4;
+				wrahh.LobsterParts -= 5;
+				helm.upgradeProtection();
+			}
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 4)
+			{
+				helm.Protection = 5;
+				wrahh.LobsterParts -= 5;
+				helm.upgradeProtection();
+			}
+			else if (helm.Protection == 5)
 			{
 				Debug.Log ("Max Level!");
 			}
@@ -199,16 +205,10 @@ public class UpgradeStation : MonoBehaviour {
 
 		if(GUILayout.Button("Upgrade Protection")){
 
-			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 0)
+			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 1)
 			{
-				shield.Protection = 1;
 				wrahh.LobsterParts -= 5;
-				shield.upgradeProtection();
-			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 1)
-			{
 				shield.Protection = 2;
-				wrahh.LobsterParts -= 5;
 				shield.upgradeProtection();
 			}
 			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 2)
@@ -217,7 +217,13 @@ public class UpgradeStation : MonoBehaviour {
 				wrahh.LobsterParts -= 5;
 				shield.upgradeProtection();
 			}
-			else if (shield.Protection == 3)
+			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 3)
+			{
+				shield.Protection = 4;
+				wrahh.LobsterParts -= 5;
+				shield.upgradeProtection();
+			}
+			else if (shield.Protection == 4)
 			{
 				Debug.Log ("Max Level!");
 			}

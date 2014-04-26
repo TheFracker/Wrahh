@@ -13,7 +13,10 @@ public class Wrahh : GameCharacters
 	int helmMaxArmor;
 	int shieldArmor;
 	int helmArmor;
-	
+
+	public Shield shield;
+	public Helm helm;
+
 	public static bool canCrushEnemy = false;
 	
 	Weapon[] weapons;
@@ -31,6 +34,12 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////
 	void Start ()
 	{
+		if(shield == null)
+			shield = new Shield();
+		if(helm == null)
+			helm = new Helm();
+
+
 		shieldOn = false;
 		helmOn = false;
 		grenades = 0;
@@ -206,10 +215,9 @@ public class Wrahh : GameCharacters
 			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
-				shieldMaxArmor = 5;
-				shieldArmor = 5;
-				this.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true);
 				Destroy(c.gameObject);// Removed the item from the scene
+				shield.Protection = 1;
+				shield.upgradeProtection();
 				shieldOn = true;
 				Debug.Log(shieldOn);
 			}
@@ -219,17 +227,60 @@ public class Wrahh : GameCharacters
 	
 	public void hurt(Projectile p)
 	{
+		Debug.Log("IM HIT");
 		int damageTaken = p.giveDamage ();
-		if (armor > 0 && armor > damageTaken)
+		int armorHit = Random.Range(0,2);
+
+		if (armorHit == 0 && shieldArmor > 0 && shieldArmor > damageTaken)
 		{
-			armor -= damageTaken;
+			shieldArmor -= damageTaken;
 			damageTaken = 0;
 		}
-		else if (armor > 0)
+		else if(armorHit == 1 && helmArmor > 0 && helmArmor > damageTaken)
 		{
-			damageTaken -= armor;
-			armor = 0;
+			helmArmor -= damageTaken;
+			damageTaken = 0;
 		}
+
+		if (armorHit == 0 && damageTaken > 0)
+		{
+			damageTaken -= shieldArmor;
+			shieldArmor = 0;
+			shield.Protection = 0;
+			shield.upgradeProtection();
+			if(helmArmor > 0 && helmArmor > damageTaken)
+			{
+				helmArmor -= damageTaken;
+				damageTaken = 0;
+			}
+			else
+			{
+				damageTaken -= helmArmor;
+				helmArmor = 0;
+				helm.Protection = 0;
+				helm.upgradeProtection();
+			}
+		}
+		else if (armorHit == 1 && damageTaken > 0)
+		{
+			damageTaken -= helmArmor;
+			helmArmor = 0;
+			helm.Protection = 0;
+			helm.upgradeProtection();
+			if(shieldArmor > 0 && shieldArmor > damageTaken)
+			{
+				shieldArmor -= damageTaken;
+				damageTaken = 0;
+			}
+			else
+			{
+				damageTaken -= helmArmor;
+				shieldArmor = 0;
+				shield.Protection = 0;
+				shield.upgradeProtection();
+			}
+		}
+
 		health -= damageTaken;
 		if (health <= 0)
 			die ();

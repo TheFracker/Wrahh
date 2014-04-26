@@ -352,7 +352,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .5, y: .5}
   m_Center: {x: 0, y: 0}
 --- !u!212 &136155755
 SpriteRenderer:
@@ -1233,7 +1233,7 @@ GameObject:
   - 23: {fileID: 715015028}
   - 61: {fileID: 715015027}
   - 114: {fileID: 715015026}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1273,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .200000003, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!23 &715015028
 Renderer:
@@ -1872,7 +1872,7 @@ Transform:
   m_PrefabInternal: {fileID: 2069139829}
   m_GameObject: {fileID: 1075421143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.83940101, y: 1.37362957, z: 0}
+  m_LocalPosition: {x: -2.83940101, y: 1.22390413, z: 0}
   m_LocalScale: {x: .190635234, y: .190635234, z: .190635234}
   m_Children:
   - {fileID: 15078626}
@@ -1893,6 +1893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d7dcccd6d090042b1b8e1a97d5b175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shield: {fileID: 1075421149}
+  helm: {fileID: 1075421152}
   defaultPrefab: {fileID: 1075421143}
 --- !u!95 &1075421146
 Animator:
@@ -2130,7 +2132,7 @@ GameObject:
   - 23: {fileID: 1200398473}
   - 61: {fileID: 1200398472}
   - 114: {fileID: 1200398471}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2159,7 +2161,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .200000003, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!23 &1200398473
 Renderer:
@@ -2712,7 +2714,7 @@ GameObject:
   - 23: {fileID: 1494990469}
   - 61: {fileID: 1494990468}
   - 114: {fileID: 1494990467}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2752,7 +2754,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .200000003, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!23 &1494990469
 Renderer:
@@ -3704,7 +3706,7 @@ GameObject:
   - 23: {fileID: 2066853303}
   - 61: {fileID: 2066853302}
   - 114: {fileID: 2066853301}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3733,7 +3735,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .200000003, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!23 &2066853303
 Renderer:
@@ -3789,7 +3791,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.37362957
+      value: 1.22390413
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3811,6 +3813,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 1075421149}
+    - target: {fileID: 11400000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: helm
+      value: 
+      objectReference: {fileID: 1075421152}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
   m_RootGameObject: {fileID: 1075421143}

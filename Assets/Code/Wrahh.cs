@@ -8,13 +8,13 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 	bool helmOn;
-	public static bool isAttacking;
 	int shieldMaxArmor;
 	int helmMaxArmor;
 	int shieldArmor;
 	int helmArmor;
 	
 	public static bool canCrushEnemy = false;
+	public static bool isAttacking;
 	
 	Weapon[] weapons;
 	Weapon currentWeapon;
@@ -44,11 +44,11 @@ public class Wrahh : GameCharacters
 		currentWeapon = gameObject.AddComponent<Weapon>();
 		prefab = defaultPrefab;
 
-		//From parent "GameCharacters.cs":
+	//From parent "GameCharacters.cs":
 		moveSpeed = 10000.0f;
 		facingRight = true;
 		MAX_MOVE_SPEED = 30.0f;
-		health = 3;
+		health = 100;
 		setStandardPhysics();
 		accesAnimator();
 	}
@@ -163,9 +163,13 @@ public class Wrahh : GameCharacters
 	{
 		yield return new WaitForSeconds(0.08f);
 		anim.SetBool("isAttacking", false);
+	}
+
+	IEnumerator waitForAttack()
+	{
+		yield return new WaitForSeconds(1f);
 		isAttacking = false;
 	}
-	
 	
 	//////////////////////////////////////
 	// WEAPONS							//
@@ -175,7 +179,7 @@ public class Wrahh : GameCharacters
 		anim.SetBool("isAttacking", true);
 		isAttacking = true;
 		StartCoroutine(waitForAttackingAnimation());
-		Debug.Log ("Hitting with this weird club");
+		StartCoroutine(waitForAttack());
 		currentWeapon.hit ();
 	}
 	

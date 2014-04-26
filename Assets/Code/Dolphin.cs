@@ -62,8 +62,6 @@ public class Dolphin : GameCharacters
 		}
 	}
 
-
-
 	public void hurt(Projectile p)
 	{
 		int damageTaken = p.giveDamage();

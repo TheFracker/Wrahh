@@ -26,21 +26,7 @@ public class Rifle : Weapon {
 	public override void hit ()
 	{
 		base.hit ();
-	}
-
-	public override void shoot()
-	{
-		base.shoot ();
-
-//		// Gives the position of where the bullet should be spawned
-//		pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
-//		// Shoots creates the bullets, the bullets themself give them their speed
-//		// There needs to be two kinds of bullets, one for shooting left and one for right
-//		if (gameObject.GetComponent<Dolphin>().isFacingRight()){
-//			Instantiate(bullet, pos, Quaternion.identity);
-//		}
-//		else{
-//			Instantiate(bullet, pos, Quaternion.identity);
-//		}
+		if(Random.Range(0,100) <= durabilityLossChance)
+			durability--;
 	}
 }

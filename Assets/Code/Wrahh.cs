@@ -369,7 +369,7 @@ public class Wrahh : GameCharacters
 			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
-				Destroy(c.gameObject);// Removed the item from the scene
+				Destroy(c.gameObject);											// Removed the item from the scene
 				shield.Protection = 1;
 				shield.upgradeProtection();
 				shieldOn = true;
@@ -436,7 +436,7 @@ public class Wrahh : GameCharacters
 
 		health -= damageTaken;
 		if (health <= 0)
-			die ();
+			die(this.gameObject);
 	}
 	
 	public int Health
@@ -495,6 +495,5 @@ public class Wrahh : GameCharacters
 	{
 		get{ return helmOn; }
 		set{ helmOn = value; }
-	}
-	
+	}	
 }

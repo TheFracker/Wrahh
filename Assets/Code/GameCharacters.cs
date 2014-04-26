@@ -10,6 +10,7 @@ public class GameCharacters : MonoBehaviour
 	protected float standardGravity = 7.4f; 				// initial gravity
 	protected float MAX_MOVE_SPEED; 						
 	protected float standardDrag = 5f; 						// initial drag force
+	protected bool playerDead = false;
 	
 	protected Animator anim;
 
@@ -18,10 +19,9 @@ public class GameCharacters : MonoBehaviour
 		anim = GetComponent<Animator>(); 
 	}
 
-	protected void die()
+	protected void die(GameObject g)
 	{
-		Destroy(this.gameObject);
-		Debug.Log("A gameobject was killed..");
+		Destroy(g);
 	}
 
 	protected void flip()

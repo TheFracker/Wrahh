@@ -8,6 +8,10 @@ public class Dolphin : GameCharacters
 	public Transform positionedTarget_right = null;
 	public Transform positionedTarget_left = null;
 	private Transform target;
+	public bool stopRight = true;
+	public bool stopLeft = true;
+	bool gotHere;
+	float timeToWalk;
 
 	public float maxDistance = 20.0f;
 	public float shootDistance = 10.0f;
@@ -24,6 +28,8 @@ public class Dolphin : GameCharacters
 	{
 		weapon = gameObject.AddComponent<Rifle> ();
 
+		gotHere = false;
+		timeToWalk = 0;
 		//From parent "GameCharacters.cs":
 		moveSpeed = 10;
 		facingRight = false;
@@ -75,6 +81,7 @@ public class Dolphin : GameCharacters
 		w.shoot ();
 	}
 
+	int o = 0;
 	void guard()
 	{
 		// Guard right
@@ -83,29 +90,76 @@ public class Dolphin : GameCharacters
 			if(this.transform.position.x < point.x && facingRight)
 				this.transform.position += this.transform.right * moveSpeed * Time.deltaTime;
 			if(this.transform.position.x > point.x)
-				flip();
+			{
+				if(stopRight && !gotHere)
+				{
+					gotHere = true;
+					timeToWalk = Time.time + Random.Range(2,6);
+				}
+				else if(timeToWalk < Time.time)
+				{
+					flip();
+					gotHere = false;
+				}
+			}
 		}
-		else if (this.transform.position.x < positionedTarget_right.position.x && facingRight)
+		else if (positionedTarget_right != null)
 		{
-			this.transform.position += this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x < positionedTarget_right.position.x && facingRight)
+				this.transform.position += this.transform.right * moveSpeed * Time.deltaTime;
 			if(this.transform.position.x > positionedTarget_right.position.x)
-				flip ();
+			{
+				if(stopRight && !gotHere)
+				{
+					gotHere = true;
+					timeToWalk = Time.time + Random.Range(2,6);
+				}
+				else if(timeToWalk < Time.time)
+				{
+					flip();
+					gotHere = false;
+				}
+			}
 		}
 		
 		// Guard left
 		if(positionedTarget_left == null)
 		{
+			Debug.Log (1);
 			Vector2 point = new Vector2(-5,2);
 			if(this.transform.position.x > point.x &! facingRight)
 				this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;
 			if(this.transform.position.x < point.x)
-				flip();
+			{
+				if(stopLeft && !gotHere)
+				{
+					gotHere = true;
+					timeToWalk = Time.time + Random.Range(2,6);
+				}
+				else if(timeToWalk < Time.time)
+				{
+					flip();
+					gotHere = false;
+				}
+			}
 		}
-		else if (this.transform.position.x > positionedTarget_left.position.x &! facingRight)
+		else if (positionedTarget_left != null)
 		{
-			this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;
+			if(this.transform.position.x > positionedTarget_left.position.x &! facingRight)
+				this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;
 			if(this.transform.position.x < positionedTarget_left.position.x)
-				flip();
+			{
+				if(stopLeft && !gotHere)
+				{
+					gotHere = true;
+					timeToWalk = Time.time + Random.Range(2,6);
+				}
+				else if(timeToWalk < Time.time)
+				{
+					flip();
+					gotHere = false;
+				}
+			}
 		}
 	}
 

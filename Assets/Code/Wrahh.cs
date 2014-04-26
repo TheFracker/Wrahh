@@ -8,7 +8,6 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 	bool helmOn;
-	public static bool isAttacking;
 	int shieldMaxArmor;
 	int helmMaxArmor;
 	int shieldArmor;
@@ -48,12 +47,11 @@ public class Wrahh : GameCharacters
 		lobsterParts = 155;
 		shieldArmor = 0;
 		helmArmor = 0;
-		isAttacking = false;
 		
-		currentWeapon = gameObject.AddComponent<Rifle>();
+		currentWeapon = gameObject.AddComponent<Weapon>();
 		prefab = defaultPrefab;
 
-		//From parent "GameCharacters.cs":
+	//From parent "GameCharacters.cs":
 		moveSpeed = 10000.0f;
 		facingRight = true;
 		MAX_MOVE_SPEED = 30.0f;
@@ -172,9 +170,7 @@ public class Wrahh : GameCharacters
 	{
 		yield return new WaitForSeconds(0.08f);
 		anim.SetBool("isAttacking", false);
-		isAttacking = false;
 	}
-	
 	
 	//////////////////////////////////////
 	// WEAPONS							//
@@ -182,9 +178,7 @@ public class Wrahh : GameCharacters
 	void useWeapon(Weapon currentWeapon)
 	{
 		anim.SetBool("isAttacking", true);
-		isAttacking = true;
 		StartCoroutine(waitForAttackingAnimation());
-		Debug.Log ("Hitting with this weird club");
 		currentWeapon.hit ();
 	}
 	
@@ -223,7 +217,6 @@ public class Wrahh : GameCharacters
 			}
 		}
 	}
-	
 	
 	public void hurt(Projectile p)
 	{
@@ -288,120 +281,60 @@ public class Wrahh : GameCharacters
 	
 	public int Health
 	{
-		get
-		{
-			return health;
-		}
-		set
-		{
-			health = value;
-		}
+		get{ return health; }
+		set{ health = value; }
 	}
 	
 	public int ShieldMaxArmor
 	{
-		get
-		{
-			return shieldMaxArmor;
-		}
-		set
-		{
-			shieldMaxArmor = value;
-		}
+		get{ return shieldMaxArmor; }
+		set{ shieldMaxArmor = value; }
 	}
 	
 	public int HelmMaxArmor
 	{
-		get
-		{
-			return helmMaxArmor;
-		}
-		set
-		{
-			helmMaxArmor = value;
-		}
+		get{ return helmMaxArmor; }
+		set{ helmMaxArmor = value; }
 	}
 	
 	public int ShieldArmor
 	{
-		get
-		{
-			return shieldArmor;
-		}
-		set
-		{
-			shieldArmor = value;
-		}
+		get{ return shieldArmor; }
+		set{ shieldArmor = value; }
 	}
 	public int HelmArmor
 	{
-		get
-		{
-			return helmArmor;
-		}
-		set
-		{
-			helmArmor = value;
-		}
+		get{ return helmArmor; }
+		set{ helmArmor = value; }
 	}
 	
 	public int LobsterParts
 	{
-		get
-		{
-			return lobsterParts;
-		}
-		set
-		{
-			lobsterParts = value;
-		}
+		get{ return lobsterParts; }
+		set{ lobsterParts = value; }
 	}
 	
 	public int RiflesCollected
 	{
-		get
-		{
-			return riflesCollected;
-		}
-		set
-		{
-			riflesCollected = value;
-		}
+		get{ return riflesCollected; }
+		set{ riflesCollected = value; }
 	}
 	
 	public int GunsCollected
 	{
-		get
-		{
-			return gunsCollected;
-		}
-		set
-		{
-			gunsCollected = value;
-		}
+		get{ return gunsCollected; }
+		set{ gunsCollected = value; }
 	}
 	public bool ShieldOn
 	{
-		get
-		{
-			return shieldOn;
-		}
-		set
-		{
-			shieldOn = value;
-		}
+		get{ return shieldOn; }
+		set{ shieldOn = value; }
 	}
 	
 	public bool HelmOn
 	{
-		get
-		{
-			return helmOn;
-		}
-		set
-		{
-			helmOn = value;
-		}
+		get{ return helmOn; }
+		set{ helmOn = value; }
 	}
 	
 }

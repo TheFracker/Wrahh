@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour {
 	protected bool reloading; 			// If reloading, this will be true
 	protected int durability; 			// How many hits it can take
 	protected int MAX_DURABILITY;		// The maximum amount of hits the weapon can take
+	protected int durabilityLossChance; // The chance to lose durability when hitting
 	protected float accidentalFire; 	// Critacal chance
 	protected int hitDamage; 			// Damage it gives when using it as a club
 	protected GameObject bulletRight; 	// The bullet in the champer when shooting right
@@ -22,6 +23,7 @@ public class Weapon : MonoBehaviour {
 	void Start()
 	{
 		loadPrefab ();
+		durabilityLossChance = 30;
 		name = "weapon";
 		shooting = false;
 	}

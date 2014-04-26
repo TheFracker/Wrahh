@@ -18,14 +18,39 @@ public class Weapon : MonoBehaviour {
 	protected GameObject hitProjectile; // Projectile created when hitting with the weapon
 	protected Vector3 pos; 				// The position where the projectile should spawn
 	protected bool shooting;			// If the Dolphin is pressing the trigger or not
-	protected float delay;				// The time between each shot
+	protected float delay;// The time between each shot
+	protected int durabillityLevel = 0;
+	protected int rangeLevel = 0;
 
 	void Start()
 	{
 		loadPrefab ();
-		durabilityLossChance = 30;
+		durabilityLossChance = 70;
 		name = "weapon";
 		shooting = false;
+	}
+
+	public void upgradeLevel()
+	{
+		if(durabillityLevel == 1){
+			durabillityLevel1();
+		}
+		else if(durabillityLevel == 2){
+			durabillityLevel2();
+		}
+		else if(durabillityLevel == 3){
+			durabillityLevel3();
+		}
+
+		if(rangeLevel== 1){
+			rangeLevel1();
+		}
+		else if(rangeLevel == 2){
+			rangeLevel2();
+		}
+		else if(durabillityLevel == 3){
+			rangeLevel3();
+		}
 	}
 
 	public virtual void hit()
@@ -54,12 +79,56 @@ public class Weapon : MonoBehaviour {
 		}
 	}
 
+	protected virtual void durabillityLevel1()
+	{
+		MAX_DURABILITY += 3;
+		durability +=3;
+		Debug.Log ("Durabillity Level 1");
+	}
+
+	protected virtual void durabillityLevel2()
+	{
+		MAX_DURABILITY += 4;
+		durability +=4;
+		Debug.Log ("Durabillity Level 2");
+	}
+
+	protected virtual void durabillityLevel3()
+	{
+		MAX_DURABILITY += 5;
+		durability +=5;
+		Debug.Log ("Durabillity Level 3");
+	}
+
+	protected virtual void rangeLevel1()
+	{
+	}
+
+	protected virtual void rangeLevel2()
+	{
+	}
+
+	protected virtual void rangeLevel3()
+	{
+	}
+
+	public int DurabillityLevel
+	{
+	get{ return durabillityLevel; }
+	set{ durabillityLevel = value; }
+	}
+
+	public int RangeLevel
+	{
+		get{ return rangeLevel; }
+		set{ rangeLevel = value; }
+	}
 	public bool isReloading()
 	{
 		return reloading;
 	}
 
-	public int giveHitDamage()
+	public int getHitDamage()
 	{
 		return hitDamage;
 	}

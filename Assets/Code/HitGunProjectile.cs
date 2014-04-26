@@ -7,7 +7,7 @@ public class HitGunProjectile : HitProjectile {
 	void Start () {
 		speed = 0;
 		damage = 2;
-		liveTime = 10.0f;
+		liveTime = 1.0f;
 		timeToDie = Time.time + liveTime;
 		criticalChange = 5;
 	}

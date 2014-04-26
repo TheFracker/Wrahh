@@ -4,8 +4,7 @@ using System.Collections;
 public class Wrahh : GameCharacters
 {
 	int lobsterParts;
-	int gunsCollected;
-	int riflesCollected;
+	int weaponParts;
 	bool shieldOn;
 	bool helmOn;
 	int shieldMaxArmor;
@@ -34,6 +33,12 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////
 	void Start ()
 	{
+		weapons[0] = gameObject.AddComponent<Weapon>();
+		weapons[1] = gameObject.AddComponent<Pistol>();
+		weapons[2] = gameObject.AddComponent<Rifle>();
+		weapons[3] = gameObject.AddComponent<Pistol>();
+		weapons[4] = gameObject.AddComponent<Rifle>();
+
 		if(shield == null)
 			shield = new Shield();
 		if(helm == null)
@@ -43,8 +48,7 @@ public class Wrahh : GameCharacters
 		shieldOn = false;
 		helmOn = false;
 		grenades = 0;
-		riflesCollected = 0;
-		gunsCollected = 0;
+		weaponParts = 0;
 		lobsterParts = 10;
 		shieldArmor = 0;
 		helmArmor = 0;
@@ -382,6 +386,11 @@ public class Wrahh : GameCharacters
 		get{ return health; }
 		set{ health = value; }
 	}
+	public Weapon[] Weapons
+	{
+		get{ return weapons; }
+		set{ weapons = value; }
+	}
 	
 	public int ShieldMaxArmor
 	{
@@ -412,17 +421,12 @@ public class Wrahh : GameCharacters
 		set{ lobsterParts = value; }
 	}
 	
-	public int RiflesCollected
+	public int WeaponParts
 	{
-		get{ return riflesCollected; }
-		set{ riflesCollected = value; }
+		get{ return weaponParts; }
+		set{ weaponParts = value; }
 	}
-	
-	public int GunsCollected
-	{
-		get{ return gunsCollected; }
-		set{ gunsCollected = value; }
-	}
+
 	public bool ShieldOn
 	{
 		get{ return shieldOn; }

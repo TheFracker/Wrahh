@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour {
 	void Start()
 	{
 		loadPrefab ();
+		name = "weapon";
 		shooting = false;
 	}
 
@@ -65,7 +66,11 @@ public class Weapon : MonoBehaviour {
 	{
 		return name;
 	}
-
+	public int getDura()
+	{
+		return durability;
+	}
+	
 	IEnumerator shot()
 	{
 		while(shooting)

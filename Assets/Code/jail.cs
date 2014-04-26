@@ -16,9 +16,9 @@ public class jail : MonoBehaviour {
 	}
 	
 
-	void OnCollisionEnter2D(Collision2D other)		//checks for collision
+	void OnTriggerEnter2D(Collider2D other)		//checks for collision
 	{
-		if(other.collider.tag == "Player" && anim.GetBool("DoorHit") == false)			//cheks if an object with "player" tag collides with the object
+		if(other.collider2D.tag == "HitProjectile" && anim.GetBool("DoorHit") == false)			//cheks if an object with "player" tag collides with the object
 		{
 			anim.SetBool("DoorHit", true);			//sets the boolean parameter "DoorHit" in the animator to true
 			jailDoor.Play();					//plays the audio in the varible "jailDoor". Could also be played by sounds[0].PlayOneShot

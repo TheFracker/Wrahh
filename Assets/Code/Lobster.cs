@@ -67,7 +67,7 @@ public class Lobster : GameCharacters
 		{
 			GameObject itemDrop = (GameObject)GameObject.Instantiate(lobsterPart, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
 			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
-			die(this.gameObject);																			// Remove the dead lobster from the game
+			die(this.gameObject);															// Remove the dead lobster from the game
 		}
 	}
 
@@ -80,10 +80,10 @@ public class Lobster : GameCharacters
 
 	void returnToStartPos()
 	{
-		if(enemyTransform.position.x < startPos.x &! facingRight) 							//Must face starting position
+		if(enemyTransform.position.x < startPos.x &! facingRight) 							// Must face starting position
 		{
 			flip();
-			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	//Enemy returns to start position
+			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	// Enemy returns to start position
 		}
 	}
 }

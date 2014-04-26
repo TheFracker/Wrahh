@@ -16,6 +16,7 @@ public class Wrahh : GameCharacters
 
 	public Shield shield;
 	public Helm helm;
+	public static GameObject gameoverScreen;
 
 	public static bool canCrushEnemy = false;
 	
@@ -23,7 +24,7 @@ public class Wrahh : GameCharacters
 	Weapon currentWeapon;
 	int grenades;
 	
-	private float currentSpeed;								// set to public to see current speed
+	private float currentSpeed;										// set to public to see current speed
 	private float climbSpeed = 5f;
 
 	private GameObject prefab;
@@ -31,28 +32,21 @@ public class Wrahh : GameCharacters
 
 	AudioSource[] sounds; 											// creates an array "sounds" of type "AudioSource"
 
-
 	//////////////////////////////////
 	// START 			    		//
 	//////////////////////////////////
 	void Start ()
 	{
-		weapons[0] = gameObject.AddComponent<Weapon>();
-		weapons[1] = gameObject.AddComponent<Pistol>();
-		weapons[2] = gameObject.AddComponent<Rifle>();
-		weapons[3] = gameObject.AddComponent<Pistol>();
-		weapons[4] = gameObject.AddComponent<Rifle>();
 
 		if(shield == null)
 			shield = new Shield();
 		if(helm == null)
 			helm = new Helm();
 
-
 		shieldOn = false;
 		helmOn = false;
 		grenades = 0;
-		weaponParts = 0;
+		weaponParts = 100;
 		lobsterParts = 10;
 		shieldArmor = 0;
 		helmArmor = 0;
@@ -123,6 +117,8 @@ public class Wrahh : GameCharacters
 	////////////////////////////////////////////
 	void FixedUpdate()
 	{
+		equipedWeapon();
+
 		float input = 0;																	// creates a local variable "input"
 
 		falling ();
@@ -313,12 +309,6 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.tag == "Weapon")											
-		{
-			Debug.Log ("Picking up this weapon");
-			Destroy(c.gameObject);
-		}
-
 		if (c.tag == "Item")													
 		{
 			if (c.gameObject.name == "lobsterParts")
@@ -375,6 +365,25 @@ public class Wrahh : GameCharacters
 				shieldOn = true;
 				Debug.Log(shieldOn);
 			}
+		}
+	}
+
+	public void equipedWeapon()
+	{
+		if (currentWeapon.getName() == "Rifle")
+		{
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(true);
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_gun").gameObject.SetActive(false);
+		}
+		else if (currentWeapon.getName() == "Pistol")
+		{
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_gun").gameObject.SetActive(true);
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(false);
+		}
+		else if (currentWeapon.getName() == "weapon")
+		{
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_gun").gameObject.SetActive(false);
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(false);
 		}
 	}
 	
@@ -436,9 +445,15 @@ public class Wrahh : GameCharacters
 
 		health -= damageTaken;
 		if (health <= 0)
+		{
 			die(this.gameObject);
+			playerDead = true;
+		}
 	}
-	
+	public Weapon CurrentWeapon
+	{
+		get{ return currentWeapon; }
+	}
 	public int Health
 	{
 		get{ return health; }

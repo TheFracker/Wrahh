@@ -3523,6 +3523,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: gameoverScreen
+      value: 
+      objectReference: {fileID: 100008, guid: d10f40501925d9340a0681dab6f807e9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
   m_RootGameObject: {fileID: 1305606158}

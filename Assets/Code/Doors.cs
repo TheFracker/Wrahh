@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Doors : MonoBehaviour {
 
-	Animator anim;							// creates an variable "anim" of type "Animator";
+	Animator anim;													// creates an variable "anim" of type "Animator";
 	AudioSource[] sounds; 											// creates an array "sounds" of type "AudioSource"
 	AudioSource doorSound;											// creates an variable "buttonPress1" of type "AudioSource"
 

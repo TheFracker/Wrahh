@@ -12,6 +12,7 @@ public class Wrahh : GameCharacters
 	int shieldArmor;
 	int helmArmor;
 	int currentSlot;
+	bool walkSoundPlaying;
 
 	public Shield shield;
 	public Helm helm;
@@ -27,6 +28,9 @@ public class Wrahh : GameCharacters
 
 	private GameObject prefab;
 	public GameObject defaultPrefab;
+
+	AudioSource[] sounds; 											// creates an array "sounds" of type "AudioSource"
+
 
 	//////////////////////////////////
 	// START 			    		//
@@ -62,6 +66,26 @@ public class Wrahh : GameCharacters
 		currentSlot = 0;
 		currentWeapon = weapons[currentSlot];
 		prefab = defaultPrefab;
+
+		walkSoundPlaying = false;
+		for (int i = 0; i<14;i++)
+		{
+			this.gameObject.AddComponent<AudioSource>();
+		}
+		sounds = GetComponents<AudioSource>();						//all audio source components on the object it put in the "sounds" array in the order they are listed on the object
+		for (int i = 0; i<14;i++)
+		{
+			AudioClip ac = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
+			sounds[i].clip = ac;
+		}
+		for (int i = 0; i<14;i++)
+		{
+			sounds[i].playOnAwake = false;
+			sounds[i].rolloffMode = AudioRolloffMode.Linear;
+			sounds[i].pitch = 1f;
+			sounds[i].volume = 0.1f;
+		}
+
 
 	//From parent "GameCharacters.cs":
 		moveSpeed = 10000.0f;
@@ -110,7 +134,13 @@ public class Wrahh : GameCharacters
 		
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
-		
+
+		if(input != 0 && walkSoundPlaying == false)
+		{
+			playWalkSound();
+
+		}
+
 		anim.SetFloat("Speed", Mathf.Abs(input)); // The "speed" parameter in the Animator gets values from the variable "input" 
 		
 		// Turn the direction Wrahh is walking
@@ -123,7 +153,27 @@ public class Wrahh : GameCharacters
 		//Allows for Wrahh to move through "OneWayCollider"-Layer objects from the buttom, but not from the top.
 		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Wrahh"),LayerMask.NameToLayer("OneWayCollider"), rigidbody2D.velocity.y > 0);
 	}
-	
+
+
+	//////////////////////////////////////////////////
+	// WALK SOUNDS - controlls sounds of walk	    //
+	//////////////////////////////////////////////////
+	void playWalkSound()
+	{
+		walkSoundPlaying = true;
+		sounds[Random.Range (0, 14)].Play();
+		StartCoroutine(waitForWalkSound());
+
+	}
+
+
+	IEnumerator waitForWalkSound()
+	{
+		yield return new WaitForSeconds(0.4f);
+		walkSoundPlaying = false;
+	}
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -319,7 +369,7 @@ public class Wrahh : GameCharacters
 			if(c.gameObject.name == "shield")
 			{
 				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
-				Destroy(c.gameObject);// Removed the item from the scene
+				Destroy(c.gameObject);											// Removed the item from the scene
 				shield.Protection = 1;
 				shield.upgradeProtection();
 				shieldOn = true;
@@ -386,7 +436,7 @@ public class Wrahh : GameCharacters
 
 		health -= damageTaken;
 		if (health <= 0)
-			die ();
+			die(this.gameObject);
 	}
 	
 	public int Health
@@ -445,6 +495,5 @@ public class Wrahh : GameCharacters
 	{
 		get{ return helmOn; }
 		set{ helmOn = value; }
-	}
-	
+	}	
 }

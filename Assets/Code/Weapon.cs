@@ -28,9 +28,9 @@ public class Weapon : MonoBehaviour {
 	{
 		Debug.Log ("Hitting");
 		if(gameObject.GetComponent<Wrahh>().isFacingRight())
-			pos = this.transform.position + new Vector3(1.5f,0.5f,0);
+			pos = this.transform.position + new Vector3(1.0f,0.5f,0);
 		else
-			pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+			pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
 		Instantiate(hitProjectile, pos, Quaternion.identity);
 		durability--;
 	}

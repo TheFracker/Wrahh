@@ -41,7 +41,7 @@ public class Wrahh : GameCharacters
 		helmArmor = 0;
 		isAttacking = false;
 		
-		currentWeapon = gameObject.AddComponent<Rifle>();
+		currentWeapon = gameObject.AddComponent<Weapon>();
 		prefab = defaultPrefab;
 
 		//From parent "GameCharacters.cs":

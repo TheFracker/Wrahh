@@ -11,7 +11,7 @@ public class HitProjectile : Projectile {
 	void Start () {
 		speed = 0;
 		damage = 1;
-		liveTime = 1.0f;
+		liveTime = 100.0f;
 		timeToDie = Time.time + liveTime;
 		criticalChange = 5;
 	}

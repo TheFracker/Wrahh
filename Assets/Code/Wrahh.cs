@@ -8,6 +8,7 @@ public class Wrahh : GameCharacters
 	int riflesCollected;
 	bool shieldOn;
 	bool helmOn;
+	public static bool isAttacking;
 	int shieldMaxArmor;
 	int helmMaxArmor;
 	int shieldArmor;
@@ -38,6 +39,7 @@ public class Wrahh : GameCharacters
 		lobsterParts = 155;
 		shieldArmor = 0;
 		helmArmor = 0;
+		isAttacking = false;
 		
 		currentWeapon = gameObject.AddComponent<Rifle>();
 		prefab = defaultPrefab;
@@ -64,7 +66,6 @@ public class Wrahh : GameCharacters
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
 		falling ();
-
 	}
 	
 	
@@ -161,6 +162,7 @@ public class Wrahh : GameCharacters
 	{
 		yield return new WaitForSeconds(0.08f);
 		anim.SetBool("isAttacking", false);
+		isAttacking = false;
 	}
 	
 	
@@ -170,6 +172,7 @@ public class Wrahh : GameCharacters
 	void useWeapon(Weapon currentWeapon)
 	{
 		anim.SetBool("isAttacking", true);
+		isAttacking = true;
 		StartCoroutine(waitForAttackingAnimation());
 		Debug.Log ("Hitting with this weird club");
 		currentWeapon.hit ();

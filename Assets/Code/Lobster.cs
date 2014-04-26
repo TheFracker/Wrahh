@@ -22,10 +22,13 @@ public class Lobster : GameCharacters
 	private Vector3 startPos;
 	private Vector3 dir;
 	private Vector3 currentDir;
+
+	GameObject other;
 		
 	void Start()
 	{
 		enemyTransform = this.GetComponent<Transform>();
+		other = GetComponent<Wrahh>();
 		startPos = enemyTransform.position;
 
 	//Set from parent
@@ -63,7 +66,7 @@ public class Lobster : GameCharacters
 	{
 		/*if (c.tag == "Player") 																	//If the collission is with the game obejct tagged; "Player"..
 		{
-			return playerDead = true; 																//When playerDeadr is true, the enemy stops moving because it killed the player.
+			return playerDead = true;																//When playerDeadr is true, the enemy stops moving because it killed the player.
 		}*/
 	}
 

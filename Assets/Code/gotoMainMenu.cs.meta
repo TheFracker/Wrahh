@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 4795a40826662924eabd08ff9c7700f2
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - mainMenu_btn: {fileID: 2800000, guid: a202817956b8d074c8f78e344de396b7, type: 3}
+  - mainMenuHover_btn: {fileID: 2800000, guid: 5f3b3318879205348b63870927827ca2, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

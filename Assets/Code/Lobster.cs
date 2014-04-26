@@ -56,10 +56,10 @@ public class Lobster : GameCharacters
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.tag == "Player" && !Wrahh.isAttacking)																//If the collission is with the game obejct tagged; "Player"..
+		if (c.tag == "Player")																//If the collission is with the game obejct tagged; "Player"..
 			Debug.Log("Lobster kills the player");											//When playerDead is true, the enemy stops moving because it killed the player.
-		if (c.tag == "Arm" && Wrahh.isAttacking)
-			Debug.Log("PLAYER KILLS!");
+		if (c.tag == "HitProjectile")
+			Destroy(this.gameObject);
 	}
 
 	void chaseTarget()

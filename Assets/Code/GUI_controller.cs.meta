@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: 64c8049370f55c6419916c56ebd201ca
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameoverScreen: {fileID: 100008, guid: d10f40501925d9340a0681dab6f807e9, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

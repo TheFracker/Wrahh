@@ -16,6 +16,7 @@ public class Wrahh : GameCharacters
 
 	public Shield shield;
 	public Helm helm;
+	public static GameObject gameoverScreen;
 
 	public static bool canCrushEnemy = false;
 	
@@ -23,14 +24,13 @@ public class Wrahh : GameCharacters
 	Weapon currentWeapon;
 	int grenades;
 	
-	private float currentSpeed;								// set to public to see current speed
+	private float currentSpeed;										// set to public to see current speed
 	private float climbSpeed = 5f;
 
 	private GameObject prefab;
 	public GameObject defaultPrefab;
 
 	AudioSource[] sounds; 											// creates an array "sounds" of type "AudioSource"
-
 
 	//////////////////////////////////
 	// START 			    		//
@@ -48,6 +48,7 @@ public class Wrahh : GameCharacters
 		if(helm == null)
 			helm = new Helm();
 
+		gameoverScreen.SetActive(false);
 
 		shieldOn = false;
 		helmOn = false;
@@ -436,7 +437,10 @@ public class Wrahh : GameCharacters
 
 		health -= damageTaken;
 		if (health <= 0)
+		{
 			die(this.gameObject);
+			gameoverScreen.SetActive(true);
+		}
 	}
 	
 	public int Health

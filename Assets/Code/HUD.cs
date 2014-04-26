@@ -21,7 +21,6 @@ public class HUD : MonoBehaviour {
 		GUI.Box (new Rect(400 , Screen.height-600, 160,25),"Helm Armor: " + wrahh.HelmArmor + " max: " + wrahh.HelmMaxArmor);
 		GUI.Box (new Rect(400 , Screen.height-575, 160,25),"Shield Armor: " + wrahh.ShieldArmor + " max: " + wrahh.ShieldMaxArmor);
 		GUI.Box (new Rect(900 , Screen.height-600, 100,25),"Lobsters: " + wrahh.LobsterParts);
-		GUI.Box (new Rect(1000 , Screen.height-600, 100,25),"Rifles: " + wrahh.RiflesCollected);
-		GUI.Box (new Rect(1100 , Screen.height-600, 100,25),"Guns: " + wrahh.GunsCollected);
+		GUI.Box (new Rect(1000 , Screen.height-600, 150,25),"Weapon Parts: " + wrahh.WeaponParts);
 	}
 }

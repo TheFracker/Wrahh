@@ -42,9 +42,9 @@ public class Wrahh : GameCharacters
 		shieldOn = false;
 		helmOn = false;
 		grenades = 0;
-		riflesCollected = 5;
-		gunsCollected = 5;
-		lobsterParts = 155;
+		riflesCollected = 0;
+		gunsCollected = 0;
+		lobsterParts = 10;
 		shieldArmor = 0;
 		helmArmor = 0;
 		
@@ -198,12 +198,46 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.tag == "Weapon")													// Pick up weapon
+		if (c.tag == "Weapon")											
 		{
 			Debug.Log ("Picking up this weapon");
 			Destroy(c.gameObject);
 		}
-		
+
+		if (c.tag == "Item")													
+		{
+			if (c.gameObject.name == "lobsterParts")
+			{
+			Debug.Log ("Picking up LobsterParts");
+			Destroy(c.gameObject);
+			lobsterParts += 5;
+			}
+
+			if (c.gameObject.name == "gunPickUp")
+			{
+				Debug.Log ("Picking up guns");
+				Destroy(c.gameObject);
+				gunsCollected += 1;
+			}
+
+			if (c.gameObject.name == "riflePickUp")
+			{
+				Debug.Log ("Picking up rifles");
+				Destroy(c.gameObject);
+				riflesCollected += 1;
+			}
+		}
+
+		if (c.tag == "Buff")												
+		{
+			if (c.gameObject.name == "healthBuff")
+			{
+				Debug.Log ("Picking up health buff");
+				Destroy(c.gameObject);
+				health += 10;
+			}
+		}
+
 		if (c.tag == "Armor")													// Pick up armor
 		{																		
 			if(c.gameObject.name == "shield")

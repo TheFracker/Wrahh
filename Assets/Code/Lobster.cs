@@ -1,15 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-	/////////////////////////////////////////////////////////////
-	// TO DO:
-	// -----
-	// CHECK FROM WRAHH's SCRIPT IF HE IS DEAD!
-	// Be able to kill Wrahh
-	// Be able to get killed
-	// Less important: Be able to spawn
-	/////////////////////////////////////////////////////////////
-
 public class Lobster : GameCharacters
 {
 	private float maxDistance = 10.0f;										// This is the scope for the lobster's field of sight
@@ -44,7 +35,7 @@ public class Lobster : GameCharacters
 
 	void FixedUpdate ()
 	{
-		if(!playerDead) 																	// Only run this if the game is not over - so basically as long as Wrahh is alive :)
+		if(wrahh != null) 																	// Only run this if the game is not over - so basically as long as Wrahh is alive :)
 		{
 			target = GameObject.FindWithTag("Player").transform; 							// Assign the target to be the whatever object with the tag; "Player"
 			currentDir = enemyTransform.position;

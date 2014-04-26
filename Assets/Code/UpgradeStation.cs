@@ -306,9 +306,9 @@ public class UpgradeStation : MonoBehaviour {
 				wrahh.WeaponParts -= weaponRepairPrice;
 				wrahh.Weapons[currentWeapon].setDura(wrahh.Weapons[currentWeapon].getMAXDura());
 			}
-			else if (weaponRepairPrice && wrahh.Weapons[currentWeapon].getDura() == wrahh.Weapons[currentWeapon].getMAXDura())
+			else if (wrahh.Weapons[currentWeapon].getDura() == wrahh.Weapons[currentWeapon].getMAXDura())
 			{
-				Debug.Log("Already Upgraded");
+				Debug.Log("Already at max durabillity");
 			}
 			else 
 			{

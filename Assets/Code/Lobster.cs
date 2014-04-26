@@ -80,10 +80,10 @@ public class Lobster : GameCharacters
 
 	void returnToStartPos()
 	{
-		if(enemyTransform.position.x < startPos.x &! facingRight) 							//Must face starting position
+		if(enemyTransform.position.x < startPos.x &! facingRight) 							// Must face starting position
 		{
 			flip();
-			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	//Enemy returns to start position
+			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	// Enemy returns to start position
 		}
 	}
 }

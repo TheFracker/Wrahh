@@ -16,6 +16,7 @@ public class Lobster : GameCharacters
 
 	private Transform target;
 	private Transform enemyTransform;
+	public GameObject lobsterPart;
 
 	private bool playerDead = false;
 
@@ -26,6 +27,7 @@ public class Lobster : GameCharacters
 	void Start()
 	{
 		enemyTransform = this.GetComponent<Transform>();
+		lobsterPart = (GameObject)Resources.Load("Prefabs/lobsterParts");
 		startPos = enemyTransform.position;
 
 	//Set from parent
@@ -59,7 +61,11 @@ public class Lobster : GameCharacters
 		if (c.tag == "Player")																//If the collission is with the game obejct tagged; "Player"..
 			Debug.Log("Lobster kills the player");											//When playerDead is true, the enemy stops moving because it killed the player.
 		if (c.tag == "HitProjectile")
+		{
+			GameObject itemDrop = (GameObject)GameObject.Instantiate(lobsterPart, Vector2.zero, Quaternion.identity);
+			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z);
 			Destroy(this.gameObject);
+		}
 	}
 
 	void chaseTarget()

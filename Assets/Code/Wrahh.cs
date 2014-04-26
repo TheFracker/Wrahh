@@ -31,6 +31,10 @@ public class Wrahh : GameCharacters
 	public GameObject defaultPrefab;
 
 	AudioSource[] sounds; 											// creates an array "sounds" of type "AudioSource"
+	int numberOfSounds;
+	int numberOfWalkingSounds;
+	int numberOfFallingSounds;
+	int numberOfHitGroundSounds;
 
 	//////////////////////////////////
 	// START 			    		//
@@ -62,23 +66,57 @@ public class Wrahh : GameCharacters
 		prefab = defaultPrefab;
 
 		walkSoundPlaying = false;
-		for (int i = 0; i<14;i++)
+		numberOfSounds = 16;
+		numberOfWalkingSounds = 14;
+		numberOfFallingSounds = 1+numberOfWalkingSounds;
+		numberOfHitGroundSounds = 1+numberOfFallingSounds;
+		for (int i = 0; i<numberOfSounds;i++)
 		{
 			this.gameObject.AddComponent<AudioSource>();
 		}
 		sounds = GetComponents<AudioSource>();						//all audio source components on the object it put in the "sounds" array in the order they are listed on the object
-		for (int i = 0; i<14;i++)
+		for (int i = 0; i<numberOfSounds;i++)
 		{
-			AudioClip ac = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
-			sounds[i].clip = ac;
+			AudioClip ac;
+			while(i<numberOfWalkingSounds)
+			{
+				ac = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
+				sounds[i].clip = ac;
+				sounds[i].playOnAwake = false;
+				sounds[i].rolloffMode = AudioRolloffMode.Linear;
+				sounds[i].pitch = 1f;
+				sounds[i].volume = 0.1f;
+				i++;
+			}
+
+			while(i<numberOfFallingSounds)
+			{
+				ac = Resources.Load("sounds/screamFall") as AudioClip;
+				sounds[i].clip = ac;
+				sounds[i].playOnAwake = false;
+				sounds[i].rolloffMode = AudioRolloffMode.Linear;
+				sounds[i].pitch = 1.0f;
+				sounds[i].volume = 1.0f;
+				sounds[i].loop = true;
+				i++;
+			}
+
+			while(i<numberOfHitGroundSounds)
+			{
+				ac = Resources.Load("sounds/hitGround") as AudioClip;
+				sounds[i].clip = ac;
+				sounds[i].playOnAwake = false;
+				sounds[i].rolloffMode = AudioRolloffMode.Linear;
+				sounds[i].pitch = 1.0f;
+				sounds[i].volume = 1.0f;
+				sounds[i].loop = false;
+				i++;
+			}
+
 		}
-		for (int i = 0; i<14;i++)
-		{
-			sounds[i].playOnAwake = false;
-			sounds[i].rolloffMode = AudioRolloffMode.Linear;
-			sounds[i].pitch = 1f;
-			sounds[i].volume = 0.1f;
-		}
+
+			
+
 
 
 	//From parent "GameCharacters.cs":
@@ -208,14 +246,17 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	void falling()
 	{
-		if (this.rigidbody2D.velocity.y < -2.5)
+		if (this.rigidbody2D.velocity.y < -2.5 && anim.GetBool("IsFalling")==false)
 		{
 			anim.SetBool("IsFalling", true);
 			canCrushEnemy = true;
+			sounds[14].Play();
 		}
 		
-		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true)
+		if (this.rigidbody2D.velocity.y > -0.5 && anim.GetBool("IsFalling") == true && anim.GetBool("HitGround") == false)
 		{
+			sounds[14].Stop();
+			sounds[15].Play();
 			anim.SetBool("HitGround", true);
 			StartCoroutine(waitForFallingAnimation());
 		}

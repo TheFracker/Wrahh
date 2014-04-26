@@ -2893,7 +2893,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shield: {fileID: 1305606162}
   helm: {fileID: 1305606161}
-  gameoverScreen: {fileID: 100008, guid: d10f40501925d9340a0681dab6f807e9, type: 2}
   defaultPrefab: {fileID: 1305606158}
 --- !u!95 &1305606167
 Animator:

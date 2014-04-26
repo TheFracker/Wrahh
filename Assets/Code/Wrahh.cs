@@ -12,13 +12,14 @@ public class Wrahh : GameCharacters
 	int helmMaxArmor;
 	int shieldArmor;
 	int helmArmor;
+	int currentSlot;
 
 	public Shield shield;
 	public Helm helm;
 
 	public static bool canCrushEnemy = false;
 	
-	Weapon[] weapons;
+	Weapon[] weapons = new Weapon[6];
 	Weapon currentWeapon;
 	int grenades;
 	
@@ -47,8 +48,15 @@ public class Wrahh : GameCharacters
 		lobsterParts = 10;
 		shieldArmor = 0;
 		helmArmor = 0;
-		
-		currentWeapon = gameObject.AddComponent<Weapon>();
+
+
+		for(int i = 0; i < 5; i++)
+		{
+			weapons[i] = gameObject.AddComponent<Weapon>();
+		}
+
+		currentSlot = 0;
+		currentWeapon = weapons[currentSlot];
 		prefab = defaultPrefab;
 
 	//From parent "GameCharacters.cs":
@@ -73,6 +81,12 @@ public class Wrahh : GameCharacters
 		if (Input.GetKeyUp (KeyCode.Space))
 			useWeapon (currentWeapon);
 		falling ();
+
+		if(Input.GetKeyUp(KeyCode.O))
+			changeWeaponUp();
+		if(Input.GetKeyUp(KeyCode.L))
+			changeWeaponDown();
+
 	}
 	
 	
@@ -192,7 +206,54 @@ public class Wrahh : GameCharacters
 		}
 		Debug.Log ("Don't have anything to throw");
 	}
-	
+
+	//////////////////////////////////////
+	//	INVENTORY						//
+	//////////////////////////////////////
+	bool inventoryFull()
+	{
+		for(int i = 0; i < 5; i++)
+		{
+			if(weapons[i].getName() == "weapon")
+				return false;
+		}
+		return true;
+	}
+
+	int emptyInventorySlot()
+	{
+		for(int i = 0; i < 5; i++)
+		{
+			if(weapons[i].getName() == "weapon")
+			{
+				return i;
+			}
+		}
+		return 0;
+	}
+
+	//////////////////////////////////////
+	//	CHANGE WEAPON					//
+	//////////////////////////////////////
+	void changeWeaponUp()
+	{
+		if(currentSlot == 4)
+			currentSlot = 0;
+		else
+			currentSlot++;
+		currentWeapon = weapons [currentSlot];
+	}
+
+	void changeWeaponDown()
+	{
+		if(currentSlot == 0)
+			currentSlot = 4;
+		else
+			currentSlot--;
+		currentWeapon = weapons [currentSlot];
+	}
+
+
 	//////////////////////////////////////
 	// PICK UP ITEMS					//
 	//////////////////////////////////////
@@ -213,18 +274,21 @@ public class Wrahh : GameCharacters
 			lobsterParts += 5;
 			}
 
-			if (c.gameObject.name == "gunPickUp")
+			if(!inventoryFull())
 			{
-				Debug.Log ("Picking up guns");
-				Destroy(c.gameObject);
-				gunsCollected += 1;
-			}
-
-			if (c.gameObject.name == "riflePickUp")
-			{
-				Debug.Log ("Picking up rifles");
-				Destroy(c.gameObject);
-				riflesCollected += 1;
+				if (c.gameObject.name == "gunPickUp")
+				{
+					Debug.Log ("Picking up guns");
+					Destroy(c.gameObject);
+					weapons[emptyInventorySlot()] = gameObject.AddComponent<Pistol>();
+				}
+				
+				if (c.gameObject.name == "riflePickUp")
+				{
+					Debug.Log ("Picking up rifles");
+					Destroy(c.gameObject);
+					weapons[emptyInventorySlot()] = gameObject.AddComponent<Rifle>();
+				}
 			}
 		}
 

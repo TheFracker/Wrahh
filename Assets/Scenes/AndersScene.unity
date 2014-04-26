@@ -250,6 +250,10 @@ Prefab:
       propertyPath: m_Name
       value: Dolphin
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c9b3580de7011a14a97f08a6ebbb8452, type: 2}
+      propertyPath: positionedTarget_left
+      value: 
+      objectReference: {fileID: 1657511019}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9b3580de7011a14a97f08a6ebbb8452, type: 2}
   m_RootGameObject: {fileID: 1528355110}
@@ -787,7 +791,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 10.8456602
+      value: 1.22508895
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1210,7 +1214,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionedTarget_right: {fileID: 0}
-  positionedTarget_left: {fileID: 0}
+  positionedTarget_left: {fileID: 1657511019}
+  stopRight: 1
+  stopLeft: 1
   maxDistance: 5
   shootDistance: 4
   closeDistance: 0
@@ -1366,7 +1372,7 @@ Transform:
   m_PrefabInternal: {fileID: 903135545}
   m_GameObject: {fileID: 1701949792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.41690874, y: 10.8456602, z: 0}
+  m_LocalPosition: {x: -6.41690874, y: 1.22508895, z: 0}
   m_LocalScale: {x: .190635234, y: .190635234, z: .190635234}
   m_Children:
   - {fileID: 311703511}
@@ -1439,6 +1445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d7dcccd6d090042b1b8e1a97d5b175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shield: {fileID: 0}
+  helm: {fileID: 0}
   defaultPrefab: {fileID: 1701949792}
 --- !u!95 &1701949797
 Animator:

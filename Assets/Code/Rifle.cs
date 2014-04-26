@@ -11,10 +11,12 @@ public class Rifle : Weapon {
 		MAGAZINE_SIZE = 15;
 		reloadTime = 3.0f;
 		reloading = false;
-		durability = 3;
+		durability = 10;
+		MAX_DURABILITY = 10;
 		accidentalFire = 2.0f;
-		hitDamage = 1;
+		hitDamage = 3;
 		delay = 0.3f;
+		durabilityLossChance = 30;
 	}
 
 	protected override void loadPrefab()
@@ -26,6 +28,7 @@ public class Rifle : Weapon {
 	public override void hit ()
 	{
 		base.hit ();
+		Debug.Log(durabilityLossChance);
 		if(Random.Range(0,100) <= durabilityLossChance)
 			durability--;
 	}

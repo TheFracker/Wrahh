@@ -295,21 +295,44 @@ public class UpgradeStation : MonoBehaviour {
 
 	void weaponUpgradeFunc(int id)
 	{
-		if(GUILayout.Button("Repair"))
+		if(GUILayout.Button("Repair Price: 5 Weapon Parts"))
 		{
 			Debug.Log(wrahh.Weapons[currentWeapon].getName());
 		}
 
-		if(GUILayout.Button("Upgrade Durabillity")){
-			Debug.Log("Durabillity is now: ");
+		if(GUILayout.Button("Upgrade Durabillity: 7 Weapon Parts")){
+
+			if (wrahh.Weapons[currentWeapon].DurabillityLevel == 0 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].DurabillityLevel = 1;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}
+			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 1 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].DurabillityLevel = 2;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}
+			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 2 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].DurabillityLevel = 3;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}
+			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 3)
+			{
+				Debug.Log ("Max Level");
+			}
+			else 
+			{
+				Debug.Log ("Can't Upgrade");
+			}
 		}
 
-		if(GUILayout.Button("Upgrade range")){
+		if(GUILayout.Button("Upgrade Range: 5 Weapon Parts")){
 			Debug.Log("Range is now: ");
 		}
 
 		
-		if(GUILayout.Button("Disassemble for: " + wrahh.Weapons[currentWeapon].getDura() + " weapon Parts")){
+		if(GUILayout.Button("Disassemble, Gain: " + wrahh.Weapons[currentWeapon].getDura() + " Weapon Parts")){
 			wrahh.WeaponParts += wrahh.Weapons[currentWeapon].getDura();
 			wrahh.Weapons[currentWeapon] = gameObject.AddComponent<Weapon>();
 			weaponShow = true;

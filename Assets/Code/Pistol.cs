@@ -12,10 +12,12 @@ public class Pistol : Weapon {
 		MAGAZINE_SIZE = 3;
 		reloadTime = 1.0f;
 		reloading = false;
-		durability = 3;
+		durability = 7;
+		MAX_DURABILITY = 7;
 		accidentalFire = 2.0f;
-		hitDamage = 1;
+		hitDamage = 2;
 		delay = 0.7f;
+		durabilityLossChance = 30;
 	}
 
 	protected override void loadPrefab()

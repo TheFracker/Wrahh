@@ -6,8 +6,6 @@ public class UpgradeStation : MonoBehaviour {
 	public Wrahh wrahh = new Wrahh();
 	public Shield shield = new Shield();
 	public Helm helm = new Helm();
-	public Rifle rifle = new Rifle();
-	public Pistol pistol = new Pistol();
 
 	public GUISkin mySkin;
 
@@ -302,14 +300,6 @@ public class UpgradeStation : MonoBehaviour {
 			Debug.Log(wrahh.Weapons[currentWeapon].getName());
 		}
 
-		if(GUILayout.Button("Disassemble for: " + wrahh.Weapons[currentWeapon].getDura() + " weapon Parts")){
-			wrahh.WeaponParts += wrahh.Weapons[currentWeapon].getDura();
-			wrahh.Weapons[currentWeapon] = gameObject.AddComponent<Weapon>();
-			weaponShow = true;
-			weaponUpgradeShow = false;
-			Debug.Log("Durabillity is now: ");
-		}
-
 		if(GUILayout.Button("Upgrade Durabillity")){
 			Debug.Log("Durabillity is now: ");
 		}
@@ -317,7 +307,14 @@ public class UpgradeStation : MonoBehaviour {
 		if(GUILayout.Button("Upgrade range")){
 			Debug.Log("Range is now: ");
 		}
+
 		
+		if(GUILayout.Button("Disassemble for: " + wrahh.Weapons[currentWeapon].getDura() + " weapon Parts")){
+			wrahh.WeaponParts += wrahh.Weapons[currentWeapon].getDura();
+			wrahh.Weapons[currentWeapon] = gameObject.AddComponent<Weapon>();
+			weaponShow = true;
+			weaponUpgradeShow = false;
+		}
 
 		if(GUILayout.Button("Return")){
 			weaponUpgradeShow = false;

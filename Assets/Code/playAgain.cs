@@ -17,7 +17,6 @@ public class playAgain : MonoBehaviour
 	
 	void OnMouseDown()
 	{
-		Wrahh.gameoverScreen.SetActive(false);
 		Application.LoadLevel(Application.loadedLevel);
 	}
 }

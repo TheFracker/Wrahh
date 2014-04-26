@@ -48,8 +48,6 @@ public class Wrahh : GameCharacters
 		if(helm == null)
 			helm = new Helm();
 
-		gameoverScreen.SetActive(false);
-
 		shieldOn = false;
 		helmOn = false;
 		grenades = 0;
@@ -439,7 +437,7 @@ public class Wrahh : GameCharacters
 		if (health <= 0)
 		{
 			die(this.gameObject);
-			gameoverScreen.SetActive(true);
+			playerDead = true;
 		}
 	}
 	

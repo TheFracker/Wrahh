@@ -10,7 +10,7 @@ public class GameCharacters : MonoBehaviour
 	protected float standardGravity = 7.4f; 				// initial gravity
 	protected float MAX_MOVE_SPEED; 						
 	protected float standardDrag = 5f; 						// initial drag force
-	protected bool playerDead = false;
+	public static bool playerDead = false;
 	
 	protected Animator anim;
 

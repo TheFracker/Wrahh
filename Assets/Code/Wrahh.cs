@@ -282,16 +282,24 @@ public class Wrahh : GameCharacters
 			{
 				if (c.gameObject.name == "gunPickUp")
 				{
+					int slot = emptyInventorySlot();
 					Debug.Log ("Picking up guns");
 					Destroy(c.gameObject);
-					weapons[emptyInventorySlot()] = gameObject.AddComponent<Pistol>();
+					weapons[slot] = gameObject.AddComponent<Pistol>();
+					currentSlot = slot;
+					if(currentWeapon.getName() == "weapon")
+						currentWeapon = weapons[currentSlot];
 				}
 				
 				if (c.gameObject.name == "riflePickUp")
 				{
+					int slot = emptyInventorySlot();
 					Debug.Log ("Picking up rifles");
 					Destroy(c.gameObject);
-					weapons[emptyInventorySlot()] = gameObject.AddComponent<Rifle>();
+					weapons[slot] = gameObject.AddComponent<Rifle>();
+					currentSlot = slot;
+					if(currentWeapon.getName() == "weapon" || currentWeapon.getName() == "Pistol")
+						currentWeapon = weapons[currentSlot];
 				}
 			}
 		}

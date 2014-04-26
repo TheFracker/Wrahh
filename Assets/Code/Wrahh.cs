@@ -48,7 +48,7 @@ public class Wrahh : GameCharacters
 		moveSpeed = 10000.0f;
 		facingRight = true;
 		MAX_MOVE_SPEED = 30.0f;
-		health = 3;
+		health = 100;
 		setStandardPhysics();
 		accesAnimator();
 	}

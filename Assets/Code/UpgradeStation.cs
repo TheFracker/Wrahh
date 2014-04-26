@@ -245,7 +245,7 @@ public class UpgradeStation : MonoBehaviour {
 	void weaponMenuFunc(int id)
 	{
 		if(wrahh.Weapons[0].getName() != "weapon")
-		if(GUILayout.Button(wrahh.Weapons[0].getName())){
+		if(GUILayout.Button(wrahh.Weapons[0].getName() + "," + " Durabillity: " + wrahh.Weapons[0].getDura() + " Max " + wrahh.Weapons[0].getMAXDura())){
 			currentWeapon = 0;
 			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
@@ -253,7 +253,7 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(wrahh.Weapons[1].getName() != "weapon")
-		if(GUILayout.Button(wrahh.Weapons[1].getName())){
+		if(GUILayout.Button(wrahh.Weapons[1].getName() + "," + " Durabillity: " + wrahh.Weapons[1].getDura() + " Max " + wrahh.Weapons[1].getMAXDura())){
 			currentWeapon = 1;
 			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
@@ -261,7 +261,7 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(wrahh.Weapons[2].getName() != "weapon")
-		if (GUILayout.Button(wrahh.Weapons[2].getName())){
+		if (GUILayout.Button(wrahh.Weapons[2].getName()+ "," + " Durabillity: " + wrahh.Weapons[2].getDura() + " Max " + wrahh.Weapons[2].getMAXDura())){
 			currentWeapon = 2;
 			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
@@ -269,7 +269,7 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(wrahh.Weapons[3].getName() != "weapon")
-		if (GUILayout.Button( wrahh.Weapons[3].getName())){
+		if (GUILayout.Button( wrahh.Weapons[3].getName()+ "," + " Durabillity: " + wrahh.Weapons[3].getDura() + " Max " + wrahh.Weapons[3].getMAXDura())){
 			currentWeapon = 3;
 			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
@@ -277,7 +277,7 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(wrahh.Weapons[4].getName() != "weapon")
-		if (GUILayout.Button(wrahh.Weapons[4].getName())){
+		if (GUILayout.Button(wrahh.Weapons[4].getName()+ "," + " Durabillity: " + wrahh.Weapons[4].getDura() + " Max " + wrahh.Weapons[4].getMAXDura())){
 			currentWeapon = 4;
 			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
@@ -305,6 +305,8 @@ public class UpgradeStation : MonoBehaviour {
 			if (wrahh.WeaponParts >= weaponRepairPrice && wrahh.Weapons[currentWeapon].getDura() < wrahh.Weapons[currentWeapon].getMAXDura()){
 				wrahh.WeaponParts -= weaponRepairPrice;
 				wrahh.Weapons[currentWeapon].setDura(wrahh.Weapons[currentWeapon].getMAXDura());
+				weaponShow = true;
+				weaponUpgradeShow = false;
 			}
 			else if (wrahh.Weapons[currentWeapon].getDura() == wrahh.Weapons[currentWeapon].getMAXDura())
 			{

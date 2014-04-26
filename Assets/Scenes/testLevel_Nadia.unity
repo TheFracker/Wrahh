@@ -2267,7 +2267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7c96515aa3c1344a69ae69665e20c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobsterPart: {fileID: 100000, guid: 35cd35f4952bfac4aa731712aaf54940, type: 2}
 --- !u!212 &1077074236
 SpriteRenderer:
   m_ObjectHideFlags: 0

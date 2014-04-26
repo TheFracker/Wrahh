@@ -386,7 +386,7 @@ public class Wrahh : GameCharacters
 
 		health -= damageTaken;
 		if (health <= 0)
-			die ();
+			die(this.gameObject);
 	}
 	
 	public int Health

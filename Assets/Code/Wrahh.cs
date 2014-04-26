@@ -376,18 +376,36 @@ public class Wrahh : GameCharacters
 
 	public void equipedWeapon()
 	{
+
 		if (currentWeapon.getName() == "Rifle")
 		{
+			if (currentWeapon.RangeLevel == 0){
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(true);
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_gun").gameObject.SetActive(false);
+			}
+			else if (currentWeapon.RangeLevel == 1){
+				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle1").gameObject.SetActive(true);
+				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(true);
+				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_gun").gameObject.SetActive(false);
+			}
+			else if (currentWeapon.RangeLevel == 2){
+				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle1").gameObject.SetActive(true);
+				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle2").gameObject.SetActive(true);
+				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(true);
+				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_gun").gameObject.SetActive(false);
+			}
 		}
 		else if (currentWeapon.getName() == "Pistol")
 		{
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_gun").gameObject.SetActive(true);
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(false);
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle1").gameObject.SetActive(false);
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle2").gameObject.SetActive(false);
 		}
 		else if (currentWeapon.getName() == "weapon")
 		{
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle1").gameObject.SetActive(false);
+			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle2").gameObject.SetActive(false);
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_gun").gameObject.SetActive(false);
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(false);
 		}

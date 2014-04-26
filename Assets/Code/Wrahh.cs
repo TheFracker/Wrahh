@@ -244,10 +244,12 @@ public class Wrahh : GameCharacters
 		anim.SetBool("isAttacking", true);
 		StartCoroutine(waitForAttackingAnimation());
 		currentWeapon.hit ();
+		Debug.Log (currentWeapon.getDura ());
 		if(CurrentWeapon.getDura() <= 0)
 		{
+			Debug.Log ("I AM HERE");
 			weapons[currentSlot] = gameObject.AddComponent<Weapon>();
-			currentWeapon = weapons[currentSlot];
+			this.currentWeapon = weapons[currentSlot];
 		}
 	}
 	

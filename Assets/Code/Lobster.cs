@@ -22,6 +22,9 @@ public class Lobster : GameCharacters
 	private Vector3 startPos;
 	private Vector3 dir;
 	private Vector3 currentDir;
+
+	protected Vector3 pos; 													// The position where the projectile should spawn
+	protected GameObject hitProjectile; 									// Projectile created when hitting with the weapon
 		
 	void Start()
 	{
@@ -35,6 +38,8 @@ public class Lobster : GameCharacters
 		moveSpeed = 2.0f;
 		health = 3;
 		armor = 4;
+
+		hitProjectile = Resources.Load ("Prefabs/LobsterProjectile") as GameObject;
 	}
 
 	void FixedUpdate ()
@@ -60,7 +65,11 @@ public class Lobster : GameCharacters
 	{
 		if (c.tag == "Player")																// If the collission is with the game obejct tagged; "Player"..
 		{
-			die(wrahh);
+			if(isFacingRight())
+				pos = this.transform.position + new Vector3(1.0f,0.5f,0);
+			else
+				pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
+			Instantiate(hitProjectile, pos, Quaternion.identity);
 			playerDead = true;
 		}
 		if (c.tag == "HitProjectile")

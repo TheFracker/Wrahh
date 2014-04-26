@@ -328,7 +328,29 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(GUILayout.Button("Upgrade Range: 5 Weapon Parts")){
-			Debug.Log("Range is now: ");
+			if (wrahh.Weapons[currentWeapon].RangeLevel == 0 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].RangeLevel = 1;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}
+			else if (wrahh.Weapons[currentWeapon].RangeLevel == 1 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].RangeLevel = 2;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}
+			else if (wrahh.Weapons[currentWeapon].RangeLevel == 2 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].RangeLevel = 3;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}
+			else if (wrahh.Weapons[currentWeapon].RangeLevel == 3)
+			{
+				Debug.Log ("Max Level");
+			}
+			else 
+			{
+				Debug.Log ("Can't Upgrade");
+			}
 		}
 
 		

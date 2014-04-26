@@ -32,4 +32,19 @@ public class Pistol : Weapon {
 		if(Random.Range(0,100) <= durabilityLossChance)
 			durability--;
 	}
+
+	protected override void rangeLevel1 ()
+	{
+		hitProjectile = Resources.Load ("Prefabs/hitGunProjectileMRange") as GameObject;
+	}
+
+	protected override void rangeLevel2 ()
+	{
+		hitProjectile = Resources.Load ("Prefabs/hitGunProjectileLRange") as GameObject;
+	}
+
+	protected override void rangeLevel3 ()
+	{
+		hitProjectile = Resources.Load ("Prefabs/hitGunProjectileLRange") as GameObject;
+	}
 }

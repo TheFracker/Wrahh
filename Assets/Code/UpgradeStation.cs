@@ -17,7 +17,7 @@ public class UpgradeStation : MonoBehaviour {
 	bool armorShow = false, helmShow = false, shieldShow = false;
 	bool weaponShow = false, weaponUpgradeShow = false, rifleShow = false;
 		
-	int repairPrice;
+	int weaponRepairPrice = 0;
 
 	bool paused = false, playerEnter = true;
 
@@ -245,36 +245,41 @@ public class UpgradeStation : MonoBehaviour {
 	void weaponMenuFunc(int id)
 	{
 		if(wrahh.Weapons[0].getName() != "weapon")
-		if(GUILayout.Button(wrahh.Weapons[0].getName())){
+		if(GUILayout.Button(wrahh.Weapons[0].getName() + "," + " Durabillity: " + wrahh.Weapons[0].getDura() + " Max " + wrahh.Weapons[0].getMAXDura())){
 			currentWeapon = 0;
+			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
 			weaponUpgradeShow = true;
 		}
 
 		if(wrahh.Weapons[1].getName() != "weapon")
-		if(GUILayout.Button(wrahh.Weapons[1].getName())){
+		if(GUILayout.Button(wrahh.Weapons[1].getName() + "," + " Durabillity: " + wrahh.Weapons[1].getDura() + " Max " + wrahh.Weapons[1].getMAXDura())){
 			currentWeapon = 1;
+			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
 			weaponUpgradeShow = true;
 		}
 
 		if(wrahh.Weapons[2].getName() != "weapon")
-		if (GUILayout.Button(wrahh.Weapons[2].getName())){
+		if (GUILayout.Button(wrahh.Weapons[2].getName()+ "," + " Durabillity: " + wrahh.Weapons[2].getDura() + " Max " + wrahh.Weapons[2].getMAXDura())){
 			currentWeapon = 2;
+			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
 			weaponUpgradeShow = true;
 		}
 
 		if(wrahh.Weapons[3].getName() != "weapon")
-		if (GUILayout.Button( wrahh.Weapons[3].getName())){
+		if (GUILayout.Button( wrahh.Weapons[3].getName()+ "," + " Durabillity: " + wrahh.Weapons[3].getDura() + " Max " + wrahh.Weapons[3].getMAXDura())){
 			currentWeapon = 3;
+			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
 			weaponUpgradeShow = true;
 		}
 
 		if(wrahh.Weapons[4].getName() != "weapon")
-		if (GUILayout.Button(wrahh.Weapons[4].getName())){
+		if (GUILayout.Button(wrahh.Weapons[4].getName()+ "," + " Durabillity: " + wrahh.Weapons[4].getDura() + " Max " + wrahh.Weapons[4].getMAXDura())){
 			currentWeapon = 4;
+			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
 			weaponShow = false;
 			weaponUpgradeShow = true;
 		}
@@ -295,9 +300,22 @@ public class UpgradeStation : MonoBehaviour {
 
 	void weaponUpgradeFunc(int id)
 	{
-		if(GUILayout.Button("Repair Price: 5 Weapon Parts"))
+		if(GUILayout.Button("Repair Price: " + weaponRepairPrice + " Weapon Parts"))
 		{
-			Debug.Log(wrahh.Weapons[currentWeapon].getName());
+			if (wrahh.WeaponParts >= weaponRepairPrice && wrahh.Weapons[currentWeapon].getDura() < wrahh.Weapons[currentWeapon].getMAXDura()){
+				wrahh.WeaponParts -= weaponRepairPrice;
+				wrahh.Weapons[currentWeapon].setDura(wrahh.Weapons[currentWeapon].getMAXDura());
+				weaponShow = true;
+				weaponUpgradeShow = false;
+			}
+			else if (wrahh.Weapons[currentWeapon].getDura() == wrahh.Weapons[currentWeapon].getMAXDura())
+			{
+				Debug.Log("Already at max durabillity");
+			}
+			else 
+			{
+				Debug.Log("Can't affor Upgrade");
+			}
 		}
 
 		if(GUILayout.Button("Upgrade Durabillity: 7 Weapon Parts")){
@@ -328,7 +346,29 @@ public class UpgradeStation : MonoBehaviour {
 		}
 
 		if(GUILayout.Button("Upgrade Range: 5 Weapon Parts")){
-			Debug.Log("Range is now: ");
+			if (wrahh.Weapons[currentWeapon].RangeLevel == 0 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].RangeLevel = 1;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}
+			else if (wrahh.Weapons[currentWeapon].RangeLevel == 1 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].RangeLevel = 2;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}
+			/*else if (wrahh.Weapons[currentWeapon].RangeLevel == 2 && wrahh.WeaponParts >= 7){
+				wrahh.Weapons[currentWeapon].RangeLevel = 3;
+				wrahh.WeaponParts -= 7;
+				wrahh.Weapons[currentWeapon].upgradeLevel();
+			}*/
+			else if (wrahh.Weapons[currentWeapon].RangeLevel == 2)
+			{
+				Debug.Log ("Max Level");
+			}
+			else 
+			{
+				Debug.Log ("Can't Upgrade");
+			}
 		}
 
 		

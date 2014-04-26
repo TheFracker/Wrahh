@@ -1,15 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-	/////////////////////////////////////////////////////////////
-	// TO DO:
-	// -----
-	// CHECK FROM WRAHH's SCRIPT IF HE IS DEAD!
-	// Be able to kill Wrahh
-	// Be able to get killed
-	// Less important: Be able to spawn
-	/////////////////////////////////////////////////////////////
-
 public class Lobster : GameCharacters
 {
 	private float maxDistance = 10.0f;										// This is the scope for the lobster's field of sight
@@ -22,6 +13,10 @@ public class Lobster : GameCharacters
 	private Vector3 startPos;
 	private Vector3 dir;
 	private Vector3 currentDir;
+
+	protected Vector3 pos; 													// The position where the projectile should spawn
+	protected GameObject hitProjectile; 									// Projectile created when hitting with the weapon
+	private bool attacking;
 		
 	void Start()
 	{
@@ -35,11 +30,14 @@ public class Lobster : GameCharacters
 		moveSpeed = 2.0f;
 		health = 3;
 		armor = 4;
+
+		attacking = false;
+		hitProjectile = Resources.Load ("Prefabs/LobsterProjectile") as GameObject;
 	}
 
 	void FixedUpdate ()
 	{
-		if(!playerDead) 																	// Only run this if the game is not over - so basically as long as Wrahh is alive :)
+		if(wrahh != null) 																	// Only run this if the game is not over - so basically as long as Wrahh is alive :)
 		{
 			target = GameObject.FindWithTag("Player").transform; 							// Assign the target to be the whatever object with the tag; "Player"
 			currentDir = enemyTransform.position;
@@ -60,8 +58,11 @@ public class Lobster : GameCharacters
 	{
 		if (c.tag == "Player")																// If the collission is with the game obejct tagged; "Player"..
 		{
-			die(wrahh);
-			playerDead = true;
+			if(!attacking)
+			{
+				attacking = true;
+				StartCoroutine("attack");
+			}
 		}
 		if (c.tag == "HitProjectile")
 		{
@@ -84,6 +85,20 @@ public class Lobster : GameCharacters
 		{
 			flip();
 			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	// Enemy returns to start position
+		}
+	}
+
+	IEnumerator attack()
+	{
+		while(attacking)
+		{
+			yield return new WaitForSeconds(0.5f);
+			if(isFacingRight())
+				pos = this.transform.position + new Vector3(1.0f,0.5f,0);
+			else
+				pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
+			Instantiate(hitProjectile, pos, Quaternion.identity);
+			attacking = false;
 		}
 	}
 }

@@ -55,7 +55,6 @@ public class Weapon : MonoBehaviour {
 
 	public virtual void hit()
 	{
-		Debug.Log ("Hitting");
 		if(gameObject.GetComponent<Wrahh>().isFacingRight())
 			pos = this.transform.position + new Vector3(1.0f,0.5f,0);
 		else
@@ -181,11 +180,5 @@ public class Weapon : MonoBehaviour {
 				ammo = MAGAZINE_SIZE;
 			}
 		}
-	}
-
-	public void done()
-	{
-		ammo = 1;
-		Debug.Log ("HERE I AM");
 	}
 }

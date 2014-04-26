@@ -49,10 +49,6 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
-  - name: Wall
-    userID: 3
-    uniqueID: 4057221669
-    locked: 0
   - name: Player
     userID: 2
     uniqueID: 1553996143
@@ -60,4 +56,8 @@ TagManager:
   - name: Armor
     userID: 1
     uniqueID: 3176973641
+    locked: 0
+  - name: BG
+    userID: 3
+    uniqueID: 4057221669
     locked: 0

@@ -61,11 +61,6 @@ public class Dolphin : GameCharacters
 				guard ();
 		// If close enough I will shoot at him
 		}
-
-		if (EnemySplat.isCrushed == true)
-		{
-			this.collider2D.enabled = false;
-		}
 	}
 
 	public void hurt(Projectile p)

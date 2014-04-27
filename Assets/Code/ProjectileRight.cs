@@ -3,15 +3,12 @@ using System.Collections;
 
 public class ProjectileRight : Projectile {
 
-	// Use this for initialization
+	// Inheritates from projectile
+
+	// Damage and speed is set
 	void Start () {
 		damage = 1;
 		speed = 10;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		move ();
 	}
 
 	public int giveDamage()

@@ -6,7 +6,7 @@ public class Dolphin : GameCharacters
 	Weapon weapon;													// The weapon that the dolphin carry with it
 
 	GameObject rifleDrop;											// This is the Dolphins rifle drop item
-	GameObject	gunDrop;											// This is the Dolphins gun drop item
+	GameObject gunDrop;												// This is the Dolphins gun drop item
 	private Transform enemyTransform;								// Stores position of this object
 
 																	// Can be used for setting up the positions that a dolphin should walk between. Two positions is already set in code, but with these, they can be manually set on the fly
@@ -101,14 +101,16 @@ public class Dolphin : GameCharacters
 	protected override void die (GameObject g)
 	{
 		//If dolphin uses rifle on death it will drop an riflePickUp object
-		if (usesRifle){ 
+		if (usesRifle)
+		{ 
 			GameObject itemDrop = (GameObject)GameObject.Instantiate(rifleDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
 			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
 			base.die (this.gameObject);
 		}
 
 		//If dolphin uses rifle on death it will drop an riflePickUp object
-		if(usesPistol){
+		if(usesPistol)
+		{
 			GameObject itemDrop1 = (GameObject)GameObject.Instantiate(gunDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
 			itemDrop1.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
 			base.die (this.gameObject);

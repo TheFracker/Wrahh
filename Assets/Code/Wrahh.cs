@@ -286,7 +286,6 @@ public class Wrahh : GameCharacters
 		anim.SetBool("isAttacking", true);
 		StartCoroutine(waitForAttackingAnimation());
 		currentWeapon.hit ();
-		Debug.Log (currentWeapon.getDura ());
 		if(CurrentWeapon.getDura() <= 0)
 		{
 			Destroy(weapons[currentSlot]);

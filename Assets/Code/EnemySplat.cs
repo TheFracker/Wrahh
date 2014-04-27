@@ -31,7 +31,7 @@ public class EnemySplat : MonoBehaviour {
 		
 		if(other.collider.tag == "Player" && Wrahh.canCrushEnemy == true && isCrushed == false)
 		{
-			transform.parent.gameObject.collider2D.enabled = false;
+			Destroy(transform.parent.gameObject.collider2D);
 			anim.SetBool("Crushing", true);
 			isCrushed = true;
 			sounds[0].Play();

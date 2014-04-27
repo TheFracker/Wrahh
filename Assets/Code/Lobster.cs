@@ -37,7 +37,8 @@ public class Lobster : GameCharacters
 
 	void FixedUpdate ()
 	{
-		if(wrahh != null) 																	// Only run this if the game is not over - so basically as long as Wrahh is alive :)
+		// If the lobster has not been crushed by Wrahh and Wrahh is alive the lobster will chase Wrahh
+		if(wrahh != null && EnemySplat.isCrushed == false) 																	
 		{
 			target = GameObject.FindWithTag("Player").transform; 							// Assign the target to be the whatever object with the tag; "Player"
 			currentDir = enemyTransform.position;

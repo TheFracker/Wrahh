@@ -402,6 +402,9 @@ public class Wrahh : GameCharacters
 						currentWeapon = weapons[currentSlot];
 				}
 			}
+			else
+				// If Wrahh's inventory is full, then the found weapon is destroyed
+				Destroy(c.gameObject);
 		}
 
 		// Picks up a med pack

@@ -132,6 +132,7 @@ public class Wrahh : GameCharacters
 		MAX_MOVE_SPEED = 30.0f;
 		health = 100;
 		setStandardPhysics();
+		accesAnimator();
 	}
 	
 	//////////////////////////////////
@@ -513,7 +514,7 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	public void hurt(Projectile p)
 	{
-		goRed(this.gameObject);
+
 
 		// The damage that Wrahh is about to take is kept in the damageTaken variable.
 		// The damage is first takes away his armor, and then start to take Wrahh's health 

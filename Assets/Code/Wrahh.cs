@@ -31,6 +31,7 @@ public class Wrahh : GameCharacters
 	int numberOfWalkingSounds;									// The number of walking sounds
 	int numberOfFallingSounds;									// The number of falling sounds
 	int numberOfHitGroundSounds;								// The number of sounds of Wrahh hitting the ground
+	int numberOfPunchSounds;
 
 	//////////////////////////////////
 	// START 			    		//
@@ -64,10 +65,11 @@ public class Wrahh : GameCharacters
 
 		// Lots of sounds being loaded
 		walkSoundPlaying = false;
-		numberOfSounds = 16;
+		numberOfSounds = 17;
 		numberOfWalkingSounds = 14;
 		numberOfFallingSounds = 1+numberOfWalkingSounds;
 		numberOfHitGroundSounds = 1+numberOfFallingSounds;
+		numberOfPunchSounds = 1+numberOfHitGroundSounds;
 		for (int i = 0; i<numberOfSounds;i++)
 		{
 			this.gameObject.AddComponent<AudioSource>();
@@ -110,6 +112,17 @@ public class Wrahh : GameCharacters
 				sounds[i].loop = false;
 				i++;
 			}
+			while(i<numberOfPunchSounds)
+			{
+				ac = Resources.Load("sounds/punch") as AudioClip;
+				sounds[i].clip = ac;
+				sounds[i].playOnAwake = false;
+				sounds[i].rolloffMode = AudioRolloffMode.Linear;
+				sounds[i].pitch = 1.0f;
+				sounds[i].volume = 1.0f;
+				sounds[i].loop = false;
+				i++;
+			}
 
 		}
 
@@ -132,7 +145,10 @@ public class Wrahh : GameCharacters
 		
 		// Hitting
 		if (Input.GetKeyUp (KeyCode.Space) && anim.GetBool("isAttacking") == false)
+		{
 			useWeapon (currentWeapon);
+			sounds[16].Play();
+		}
 
 		// Change weapon
 		if(Input.GetKeyUp(KeyCode.O))
@@ -283,6 +299,7 @@ public class Wrahh : GameCharacters
 		Debug.Log (currentWeapon.getDura ());
 		if(CurrentWeapon.getDura() <= 0)
 		{
+			Destroy(weapons[currentSlot]);
 			weapons[currentSlot] = gameObject.AddComponent<Weapon>();
 			this.currentWeapon = weapons[currentSlot];
 		}
@@ -376,6 +393,7 @@ public class Wrahh : GameCharacters
 					int slot = emptyInventorySlot();
 					Debug.Log ("Picking up guns");
 					Destroy(c.gameObject);
+					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Pistol>();
 					currentSlot = slot;
 					if(currentWeapon.getName() == "Fists")
@@ -387,6 +405,7 @@ public class Wrahh : GameCharacters
 					int slot = emptyInventorySlot();
 					Debug.Log ("Picking up rifles");
 					Destroy(c.gameObject);
+					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Rifle>();
 					currentSlot = slot;
 					if(currentWeapon.getName() == "Fists" || currentWeapon.getName() == "Pistol")

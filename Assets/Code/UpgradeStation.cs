@@ -162,84 +162,90 @@ public class UpgradeStation : MonoBehaviour
 			}
 		}
 
-		if(GUILayout.Button("Upgrade Protection")){
+		if(GUILayout.Button("Upgrade Protection (5) Lobster Parts")){ 	//Button which upgrades protection of helm according to  
 
-			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 1)
+			//This if/Else if statement runs according to the protection level of the Helm equipped
+			//Each statement checks if wrahh has 5 lobster parts (price of upgrade) and if the helm is On
+
+			if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 1) //If protectionLevel is 1 this statement is triggered
 			{
-				helm.Protection = 2;
-				wrahh.LobsterParts -= 5;
-				helm.upgradeProtection();
+				helm.Protection = 2;		//helm.Protection is reset to 2 so that next time the next statement will evaluate to true
+				wrahh.LobsterParts -= 5; 	//Lobster parts is decreased with 5
+				helm.upgradeProtection();	//helm.upgradeProtection() function is run and will upgrade the helms stats
 			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 2)
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 2) //If protectionLevel is 2 this statement is triggered
 			{
-				helm.Protection = 3;
-				wrahh.LobsterParts -= 5;
-				helm.upgradeProtection();
+				helm.Protection = 3;		//helm.Protection is reset to 3 so that next time the next statement will evaluate to true
+				wrahh.LobsterParts -= 5;	//Lobster parts is decreased with 5
+				helm.upgradeProtection();	//helm.upgradeProtection() function is run and will upgrade the helms stats
 			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 3)
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 3) //If protectionLevel is 3 this statement is triggered
 			{
-				helm.Protection = 4;
-				wrahh.LobsterParts -= 5;
-				helm.upgradeProtection();
+				helm.Protection = 4;		//helm.Protection is reset to 4 so that next time the next statement will evaluate to true
+				wrahh.LobsterParts -= 5;	//Lobster parts is decreased with 5
+				helm.upgradeProtection();	//helm.upgradeProtection() function is run and will upgrade the helms stats
 			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 4)
+			else if (wrahh.LobsterParts >= 5 && wrahh.HelmOn && helm.Protection == 4) //If protectionLevel is 4 this statement is triggered
 			{
-				helm.Protection = 5;
-				wrahh.LobsterParts -= 5;
-				helm.upgradeProtection();
+				helm.Protection = 5;		//helm.Protection is reset to 5 so that next time the next statement will evaluate to true
+				wrahh.LobsterParts -= 5;	//Lobster parts is decreased with 5
+				helm.upgradeProtection();	//helm.upgradeProtection() function is run and will upgrade the helms stats
 			}
-			else if (helm.Protection == 5)
+			else if (helm.Protection == 5) 	//If protectionLevel is 5 Max level have been reached and it will print Max Level to the Log
 			{
 				Debug.Log ("Max Level!");
 			}
 			else
-				Debug.Log ("Cannot Upgrade");
+				Debug.Log ("Cannot Upgrade"); //will be triggered if wrahh cannot upgrade either because he has no helm or can't afford.
 		}
 
-		if(GUILayout.Button("Return")){
-			helmShow = false;
-			armorShow = true;
+		if(GUILayout.Button("Return")){ 	//Will return user to previous menu
+			helmShow = false;				//Closing helmMenu
+			armorShow = true;				//Opening Armor Menu
 		}
-		if(GUILayout.Button("I'm Done Upgrading!!"))
+		if(GUILayout.Button("I'm Done Upgrading!!")) //Exiting menu
 		{
-			paused = false;
-			helmShow = false;
-			statsShow = false;
-			Time.timeScale = 1;
+			paused = false;					//Alows to pause game again
+			helmShow = false;				//Closes HelmShow
+			Time.timeScale = 1;				// Sets time to standard (Unpause)
 		}
 	}
 	
 	void shieldMenuFunc(int id)
 	{
-		if(GUILayout.Button("Repair Shield"))
+		// If wrahh has found a shield this function enables him to upgrade its armor
+		if(GUILayout.Button("Repair Shield (5) Lobster Parts")) 	//Button which Repairs shield armor
 		{
-			if (wrahh.ShieldArmor < wrahh.ShieldMaxArmor && wrahh.LobsterParts >= 5){
-				wrahh.LobsterParts -= 5;
-				wrahh.ShieldArmor = wrahh.ShieldMaxArmor;
+			//Checks if shieldArmor is less than ShieldMaxArmor and wrahh can afford upgrade (has more than 5 lobster parts)
+			if (wrahh.ShieldArmor < wrahh.ShieldMaxArmor && wrahh.LobsterParts >= 5){ 
+				wrahh.LobsterParts -= 5; 					//Wrahh LobsterParts is reduced by 5
+				wrahh.ShieldArmor = wrahh.ShieldMaxArmor; 	//Shield Armor is set equal to shield Max Armor
 			}
 		}
 
-		if(GUILayout.Button("Upgrade Protection")){
+		if(GUILayout.Button("Upgrade Protection (5) Lobster Parts")){ //Button which upgrades shield protectionLevel
 
-			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 1)
+			//If-/else if- statement which upgrades shield according to current protectionLevel
+			//Each function statement checks if wrahh has a shield and if he has minimum 5 lobsterparts
+			if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 1) //If shield.Protection is 1 this function is beeing run
 			{
-				wrahh.LobsterParts -= 5;
-				shield.Protection = 2;
-				shield.upgradeProtection();
+				wrahh.LobsterParts -= 5;	//reduces wrahhs lobster parts by 5
+				shield.Protection = 2; 		//sets Shield.Protection equal to 2 so that next upgrade will evaluate to true
+				shield.upgradeProtection(); //shield.upgradeProtection() is called to activate the new upgrade level
 			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 2)
+			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 2)	//If shield.Protection is 2 this function is beeing run
 			{
 				shield.Protection = 3;
 				wrahh.LobsterParts -= 5;
 				shield.upgradeProtection();
 			}
-			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 3)
+			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 3) 	//If shield.Protection is 3 this function is beeing run
 			{
 				shield.Protection = 4;
 				wrahh.LobsterParts -= 5;
 				shield.upgradeProtection();
 			}
-			else if (shield.Protection == 4)
+			else if (shield.Protection == 4)	//If shield.Protection is 4 this function is beeing run
 			{
 				Debug.Log ("Max Level!");
 			}
@@ -263,57 +269,68 @@ public class UpgradeStation : MonoBehaviour
 
 	void weaponMenuFunc(int id)
 	{
-		if(wrahh.Weapons[0].getName() != "weapon")
+		//Function used to print out all of wrahhs gathered weapons (max 5) into the gui menu so the player can upgrade them individually
+
+		if(wrahh.Weapons[0].getName() != "Fists"){ 	//Accessing location 0 of wrahhs weapon array and check if it is an item (not his fists)
+			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
 		if(GUILayout.Button(wrahh.Weapons[0].getName() + "," + " Durabillity: " + wrahh.Weapons[0].getDura() + " Max " + wrahh.Weapons[0].getMAXDura())){
-			currentWeapon = 0;
-			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
-			weaponShow = false;
-			weaponUpgradeShow = true;
+			currentWeapon = 0;			//sets currentWeapon value to 0 if button is pressed, used to modify this exact weapon
+			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;	//Calculates repair price from weapon MAXdura and current Durabillity
+			weaponShow = false; 		//Closes weapon menu function 
+			weaponUpgradeShow = true; 	//Opens Weapon Upgrade Menu
+			}
 		}
 
-		if(wrahh.Weapons[1].getName() != "weapon")
+		if(wrahh.Weapons[1].getName() != "Fists"){	//Accessing location 1 of wrahhs weapon array and check if it is an item (not his fists)
+			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
 		if(GUILayout.Button(wrahh.Weapons[1].getName() + "," + " Durabillity: " + wrahh.Weapons[1].getDura() + " Max " + wrahh.Weapons[1].getMAXDura())){
-			currentWeapon = 1;
-			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
-			weaponShow = false;
-			weaponUpgradeShow = true;
+			currentWeapon = 1;			//sets currentWeapon value to 1 if button is pressed, used to modify this exact weapon
+			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2; //Calculates repair price from weapon MAXdura and current Durabillity
+			weaponShow = false;			//Closes weapon menu function
+			weaponUpgradeShow = true;	//Opens Weapon Upgrade Menu		
+			}
 		}
 
-		if(wrahh.Weapons[2].getName() != "weapon")
+		if(wrahh.Weapons[2].getName() != "Fists"){	//Accessing location 2 of wrahhs weapon array and check if it is an item (not his fists)
+			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
 		if (GUILayout.Button(wrahh.Weapons[2].getName()+ "," + " Durabillity: " + wrahh.Weapons[2].getDura() + " Max " + wrahh.Weapons[2].getMAXDura())){
-			currentWeapon = 2;
-			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
-			weaponShow = false;
-			weaponUpgradeShow = true;
+			currentWeapon = 2; 			//sets currentWeapon value to 2 if button is pressed, used to modify this exact weapon
+				weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2; //Calculates repair price from weapon MAXdura and current Durabillity
+			weaponShow = false;			//Closes weapon menu function
+			weaponUpgradeShow = true;	//Opens Weapon Upgrade Menu		
+			}
 		}
 
-		if(wrahh.Weapons[3].getName() != "weapon")
+		if(wrahh.Weapons[3].getName() != "Fists"){	//Accessing location 3 of wrahhs weapon array and check if it is an item (not his fists)
+			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
 		if (GUILayout.Button( wrahh.Weapons[3].getName()+ "," + " Durabillity: " + wrahh.Weapons[3].getDura() + " Max " + wrahh.Weapons[3].getMAXDura())){
-			currentWeapon = 3;
-			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
-			weaponShow = false;
-			weaponUpgradeShow = true;
+				currentWeapon = 3;		//sets currentWeapon value to 3 if button is pressed, used to modify this exact weapon
+				weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2; //Calculates repair price from weapon MAXdura and current Durabillity
+			weaponShow = false;			//Closes weapon menu function
+			weaponUpgradeShow = true;	//Opens Weapon Upgrade Menu		
+			}
 		}
 
-		if(wrahh.Weapons[4].getName() != "weapon")
+		if(wrahh.Weapons[4].getName() != "Fists"){ 	//Accessing location 4 of wrahhs weapon array and check if it is an item (not his fists)
+			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
 		if (GUILayout.Button(wrahh.Weapons[4].getName()+ "," + " Durabillity: " + wrahh.Weapons[4].getDura() + " Max " + wrahh.Weapons[4].getMAXDura())){
-			currentWeapon = 4;
-			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;
-			weaponShow = false;
-			weaponUpgradeShow = true;
+			currentWeapon = 4;			//sets currentWeapon value to 4 if button is pressed, used to modify this exact weapon
+			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2; //Calculates repair price from weapon MAXdura and current Durabillity
+			weaponShow = false;			//Closes weapon menu function
+			weaponUpgradeShow = true;	//Opens Weapon Upgrade Menu		
+			}
 		}
 	
-		if(GUILayout.Button("Return")){
-			weaponShow = false;
-			menuShow = true;
+		if(GUILayout.Button("Return")){ //Returns to MainMenu
+			weaponShow = false; 		//Closes weapon Menu Function
+			menuShow = true;			//Opens Main Menu 
 		}
 
-		if(GUILayout.Button("I'm Done Upgrading!!"))
+		if(GUILayout.Button("I'm Done Upgrading!!")) //Exits upgrade Gui
 		{
-			paused = false;
-			weaponShow = false;
-			statsShow = false;
-			Time.timeScale = 1;
+			paused = false;			//Allows to reenter Pause mode
+			weaponShow = false;		//Closes current menu window (WeaponMenu)
+			Time.timeScale = 1;		//Sets time to standard 1
 		}
 	}
 
@@ -375,11 +392,6 @@ public class UpgradeStation : MonoBehaviour
 				wrahh.WeaponParts -= 7;
 				wrahh.Weapons[currentWeapon].upgradeLevel();
 			}
-			/*else if (wrahh.Weapons[currentWeapon].RangeLevel == 2 && wrahh.WeaponParts >= 7){
-				wrahh.Weapons[currentWeapon].RangeLevel = 3;
-				wrahh.WeaponParts -= 7;
-				wrahh.Weapons[currentWeapon].upgradeLevel();
-			}*/
 			else if (wrahh.Weapons[currentWeapon].RangeLevel == 2)
 			{
 				Debug.Log ("Max Level");
@@ -407,35 +419,6 @@ public class UpgradeStation : MonoBehaviour
 		{
 			paused = false;
 			weaponUpgradeShow = false;
-			statsShow = false;
-			Time.timeScale = 1;
-		}
-	}
-
-	void rifleMenuFunc(int id)
-	{
-		if(GUILayout.Button("Repair"))
-		{
-		}
-		
-		if(GUILayout.Button("Upgrade Durabillity")){
-			Debug.Log("Pistol Durabillity is now: ");
-		}
-		
-		if(GUILayout.Button("Upgrade range")){
-			Debug.Log("Rifle range is now: ");
-		}
-		
-
-		if(GUILayout.Button("Return")){
-			rifleShow = false;
-			weaponShow = true;
-		}
-		
-		if(GUILayout.Button("I'm Done Upgrading!!"))
-		{
-			paused = false;
-			rifleShow = false;
 			statsShow = false;
 			Time.timeScale = 1;
 		}

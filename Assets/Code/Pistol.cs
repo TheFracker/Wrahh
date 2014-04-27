@@ -16,6 +16,7 @@ public class Pistol : Weapon {
 		hitDamage = 2;
 		delay = 0.7f;
 		durabilityLossChance = 30;
+		xPos = 1f;
 	}
 
 	// Calls the base function, but loads a different prefab for the hitProjectile
@@ -65,10 +66,12 @@ public class Pistol : Weapon {
 	protected override void rangeLevel1 ()
 	{
 		hitProjectile = Resources.Load ("Prefabs/hitGunProjectileMRange") as GameObject;
+		xPos = 1.05f;
 	}
 
 	protected override void rangeLevel2 ()
 	{
 		hitProjectile = Resources.Load ("Prefabs/hitGunProjectileLRange") as GameObject;
+		xPos = 1.2f;
 	}
 }

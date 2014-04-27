@@ -80,8 +80,8 @@ public class Wrahh : GameCharacters
 			AudioClip ac;
 			while(i<numberOfWalkingSounds)
 			{
-				ac = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
-				sounds[i].clip = ac;
+				//ac = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
+				sounds[i].clip = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
 				sounds[i].pitch = 1f;

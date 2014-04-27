@@ -25,7 +25,7 @@ public class GameCharacters : MonoBehaviour
 	}
 
 	// Destroyes the character that died
-	protected void die(GameObject g)
+	protected virtual void die(GameObject g)
 	{
 		Destroy(g);
 	}

@@ -19,7 +19,6 @@ public class Weapon : MonoBehaviour {
 	protected float delay;				// The time between each shot
 	protected int durabillityLevel = 0;	// The level the durability has been upgraded to
 	protected int rangeLevel = 0;		// The level the range has been upgraded to
-	protected AudioSource[] sounds;
 
 	// Start by loading prefabs into the different projectile variables
 	void Start()
@@ -29,13 +28,7 @@ public class Weapon : MonoBehaviour {
 		shooting = false;
 		durability=1;
 		hitDamage = 1;
-		this.gameObject.AddComponent<AudioSource>();
-		sounds = this.GetComponents<AudioSource>();
-		sounds[0].clip = Resources.Load("sounds/punch") as AudioClip;
-		sounds[0].playOnAwake = false;
-		sounds[0].rolloffMode = AudioRolloffMode.Linear;
-		sounds[0].pitch = 1f;
-		sounds[0].volume = 1f;
+
 		durability = 1;
 	}
 

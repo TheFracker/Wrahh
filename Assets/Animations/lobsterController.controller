@@ -37,8 +37,8 @@ Transition:
   m_TransitionDuration: .25
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 5
-    m_ConditionEvent: 
+  - m_ConditionMode: 1
+    m_ConditionEvent: Crushing
     m_EventTreshold: 0
     m_ExitTime: .75
   m_Atomic: 1

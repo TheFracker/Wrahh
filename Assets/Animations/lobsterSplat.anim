@@ -20,12 +20,12 @@ AnimationClip:
         value: {x: 14.6527758, y: .908256829, z: 0}
         inSlope: {x: .696868896, y: -2.12090135, z: 0}
         outSlope: {x: .696868896, y: -2.12090135, z: 0}
-        tangentMode: 114847168
+        tangentMode: 0
       - time: .200000003
         value: {x: 14.7921495, y: .48407653, z: 0}
         inSlope: {x: .696868896, y: -2.12090135, z: 0}
         outSlope: {x: .696868896, y: -2.12090135, z: 0}
-        tangentMode: 257
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -58,7 +58,7 @@ AnimationClip:
         value: {x: .260416359, y: .011961366, z: .208796471}
         inSlope: {x: .258099437, y: -.984175503, z: 0}
         outSlope: {x: .258099437, y: -.984175503, z: 0}
-        tangentMode: 0
+        tangentMode: 182517760
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -69,35 +69,16 @@ AnimationClip:
         value: {x: 4.78935289, y: 4.78935289, z: 4.78935289}
         inSlope: {x: -7.7029109, y: 165.891449, z: 0}
         outSlope: {x: -7.7029109, y: 165.891449, z: 0}
-        tangentMode: 0
+        tangentMode: 114847168
       - time: .200000003
         value: {x: 3.24877071, y: 37.9676437, z: 4.78935289}
         inSlope: {x: -7.7029109, y: 165.891449, z: 0}
         outSlope: {x: -7.7029109, y: 165.891449, z: 0}
-        tangentMode: 0
+        tangentMode: 257
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: deathFromAbove
   m_FloatCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      - time: .200000003
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Enabled
-    path: 
-    classID: 58
-    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -254,25 +235,6 @@ AnimationClip:
     attribute: m_LocalScale.z
     path: 
     classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      - time: .200000003
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_Enabled
-    path: 
-    classID: 58
     script: {fileID: 0}
   - curve:
       serializedVersion: 2

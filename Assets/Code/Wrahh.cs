@@ -576,18 +576,18 @@ public class Wrahh : GameCharacters
 		if (health <= 0)
 		{
 			// Calls die from GameCharacters class
-			anim.SetBool("dying", true);
+			anim.SetBool("gettingKilled", true);
 			StartCoroutine("waitForDeath");
 			die(this.gameObject);
 		}
 	}
 
-	IEnumerator waitForDeath()
+	public IEnumerator waitForDeath()
 	{
-		while (anim.GetBool("dying") == true)
+		while (anim.GetBool("gettingKilled") == true)
 		{
-			yield return new WaitForSeconds(1.5f);
-			anim.SetBool("dying", false);
+			yield return new WaitForSeconds(5.0f);
+			anim.SetBool("gettingKilled", false);
 		}
 	}
 

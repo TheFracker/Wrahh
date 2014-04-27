@@ -6,7 +6,7 @@ public class playButton : MonoBehaviour
 	public Texture2D playNormal;
 	public Texture2D playHover;
 
-	/*void OnMouseEnter()
+	void OnMouseEnter()
 	{
 		guiTexture.texture = playHover;
 	}
@@ -19,5 +19,5 @@ public class playButton : MonoBehaviour
 	void OnMouseDown()
 	{
 		Application.LoadLevel("Level1");	//This line is ready for use!
-	}*/
+	}
 }

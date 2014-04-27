@@ -597,8 +597,14 @@ public class Wrahh : GameCharacters
 		if (health <= 0)
 		{
 			// Calls die from GameCharacters class
+			anim.SetBool ("isDead", true);
 			die(this.gameObject);
 		}
+	}
+
+	IEnumerator waitForDeath()
+	{
+		yield return new WaitForSeconds(1.5f);
 	}
 
 	// Lots of getters and setters. These are used to by the hud to show different stats to the user.

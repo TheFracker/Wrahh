@@ -9,7 +9,7 @@ public class Helm : MonoBehaviour
 	void Start()
 	{
 		if(wrahh == null)
-			wrahh = new Wrahh();
+			wrahh = GameObject.FindWithTag("Player").AddComponent<Wrahh>();
 	}
 	
 	// Is called whenever the helmet is upgraded in the upgrade station

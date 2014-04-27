@@ -3,12 +3,11 @@ using System.Collections;
 
 public class Dolphin : GameCharacters
 {
-
 	Weapon weapon;													// The weapon that the dolphin carry with it
 
-	GameObject rifleDrop;
-	GameObject	gunDrop;
-	private Transform enemyTransform;
+	GameObject rifleDrop;											// This is the Dolphins rifle drop item
+	GameObject	gunDrop;											// This is the Dolphins gun drop item
+	private Transform enemyTransform;								// Stores position of this object
 
 																	// Can be used for setting up the positions that a dolphin should walk between. Two positions is already set in code, but with these, they can be manually set on the fly
 	public Transform positionedTarget_right = null;					// This is for the right position
@@ -32,8 +31,11 @@ public class Dolphin : GameCharacters
 	void Start ()
 	{
 		enemyTransform = this.GetComponent<Transform>();	
+
+		// Adds rifle
 		rifleDrop = (GameObject)Resources.Load("Prefabs/gunPickUp");
 		gunDrop = (GameObject)Resources.Load("Prefabs/riflePickUp");
+
 		// Checks what weapon the dolphin carries and attach the correct script
 
 		if(usesRifle){

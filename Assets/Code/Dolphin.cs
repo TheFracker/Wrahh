@@ -61,11 +61,8 @@ public class Dolphin : GameCharacters
 
 	void FixedUpdate()
 	{
-
-
 		if (EnemySplat.isCrushed == false)							// If the dolphin has not been crushed by Wrahh it will guard an area, chase Wrahh and shoot at him
 		{
-
 			target = GameObject.FindWithTag("Player").transform;	//Assign the target to be the whatever object with the tag; "Player" - in this case Wrahh
 
 			// Is true if the dolphin and Wrahh are on the same platform

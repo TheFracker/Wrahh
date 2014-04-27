@@ -31,6 +31,7 @@ public class Weapon : MonoBehaviour {
 		hitDamage = 1;
 		MAX_DURABILITY = 1;
 		durability = 1;
+		xPos = 0.7f;
 	}
 
 	// Is called whenever the weapon is upgraded in the upgrade station

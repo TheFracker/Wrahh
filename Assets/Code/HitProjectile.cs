@@ -11,7 +11,7 @@ public class HitProjectile : Projectile
 	{
 		speed = 0;
 		damage = 3;
-		liveTime = 1.0f;
+		liveTime = 0.2f;
 		timeToDie = Time.time + liveTime;
 		criticalChange = 5;
 	}

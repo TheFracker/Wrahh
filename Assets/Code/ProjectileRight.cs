@@ -6,7 +6,7 @@ public class ProjectileRight : Projectile {
 	// Inheritates from projectile
 
 	// Damage and speed is set
-	void Start () {
+	void Awake () {
 		damage = 1;
 		speed = 10;
 	}

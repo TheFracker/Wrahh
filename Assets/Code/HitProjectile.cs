@@ -7,7 +7,7 @@ public class HitProjectile : Projectile
 	protected float timeToDie;
 	protected float criticalChange;
 	
-	void Start ()
+	void Awake ()
 	{
 		speed = 0;
 		damage = 1;

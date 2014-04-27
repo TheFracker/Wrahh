@@ -33,6 +33,8 @@ public class Lobster : GameCharacters
 
 		attacking = false;
 		hitProjectile = Resources.Load ("Prefabs/LobsterProjectile") as GameObject;
+
+		accessAnimator();
 	}
 
 	void FixedUpdate ()
@@ -103,11 +105,13 @@ public class Lobster : GameCharacters
 		while(attacking)
 		{
 			yield return new WaitForSeconds(0.5f);
+			anim.SetBool("isAttacking", true);
 			if(isFacingRight())
 				pos = this.transform.position + new Vector3(1.0f,0.5f,0);
 			else
 				pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
 			Instantiate(hitProjectile, pos, Quaternion.identity);
+			StartCoroutine("waitForAttackingAnimation");
 			attacking = false;
 		}
 	}

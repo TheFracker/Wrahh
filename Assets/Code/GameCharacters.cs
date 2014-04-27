@@ -83,4 +83,10 @@ public class GameCharacters : MonoBehaviour
 	{
 		return facingRight;
 	}
+
+	protected IEnumerator waitForAttackingAnimation()
+	{
+		yield return new WaitForSeconds(0.5f);
+		anim.SetBool("isAttacking", false);
+	}
 }

@@ -339,6 +339,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 9a3fe6a62a506e641aec7ce5810e7e90, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 9a3fe6a62a506e641aec7ce5810e7e90, type: 2}
+      propertyPath: m_AnimatePhysics
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a3fe6a62a506e641aec7ce5810e7e90, type: 2}
   m_RootGameObject: {fileID: 619805580}
@@ -2242,7 +2250,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: d5cff1f42e9381548a7103e91d5f791b, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_HasTransformHierarchy: 1
 --- !u!114 &906870360
 MonoBehaviour:

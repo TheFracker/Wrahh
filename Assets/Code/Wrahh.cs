@@ -152,9 +152,7 @@ public class Wrahh : GameCharacters
 			changeWeaponUp();
 		if(Input.GetKeyUp(KeyCode.L))
 			changeWeaponDown();
-
 	}
-	
 	
 	////////////////////////////////////////////
 	// FixedUpdate - used for movement		  //
@@ -267,7 +265,6 @@ public class Wrahh : GameCharacters
 		}
 	}
 	
-	
 	IEnumerator waitForFallingAnimation()
 	{
 		yield return new WaitForSeconds(1f);
@@ -276,12 +273,6 @@ public class Wrahh : GameCharacters
 		canCrushEnemy = false;
 	}
 
-	IEnumerator waitForAttackingAnimation()
-	{
-		yield return new WaitForSeconds(0.5f);
-		anim.SetBool("isAttacking", false);
-	}
-	
 	//////////////////////////////////////
 	// WEAPONS							//
 	//////////////////////////////////////

@@ -350,7 +350,7 @@ public class Wrahh : GameCharacters
 		// Pick up lobster parts used for buying helmets, and upgrading and reparing shields and helmets
 		if (c.tag == "Item")													
 		{
-			if (c.gameObject.name == "lobsterParts")
+			if (c.gameObject.name == "lobsterParts(Clone)")
 			{
 				Destroy(c.gameObject);
 				lobsterParts += 5;
@@ -362,7 +362,7 @@ public class Wrahh : GameCharacters
 			// Bare hands < Pistol < Rifle
 			if(!inventoryFull())
 			{
-				if (c.gameObject.name == "gunPickUp")
+				if (c.gameObject.name == "gunPickUp(Clone)")
 				{
 					int slot = emptyInventorySlot();
 					Destroy(c.gameObject);
@@ -373,7 +373,7 @@ public class Wrahh : GameCharacters
 						currentWeapon = weapons[currentSlot];
 				}
 				
-				if (c.gameObject.name == "riflePickUp")
+				if (c.gameObject.name == "riflePickUp(Clone)")
 				{
 					int slot = emptyInventorySlot();
 					Destroy(c.gameObject);
@@ -392,7 +392,7 @@ public class Wrahh : GameCharacters
 		// Picks up a med pack
 		if (c.tag == "Buff")												
 		{
-			if (c.gameObject.name == "healthBuff")
+			if (c.gameObject.name == "healthBuff(Clone)")
 			{
 				Destroy(c.gameObject);
 				health += 10;
@@ -576,8 +576,14 @@ public class Wrahh : GameCharacters
 		if (health <= 0)
 		{
 			// Calls die from GameCharacters class
+			anim.SetBool ("isDead", true);
 			die(this.gameObject);
 		}
+	}
+
+	IEnumerator waitForDeath()
+	{
+		yield return new WaitForSeconds(1.5f);
 	}
 
 	// Lots of getters and setters. These are used to by the hud to show different stats to the user.

@@ -77,10 +77,8 @@ public class Wrahh : GameCharacters
 		sounds = GetComponents<AudioSource>();						//all audio source components on the object it put in the "sounds" array in the order they are listed on the object
 		for (int i = 0; i<numberOfSounds;i++)
 		{
-			AudioClip ac;
 			while(i<numberOfWalkingSounds)
 			{
-				//ac = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
 				sounds[i].clip = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
@@ -91,8 +89,7 @@ public class Wrahh : GameCharacters
 
 			while(i<numberOfFallingSounds)
 			{
-				ac = Resources.Load("sounds/screamFall") as AudioClip;
-				sounds[i].clip = ac;
+				sounds[i].clip = Resources.Load("sounds/screamFall") as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
 				sounds[i].pitch = 1.0f;
@@ -103,8 +100,7 @@ public class Wrahh : GameCharacters
 
 			while(i<numberOfHitGroundSounds)
 			{
-				ac = Resources.Load("sounds/hitGround") as AudioClip;
-				sounds[i].clip = ac;
+				sounds[i].clip = Resources.Load("sounds/hitGround") as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
 				sounds[i].pitch = 1.0f;
@@ -114,12 +110,11 @@ public class Wrahh : GameCharacters
 			}
 			while(i<numberOfPunchSounds)
 			{
-				ac = Resources.Load("sounds/punch") as AudioClip;
-				sounds[i].clip = ac;
+				sounds[i].clip = Resources.Load("sounds/punch") as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
 				sounds[i].pitch = 1.0f;
-				sounds[i].volume = 1.0f;
+				sounds[i].volume = 0.5f;
 				sounds[i].loop = false;
 				i++;
 			}

@@ -45,8 +45,9 @@ public class Dolphin : GameCharacters
 
 	void FixedUpdate()
 	{
+
 		// If the dolphin has not been crushed by Wrahh it will guard an area, chase Wrahh and shoot at him
-		if (DolphineDeath.isCrushed == false)
+		if (EnemySplat.isCrushed == false)
 		{
 			//Assign the target to be the whatever object with the tag; "Player" - in this case Wrahh
 			target = GameObject.FindWithTag("Player").transform;
@@ -65,9 +66,9 @@ public class Dolphin : GameCharacters
 			else
 				guard ();
 		}
-
+		
 		// If the dolphin has been crushed, it will lose its collider
-		if (DolphineDeath.isCrushed == true)
+		if (EnemySplat.isCrushed == true)
 		{
 			this.collider2D.enabled = false;
 		}

@@ -24,7 +24,7 @@ public class HitProjectile : Projectile
 
 	protected virtual void OnTriggerEnter2D(Collider2D c)
 	{
-		if(c.tag == "Enemy" && c.name == "Dolphin")
+		if(c.tag == "Enemy" && c.name == "Dolphin_Gun" || c.name == "Dolphin_Rifle")
 		{
 			c.gameObject.GetComponent<Dolphin>().hurt(this);
 			Destroy (this.gameObject);

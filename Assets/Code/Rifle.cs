@@ -25,6 +25,32 @@ public class Rifle : Weapon {
 		hitProjectile = Resources.Load ("Prefabs/hitRifleProjectile") as GameObject;
 	}
 
+	protected override IEnumerator shot ()
+	{
+		while(shooting)
+		{
+			if (ammo > 0 &! reloading) {
+				if(gameObject.GetComponent<Dolphin>().isFacingRight())
+				{
+					pos = this.transform.position + new Vector3(1.3f,0.19f,0);
+					Instantiate(bulletRight, pos, Quaternion.identity);
+				}
+				else
+				{
+					pos = this.transform.position + new Vector3(-1.3f,0.19f,0);
+					Instantiate(bulletLeft, pos, Quaternion.identity);
+				}
+				ammo--;
+				yield return new WaitForSeconds(delay);
+				shooting = false;
+			} else {
+				yield return new WaitForSeconds(reloadTime);
+				shooting = false;
+				ammo = MAGAZINE_SIZE;
+			}
+		}
+	}
+
 	public override void hit ()
 	{
 		base.hit ();

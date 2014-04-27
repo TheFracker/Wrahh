@@ -29,7 +29,7 @@ public class Lobster : GameCharacters
 	//Set from parent (super) class :: GameCharacters
 		facingRight = false;
 		moveSpeed = 2.0f;
-		health = 3;
+		health = 30;
 		armor = 4;
 
 		attacking = false;

@@ -10,7 +10,7 @@ public class HUD : MonoBehaviour
 	float screenHeight = Screen.height;
 	float screenWidth = Screen.width;
 	bool hudOn;
-
+	
 	void OnGUI()
 	{
 		GUI.skin = mySkin;

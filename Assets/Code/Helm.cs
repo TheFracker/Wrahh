@@ -35,15 +35,16 @@ public class Helm : MonoBehaviour
 	}
 
 	// The different stages of protection that the helmet can offer.
+	// If HelmOn is true, Wrahh will be wearing a helmet, else he will be without
 	void protectionLevel0()
 	{
-		wrahh.HelmOn = false;
+		wrahh.HelmOn = false; 
 		wrahh.HelmMaxArmor = 0;
 		wrahh.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(false);
-		Debug.Log("Im here, Protection level 0");
 	}
 	void protectionLevelEquip()
 	{
+		// Wrahh gets a bit of armor, and the max amount of the helm armor is increased as well.
 		wrahh.HelmMaxArmor += 5;
 		wrahh.HelmArmor += 5;
 		wrahh.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(true);

@@ -54,10 +54,16 @@ public class Dolphin : GameCharacters
 
 			// Is true if the dolphin and Wrahh are on the same platform
 			bool withinSameHeight = this.transform.position.y + heightDistance >= target.position.y && this.transform.position.y - heightDistance <= target.position.y;
-
+			bool tooClose = withinSameHeight && Mathf.Abs(this.transform.position.x - target.transform.position.x) < shootDistance - 0.4f;
 			// If the dolphin and Wrahh are within a certain distance of eachother, the dolphin will chase Wrahh. If the dolphin and Wrahh are closer to each other, the dolphin will
 			// shoot to kill. If Wrahh is too far away for the dolphin to see, the dolphin will just guard an area.
-			if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x && withinSameHeight &! facingRight)
+			if (tooClose && ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x && withinSameHeight &! facingRight)
+			    || (Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x < target.position.x && withinSameHeight && facingRight)))
+			{
+				moveAway();
+				useWeapon(weapon);
+			}
+			else if ((Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x > target.position.x && withinSameHeight &! facingRight)
 			    || (Vector3.Distance(target.position, this.transform.position) <= shootDistance && this.transform.position.x < target.position.x && withinSameHeight && facingRight))
 				useWeapon(weapon);
 			else if((Vector3.Distance(target.position, this.transform.position) <= maxDistance && this.transform.position.x > target.position.x && withinSameHeight &! facingRight)
@@ -194,4 +200,11 @@ public class Dolphin : GameCharacters
 		this.transform.position += dir * moveSpeed * 2 * Time.deltaTime; //CHASE THE PLAYER!!!!!
 	}
 
+	void moveAway()
+	{
+		//The enemy's diretion
+		dir = target.position - this.transform.position;
+		dir.Normalize(); //Normalize the direction vector
+		this.transform.position += dir * -moveSpeed * 0.4f * Time.deltaTime; //GET AWAY FROM THE PLAYER!!!!!
+	}
 }

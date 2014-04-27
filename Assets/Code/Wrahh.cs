@@ -534,7 +534,7 @@ public class Wrahh : GameCharacters
 
 		// If the damage is higher than the armor that takes the first hit, that piece of armor will be destroyed, and the rest of the damage will be applied to the
 		// other armor part, if that is still equiped.
-		if (armorHit == 0 && damageTaken > 0)
+		if (armorHit == 0 && damageTaken > 0 && shield.Protection != 0)
 		{
 			damageTaken -= shieldArmor;
 			shieldArmor = 0;
@@ -545,7 +545,7 @@ public class Wrahh : GameCharacters
 				helmArmor -= damageTaken;
 				damageTaken = 0;
 			}
-			else
+			else if (helm.Protection != 0)
 			{
 				damageTaken -= helmArmor;
 				helmArmor = 0;
@@ -553,7 +553,7 @@ public class Wrahh : GameCharacters
 				helm.upgradeProtection();
 			}
 		}
-		else if (armorHit == 1 && damageTaken > 0)
+		else if (armorHit == 1 && damageTaken > 0 && helm.Protection != 0)
 		{
 			damageTaken -= helmArmor;
 			helmArmor = 0;
@@ -564,7 +564,7 @@ public class Wrahh : GameCharacters
 				shieldArmor -= damageTaken;
 				damageTaken = 0;
 			}
-			else
+			else if(shield.Protection != 0)
 			{
 				damageTaken -= helmArmor;
 				shieldArmor = 0;
@@ -572,10 +572,31 @@ public class Wrahh : GameCharacters
 				shield.upgradeProtection();
 			}
 		}
+		else
+		{
+			int dmg = damageTaken;
+			if(shield.Protection != 0)
+			{
+				if(damageTaken - shieldArmor <= 0)
+					damageTaken = 0;
+				else
+					damageTaken -= shieldArmor;
+				shieldArmor -= dmg;
+				dmg = damageTaken;
+			}
+			if(helm.Protection != 0)
+			{
+				if(dmg - helmArmor <= 0)
+					dmg = 0;
+				else
+					dmg -= helmArmor;
+				helmArmor -= damageTaken;
+				damageTaken = dmg;
+			}
+		}
 
 		// Any damage left after the armor has been hit, if any armor left, will take away his health.
 		// And if the health takes away the last of Wrahh's health, he will die, and the game will end.
-
 		health -= damageTaken;
 		if (health <= 0)
 		{

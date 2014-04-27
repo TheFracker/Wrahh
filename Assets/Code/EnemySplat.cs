@@ -26,12 +26,13 @@ public class EnemySplat : MonoBehaviour {
 	}
 
 
-	void OnCollisionEnter2D (Collision2D other)
+	void OnTriggerEnter2D (Collider2D other)
 	{
 		
-		if(other.collider.tag == "Player" && Wrahh.canCrushEnemy == true && isCrushed == false)
+		if(other.tag == "Player" && Wrahh.canCrushEnemy == true && isCrushed == false)
 		{
-			transform.parent.gameObject.collider2D.enabled = false;
+			Destroy(transform.parent.gameObject.collider2D);
+			Destroy(transform.parent.gameObject.rigidbody2D);
 			anim.SetBool("Crushing", true);
 			isCrushed = true;
 			sounds[0].Play();

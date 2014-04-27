@@ -3,8 +3,7 @@ using System.Collections;
 
 public class exitButton : MonoBehaviour
 {
-	public Texture2D exitNormal;
-	public Texture2D exitHover;
+	public Texture2D exitNormal,exitHover;
 
 	void OnMouseEnter()
 	{

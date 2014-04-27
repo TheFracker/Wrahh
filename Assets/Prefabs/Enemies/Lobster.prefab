@@ -44,9 +44,12 @@ GameObject:
   - 58: {fileID: 5800000}
   - 50: {fileID: 5000000}
   - 61: {fileID: 6100000}
+<<<<<<< HEAD
+=======
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 95: {fileID: 9500000}
+>>>>>>> a89fa3397c06cef202bba4f8b32219e519040322
   m_Layer: 0
   m_Name: _Lobster
   m_TagString: Enemy
@@ -151,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad13d732f8c9da45b2d12af3143dc5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7c96515aa3c1344a69ae69665e20c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+>>>>>>> a89fa3397c06cef202bba4f8b32219e519040322
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

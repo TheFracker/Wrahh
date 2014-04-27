@@ -55,7 +55,7 @@ public class Dolphin : GameCharacters
 		//From parent "GameCharacters.cs":
 		moveSpeed = 10;
 		facingRight = false;
-		health = 3;
+		health = 20;
 		setStandardPhysics();
 	}
 

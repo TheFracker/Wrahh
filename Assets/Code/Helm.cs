@@ -12,7 +12,8 @@ public class Helm : MonoBehaviour
 			wrahh = new Wrahh();
 	}
 	
-	
+	// Is called whenever the helmet is upgraded in the upgrade station
+	// protection level 0 is set when he loses his helmet
 	public void upgradeProtection()
 	{
 		if(protection == 0){
@@ -33,6 +34,7 @@ public class Helm : MonoBehaviour
 		
 	}
 
+	// The different stages of protection that the helmet can offer.
 	void protectionLevel0()
 	{
 		wrahh.HelmOn = false;
@@ -67,7 +69,7 @@ public class Helm : MonoBehaviour
 		Debug.Log("Im here, Protection level 3");
 	}
 
-
+	// Getter and setter
 	public int Protection
 	{
 		get

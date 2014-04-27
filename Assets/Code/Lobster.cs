@@ -37,7 +37,7 @@ public class Lobster : GameCharacters
 
 	void FixedUpdate ()
 	{
-		// If the lobster has not been crushed by Wrahh and Wrahh is alive the lobster will chase Wrahh
+		// If the lobster has not been crushed by Wrahh and Wrahh is still alive the lobster will chase Wrahh
 		if(wrahh != null && EnemySplat.isCrushed == false)
 		{
 			target = GameObject.FindWithTag("Player").transform; 							// Assign the target to be the whatever object with the tag; "Player"

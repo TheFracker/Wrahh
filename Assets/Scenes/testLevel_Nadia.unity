@@ -692,9 +692,29 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 21200016, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1f3e23ad4422628428a27ed3169fb5b6, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200016, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200016, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200008, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200008, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200008, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcaf4cb7a0d3cf745bc3c93a7a7fa21b, type: 2}
   m_RootGameObject: {fileID: 353408540}
@@ -863,7 +883,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 1f3e23ad4422628428a27ed3169fb5b6, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -886,6 +906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d7dcccd6d090042b1b8e1a97d5b175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {r: 0, g: 0, b: 0, a: 0}
+  collide: {r: 0, g: 0, b: 0, a: 0}
   shield: {fileID: 353408544}
   helm: {fileID: 353408543}
 --- !u!95 &353408549
@@ -2770,6 +2792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7c96515aa3c1344a69ae69665e20c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {r: 0, g: 0, b: 0, a: 0}
+  collide: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &1077074236
 SpriteRenderer:
   m_ObjectHideFlags: 0

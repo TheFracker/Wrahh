@@ -7,7 +7,7 @@ public class ProjectileRight : Projectile {
 
 	// Damage and speed is set
 	void Awake () {
-		damage = 1;
+		damage = 5;
 		speed = 10;
 	}
 

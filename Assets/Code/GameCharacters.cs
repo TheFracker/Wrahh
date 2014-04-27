@@ -43,7 +43,9 @@ public class GameCharacters : MonoBehaviour
 	protected void blinkRed()
 	{
 		foreach (Transform child in transform)					// Same as above - access all children of the gameobject
+		{
 			child.renderer.material.color = Color.red;			// But this time, turn them red!
+		}			
 		isHurt = true; 											// And color-wise we are getting hurt
 		StartCoroutine("waitForBlink"); 						// So start the IEnumerator so we can go back to normal
 	}
@@ -82,9 +84,9 @@ public class GameCharacters : MonoBehaviour
 		return facingRight;
 	}
 
-	protected IEnumerator waitForAttackingAnimation()
+	protected virtual IEnumerator waitForAttackingAnimation()
 	{
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.2f);
 		anim.SetBool("isAttacking", false);
 	}
 }

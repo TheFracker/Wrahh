@@ -11,11 +11,13 @@ public class ProjectileRight : Projectile {
 		speed = 10;
 	}
 
+	// Gives damage to Wrahh when hit
 	public int giveDamage()
 	{
 		return damage;
 	}
 
+	// Is called when colliding with something but nothing will happen unless the player is hit
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Player")
@@ -23,10 +25,5 @@ public class ProjectileRight : Projectile {
 			Destroy (this.gameObject);
 			c.gameObject.GetComponent<Wrahh>().hurt(this);
 		}
-	}
-
-	protected override void move ()
-	{
-		base.move ();
 	}
 }

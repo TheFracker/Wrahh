@@ -7,31 +7,38 @@ public class Weapon : MonoBehaviour {
 	protected int ammo = 9; 			// Amount of ammoation
 	protected int MAGAZINE_SIZE = 9; 	// Size of magazine
 	protected float reloadTime = 2; 	// The time it takes to reload
-	protected bool reloading; 			// If reloading, this will be true
 	protected int durability; 			// How many hits it can take
 	protected int MAX_DURABILITY;		// The maximum amount of hits the weapon can take
 	protected int durabilityLossChance; // The chance to lose durability when hitting
-	protected float accidentalFire; 	// Critacal chance
 	protected int hitDamage; 			// Damage it gives when using it as a club
 	protected GameObject bulletRight; 	// The bullet in the champer when shooting right
 	protected GameObject bulletLeft;	// The bullet in the champer when shooting left
 	protected GameObject hitProjectile; // Projectile created when hitting with the weapon
 	protected Vector3 pos; 				// The position where the projectile should spawn
 	protected bool shooting;			// If the Dolphin is pressing the trigger or not
-	protected float delay;// The time between each shot
-	protected int durabillityLevel = 0;
-	protected int rangeLevel = 0; 
+	protected float delay;				// The time between each shot
+	protected int durabillityLevel = 0;	// The level the durability has been upgraded to
+	protected int rangeLevel = 0;		// The level the range has been upgraded to
+	protected AudioSource[] sounds;
 
-
+	// Start by loading prefabs into the different projectile variables
 	void Start()
 	{
 		loadPrefab ();
-		durabilityLossChance = 70;
-		name = "weapon";
+		name = "Fists";
 		shooting = false;
 		durability=1;
+		hitDamage = 1;
+		this.gameObject.AddComponent<AudioSource>();
+		sounds = this.GetComponents<AudioSource>();
+		sounds[0].clip = Resources.Load("sounds/punch") as AudioClip;
+		sounds[0].playOnAwake = false;
+		sounds[0].rolloffMode = AudioRolloffMode.Linear;
+		sounds[0].pitch = 1f;
+		sounds[0].volume = 1f;
 	}
 
+	// Is called whenever the weapon is upgraded in the upgrade station
 	public void upgradeLevel()
 	{
 		if(durabillityLevel == 1){
@@ -50,11 +57,9 @@ public class Weapon : MonoBehaviour {
 		else if(rangeLevel == 2){
 			rangeLevel2();
 		}
-		else if(durabillityLevel == 3){
-			rangeLevel3();
-		}
 	}
 
+	// Is called when Wrahh uses a weapon
 	public virtual void hit()
 	{
 		if(gameObject.GetComponent<Wrahh>().isFacingRight())
@@ -65,6 +70,7 @@ public class Weapon : MonoBehaviour {
 		Instantiate(hitProjectile, pos, Quaternion.identity);
 	}
 
+	// Function that loads the prefabs into the variables
 	protected virtual void loadPrefab()
 	{
 		bulletRight = Resources.Load ("Prefabs/BulletRight") as GameObject;
@@ -72,14 +78,52 @@ public class Weapon : MonoBehaviour {
 		hitProjectile =  Resources.Load ("Prefabs/hitProjectile") as GameObject;
 	}
 
+	//////////////////////////////////////////////
+	//	SHOOT									//
+	//////////////////////////////////////////////
+
+	// Is called when a dolphin uses a weapon
 	public virtual void shoot()
 	{
+		// If a dolphin is not shooting a coroutine is startet, and shooting is set to true.
 		if(!shooting)
 		{
 			shooting = true;
 			StartCoroutine ("shot");
 		}
 	}
+
+	protected virtual IEnumerator shot()
+	{
+		// If shootng is true and ammo is more than 0, then the dolphin will shoot, if not, the weapon will be reloaded.
+		if(shooting)
+		{
+			if (ammo > 0) {
+				if(gameObject.GetComponent<Dolphin>().isFacingRight())
+				{
+					pos = this.transform.position + new Vector3(1.5f,0.5f,0);
+					Instantiate(bulletRight, pos, Quaternion.identity);
+				}
+				else
+				{
+					pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+					Instantiate(bulletLeft, pos, Quaternion.identity);
+				}
+				ammo--;
+				yield return new WaitForSeconds(delay);
+				shooting = false;
+			} else {
+				yield return new WaitForSeconds(reloadTime);
+				shooting = false;
+				ammo = MAGAZINE_SIZE;
+			}
+		}
+	}
+
+	//////////////////////////////////////////////
+	//	UPGRADE STATES							//
+	//////////////////////////////////////////////
+
 
 	protected virtual void durabillityLevel1()
 	{
@@ -110,24 +154,18 @@ public class Weapon : MonoBehaviour {
 	{
 	}
 
-	protected virtual void rangeLevel3()
-	{
-	}
 
+	// Getters and setters
 	public int DurabillityLevel
 	{
-	get{ return durabillityLevel; }
-	set{ durabillityLevel = value; }
+		get{ return durabillityLevel; }
+		set{ durabillityLevel = value; }
 	}
 
 	public int RangeLevel
 	{
 		get{ return rangeLevel; }
 		set{ rangeLevel = value; }
-	}
-	public bool isReloading()
-	{
-		return reloading;
 	}
 
 	public int getHitDamage()
@@ -157,31 +195,5 @@ public class Weapon : MonoBehaviour {
 	public void addToMAXDura(int value)
 	{
 		MAX_DURABILITY += value;
-	}
-	
-	protected virtual IEnumerator shot()
-	{
-		while(shooting)
-		{
-			if (ammo > 0 &! reloading) {
-				if(gameObject.GetComponent<Dolphin>().isFacingRight())
-				{
-					pos = this.transform.position + new Vector3(1.5f,0.5f,0);
-					Instantiate(bulletRight, pos, Quaternion.identity);
-				}
-				else
-				{
-					pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
-					Instantiate(bulletLeft, pos, Quaternion.identity);
-				}
-				ammo--;
-				yield return new WaitForSeconds(delay);
-				shooting = false;
-			} else {
-				yield return new WaitForSeconds(reloadTime);
-				shooting = false;
-				ammo = MAGAZINE_SIZE;
-			}
-		}
 	}
 }

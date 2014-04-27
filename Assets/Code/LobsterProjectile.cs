@@ -3,20 +3,16 @@ using System.Collections;
 
 public class LobsterProjectile : HitProjectile {
 
-	// Use this for initialization
+	// Since this projectile will not be moving its speed is set to 0
+	// And since it will not be moving it will be destroyed after a little while, which is is liveTime
 	void Start () {
 		speed = 0;
 		damage = 20;
 		liveTime = 1.0f;
 		timeToDie = Time.time + liveTime;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(timeToDie < Time.time)
-			Destroy(this.gameObject);
-	}
 
+	// This will trigger when the projectile collides with anything, but will only hurt the player
 	protected virtual void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Player")
@@ -26,6 +22,7 @@ public class LobsterProjectile : HitProjectile {
 		}
 	}
 
+	// Inflicts the damage
 	public override int giveDamage ()
 	{
 		return damage;

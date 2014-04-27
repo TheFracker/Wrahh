@@ -326,7 +326,7 @@ public class Wrahh : GameCharacters
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			if(weapons[i].getName() == "weapon")
+			if(weapons[i].getName() == "Fists")
 				return false;
 		}
 		return true;
@@ -337,7 +337,7 @@ public class Wrahh : GameCharacters
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			if(weapons[i].getName() == "weapon")
+			if(weapons[i].getName() == "Fists")
 			{
 				return i;
 			}
@@ -395,7 +395,7 @@ public class Wrahh : GameCharacters
 					Destroy(c.gameObject);
 					weapons[slot] = gameObject.AddComponent<Pistol>();
 					currentSlot = slot;
-					if(currentWeapon.getName() == "weapon")
+					if(currentWeapon.getName() == "Fists")
 						currentWeapon = weapons[currentSlot];
 				}
 				
@@ -406,7 +406,7 @@ public class Wrahh : GameCharacters
 					Destroy(c.gameObject);
 					weapons[slot] = gameObject.AddComponent<Rifle>();
 					currentSlot = slot;
-					if(currentWeapon.getName() == "weapon" || currentWeapon.getName() == "Pistol")
+					if(currentWeapon.getName() == "Fists" || currentWeapon.getName() == "Pistol")
 						currentWeapon = weapons[currentSlot];
 				}
 			}
@@ -495,7 +495,7 @@ public class Wrahh : GameCharacters
 				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle2").gameObject.SetActive(false);
 			}
 		}
-		else if (currentWeapon.getName() == "weapon")
+		else if (currentWeapon.getName() == "Fists")
 		{
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(false);
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle1").gameObject.SetActive(false);
@@ -576,6 +576,7 @@ public class Wrahh : GameCharacters
 		health -= damageTaken;
 		if (health <= 0)
 		{
+			// Calls die from GameCharacters class
 			die(this.gameObject);
 		}
 	}

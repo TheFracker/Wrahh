@@ -92,7 +92,7 @@ public class Dolphin : GameCharacters
 	// This makes the dolphin able to take damage from projectiles hitting it. And will also check if the health of the dolphin is below 0 so that it will die
 	public void hurt(Projectile p)
 	{
-
+		base.blinkRed();
 		health -= p.giveDamage();
 		if(health <= 0)
 			die(this.gameObject);

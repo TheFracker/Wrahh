@@ -9,6 +9,7 @@ public class Lobster : GameCharacters
 	private Transform enemyTransform;
 	private GameObject lobsterPart;											// This is the lobster's drop item
 	private GameObject wrahh;
+	private Animator childAnim;
 
 	private Vector3 startPos;
 	private Vector3 dir;
@@ -17,7 +18,7 @@ public class Lobster : GameCharacters
 	protected Vector3 pos; 													// The position where the projectile should spawn
 	protected GameObject hitProjectile; 									// Projectile created when hitting with the weapon
 	private bool attacking;
-		
+
 	void Start()
 	{
 		enemyTransform = this.GetComponent<Transform>();					// Gets the Tranform of this gameobjects (lobster)
@@ -35,6 +36,7 @@ public class Lobster : GameCharacters
 		hitProjectile = Resources.Load ("Prefabs/LobsterProjectile") as GameObject;
 
 		accessAnimator();
+		childAnim = this.transform.GetChild(0).GetComponent<Animator>();
 	}
 
 	void FixedUpdate ()
@@ -99,19 +101,24 @@ public class Lobster : GameCharacters
 			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	// Move the enemy to its start position..
 		}
 	}
+
+	protected override IEnumerator waitForAttackingAnimation()	//This IEnumerator had to be a override since in the lobster's case, we
+	{															// have to access the Animator of a child, not the gameObject itself..
+		yield return new WaitForSeconds(0.2f);
+		childAnim.SetBool("isAttacking", false);
+	}
 	
-	IEnumerator attack()			// When the lobster is close enough to the player to start attacking, this coroutine will be started.
-	{								// It essentially gives a delay to attacks, so that Wrahh has a bigger chance of surviving its attack.
+	IEnumerator attack()	// When the lobster is close enough to the player to start attacking, this coroutine will be started.
+	{						// It essentially gives a delay to attacks, so that Wrahh has a bigger chance of surviving its attack.
 		while(attacking)
 		{
-			yield return new WaitForSeconds(0.5f);
-			anim.SetBool("isAttacking", true);
+			yield return new WaitForSeconds(0.5f); // This is the time (0.5) the player has a chance to attack before getting attacked.
 			if(isFacingRight())
-				pos = this.transform.position + new Vector3(1.0f,0.5f,0);
-			else
-				pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
+				 pos = this.transform.position + new Vector3(1.0f ,0.5f , 0);
+			else pos = this.transform.position + new Vector3(-1.0f ,0.5f , 0);
+			childAnim.SetBool ("isAttacking", true);	 // 
 			Instantiate(hitProjectile, pos, Quaternion.identity);
-			StartCoroutine("waitForAttackingAnimation");
+			StartCoroutine("waitForAttackingAnimation"); // Wait for the animation to finish before continueing
 			attacking = false;
 		}
 	}

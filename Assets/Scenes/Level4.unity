@@ -1276,32 +1276,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
---- !u!1 &320083445
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100012, guid: c134352a13f36154392b6f285c76340b, type: 2}
-  m_PrefabInternal: {fileID: 678174580}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 320083446}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &320083446
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400012, guid: c134352a13f36154392b6f285c76340b, type: 2}
-  m_PrefabInternal: {fileID: 678174580}
-  m_GameObject: {fileID: 320083445}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.7291069, y: -.0278369579, z: -.0207519531}
-  m_LocalScale: {x: 1.66666663, y: 1.66666663, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2043046142}
 --- !u!1001 &326405253
 Prefab:
   m_ObjectHideFlags: 0
@@ -1895,32 +1869,6 @@ Transform:
   m_LocalScale: {x: 1.19879019, y: 1.19879138, z: .719563842}
   m_Children: []
   m_Father: {fileID: 1067516791}
---- !u!1 &644911203
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100010, guid: c134352a13f36154392b6f285c76340b, type: 2}
-  m_PrefabInternal: {fileID: 678174580}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 644911204}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &644911204
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400010, guid: c134352a13f36154392b6f285c76340b, type: 2}
-  m_PrefabInternal: {fileID: 678174580}
-  m_GameObject: {fileID: 644911203}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.93755913, y: -.0278369579, z: -.0207519531}
-  m_LocalScale: {x: 1.66666663, y: 1.66666663, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2043046142}
 --- !u!1001 &678174580
 Prefab:
   m_ObjectHideFlags: 0
@@ -5965,8 +5913,6 @@ Transform:
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 1067516791}
-  - {fileID: 320083446}
-  - {fileID: 644911204}
   m_Father: {fileID: 0}
 --- !u!50 &2043046143
 Rigidbody2D:

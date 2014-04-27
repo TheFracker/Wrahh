@@ -576,7 +576,8 @@ public class Wrahh : GameCharacters
 		if (health <= 0)
 		{
 			// Calls die from GameCharacters class
-			anim.SetBool ("isDead", true);
+			anim.SetBool("dying", true);
+			StartCoroutine("waitForDeath");
 			die(this.gameObject);
 		}
 	}

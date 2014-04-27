@@ -365,7 +365,7 @@ public class Wrahh : GameCharacters
 		// Pick up lobster parts used for buying helmets, and upgrading and reparing shields and helmets
 		if (c.tag == "Item")													
 		{
-			if (c.gameObject.name == "lobsterParts")
+			if (c.gameObject.name == "lobsterParts(Clone)")
 			{
 				Destroy(c.gameObject);
 				lobsterParts += 5;
@@ -377,7 +377,7 @@ public class Wrahh : GameCharacters
 			// Bare hands < Pistol < Rifle
 			if(!inventoryFull())
 			{
-				if (c.gameObject.name == "gunPickUp")
+				if (c.gameObject.name == "gunPickUp(Clone)")
 				{
 					int slot = emptyInventorySlot();
 					Debug.Log ("Picking up guns");
@@ -389,7 +389,7 @@ public class Wrahh : GameCharacters
 						currentWeapon = weapons[currentSlot];
 				}
 				
-				if (c.gameObject.name == "riflePickUp")
+				if (c.gameObject.name == "riflePickUp(Clone)")
 				{
 					int slot = emptyInventorySlot();
 					Debug.Log ("Picking up rifles");
@@ -409,7 +409,7 @@ public class Wrahh : GameCharacters
 		// Picks up a med pack
 		if (c.tag == "Buff")												
 		{
-			if (c.gameObject.name == "healthBuff")
+			if (c.gameObject.name == "healthBuff(Clone)")
 			{
 				Debug.Log ("Picking up health buff");
 				Destroy(c.gameObject);

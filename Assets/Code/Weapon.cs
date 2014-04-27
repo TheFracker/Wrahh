@@ -27,6 +27,7 @@ public class Weapon : MonoBehaviour {
 		loadPrefab ();
 		name = "Fists";
 		shooting = false;
+		durability=1;
 		hitDamage = 1;
 		this.gameObject.AddComponent<AudioSource>();
 		sounds = this.GetComponents<AudioSource>();
@@ -68,7 +69,6 @@ public class Weapon : MonoBehaviour {
 			pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
 
 		Instantiate(hitProjectile, pos, Quaternion.identity);
-		sounds[0].Play();
 	}
 
 	// Function that loads the prefabs into the variables

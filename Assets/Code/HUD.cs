@@ -3,21 +3,28 @@ using System.Collections;
 
 public class HUD : MonoBehaviour
 {
+	public Wrahh player;
 	public GUISkin mySkin;
-	bool hudOn;
+	GUIStyle HealthDisplay, StatsDisplay;
+
 	float screenHeight = Screen.height;
 	float screenWidth = Screen.width;
-	public Wrahh player;
+	bool hudOn;
 
 	void OnGUI()
 	{
-		GUI.Box (new Rect(150  , screenHeight-600, 100,25),"Health: " + player.Health);
-		GUI.Box (new Rect(250  , screenHeight-600, 200,25), player.CurrentWeapon.getName() + " Damage: " + player.CurrentWeapon.getHitDamage());
-		GUI.Box (new Rect(250  , screenHeight-575, 200,25),"Durabillity: " + player.CurrentWeapon.getDura() + " Max: " + player.CurrentWeapon.getMAXDura());
-		GUI.Box (new Rect(450  , screenHeight-600, 160,25),"Helm Armor: " + player.HelmArmor + " Max: " + player.HelmMaxArmor);
-		GUI.Box (new Rect(450  , screenHeight-575, 160,25),"Shield Armor: " + player.ShieldArmor + " Max: " + player.ShieldMaxArmor);
-		GUI.Box (new Rect(900  , screenHeight-600, 100,25),"Lobsters: " + player.LobsterParts);
-		GUI.Box (new Rect(1000 , screenHeight-600, 150,25),"Weapon Parts: " + player.WeaponParts);
+		GUI.skin = mySkin;
+		HealthDisplay = mySkin.customStyles[0];
+		StatsDisplay = mySkin.customStyles[1];
+
+		GUI.Box (new Rect(screenWidth * 0.035f, screenHeight * 0.02f, 60,  50),"", HealthDisplay);
+		GUI.Box (new Rect(screenWidth * 0.02f,screenHeight * 0.015f, 100, 40),"" + player.Health);
+		GUI.Box (new Rect(screenWidth * 0.1f, screenHeight 	* 0.02f, 150, 40), player.CurrentWeapon.getName() + " Damage: " + player.CurrentWeapon.getHitDamage(), StatsDisplay);
+		GUI.Box (new Rect(screenWidth * 0.25f, screenHeight	* 0.02f, 150, 40),"Durabillity: " + player.CurrentWeapon.getDura() + " / " + player.CurrentWeapon.getMAXDura(), StatsDisplay);
+		GUI.Box (new Rect(screenWidth * 0.40f, screenHeight	* 0.02f, 150, 40),"Helm Armor: " + player.HelmArmor + " / " + player.HelmMaxArmor, StatsDisplay);
+		GUI.Box (new Rect(screenWidth * 0.55f, screenHeight	* 0.02f, 150, 40),"Shield Armor: " + player.ShieldArmor + " / " + player.ShieldMaxArmor, StatsDisplay);
+		GUI.Box (new Rect(screenWidth * 0.7f, screenHeight	* 0.02f, 150, 40),"Lobster Parts: " + player.LobsterParts, StatsDisplay);
+		GUI.Box (new Rect(screenWidth * 0.85f, screenHeight	* 0.02f, 150, 40),"Weapon Parts: " + player.WeaponParts, StatsDisplay);
 	}
 
 

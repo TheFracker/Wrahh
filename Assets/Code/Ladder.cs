@@ -11,9 +11,9 @@ public class Ladder : MonoBehaviour {
 	void Update () {
 		
 		// If "W" or "up arrow" is pressed and the trigger is active/the player is in the trigger zone
-		if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && isTrigger == true){
+		if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && isTrigger == true)
+		{
 			canClimb = true; //boolean set to true and used in (Wrahh.cs) to enable crawling animations and adjust gravity and drag
-
 		}
 	}
 	

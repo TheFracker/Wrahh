@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// This sripts should be inherinted by all game characters in the game. It contains functions and attributes for animations, damage, speed, health,
+///filp, physics etc. 
+/// </summary>
+
+using UnityEngine;
 using System.Collections;
 
 public class GameCharacters : MonoBehaviour
@@ -10,10 +15,43 @@ public class GameCharacters : MonoBehaviour
 	protected float standardGravity = 7.4f; 				// initial gravity
 	protected float MAX_MOVE_SPEED; 						// The maximum movement speed that a character should be able to achive
 	protected float standardDrag = 5f; 						// initial drag force
-	protected Animator anim;								// The animator accesor
+	protected Animator anim;								// Creates an Animator variable
 	protected float duration = 1.0f;
+	protected bool isHurt;
+	
+	//Sets bool to false (no one hurts anyone in the beginning
+	void Start()
+	{
+		isHurt = false; // Used to check if a character is hurt - used for blinking red when hurt
+	}
 
-	protected void accesAnimator()
+	// This IEnumerator waits a split second before turning the red color off and back to normal (white)
+	protected IEnumerator waitForBlink()
+	{
+		while(isHurt)
+		{
+			yield return new WaitForSeconds(0.1f); 		// The split second that was waited
+			foreach (Transform child in transform) 		// Since all the characters are stores in empty gameobjects, we have to
+			{											// access their children which contains the SpriteRenderer og the graphics.
+				child.renderer.material.color = Color.white; // Make the color on the children's renderers white (back to default)
+			}
+			isHurt = false; 							//Now stop this boolean because color-wise we are not being hurt anymore.
+		}
+	}
+
+	// Actual method for turning the characters red
+	protected void blinkRed()
+	{
+		foreach (Transform child in transform)			// Same as above - access all children of the gameobject
+		{
+			child.renderer.material.color = Color.red;	// But this time, turn them red!
+		}
+		isHurt = true; 									// And color-wise we are getting hurt
+		StartCoroutine("waitForBlink"); 				// So start the IEnumerator so we can go back to normal
+	}
+
+	// For accessing the animator - duh!
+	protected void accessAnimator()
 	{
 		anim = GetComponent<Animator>();
 	}

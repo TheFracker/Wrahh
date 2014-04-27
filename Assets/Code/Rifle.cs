@@ -58,6 +58,7 @@ public class Rifle : Weapon {
 	// Is called when Wrahh starts hitting, and for every hit there is a chance that durability will be lost
 	public override void hit ()
 	{
+		base.hit ();
 		if(Random.Range(0,100) <= durabilityLossChance)
 			durability--;
 	}

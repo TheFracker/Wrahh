@@ -53,7 +53,6 @@ public class Rifle : Weapon {
 
 	public override void hit ()
 	{
-		base.hit ();
 		Debug.Log(durabilityLossChance);
 		if(Random.Range(0,100) <= durabilityLossChance)
 			durability--;

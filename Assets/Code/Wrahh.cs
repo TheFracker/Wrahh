@@ -131,10 +131,9 @@ public class Wrahh : GameCharacters
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
 		
-		// Shooting
-		if (Input.GetKeyUp (KeyCode.Space))
+		// Hitting
+		if (Input.GetKeyUp (KeyCode.Space) && anim.GetBool("isAttacking") == false)
 			useWeapon (currentWeapon);
-		falling ();
 
 		// Change weapon
 		if(Input.GetKeyUp(KeyCode.O))
@@ -270,7 +269,7 @@ public class Wrahh : GameCharacters
 
 	IEnumerator waitForAttackingAnimation()
 	{
-		yield return new WaitForSeconds(0.08f);
+		yield return new WaitForSeconds(0.5f);
 		anim.SetBool("isAttacking", false);
 	}
 	

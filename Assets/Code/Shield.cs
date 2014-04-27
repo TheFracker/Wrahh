@@ -10,7 +10,7 @@ public class Shield : MonoBehaviour
 	void Start()
 	{
 		if(wrahh == null) //Function which prevents stack Overflow
-			wrahh = GameObject.FindWithTag("Player").AddComponent<Wrahh>(); 
+			wrahh = new Wrahh(); 
 	}
 
 

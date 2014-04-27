@@ -194,13 +194,4 @@ public class Dolphin : GameCharacters
 		this.transform.position += dir * moveSpeed * 2 * Time.deltaTime; //CHASE THE PLAYER!!!!!
 	}
 
-	// A function used to change the direction of the character
-	void flip()
-	{
-		facingRight = !facingRight;
-		Vector3 direction = transform.localScale;
-		direction.x *= -1;
-		transform.localScale = direction;
-	}
-
 }

@@ -106,7 +106,7 @@ Rigidbody2D:
   m_CollisionDetection: 0
 --- !u!58 &5800000
 CircleCollider2D:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -134,10 +134,10 @@ EdgeCollider2D:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Points:
-  - {x: -2.66622257, y: 1.80653191}
-  - {x: 2.68311071, y: 1.82325923}
+  - {x: -2.71881509, y: 2.08726835}
+  - {x: 2.64354658, y: 2.14317775}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2

@@ -33,7 +33,6 @@ public class UpgradeStation : MonoBehaviour
 
 	void Start()
 	{
-		wrahh = GameObject.FindWithTag("Player").AddComponent<Wrahh>();
 		window300X300 = new Rect (Screen.width / 2-250, Screen.height / 2 - 100, 300,300); // Defines the size og the standard Gui Rect
 	}
 

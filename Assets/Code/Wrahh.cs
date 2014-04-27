@@ -33,6 +33,8 @@ public class Wrahh : GameCharacters
 	int numberOfHitGroundSounds;								// The number of sounds of Wrahh hitting the ground
 	int numberOfPunchSounds;
 
+	public Material wrahhMat;
+
 	void Awake()
 	{
 		DontDestroyOnLoad (gameObject);
@@ -82,10 +84,8 @@ public class Wrahh : GameCharacters
 		sounds = GetComponents<AudioSource>();						//all audio source components on the object it put in the "sounds" array in the order they are listed on the object
 		for (int i = 0; i<numberOfSounds;i++)
 		{
-			AudioClip ac;
 			while(i<numberOfWalkingSounds)
 			{
-				//ac = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
 				sounds[i].clip = Resources.Load("sounds/walk-"+(1+i)) as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
@@ -96,8 +96,7 @@ public class Wrahh : GameCharacters
 
 			while(i<numberOfFallingSounds)
 			{
-				ac = Resources.Load("sounds/screamFall") as AudioClip;
-				sounds[i].clip = ac;
+				sounds[i].clip = Resources.Load("sounds/screamFall") as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
 				sounds[i].pitch = 1.0f;
@@ -108,8 +107,7 @@ public class Wrahh : GameCharacters
 
 			while(i<numberOfHitGroundSounds)
 			{
-				ac = Resources.Load("sounds/hitGround") as AudioClip;
-				sounds[i].clip = ac;
+				sounds[i].clip = Resources.Load("sounds/hitGround") as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
 				sounds[i].pitch = 1.0f;
@@ -119,16 +117,14 @@ public class Wrahh : GameCharacters
 			}
 			while(i<numberOfPunchSounds)
 			{
-				ac = Resources.Load("sounds/punch") as AudioClip;
-				sounds[i].clip = ac;
+				sounds[i].clip = Resources.Load("sounds/punch") as AudioClip;
 				sounds[i].playOnAwake = false;
 				sounds[i].rolloffMode = AudioRolloffMode.Linear;
 				sounds[i].pitch = 1.0f;
-				sounds[i].volume = 1.0f;
+				sounds[i].volume = 0.5f;
 				sounds[i].loop = false;
 				i++;
 			}
-
 		}
 
 	//From parent "GameCharacters.cs":
@@ -214,16 +210,13 @@ public class Wrahh : GameCharacters
 		walkSoundPlaying = true;
 		sounds[Random.Range (0, 14)].Play();
 		StartCoroutine(waitForWalkSound());
-
 	}
-
 
 	IEnumerator waitForWalkSound()
 	{
 		yield return new WaitForSeconds(0.4f);
 		walkSoundPlaying = false;
 	}
-
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
@@ -514,11 +507,31 @@ public class Wrahh : GameCharacters
 
 		}
 	}
+
+	IEnumerator waitForBlink()
+	{
+		while(isHurt)
+		{
+			yield return new WaitForSeconds(0.1f);
+			foreach (Transform child in transform)
+			{
+				child.renderer.material.color = Color.white;
+			}
+			isHurt = false;
+		}
+	}
 	//////////////////////////////////////
 	// WRAHH TAKES DAMAGE				//
 	//////////////////////////////////////
 	public void hurt(Projectile p)
 	{
+		foreach (Transform child in transform)
+		{
+			child.renderer.material.color = Color.red;
+		}
+		isHurt = true;
+		StartCoroutine("waitForBlink");
+
 		// The damage that Wrahh is about to take is kept in the damageTaken variable.
 		// The damage is first takes away his armor, and then start to take Wrahh's health 
 

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class GameCharacters : MonoBehaviour
 {
-
 	protected int health;									// The health of a character
 	protected int armor;									// The armor a character might have
 	protected float moveSpeed;								// The speed at which a character will move
@@ -11,16 +10,22 @@ public class GameCharacters : MonoBehaviour
 	protected float standardGravity = 7.4f; 				// initial gravity
 	protected float MAX_MOVE_SPEED; 						// The maximum movement speed that a character should be able to achive
 	protected float standardDrag = 5f; 						// initial drag force
-	
 	protected Animator anim;								// The animator accesor
+	protected float duration = 1.0f;
+	protected bool isHurt;
+
+	void Start()
+	{
+		isHurt = false;
+	}
 
 	protected void accesAnimator()
 	{
-		anim = GetComponent<Animator>(); 
+		anim = GetComponent<Animator>();
 	}
 
 	// Destroyes the character that died
-	protected void die(GameObject g)
+	protected virtual void die(GameObject g)
 	{
 		Destroy(g);
 	}

@@ -3,14 +3,19 @@ using System.Collections;
 
 public class HUD : MonoBehaviour
 {
-	public Wrahh player;
+	public Wrahh player = new Wrahh();
 	public GUISkin mySkin;
 	GUIStyle HealthDisplay, StatsDisplay;
 
 	float screenHeight = Screen.height;
 	float screenWidth = Screen.width;
 	bool hudOn;
-	
+
+	void Awake()
+	{
+		DontDestroyOnLoad (this.gameObject);
+	}
+
 	void OnGUI()
 	{
 		GUI.skin = mySkin;

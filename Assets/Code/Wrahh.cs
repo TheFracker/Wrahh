@@ -37,7 +37,7 @@ public class Wrahh : GameCharacters
 
 	void Awake()
 	{
-		DontDestroyOnLoad (gameObject);
+		DontDestroyOnLoad (this.gameObject);
 	}
 
 	//////////////////////////////////

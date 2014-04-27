@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Pistol : Weapon {
 
-	// Use this for initialization
+	// Loads the prefabs in to the correct projectile variables and sets the standard stats of the Pistol
 	void Start () 
 	{
 		loadPrefab ();
@@ -11,21 +11,21 @@ public class Pistol : Weapon {
 		ammo = 3;
 		MAGAZINE_SIZE = 3;
 		reloadTime = 1.0f;
-		reloading = false;
 		durability = 7;
 		MAX_DURABILITY = 7;
-		accidentalFire = 2.0f;
 		hitDamage = 2;
 		delay = 0.7f;
 		durabilityLossChance = 30;
 	}
 
+	// Calls the base function, but loads a different prefab for the hitProjectile
 	protected override void loadPrefab()
 	{
 		base.loadPrefab ();
 		hitProjectile = Resources.Load ("Prefabs/hitGunProjectile") as GameObject;
 	}
 
+	// Is called when Wrahh starts hitting, and for every hit there is a chance that durability will be lost
 	public override void hit ()
 	{
 		base.hit ();
@@ -33,11 +33,13 @@ public class Pistol : Weapon {
 			durability--;
 	}
 
+	// Is called when a dolphin starts shooting
+	// It is the same as in the Weapon class, only the pos is different
 	protected override IEnumerator shot ()
 	{
 		while(shooting)
 		{
-			if (ammo > 0 &! reloading) {
+			if (ammo > 0) {
 				if(gameObject.GetComponent<Dolphin>().isFacingRight())
 				{
 					pos = this.transform.position + new Vector3(1.12f,0.37f,0);
@@ -59,17 +61,13 @@ public class Pistol : Weapon {
 		}
 	}
 
+	// Loads new prefabs into the hitProjectile variable when the range is upgraded
 	protected override void rangeLevel1 ()
 	{
 		hitProjectile = Resources.Load ("Prefabs/hitGunProjectileMRange") as GameObject;
 	}
 
 	protected override void rangeLevel2 ()
-	{
-		hitProjectile = Resources.Load ("Prefabs/hitGunProjectileLRange") as GameObject;
-	}
-
-	protected override void rangeLevel3 ()
 	{
 		hitProjectile = Resources.Load ("Prefabs/hitGunProjectileLRange") as GameObject;
 	}

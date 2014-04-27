@@ -5287,7 +5287,7 @@ GameObject:
   - 4: {fileID: 1342489306}
   m_Layer: 0
   m_Name: doorLeft
-  m_TagString: Untagged
+  m_TagString: Enter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6060,13 +6060,13 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 852836700}
   m_GameObject: {fileID: 1455573774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1f3e23ad4422628428a27ed3169fb5b6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

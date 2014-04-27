@@ -32,12 +32,11 @@ public class Dolphin : GameCharacters
 	{
 		enemyTransform = this.GetComponent<Transform>();	
 
-		// Adds rifle
+		// Adds rifle and gun drop prefabs
 		rifleDrop = (GameObject)Resources.Load("Prefabs/gunPickUp");
 		gunDrop = (GameObject)Resources.Load("Prefabs/riflePickUp");
 
-		// Checks what weapon the dolphin carries and attach the correct script
-
+		// Checks what weapon the dolphin carries and attach the correct script and shows the correct weapon
 		if(usesRifle){
 			weapon = gameObject.AddComponent<Rifle> ();
 			this.transform.FindChild("_dolphin").transform.FindChild("weapon_rifle").gameObject.SetActive(true);
@@ -101,12 +100,14 @@ public class Dolphin : GameCharacters
 	
 	protected override void die (GameObject g)
 	{
-		if (usesRifle){
+		//If dolphin uses rifle on death it will drop an riflePickUp object
+		if (usesRifle){ 
 			GameObject itemDrop = (GameObject)GameObject.Instantiate(rifleDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
 			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
 			base.die (this.gameObject);
 		}
 
+		//If dolphin uses rifle on death it will drop an riflePickUp object
 		if(usesPistol){
 			GameObject itemDrop1 = (GameObject)GameObject.Instantiate(gunDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
 			itemDrop1.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset

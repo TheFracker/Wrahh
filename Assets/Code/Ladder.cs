@@ -25,18 +25,19 @@ public class Ladder : MonoBehaviour
 		}
 	}
 	
-	void OnTriggerEnter2D (Collider2D other) 				//Checks if character stays within collision area and sets can climb to true.
+	void OnTriggerEnter2D (Collider2D other) 				//Is run when anything enters the trigger area 
 	{
-		if (other.tag == "Player" && isTrigger == false)	
+		if (other.tag == "Player" && isTrigger == false)	//Checks if the triggering object is the player and if the collider already have been entered 
 		{
-			isTrigger = true;
+			isTrigger = true;								//boolean set to true which is used to check if the player can sart climbing		
 		}
 	}
 
-	void OnTriggerExit2D(Collider2D other) //Checks if characters is exiting trigger area and sets can climb to false.
+	void OnTriggerExit2D(Collider2D other) 					//Checks if anything is exiting trigger area.
 	{
-		if (other.tag == "Player"){
-			canClimb = false;
+		if (other.tag == "Player")							//Checks if the triggering object is the player
+		{		
+			canClimb = false;								//sets two booleans to false, so the player no longer can climb
 			isTrigger = false;
 		}
 	}

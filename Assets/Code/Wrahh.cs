@@ -33,6 +33,11 @@ public class Wrahh : GameCharacters
 	int numberOfHitGroundSounds;								// The number of sounds of Wrahh hitting the ground
 	int numberOfPunchSounds;
 
+	void Awake()
+	{
+		DontDestroyOnLoad (gameObject);
+	}
+
 	//////////////////////////////////
 	// START 			    		//
 	//////////////////////////////////

@@ -33,8 +33,8 @@ public class Dolphin : GameCharacters
 		enemyTransform = this.GetComponent<Transform>();	
 
 		// Adds rifle and gun drop prefabs
-		rifleDrop = (GameObject)Resources.Load("Prefabs/gunPickUp");
-		gunDrop = (GameObject)Resources.Load("Prefabs/riflePickUp");
+		rifleDrop = (GameObject)Resources.Load("Prefabs/riflePickUp");
+		gunDrop = (GameObject)Resources.Load("Prefabs/gunPickUp");
 
 		// Checks what weapon the dolphin carries and attach the correct script and shows the correct weapon
 		if(usesRifle){

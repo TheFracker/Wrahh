@@ -584,7 +584,11 @@ public class Wrahh : GameCharacters
 
 	IEnumerator waitForDeath()
 	{
-		yield return new WaitForSeconds(1.5f);
+		while (anim.GetBool("dying") == true)
+		{
+			yield return new WaitForSeconds(1.5f);
+			anim.SetBool("dying", false);
+		}
 	}
 
 	// Lots of getters and setters. These are used to by the hud to show different stats to the user.

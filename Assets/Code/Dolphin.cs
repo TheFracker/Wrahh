@@ -66,12 +66,7 @@ public class Dolphin : GameCharacters
 			else
 				guard ();
 		}
-		
-		// If the dolphin has been crushed, it will lose its collider
-		if (EnemySplat.isCrushed == true)
-		{
-			this.collider2D.enabled = false;
-		}
+
 	}
 
 	// This makes the dolphin able to take damage from projectiles hitting it. And will also check if the health of the dolphin is below 0 so that it will die

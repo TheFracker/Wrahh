@@ -144,7 +144,6 @@ public class Dolphin : GameCharacters
 		// Guard left
 		if(positionedTarget_left == null)
 		{
-			Debug.Log (1);
 			Vector2 point = new Vector2(-5,2);
 			if(this.transform.position.x > point.x &! facingRight)
 				this.transform.position -= this.transform.right * moveSpeed * Time.deltaTime;

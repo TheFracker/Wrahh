@@ -62,7 +62,7 @@ public class Lobster : GameCharacters
 			if(!attacking)																	// Check whether the enemy is attacking on collission
 			{
 				attacking = true;															// The enemy is in "attacking" state
-				StartCoroutine("attack");												// Wait for an attack to finish before moving on
+				StartCoroutine("attack");													// Wait for an attack to finish before moving on
 			}
 		}
 	}
@@ -98,10 +98,8 @@ public class Lobster : GameCharacters
 		}
 	}
 	
-	// When the lobster is close enough to the player to start attacking, this coroutine will be started. It essentially gives a delay to attacks, so that
-	// Wrahh has a larger chance of surviving its attack.
-	IEnumerator attack()
-	{
+	IEnumerator attack()			// When the lobster is close enough to the player to start attacking, this coroutine will be started.
+	{								// It essentially gives a delay to attacks, so that Wrahh has a bigger chance of surviving its attack.
 		while(attacking)
 		{
 			yield return new WaitForSeconds(0.5f);

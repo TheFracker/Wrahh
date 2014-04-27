@@ -218,12 +218,6 @@ public class Wrahh : GameCharacters
 		walkSoundPlaying = false;
 	}
 
-	IEnumerator waitForBlink()
-	{
-		yield return new WaitForSeconds(1.0f);
-	}
-
-
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MONKEY BAR CRAWL - controlls physics and animtion when the player gets on or off the monkey bars	    //
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -513,22 +507,30 @@ public class Wrahh : GameCharacters
 
 		}
 	}
+
+	IEnumerator waitForBlink()
+	{
+		while(isHurt)
+		{
+			yield return new WaitForSeconds(0.1f);
+			foreach (Transform child in transform)
+			{
+				child.renderer.material.color = Color.white;
+			}
+			isHurt = false;
+		}
+	}
 	//////////////////////////////////////
 	// WRAHH TAKES DAMAGE				//
 	//////////////////////////////////////
 	public void hurt(Projectile p)
 	{
-		isHurt = true;
-
-		if (isHurt)
+		foreach (Transform child in transform)
 		{
-			foreach (Transform child in transform)
-			{
-				child.renderer.material.color = Color.red;
-			}
-			StartCoroutine("waitForBlink");
-			isHurt = false;
+			child.renderer.material.color = Color.red;
 		}
+		isHurt = true;
+		StartCoroutine("waitForBlink");
 
 		// The damage that Wrahh is about to take is kept in the damageTaken variable.
 		// The damage is first takes away his armor, and then start to take Wrahh's health 

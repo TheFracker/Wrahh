@@ -36,12 +36,12 @@ public class Rifle : Weapon {
 			if (ammo > 0) {
 				if(gameObject.GetComponent<Dolphin>().isFacingRight())
 				{
-					pos = this.transform.position + new Vector3(1.3f,0.19f,0);
+					pos = this.transform.position + new Vector3(1.4f,0.3f,0);
 					Instantiate(bulletRight, pos, Quaternion.identity);
 				}
 				else
 				{
-					pos = this.transform.position + new Vector3(-1.3f,0.19f,0);
+					pos = this.transform.position + new Vector3(-1.4f,0.3f,0);
 					Instantiate(bulletLeft, pos, Quaternion.identity);
 				}
 				ammo--;
@@ -58,7 +58,6 @@ public class Rifle : Weapon {
 	// Is called when Wrahh starts hitting, and for every hit there is a chance that durability will be lost
 	public override void hit ()
 	{
-		base.hit ();
 		if(Random.Range(0,100) <= durabilityLossChance)
 			durability--;
 	}

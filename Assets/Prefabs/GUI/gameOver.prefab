@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5bf20aebb3417469b2bb99873723d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitNormal: {fileID: 2800000, guid: 3fd3808c7df62ff4097485fb7987b4d8, type: 3}
-  exitHover: {fileID: 2800000, guid: c9bcb6ad16d3cf34bbb02e07ec58a4fe, type: 3}
+  exitNormal: {fileID: 2800000, guid: c86fc1e019ba49043a1c4f94919eeec5, type: 3}
+  exitHover: {fileID: 2800000, guid: 29b217dd689ba4b4aa75b374cfbc20b7, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

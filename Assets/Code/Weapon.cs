@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour {
 	protected float delay;				// The time between each shot
 	protected int durabillityLevel = 0;	// The level the durability has been upgraded to
 	protected int rangeLevel = 0;		// The level the range has been upgraded to
+	protected AudioSource[] sounds;
 
 	// Start by loading prefabs into the different projectile variables
 	void Start()
@@ -27,6 +28,13 @@ public class Weapon : MonoBehaviour {
 		name = "Fists";
 		shooting = false;
 		hitDamage = 1;
+		this.gameObject.AddComponent<AudioSource>();
+		sounds = this.GetComponents<AudioSource>();
+		sounds[0].clip = Resources.Load("sounds/punch") as AudioClip;
+		sounds[0].playOnAwake = false;
+		sounds[0].rolloffMode = AudioRolloffMode.Linear;
+		sounds[0].pitch = 1f;
+		sounds[0].volume = 1f;
 	}
 
 	// Is called whenever the weapon is upgraded in the upgrade station
@@ -57,7 +65,9 @@ public class Weapon : MonoBehaviour {
 			pos = this.transform.position + new Vector3(1.0f,0.5f,0);
 		else
 			pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
+
 		Instantiate(hitProjectile, pos, Quaternion.identity);
+		sounds[0].Play();
 	}
 
 	// Function that loads the prefabs into the variables

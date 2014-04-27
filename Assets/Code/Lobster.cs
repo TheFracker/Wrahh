@@ -55,17 +55,18 @@ public class Lobster : GameCharacters
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D c)
+	void OnCollisionEnter2D (Collision2D c)
 	{
-		if (c.tag == "Player")																// If the collission is with the game obejct tagged; "Player"..
+		if (c.collider.tag == "Player")																// If the collission is with the game obejct tagged; "Player"..
 		{
+			Debug.Log("i collide");
 			if(!attacking)
 			{
 				attacking = true;
 				StartCoroutine("attack");
 			}
 		}
-		if (c.tag == "HitProjectile")
+		if (c.collider.tag == "HitProjectile")
 		{
 			GameObject itemDrop = (GameObject)GameObject.Instantiate(lobsterPart, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
 			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset

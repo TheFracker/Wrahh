@@ -69,6 +69,7 @@ public class Lobster : GameCharacters
 
 	public void hurt(Projectile p)
 	{
+		base.blinkRed();
 		die(this.gameObject);
 	}
 

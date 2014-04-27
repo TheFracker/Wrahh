@@ -133,7 +133,7 @@ public class Wrahh : GameCharacters
 		MAX_MOVE_SPEED = 30.0f;
 		health = 100;
 		setStandardPhysics();
-		accesAnimator();
+		accessAnimator();
 	}
 	
 	//////////////////////////////////
@@ -508,29 +508,13 @@ public class Wrahh : GameCharacters
 		}
 	}
 
-	IEnumerator waitForBlink()
-	{
-		while(isHurt)
-		{
-			yield return new WaitForSeconds(0.1f);
-			foreach (Transform child in transform)
-			{
-				child.renderer.material.color = Color.white;
-			}
-			isHurt = false;
-		}
-	}
+
 	//////////////////////////////////////
 	// WRAHH TAKES DAMAGE				//
 	//////////////////////////////////////
 	public void hurt(Projectile p)
 	{
-		foreach (Transform child in transform)
-		{
-			child.renderer.material.color = Color.red;
-		}
-		isHurt = true;
-		StartCoroutine("waitForBlink");
+		base.blinkRed();
 
 		// The damage that Wrahh is about to take is kept in the damageTaken variable.
 		// The damage is first takes away his armor, and then start to take Wrahh's health 

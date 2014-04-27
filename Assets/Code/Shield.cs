@@ -71,8 +71,6 @@ public class Shield : MonoBehaviour
 		Debug.Log("Im here, Protection level 4");
 	}
 
-	
-
 	public int Protection
 	{
 		get

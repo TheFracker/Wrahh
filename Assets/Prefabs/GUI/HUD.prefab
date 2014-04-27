@@ -38,10 +38,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a562b4f60234f3543ac3927fb0c97796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySkin: {fileID: 0}
   player: {fileID: 0}
-  heartContainer: {fileID: 0}
-  hearts: []
+  mySkin: {fileID: 11400000, guid: 5d7cf2772778bee49886db9cb4bfb90b, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -235,35 +235,34 @@ public class UpgradeStation : MonoBehaviour
 			}
 			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 2)	//If shield.Protection is 2 this function is beeing run
 			{
-				shield.Protection = 3;
-				wrahh.LobsterParts -= 5;
-				shield.upgradeProtection();
+				shield.Protection = 3;		//reduces wrahhs lobster parts by 5
+				wrahh.LobsterParts -= 5;	//sets Shield.Protection equal to 3 so that next upgrade will evaluate to true
+				shield.upgradeProtection();	//shield.upgradeProtection() is called to activate the new upgrade level
 			}
 			else if (wrahh.LobsterParts >= 5 && wrahh.ShieldOn && shield.Protection == 3) 	//If shield.Protection is 3 this function is beeing run
 			{
-				shield.Protection = 4;
-				wrahh.LobsterParts -= 5;
-				shield.upgradeProtection();
+				shield.Protection = 4;		//reduces wrahhs lobster parts by 5	
+				wrahh.LobsterParts -= 5;	//sets Shield.Protection equal to 4 so that next upgrade will evaluate to true
+				shield.upgradeProtection();	//shield.upgradeProtection() is called to activate the new upgrade level
 			}
 			else if (shield.Protection == 4)	//If shield.Protection is 4 this function is beeing run
 			{
-				Debug.Log ("Max Level!");
+				Debug.Log ("Max Level!");  		//Logs that the max level is achieved
 			}
 			else
 				Debug.Log ("Cannot Upgrade");
 		}
 		
-		if(GUILayout.Button("Return")){
-			shieldShow = false;
-			armorShow = true;
+		if(GUILayout.Button("Return")){ //Returns to previous menu
+			shieldShow = false;	//Closes Shield Menu
+			armorShow = true;	//Opens Armor Menu
 		}
 		
 		if(GUILayout.Button("I'm Done Upgrading!!"))
 		{
-			paused = false;
-			shieldShow = false;
-			statsShow = false;
-			Time.timeScale = 1;
+			paused = false;			//Allows acces to pause mode again
+			shieldShow = false;		//Closes current Menu
+			Time.timeScale = 1;		//Resets time to default 1
 		}
 	}
 
@@ -273,7 +272,7 @@ public class UpgradeStation : MonoBehaviour
 
 		if(wrahh.Weapons[0].getName() != "Fists"){ 	//Accessing location 0 of wrahhs weapon array and check if it is an item (not his fists)
 			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
-		if(GUILayout.Button(wrahh.Weapons[0].getName() + "," + " Durabillity: " + wrahh.Weapons[0].getDura() + " Max " + wrahh.Weapons[0].getMAXDura())){
+		if(GUILayout.Button(wrahh.Weapons[0].getName() + " " + " Durabillity: " + wrahh.Weapons[0].getDura() + "/" + wrahh.Weapons[0].getMAXDura())){
 			currentWeapon = 0;			//sets currentWeapon value to 0 if button is pressed, used to modify this exact weapon
 			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2;	//Calculates repair price from weapon MAXdura and current Durabillity
 			weaponShow = false; 		//Closes weapon menu function 
@@ -283,7 +282,7 @@ public class UpgradeStation : MonoBehaviour
 
 		if(wrahh.Weapons[1].getName() != "Fists"){	//Accessing location 1 of wrahhs weapon array and check if it is an item (not his fists)
 			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
-		if(GUILayout.Button(wrahh.Weapons[1].getName() + "," + " Durabillity: " + wrahh.Weapons[1].getDura() + " Max " + wrahh.Weapons[1].getMAXDura())){
+		if(GUILayout.Button(wrahh.Weapons[1].getName() + "," + " Durabillity: " + wrahh.Weapons[1].getDura() + "/" + wrahh.Weapons[1].getMAXDura())){
 			currentWeapon = 1;			//sets currentWeapon value to 1 if button is pressed, used to modify this exact weapon
 			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2; //Calculates repair price from weapon MAXdura and current Durabillity
 			weaponShow = false;			//Closes weapon menu function
@@ -293,7 +292,7 @@ public class UpgradeStation : MonoBehaviour
 
 		if(wrahh.Weapons[2].getName() != "Fists"){	//Accessing location 2 of wrahhs weapon array and check if it is an item (not his fists)
 			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
-		if (GUILayout.Button(wrahh.Weapons[2].getName()+ "," + " Durabillity: " + wrahh.Weapons[2].getDura() + " Max " + wrahh.Weapons[2].getMAXDura())){
+		if (GUILayout.Button(wrahh.Weapons[2].getName()+ "," + " Durabillity: " + wrahh.Weapons[2].getDura() + "/" + wrahh.Weapons[2].getMAXDura())){
 			currentWeapon = 2; 			//sets currentWeapon value to 2 if button is pressed, used to modify this exact weapon
 				weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2; //Calculates repair price from weapon MAXdura and current Durabillity
 			weaponShow = false;			//Closes weapon menu function
@@ -303,7 +302,7 @@ public class UpgradeStation : MonoBehaviour
 
 		if(wrahh.Weapons[3].getName() != "Fists"){	//Accessing location 3 of wrahhs weapon array and check if it is an item (not his fists)
 			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
-		if (GUILayout.Button( wrahh.Weapons[3].getName()+ "," + " Durabillity: " + wrahh.Weapons[3].getDura() + " Max " + wrahh.Weapons[3].getMAXDura())){
+		if (GUILayout.Button( wrahh.Weapons[3].getName()+ "," + " Durabillity: " + wrahh.Weapons[3].getDura() + "/" + wrahh.Weapons[3].getMAXDura())){
 				currentWeapon = 3;		//sets currentWeapon value to 3 if button is pressed, used to modify this exact weapon
 				weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2; //Calculates repair price from weapon MAXdura and current Durabillity
 			weaponShow = false;			//Closes weapon menu function
@@ -313,7 +312,7 @@ public class UpgradeStation : MonoBehaviour
 
 		if(wrahh.Weapons[4].getName() != "Fists"){ 	//Accessing location 4 of wrahhs weapon array and check if it is an item (not his fists)
 			//If it is a weapon and not his fists, a button will be created containing weapon name and weapon durabillity
-		if (GUILayout.Button(wrahh.Weapons[4].getName()+ "," + " Durabillity: " + wrahh.Weapons[4].getDura() + " Max " + wrahh.Weapons[4].getMAXDura())){
+		if (GUILayout.Button(wrahh.Weapons[4].getName()+ "," + " Durabillity: " + wrahh.Weapons[4].getDura() + "/" + wrahh.Weapons[4].getMAXDura())){
 			currentWeapon = 4;			//sets currentWeapon value to 4 if button is pressed, used to modify this exact weapon
 			weaponRepairPrice = (wrahh.Weapons[currentWeapon].getMAXDura() - wrahh.Weapons[currentWeapon].getDura())/2; //Calculates repair price from weapon MAXdura and current Durabillity
 			weaponShow = false;			//Closes weapon menu function
@@ -336,15 +335,18 @@ public class UpgradeStation : MonoBehaviour
 
 	void weaponUpgradeFunc(int id)
 	{
-		if(GUILayout.Button("Repair Price: " + weaponRepairPrice + " Weapon Parts"))
+		//This function allows wrahh to make changes to the weapon he has choosen
+
+		if(GUILayout.Button("Repair Price: " + weaponRepairPrice + " Weapon Parts")) //Allows wrahh to repair weapon of his choice
 		{
+			//Statement which checks if wrahh has enough lobsterparts to repair his the weapon and if the weapon has lost durabillity
 			if (wrahh.WeaponParts >= weaponRepairPrice && wrahh.Weapons[currentWeapon].getDura() < wrahh.Weapons[currentWeapon].getMAXDura()){
-				wrahh.WeaponParts -= weaponRepairPrice;
-				wrahh.Weapons[currentWeapon].setDura(wrahh.Weapons[currentWeapon].getMAXDura());
-				weaponShow = true;
-				weaponUpgradeShow = false;
+				wrahh.WeaponParts -= weaponRepairPrice;	//Reduces wrahhs lobster parts with the price of repair
+				wrahh.Weapons[currentWeapon].setDura(wrahh.Weapons[currentWeapon].getMAXDura());//Sets weapon durabillity equal to max durabillity
+				weaponUpgradeShow = false; 	//Closes WeaponUpgradeMenu
+				weaponShow = true; 			//Reenters Menu which shows all weapons
 			}
-			else if (wrahh.Weapons[currentWeapon].getDura() == wrahh.Weapons[currentWeapon].getMAXDura())
+			else if (wrahh.Weapons[currentWeapon].getDura() == wrahh.Weapons[currentWeapon].getMAXDura())//Tells if wrahh is already at max durabillity
 			{
 				Debug.Log("Already at max durabillity");
 			}
@@ -354,24 +356,25 @@ public class UpgradeStation : MonoBehaviour
 			}
 		}
 
-		if(GUILayout.Button("Upgrade Durabillity: 7 Weapon Parts")){
+		if(GUILayout.Button("Upgrade Durabillity (7) Weapon Parts")){ //Button which allows for durabillity upgrade of weapon
 
-			if (wrahh.Weapons[currentWeapon].DurabillityLevel == 0 && wrahh.WeaponParts >= 7){
-				wrahh.Weapons[currentWeapon].DurabillityLevel = 1;
-				wrahh.WeaponParts -= 7;
-				wrahh.Weapons[currentWeapon].upgradeLevel();
+			//Statements which checks current durabillityLevel of CurrentWeapon and if he can afford upgrade (7) Weapon Parts
+			if (wrahh.Weapons[currentWeapon].DurabillityLevel == 0 && wrahh.WeaponParts >= 7){ //If durabillityLevel = 0 this will be run
+				wrahh.Weapons[currentWeapon].DurabillityLevel = 1;	//DurabillityLevel is increased and set to 1
+				wrahh.WeaponParts -= 7;								//Weapon Parts is reduced with 7							
+				wrahh.Weapons[currentWeapon].upgradeLevel();		//Runs upgradeLevel() function to reset durabillity to new
 			}
-			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 1 && wrahh.WeaponParts >= 7){
-				wrahh.Weapons[currentWeapon].DurabillityLevel = 2;
-				wrahh.WeaponParts -= 7;
-				wrahh.Weapons[currentWeapon].upgradeLevel();
+			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 1 && wrahh.WeaponParts >= 7){//If durabillityLevel = 1 this will be run
+				wrahh.Weapons[currentWeapon].DurabillityLevel = 2;	//DurabillityLevel is increased and set to 2
+				wrahh.WeaponParts -= 7;								//Weapon Parts is reduced with 7
+				wrahh.Weapons[currentWeapon].upgradeLevel();		//Runs upgradeLevel() function to reset durabillity to new
 			}
-			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 2 && wrahh.WeaponParts >= 7){
-				wrahh.Weapons[currentWeapon].DurabillityLevel = 3;
-				wrahh.WeaponParts -= 7;
-				wrahh.Weapons[currentWeapon].upgradeLevel();
+			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 2 && wrahh.WeaponParts >= 7){//If durabillityLevel = 2 this will be run
+				wrahh.Weapons[currentWeapon].DurabillityLevel = 3;	//DurabillityLevel is increased and set to 2
+				wrahh.WeaponParts -= 7;								//Weapon Parts is reduced with 7
+				wrahh.Weapons[currentWeapon].upgradeLevel();		//Runs upgradeLevel() function to reset durabillity to new
 			}
-			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 3)
+			else if (wrahh.Weapons[currentWeapon].DurabillityLevel == 3)//If durabillityLevel = 3 this will be run
 			{
 				Debug.Log ("Max Level");
 			}
@@ -381,18 +384,19 @@ public class UpgradeStation : MonoBehaviour
 			}
 		}
 
-		if(GUILayout.Button("Upgrade Range: 5 Weapon Parts")){
-			if (wrahh.Weapons[currentWeapon].RangeLevel == 0 && wrahh.WeaponParts >= 7){
-				wrahh.Weapons[currentWeapon].RangeLevel = 1;
-				wrahh.WeaponParts -= 7;
-				wrahh.Weapons[currentWeapon].upgradeLevel();
+		if(GUILayout.Button("Upgrade Range (5) Weapon Parts")){ //Button which allows range upgrades of currentWeapon
+			//Checks currentWeapons rangeLevel and if wrahh can afford the upgrade (5) weapon parts)
+			if (wrahh.Weapons[currentWeapon].RangeLevel == 0 && wrahh.WeaponParts >= 7){ 	//If RangeLevel Equals 0 this will be run
+				wrahh.Weapons[currentWeapon].RangeLevel = 1;	//resets currentWeapons rangeLevel to 1
+				wrahh.WeaponParts -= 7;							//Reduces wrahhs Weapon Parts with 7
+				wrahh.Weapons[currentWeapon].upgradeLevel();	//Acces upgradeLevel to change the values within the weapon to that of level 1
 			}
-			else if (wrahh.Weapons[currentWeapon].RangeLevel == 1 && wrahh.WeaponParts >= 7){
-				wrahh.Weapons[currentWeapon].RangeLevel = 2;
-				wrahh.WeaponParts -= 7;
-				wrahh.Weapons[currentWeapon].upgradeLevel();
+			else if (wrahh.Weapons[currentWeapon].RangeLevel == 1 && wrahh.WeaponParts >= 7){	//If RangeLevel Equals 1 this will be run
+				wrahh.Weapons[currentWeapon].RangeLevel = 2;	//resets currentWeapons rangeLevel to 2
+				wrahh.WeaponParts -= 7;							//Reduces wrahhs Weapon Parts with 7
+				wrahh.Weapons[currentWeapon].upgradeLevel();	//Acces upgradeLevel to change the values within the weapon to that of level 2
 			}
-			else if (wrahh.Weapons[currentWeapon].RangeLevel == 2)
+			else if (wrahh.Weapons[currentWeapon].RangeLevel == 2)	//If RangeLevel Equals 2 this will be run
 			{
 				Debug.Log ("Max Level");
 			}
@@ -402,25 +406,25 @@ public class UpgradeStation : MonoBehaviour
 			}
 		}
 
-		
-		if(GUILayout.Button("Disassemble, Gain: " + wrahh.Weapons[currentWeapon].getDura() + " Weapon Parts")){
-			wrahh.WeaponParts += wrahh.Weapons[currentWeapon].getDura();
-			wrahh.Weapons[currentWeapon] = gameObject.AddComponent<Weapon>();
-			weaponShow = true;
-			weaponUpgradeShow = false;
+		//Button which allows currentWeapon to be Dissasembled for weapon parts equal to weapon durabillity
+		if(GUILayout.Button("Disassemble For: " + wrahh.Weapons[currentWeapon].getDura() + " Weapon Parts")){ 
+			wrahh.WeaponParts += wrahh.Weapons[currentWeapon].getDura();	//Adds weapons current durabillity to wrahhs weapon parts
+			Destroy(wrahh.Weapons[currentWeapon]);							//Destroy the weapon from wrahhs weapon array
+			wrahh.Weapons[currentWeapon] = gameObject.AddComponent<Weapon>();//adds standard weapon (Fists)
+			weaponShow = true;												//enters weaponShowMenu
+			weaponUpgradeShow = false;										//Closes weaponUpgradeMenu	
 		}
 
 		if(GUILayout.Button("Return")){
-			weaponUpgradeShow = false;
-			weaponShow = true;
+			weaponUpgradeShow = false;		//Closes WeaponUpgradeMenu
+			weaponShow = true;				//Opens WeaponShowMenu
 		}
 		
 		if(GUILayout.Button("I'm Done Upgrading!!"))
 		{
-			paused = false;
-			weaponUpgradeShow = false;
-			statsShow = false;
-			Time.timeScale = 1;
+			paused = false;					//Allows player to enter pause mode again
+			weaponUpgradeShow = false;   	//Closes WeaponUpgradeMenu Window
+			Time.timeScale = 1;				//Resets timeScale to standard 1		
 		}
 	}
 }

@@ -7,7 +7,7 @@ using System.Collections;
 public class UpgradeStation : MonoBehaviour
 {	
 	public Wrahh wrahh; 									//Grants Access to Getters/Setters within Wrahhs Script
-	public Shield shield;								//Grants Access to Getters/Setters within Shield Script
+	public Shield shield;									//Grants Access to Getters/Setters within Shield Script
 	public Helm helm;										//Grants Access to Getters/Setters within Helm Script
 
 	public GUISkin mySkin;
@@ -26,8 +26,14 @@ public class UpgradeStation : MonoBehaviour
 
 	bool paused = false, playerEnter = true;							//Used for entering a pause mode when entering the Upgrade station
 
+	void Awake()
+	{
+		DontDestroyOnLoad(this.gameObject);
+	}
+
 	void Start()
 	{
+		wrahh = GameObject.FindWithTag("Player").AddComponent<Wrahh>();
 		window300X300 = new Rect (Screen.width / 2-250, Screen.height / 2 - 100, 300,300); // Defines the size og the standard Gui Rect
 	}
 

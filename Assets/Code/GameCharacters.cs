@@ -26,6 +26,7 @@ public class GameCharacters : MonoBehaviour
 	}
 	
 	//Animator on the gameobject is initialized in a Animator variable 
+	protected void accessAnimator()
 	{
 		anim = GetComponent<Animator>();
 	}

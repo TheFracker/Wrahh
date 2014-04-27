@@ -15,13 +15,15 @@ public class HitProjectile : Projectile
 		timeToDie = Time.time + liveTime;
 		criticalChange = 5;
 	}
-	
-	void Update () 
+
+	// Update is used to see if it is time for the projectile to be removed again
+	protected void Update () 
 	{
 		if(timeToDie < Time.time)
 			Destroy(this.gameObject);
 	}
 
+	// This will trigger when the projectile collides with anything, but will only hurt the enemies
 	protected virtual void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Enemy" && c.name == "Dolphin_Gun" || c.name == "Dolphin_Rifle")
@@ -31,6 +33,7 @@ public class HitProjectile : Projectile
 		}
 	}
 
+	// Inflicts damage to the gamecharacter being hit
 	public override int giveDamage ()
 	{
 		if(Random.Range(0,100) < criticalChange)

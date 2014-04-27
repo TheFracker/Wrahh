@@ -88,7 +88,9 @@ public class Lobster : GameCharacters
 			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	// Enemy returns to start position
 		}
 	}
-
+	
+	// When the lobster is close enough to the player to start attacking, this coroutine will be started. It essentially gives a delay to attacks, so that
+	// Wrahh has a larger chance of surviving its attack.
 	IEnumerator attack()
 	{
 		while(attacking)

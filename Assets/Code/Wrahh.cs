@@ -3,68 +3,66 @@ using System.Collections;
 
 public class Wrahh : GameCharacters
 {
-	int lobsterParts;
-	int weaponParts;
-	bool shieldOn;
-	bool helmOn;
-	int shieldMaxArmor;
-	int helmMaxArmor;
-	int shieldArmor;
-	int helmArmor;
-	int currentSlot;
-	bool walkSoundPlaying;
+	int lobsterParts;											// Lobster parts are used to buy helmets and can also be used to upgrade and repair helmets and shields
+	int weaponParts;											// Weapon parts are used to upgrade and repair weapons
+	bool shieldOn;												// Used to check if Wrahh has a shield
+	bool helmOn;												// Used to check if Wrahh has a helmet
+	int shieldMaxArmor;											// The maximum armor that the shield can provide
+	int helmMaxArmor;											// The maximum armor that the helmet can provide
+	int shieldArmor;											// The current armor of the shield
+	int helmArmor;												// The current armor of the helmet
+	int currentSlot;											// The current weapon slot used 1-5
+	bool walkSoundPlaying;										// Used to check if a sound of Wrahh walking is played
 
-	public Shield shield;
-	public Helm helm;
-	public static GameObject gameoverScreen;
+	public Shield shield;										// The shield gameobject
+	public Helm helm;											// The helmet gameobject
 
-	public static bool canCrushEnemy = false;
+	public static bool canCrushEnemy = false;					// Used to check if Wrahh is able to crush an enemy, set to true when he is falling
 	
-	Weapon[] weapons = new Weapon[6];
-	Weapon currentWeapon;
-	int grenades;
+	Weapon[] weapons = new Weapon[5];							// An array of weapons used to store the weapons that he picks up
+	Weapon currentWeapon;										// The weapon that Wrahh is currently using
+	int grenades;												// The number of grenades that Wrahh has on his person
 	
-	private float currentSpeed;										// set to public to see current speed
-	private float climbSpeed = 5f;
+	private float currentSpeed;									// Is the current speed of Wrahh
+	private float climbSpeed = 5f;								// Is the speed at which Wrahh can climb a ladder
 
-	private GameObject prefab;
-	public GameObject defaultPrefab;
-
-	AudioSource[] sounds; 											// creates an array "sounds" of type "AudioSource"
-	int numberOfSounds;
-	int numberOfWalkingSounds;
-	int numberOfFallingSounds;
-	int numberOfHitGroundSounds;
+	AudioSource[] sounds; 										// creates an array "sounds" of type "AudioSource"
+	int numberOfSounds;											// The number of sounds in total
+	int numberOfWalkingSounds;									// The number of walking sounds
+	int numberOfFallingSounds;									// The number of falling sounds
+	int numberOfHitGroundSounds;								// The number of sounds of Wrahh hitting the ground
 
 	//////////////////////////////////
 	// START 			    		//
 	//////////////////////////////////
 	void Start ()
 	{
-
+		// This is used so that there will not be a constant call, with Wrahh calling eg shield, and shield calling Wrahh, as they need information about each other
 		if(shield == null)
 			shield = new Shield();
 		if(helm == null)
 			helm = new Helm();
 
+		// At the begging of the game, Wrahh is stripped of everything, and he therefore does not have a shield, no helmet, no grenades, and no armor
 		shieldOn = false;
 		helmOn = false;
 		grenades = 0;
-		weaponParts = 100;
-		lobsterParts = 10;
+		weaponParts = 100;	// Set to 0?
+		lobsterParts = 10;	// Set to 0?
 		shieldArmor = 0;
 		helmArmor = 0;
 
-
+		// Loads the standard weapon (his bare hands) in to all slots in the weapon array
 		for(int i = 0; i < 5; i++)
 		{
 			weapons[i] = gameObject.AddComponent<Weapon>();
 		}
 
+		// Sets the start slot to the first slot in the array, and set his current weapon
 		currentSlot = 0;
 		currentWeapon = weapons[currentSlot];
-		prefab = defaultPrefab;
 
+		// Lots of sounds being loaded
 		walkSoundPlaying = false;
 		numberOfSounds = 16;
 		numberOfWalkingSounds = 14;
@@ -115,12 +113,8 @@ public class Wrahh : GameCharacters
 
 		}
 
-			
-
-
-
 	//From parent "GameCharacters.cs":
-		moveSpeed = 10000.0f;
+		moveSpeed = 10000.0f; // The moveSpeed is very high, because he is heavy, and he is moved by adding force
 		facingRight = true;
 		MAX_MOVE_SPEED = 30.0f;
 		health = 100;
@@ -142,6 +136,7 @@ public class Wrahh : GameCharacters
 			useWeapon (currentWeapon);
 		falling ();
 
+		// Change weapon
 		if(Input.GetKeyUp(KeyCode.O))
 			changeWeaponUp();
 		if(Input.GetKeyUp(KeyCode.L))
@@ -157,18 +152,20 @@ public class Wrahh : GameCharacters
 	{
 		equipedWeapon();
 
-		float input = 0;																	// creates a local variable "input"
+		float input = 0;																// creates a local variable "input"
 
 		falling ();
 		if (anim.GetBool("IsFalling") == false && anim.GetBool("HitGround") == false){	// checks if the player is not falling or splatted out
-			input = Input.GetAxis ("Horizontal"); 										//local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
+			input = Input.GetAxis ("Horizontal"); 										// local variable (a float going from -1 - 1) depending on if you push "A"/"left key" or "D"/"right key" 
 			climbingLadder();															// runs the "climbingLadder" function 
 			crawlMonkeyBars(); 															// runs the "crawlMonkyBars" function 
 		}
-		
+
+		// Moves Wrahh
 		if (input * rigidbody2D.velocity.x < MAX_MOVE_SPEED)
 			rigidbody2D.AddForce (Vector2.right * input * moveSpeed);
 
+		// Plays sound when Wrahh moves
 		if(input != 0 && walkSoundPlaying == false)
 		{
 			playWalkSound();
@@ -307,6 +304,9 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	//	INVENTORY						//
 	//////////////////////////////////////
+
+	// Checks if the inventory is full, (standard weapon (bare hands) is not considered a weapon in this case), and if it is, will return true,
+	// so he is not able to pick up a new weapon
 	bool inventoryFull()
 	{
 		for(int i = 0; i < 5; i++)
@@ -317,6 +317,7 @@ public class Wrahh : GameCharacters
 		return true;
 	}
 
+	// Finds the first available inventory slot
 	int emptyInventorySlot()
 	{
 		for(int i = 0; i < 5; i++)
@@ -326,6 +327,7 @@ public class Wrahh : GameCharacters
 				return i;
 			}
 		}
+		// Should never reach this point, just put here because other wise the compiler will complain.
 		return 0;
 	}
 
@@ -356,15 +358,19 @@ public class Wrahh : GameCharacters
 	//////////////////////////////////////
 	void OnTriggerEnter2D(Collider2D c)
 	{
+		// Pick up lobster parts used for buying helmets, and upgrading and reparing shields and helmets
 		if (c.tag == "Item")													
 		{
 			if (c.gameObject.name == "lobsterParts")
 			{
-			Debug.Log ("Picking up LobsterParts");
-			Destroy(c.gameObject);
-			lobsterParts += 5;
+				Destroy(c.gameObject);
+				lobsterParts += 5;
 			}
 
+			// If the inventory is not full, Wrahh is able to pick up a weapon
+			// When a weapon is picked up, it will be added to the first empty slot in the weapon array, and if it is
+			// stronger than the currently equipped, Wrahh will change to that.
+			// Bare hands < Pistol < Rifle
 			if(!inventoryFull())
 			{
 				if (c.gameObject.name == "gunPickUp")
@@ -391,6 +397,7 @@ public class Wrahh : GameCharacters
 			}
 		}
 
+		// Picks up a med pack
 		if (c.tag == "Buff")												
 		{
 			if (c.gameObject.name == "healthBuff")
@@ -401,6 +408,7 @@ public class Wrahh : GameCharacters
 			}
 		}
 
+		// Picks up armor
 		if (c.tag == "Armor")													// Pick up armor
 		{																		
 			if(c.gameObject.name == "shield")
@@ -415,6 +423,12 @@ public class Wrahh : GameCharacters
 		}
 	}
 
+	//////////////////////////////////////
+	// EQUIPED WEAPON					//
+	//////////////////////////////////////
+
+	// Checks what weapon Wrahh currently has equipped and sets that weapon (which is a child of his back arm) to true. If a weapons range is upgraded, eg the rifle, more rifles will
+	// added, showing them as extended
 	public void equipedWeapon()
 	{
 
@@ -477,13 +491,18 @@ public class Wrahh : GameCharacters
 
 		}
 	}
-	
+	//////////////////////////////////////
+	// WRAHH TAKES DAMAGE				//
+	//////////////////////////////////////
 	public void hurt(Projectile p)
 	{
-		Debug.Log("IM HIT");
-		int damageTaken = p.giveDamage ();
-		int armorHit = Random.Range(0,2);
+		// The damage that Wrahh is about to take is kept in the damageTaken variable.
+		// The damage is first takes away his armor, and then start to take Wrahh's health 
 
+		int damageTaken = p.giveDamage ();
+		int armorHit = Random.Range(0,2);	// Randomly assings what part of Wrahh's armor takes the first hit
+
+		// If the damage is less than the currenlty worn armor, only armor will be lost.
 		if (armorHit == 0 && shieldArmor > 0 && shieldArmor > damageTaken)
 		{
 			shieldArmor -= damageTaken;
@@ -495,6 +514,8 @@ public class Wrahh : GameCharacters
 			damageTaken = 0;
 		}
 
+		// If the damage is higher than the armor that takes the first hit, that piece of armor will be destroyed, and the rest of the damage will be applied to the
+		// other armor part, if that is still equiped.
 		if (armorHit == 0 && damageTaken > 0)
 		{
 			damageTaken -= shieldArmor;
@@ -534,13 +555,17 @@ public class Wrahh : GameCharacters
 			}
 		}
 
+		// Any damage left after the armor has been hit, if any armor left, will take away his health.
+		// And if the health takes away the last of Wrahh's health, he will die, and the game will end.
+
 		health -= damageTaken;
 		if (health <= 0)
 		{
 			die(this.gameObject);
-			playerDead = true;
 		}
 	}
+
+	// Lots of getters and setters. These are used to by the hud to show different stats to the user.
 	public Weapon CurrentWeapon
 	{
 		get{ return currentWeapon; }

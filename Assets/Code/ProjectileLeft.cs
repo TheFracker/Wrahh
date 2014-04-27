@@ -2,16 +2,13 @@
 using System.Collections;
 
 public class ProjectileLeft : Projectile {
-	
-	// Use this for initialization
+
+	// Inheritates from projectile
+
+	// Damage and speed is set
 	void Start () {
 		damage = 1;
 		speed = 10;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		move ();
 	}
 	
 	public int giveDamage()
@@ -30,6 +27,7 @@ public class ProjectileLeft : Projectile {
 	
 	protected override void move ()
 	{
+		// Moves the projectile left
 		this.rigidbody2D.velocity = Vector2.right * -speed;
 	}
 }

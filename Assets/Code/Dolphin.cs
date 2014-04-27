@@ -41,7 +41,7 @@ public class Dolphin : GameCharacters
 
 	void FixedUpdate()
 	{
-		if (DolphineDeath.isCrushed == false)
+		if (EnemySplat.isCrushed == false)
 		{
 			//Assign the target to be the whatever object with the tag; "Player"
 			target = GameObject.FindWithTag("Player").transform;
@@ -62,7 +62,7 @@ public class Dolphin : GameCharacters
 		// If close enough I will shoot at him
 		}
 
-		if (DolphineDeath.isCrushed == true)
+		if (EnemySplat.isCrushed == true)
 		{
 			this.collider2D.enabled = false;
 		}

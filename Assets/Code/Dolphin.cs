@@ -7,6 +7,7 @@ public class Dolphin : GameCharacters
 
 	GameObject rifleDrop;											// This is the Dolphins rifle drop item
 	GameObject gunDrop;												// This is the Dolphins gun drop item
+	GameObject healthDrop;
 	private Transform enemyTransform;								// Stores position of this object
 
 																	// Can be used for setting up the positions that a dolphin should walk between. Two positions is already set in code, but with these, they can be manually set on the fly
@@ -32,9 +33,10 @@ public class Dolphin : GameCharacters
 	{
 		enemyTransform = this.GetComponent<Transform>();	
 
-		// Adds rifle and gun drop prefabs
+		// Adds rifle and gun and health drop prefabs
 		rifleDrop = (GameObject)Resources.Load("Prefabs/riflePickUp");
 		gunDrop = (GameObject)Resources.Load("Prefabs/gunPickUp");
+		healthDrop = (GameObject)Resources.Load("Prefabs/Items/healthBuff");
 
 		// Checks what weapon the dolphin carries and attach the correct script and shows the correct weapon
 		if(usesRifle){
@@ -103,16 +105,22 @@ public class Dolphin : GameCharacters
 		//If dolphin uses rifle on death it will drop an riflePickUp object
 		if (usesRifle)
 		{ 
-			GameObject itemDrop = (GameObject)GameObject.Instantiate(rifleDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
-			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
+			GameObject itemDrop = (GameObject)GameObject.Instantiate(rifleDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the rifle pick up
+			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the dolphin last known position with a little offset
 			base.die (this.gameObject);
 		}
 
 		//If dolphin uses rifle on death it will drop an riflePickUp object
 		if(usesPistol)
 		{
-			GameObject itemDrop1 = (GameObject)GameObject.Instantiate(gunDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
-			itemDrop1.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
+			GameObject itemDrop1 = (GameObject)GameObject.Instantiate(gunDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the gun pick up
+			itemDrop1.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the dolphin last known position with a little offset
+			base.die (this.gameObject);
+		}
+		if(Random.Range(0,100) < 50)
+		{
+			GameObject itemDrop2 = (GameObject)GameObject.Instantiate(healthDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the health buff
+			itemDrop2.transform.Translate(enemyTransform.position.x + 0.5f, enemyTransform.position.y + 1f, enemyTransform.position.z); // Place the dropped item at the dolphin last known position with a little offset
 			base.die (this.gameObject);
 		}
 	}

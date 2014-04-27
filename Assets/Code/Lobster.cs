@@ -38,7 +38,7 @@ public class Lobster : GameCharacters
 	void FixedUpdate ()
 	{
 		// If the lobster has not been crushed by Wrahh and Wrahh is alive the lobster will chase Wrahh
-		if(wrahh != null && EnemySplat.isCrushed == false) 																	
+		if(wrahh != null && EnemySplat.isCrushed == false)
 		{
 			target = GameObject.FindWithTag("Player").transform; 							// Assign the target to be the whatever object with the tag; "Player"
 			currentDir = enemyTransform.position;
@@ -55,17 +55,17 @@ public class Lobster : GameCharacters
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D c)
+	void OnCollisionEnter2D (Collision2D c)													// Check for any collission
 	{
-		if (c.tag == "Player")																// If the collission is with the game obejct tagged; "Player"..
+		if (c.collider.tag == "Player")														// If the collission is with the game obejct tagged; "Player"..
 		{
-			if(!attacking)
+			if(!attacking)																	// Check whether the enemy is attacking on collission
 			{
-				attacking = true;
-				StartCoroutine("attack");
+				attacking = true;															// The enemy is in "attacking" state
+				StartCoroutine("attack");													// Wait for an attack to finish before moving on
 			}
 		}
-		if (c.tag == "HitProjectile")
+		if (c.collider.tag == "HitProjectile")
 		{
 			GameObject itemDrop = (GameObject)GameObject.Instantiate(lobsterPart, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
 			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
@@ -73,22 +73,26 @@ public class Lobster : GameCharacters
 		}
 	}
 
+	// This method enables the lobster to chase its enemy (the player)
 	void chaseTarget()
 	{
-		dir = target.position - enemyTransform.position; 									// The enemy's diretion
-		dir.Normalize();																	// Normalize the direction vector
-		enemyTransform.position += dir * moveSpeed * Time.deltaTime; 						// CHASE THE PLAYER!!!!!
+		dir = target.position - enemyTransform.position; 									// The enemy's diretion will be in the direction of the player (target)
+		dir.Normalize();																	// Normalize the direction vector (because math...)
+		enemyTransform.position += dir * moveSpeed * Time.deltaTime; 						// Move the enemy in the target's direction
 	}
 
+	// This method makes the enemy return to its original position
 	void returnToStartPos()
 	{
-		if(enemyTransform.position.x < startPos.x &! facingRight) 							// Must face starting position
+		if(enemyTransform.position.x < startPos.x &! facingRight) 							// Must face starting position so it is not moonwalking
 		{
-			flip();
-			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	// Enemy returns to start position
+			flip();																			// If it is moonwalking, flip it!
+			enemyTransform.position += enemyTransform.right * moveSpeed * Time.deltaTime;	// Move the enemy to its start position..
 		}
 	}
-
+	
+	// When the lobster is close enough to the player to start attacking, this coroutine will be started. It essentially gives a delay to attacks, so that
+	// Wrahh has a larger chance of surviving its attack.
 	IEnumerator attack()
 	{
 		while(attacking)

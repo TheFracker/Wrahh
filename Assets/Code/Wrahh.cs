@@ -131,10 +131,9 @@ public class Wrahh : GameCharacters
 		if (Input.GetKeyUp(KeyCode.G))
 			throwGrenade ();
 		
-		// Shooting
-		if (Input.GetKeyUp (KeyCode.Space))
+		// Hitting
+		if (Input.GetKeyUp (KeyCode.Space) && anim.GetBool("isAttacking") == false)
 			useWeapon (currentWeapon);
-		falling ();
 
 		// Change weapon
 		if(Input.GetKeyUp(KeyCode.O))
@@ -270,7 +269,7 @@ public class Wrahh : GameCharacters
 
 	IEnumerator waitForAttackingAnimation()
 	{
-		yield return new WaitForSeconds(0.08f);
+		yield return new WaitForSeconds(0.5f);
 		anim.SetBool("isAttacking", false);
 	}
 	
@@ -311,7 +310,7 @@ public class Wrahh : GameCharacters
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			if(weapons[i].getName() == "weapon")
+			if(weapons[i].getName() == "Fists")
 				return false;
 		}
 		return true;
@@ -322,7 +321,7 @@ public class Wrahh : GameCharacters
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			if(weapons[i].getName() == "weapon")
+			if(weapons[i].getName() == "Fists")
 			{
 				return i;
 			}
@@ -380,7 +379,7 @@ public class Wrahh : GameCharacters
 					Destroy(c.gameObject);
 					weapons[slot] = gameObject.AddComponent<Pistol>();
 					currentSlot = slot;
-					if(currentWeapon.getName() == "weapon")
+					if(currentWeapon.getName() == "Fists")
 						currentWeapon = weapons[currentSlot];
 				}
 				
@@ -391,7 +390,7 @@ public class Wrahh : GameCharacters
 					Destroy(c.gameObject);
 					weapons[slot] = gameObject.AddComponent<Rifle>();
 					currentSlot = slot;
-					if(currentWeapon.getName() == "weapon" || currentWeapon.getName() == "Pistol")
+					if(currentWeapon.getName() == "Fists" || currentWeapon.getName() == "Pistol")
 						currentWeapon = weapons[currentSlot];
 				}
 			}
@@ -480,7 +479,7 @@ public class Wrahh : GameCharacters
 				this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle2").gameObject.SetActive(false);
 			}
 		}
-		else if (currentWeapon.getName() == "weapon")
+		else if (currentWeapon.getName() == "Fists")
 		{
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle").gameObject.SetActive(false);
 			this.transform.FindChild("wrahh_arm_BACK").transform.FindChild("weapon_rifle1").gameObject.SetActive(false);
@@ -561,6 +560,7 @@ public class Wrahh : GameCharacters
 		health -= damageTaken;
 		if (health <= 0)
 		{
+			// Calls die from GameCharacters class
 			die(this.gameObject);
 		}
 	}

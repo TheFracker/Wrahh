@@ -10,12 +10,14 @@ public class ProjectileLeft : Projectile {
 		damage = 1;
 		speed = 10;
 	}
-	
+
+	// Inflicts damage on the hit character
 	public int giveDamage()
 	{
 		return damage;
 	}
-	
+
+	// This will trigger when the projectile collides with anything, but will only hurt the player
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Player")

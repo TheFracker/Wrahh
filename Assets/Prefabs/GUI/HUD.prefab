@@ -39,7 +39,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 0}
-  wrahh: {fileID: 0}
+  player: {fileID: 0}
+  heartContainer: {fileID: 0}
+  hearts: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

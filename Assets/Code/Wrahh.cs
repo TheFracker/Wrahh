@@ -140,11 +140,7 @@ public class Wrahh : GameCharacters
 	// UPDATE 	    				//
 	//////////////////////////////////
 	void Update ()
-	{
-		// Throw grenade
-		if (Input.GetKeyUp(KeyCode.G))
-			throwGrenade ();
-		
+	{	
 		// Hitting
 		if (Input.GetKeyUp (KeyCode.Space) && anim.GetBool("isAttacking") == false)
 		{
@@ -293,17 +289,6 @@ public class Wrahh : GameCharacters
 			this.currentWeapon = weapons[currentSlot];
 		}
 	}
-	
-	void throwGrenade()
-	{
-		if (grenades > 0)
-		{
-			Debug.Log("Throwing grenade " + grenades);
-			grenades--;
-			return;
-		}
-		Debug.Log ("Don't have anything to throw");
-	}
 
 	//////////////////////////////////////
 	//	INVENTORY						//
@@ -380,7 +365,6 @@ public class Wrahh : GameCharacters
 				if (c.gameObject.name == "gunPickUp(Clone)")
 				{
 					int slot = emptyInventorySlot();
-					Debug.Log ("Picking up guns");
 					Destroy(c.gameObject);
 					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Pistol>();
@@ -392,7 +376,6 @@ public class Wrahh : GameCharacters
 				if (c.gameObject.name == "riflePickUp(Clone)")
 				{
 					int slot = emptyInventorySlot();
-					Debug.Log ("Picking up rifles");
 					Destroy(c.gameObject);
 					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Rifle>();
@@ -411,7 +394,6 @@ public class Wrahh : GameCharacters
 		{
 			if (c.gameObject.name == "healthBuff(Clone)")
 			{
-				Debug.Log ("Picking up health buff");
 				Destroy(c.gameObject);
 				health += 10;
 			}
@@ -422,12 +404,10 @@ public class Wrahh : GameCharacters
 		{																		
 			if(c.gameObject.name == "shield")
 			{
-				Debug.Log ("Shield obtained!");									// Check if 'shield' was registered
 				Destroy(c.gameObject);											// Removed the item from the scene
 				shield.Protection = 1;
 				shield.upgradeProtection();
 				shieldOn = true;
-				Debug.Log(shieldOn);
 			}
 		}
 	}

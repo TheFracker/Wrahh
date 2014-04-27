@@ -4,11 +4,11 @@ using System.Collections;
 
 //Script Used when accessing the upgrade station, creates an gui menu used to perform equipment upgrades
 
-public class UpgradeStation : MonoBehaviour {
-	
-	public Wrahh wrahh = new Wrahh(); 									//Grants Access to Getters/Setters within Wrahhs Script
-	public Shield shield = new Shield();								//Grants Access to Getters/Setters within Shield Script
-	public Helm helm = new Helm();										//Grants Access to Getters/Setters within Helm Script
+public class UpgradeStation : MonoBehaviour
+{	
+	public Wrahh wrahh; 									//Grants Access to Getters/Setters within Wrahhs Script
+	public Shield shield;								//Grants Access to Getters/Setters within Shield Script
+	public Helm helm;										//Grants Access to Getters/Setters within Helm Script
 
 	public GUISkin mySkin;
 

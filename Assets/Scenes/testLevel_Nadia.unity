@@ -3252,7 +3252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shield: {fileID: 1305606162}
   helm: {fileID: 1305606161}
-  defaultPrefab: {fileID: 1305606158}
 --- !u!95 &1305606167
 Animator:
   serializedVersion: 2

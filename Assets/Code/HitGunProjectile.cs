@@ -7,8 +7,8 @@ public class HitGunProjectile : HitProjectile {
 	// It will die after a small amout of time (liveTime) if it does not hit an enemy
 	void Awake () {
 		speed = 0;
-		damage = 2;
-		liveTime = 1.0f;
+		damage = 6;
+		liveTime = 100.0f;
 		timeToDie = Time.time + liveTime;
 		criticalChange = 5;
 	}

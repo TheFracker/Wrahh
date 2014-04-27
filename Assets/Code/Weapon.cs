@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour {
 	protected float delay;				// The time between each shot
 	protected int durabillityLevel = 0;	// The level the durability has been upgraded to
 	protected int rangeLevel = 0;		// The level the range has been upgraded to
+	protected float xPos;				// This is x spawn position of projectiles
 
 	// Start by loading prefabs into the different projectile variables
 	void Start()
@@ -28,7 +29,7 @@ public class Weapon : MonoBehaviour {
 		shooting = false;
 		durability=1;
 		hitDamage = 1;
-
+		MAX_DURABILITY = 1;
 		durability = 1;
 	}
 
@@ -57,9 +58,9 @@ public class Weapon : MonoBehaviour {
 	public virtual void hit()
 	{
 		if(gameObject.GetComponent<Wrahh>().isFacingRight())
-			pos = this.transform.position + new Vector3(1.0f,0.5f,0);
+			pos = this.transform.position + new Vector3(xPos,0.5f,0);
 		else
-			pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
+			pos = this.transform.position + new Vector3(-xPos,0.5f,0);
 
 		Instantiate(hitProjectile, pos, Quaternion.identity);
 	}

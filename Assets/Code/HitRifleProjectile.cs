@@ -7,8 +7,8 @@ public class HitRifleProjectile : HitProjectile {
 	// It will die after a small amout of time (liveTime) if it does not hit an enemy
 	void Awake () {
 		speed = 0;
-		damage = 3;
-		liveTime = 1.0f;
+		damage = 10;
+		liveTime = 100.0f;
 		timeToDie = Time.time + liveTime;
 		criticalChange = 5;
 	}

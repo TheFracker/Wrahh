@@ -62,7 +62,7 @@ public class Lobster : GameCharacters
 			if(!attacking)																	// Check whether the enemy is attacking on collission
 			{
 				attacking = true;															// The enemy is in "attacking" state
-				StartCoroutine("attack");													// Wait for an attack to finish before moving on
+				StartCoroutine("attack");												// Wait for an attack to finish before moving on
 			}
 		}
 		if (c.collider.tag == "HitProjectile")

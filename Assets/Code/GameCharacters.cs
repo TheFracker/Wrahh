@@ -12,6 +12,12 @@ public class GameCharacters : MonoBehaviour
 	protected float standardDrag = 5f; 						// initial drag force
 	protected Animator anim;								// The animator accesor
 	protected float duration = 1.0f;
+	protected bool isHurt;
+
+	void Start()
+	{
+		isHurt = false;
+	}
 
 	protected void accesAnimator()
 	{

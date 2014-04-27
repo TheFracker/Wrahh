@@ -156,20 +156,20 @@ public class Weapon : MonoBehaviour {
 		MAX_DURABILITY += value;
 	}
 	
-	IEnumerator shot()
+	protected virtual IEnumerator shot()
 	{
 		while(shooting)
 		{
 			if (ammo > 0 &! reloading) {
 				if(gameObject.GetComponent<Dolphin>().isFacingRight())
 				{
-					Instantiate(bulletRight, pos, Quaternion.identity);
 					pos = this.transform.position + new Vector3(1.5f,0.5f,0);
+					Instantiate(bulletRight, pos, Quaternion.identity);
 				}
 				else
 				{
-					Instantiate(bulletLeft, pos, Quaternion.identity);
 					pos = this.transform.position + new Vector3(-1.5f,0.5f,0);
+					Instantiate(bulletLeft, pos, Quaternion.identity);
 				}
 				ammo--;
 				yield return new WaitForSeconds(delay);

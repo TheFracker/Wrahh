@@ -3,29 +3,31 @@ using System.Collections;
 
 public class Dolphin : GameCharacters
 {
-	Weapon weapon;									// The weapon that the dolphin carry with it
+
+	Weapon weapon;													// The weapon that the dolphin carry with it
+
 	GameObject rifleDrop;
 	GameObject	gunDrop;
 	private Transform enemyTransform;
 
-	// Can be used for setting up the positions that a dolphin should walk between. Two positions is already set in code, but with these, they can be manually set on the fly
-	public Transform positionedTarget_right = null;	// This is for the right position
-	public Transform positionedTarget_left = null;	// This is for the left position
-	private Transform target;						// This is used for finding the target, in this case that would be Wrahh
-	// It also possible to make the dolphin take a break when it reaches its end position
-	public bool stopRight = true;					// Will make it stop at the right position
-	public bool stopLeft = true;					// Will make it stop at the left position
-	bool gotHere;									// Is used to check if the dolphin got to the end of the position
-	float timeToWalk;								// Is used to check if it is time to start walking again after a break
+																	// Can be used for setting up the positions that a dolphin should walk between. Two positions is already set in code, but with these, they can be manually set on the fly
+	public Transform positionedTarget_right = null;					// This is for the right position
+	public Transform positionedTarget_left = null;					// This is for the left position
+	private Transform target;										// This is used for finding the target, in this case that would be Wrahh
+																	// It also possible to make the dolphin take a break when it reaches its end position
+	public bool stopRight = true;									// Will make it stop at the right position
+	public bool stopLeft = true;									// Will make it stop at the left position
+	private bool gotHere;											// Is used to check if the dolphin got to the end of the position
+	private float timeToWalk;										// Is used to check if it is time to start walking again after a break
 
-	public float maxDistance = 20.0f;				// This is the distance that the target has to be inside for the dolphin to start chasing is
-	public float shootDistance = 10.0f;				// This is the distance that the target has to be inside fot the dolphin to start shooting at it
-	public float heightDistance = 0.4f;				// This is used to check if the target and the dolphin are on the same platform.
+	public float maxDistance = 20.0f;								// This is the distance that the target has to be inside for the dolphin to start chasing is
+	public float shootDistance = 10.0f;								// This is the distance that the target has to be inside fot the dolphin to start shooting at it
+	public float heightDistance = 0.4f;								// This is used to check if the target and the dolphin are on the same platform.
 
-	private Vector3 dir;							// Is used to find the direction in which to walk
+	private Vector3 dir;											// Is used to find the direction in which to walk
 
-	public bool usesPistol;							// Check to indicate what type of weapon the dolphin carry
- 	public bool usesRifle;							// Check to indicate what type of weapon the dolphin carry
+	public bool usesPistol;											// Check to indicate what type of weapon the dolphin carry
+ 	public bool usesRifle;											// Check to indicate what type of weapon the dolphin carry
 
 	void Start ()
 	{
@@ -33,6 +35,7 @@ public class Dolphin : GameCharacters
 		rifleDrop = (GameObject)Resources.Load("Prefabs/gunPickUp");
 		gunDrop = (GameObject)Resources.Load("Prefabs/riflePickUp");
 		// Checks what weapon the dolphin carries and attach the correct script
+
 		if(usesRifle){
 			weapon = gameObject.AddComponent<Rifle> ();
 			this.transform.FindChild("_dolphin").transform.FindChild("weapon_rifle").gameObject.SetActive(true);
@@ -56,11 +59,11 @@ public class Dolphin : GameCharacters
 	void FixedUpdate()
 	{
 
-		// If the dolphin has not been crushed by Wrahh it will guard an area, chase Wrahh and shoot at him
-		if (EnemySplat.isCrushed == false)
+
+		if (EnemySplat.isCrushed == false)							// If the dolphin has not been crushed by Wrahh it will guard an area, chase Wrahh and shoot at him
 		{
-			//Assign the target to be the whatever object with the tag; "Player" - in this case Wrahh
-			target = GameObject.FindWithTag("Player").transform;
+
+			target = GameObject.FindWithTag("Player").transform;	//Assign the target to be the whatever object with the tag; "Player" - in this case Wrahh
 
 			// Is true if the dolphin and Wrahh are on the same platform
 			bool withinSameHeight = this.transform.position.y + heightDistance >= target.position.y && this.transform.position.y - heightDistance <= target.position.y;
@@ -87,7 +90,7 @@ public class Dolphin : GameCharacters
 		if(health <= 0)
 			die(this.gameObject);
 	}
-
+	
 	protected override void die (GameObject g)
 	{
 		if (usesRifle){

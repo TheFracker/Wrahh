@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// This sripts should be inherinted by all game characters in the game. It contains functions and attributes for animations, damage, speed, health,
+///filp, physics etc. 
+/// </summary>
+
+using UnityEngine;
 using System.Collections;
 
 public class GameCharacters : MonoBehaviour
@@ -10,16 +15,23 @@ public class GameCharacters : MonoBehaviour
 	protected float standardGravity = 7.4f; 				// initial gravity
 	protected float MAX_MOVE_SPEED; 						// The maximum movement speed that a character should be able to achive
 	protected float standardDrag = 5f; 						// initial drag force
-	protected Animator anim;								// The animator accesor
+	protected Animator anim;								// Creates an Animator variable
 	protected float duration = 1.0f;
-
-	protected void accesAnimator()
+	protected bool isHurt;
+	
+	//Sets bool to false (no one hurts anyone in the beginning
+	void Start()
+	{
+		isHurt = false;										
+	}
+	
+	//Animator on the gameobject is initialized in a Animator variable 
 	{
 		anim = GetComponent<Animator>();
 	}
 
 	// Destroyes the character that died
-	protected void die(GameObject g)
+	protected virtual void die(GameObject g)
 	{
 		Destroy(g);
 	}

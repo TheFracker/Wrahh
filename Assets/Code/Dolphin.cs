@@ -3,7 +3,12 @@ using System.Collections;
 
 public class Dolphin : GameCharacters
 {
+
 	Weapon weapon;													// The weapon that the dolphin carry with it
+
+	GameObject rifleDrop;
+	GameObject	gunDrop;
+	private Transform enemyTransform;
 
 																	// Can be used for setting up the positions that a dolphin should walk between. Two positions is already set in code, but with these, they can be manually set on the fly
 	public Transform positionedTarget_right = null;					// This is for the right position
@@ -26,11 +31,19 @@ public class Dolphin : GameCharacters
 
 	void Start ()
 	{
+		enemyTransform = this.GetComponent<Transform>();	
+		rifleDrop = (GameObject)Resources.Load("Prefabs/gunPickUp");
+		gunDrop = (GameObject)Resources.Load("Prefabs/riflePickUp");
 		// Checks what weapon the dolphin carries and attach the correct script
-		if(usesRifle)	
+
+		if(usesRifle){
 			weapon = gameObject.AddComponent<Rifle> ();
-		if(usesPistol)
+			this.transform.FindChild("_dolphin").transform.FindChild("weapon_rifle").gameObject.SetActive(true);
+		}
+		if(usesPistol){
 			weapon = gameObject.AddComponent<Pistol> ();
+			this.transform.FindChild("_dolphin").transform.FindChild("weapon_gun").gameObject.SetActive(true);
+		}
 
 		// Is set to false, so that the dolphin can stop the first time it comes to a position, and time to walk is set to 0 as it is set when it stops for a break
 		gotHere = false;
@@ -77,9 +90,24 @@ public class Dolphin : GameCharacters
 		if(health <= 0)
 			die(this.gameObject);
 	}
+	
+	protected override void die (GameObject g)
+	{
+		if (usesRifle){
+			GameObject itemDrop = (GameObject)GameObject.Instantiate(rifleDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
+			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
+			base.die (this.gameObject);
+		}
 
+		if(usesPistol){
+			GameObject itemDrop1 = (GameObject)GameObject.Instantiate(gunDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
+			itemDrop1.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
+			base.die (this.gameObject);
+		}
+	}
 
-	void useWeapon(Weapon w)							// Uses the weapon that the dolphin is carrying 
+	// Uses the weapon that the dolphin is carrying 
+	void useWeapon(Weapon w)
 	{
 		w.shoot ();
 	}

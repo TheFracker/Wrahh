@@ -284,6 +284,7 @@ public class Wrahh : GameCharacters
 		Debug.Log (currentWeapon.getDura ());
 		if(CurrentWeapon.getDura() <= 0)
 		{
+			Destroy(weapons[currentSlot]);
 			weapons[currentSlot] = gameObject.AddComponent<Weapon>();
 			this.currentWeapon = weapons[currentSlot];
 		}
@@ -377,6 +378,7 @@ public class Wrahh : GameCharacters
 					int slot = emptyInventorySlot();
 					Debug.Log ("Picking up guns");
 					Destroy(c.gameObject);
+					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Pistol>();
 					currentSlot = slot;
 					if(currentWeapon.getName() == "Fists")
@@ -388,6 +390,7 @@ public class Wrahh : GameCharacters
 					int slot = emptyInventorySlot();
 					Debug.Log ("Picking up rifles");
 					Destroy(c.gameObject);
+					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Rifle>();
 					currentSlot = slot;
 					if(currentWeapon.getName() == "Fists" || currentWeapon.getName() == "Pistol")

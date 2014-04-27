@@ -35,6 +35,7 @@ public class Weapon : MonoBehaviour {
 		sounds[0].rolloffMode = AudioRolloffMode.Linear;
 		sounds[0].pitch = 1f;
 		sounds[0].volume = 1f;
+		durability = 1;
 	}
 
 	// Is called whenever the weapon is upgraded in the upgrade station

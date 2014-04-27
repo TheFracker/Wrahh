@@ -282,8 +282,9 @@ MonoBehaviour:
   stopLeft: 1
   maxDistance: 5
   shootDistance: 4
-  closeDistance: 0
   heightDistance: .400000006
+  usesPistol: 1
+  usesRifle: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -65,12 +65,18 @@ public class Lobster : GameCharacters
 				StartCoroutine("attack");													// Wait for an attack to finish before moving on
 			}
 		}
-		if (c.collider.tag == "HitProjectile")
-		{
-			GameObject itemDrop = (GameObject)GameObject.Instantiate(lobsterPart, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
-			itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
-			die(this.gameObject);															// Remove the dead lobster from the game
-		}
+	}
+
+	public void hurt(Projectile p)
+	{
+		die(this.gameObject);
+	}
+
+	protected override void die (GameObject g)
+	{
+		GameObject itemDrop = (GameObject)GameObject.Instantiate(lobsterPart, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the lobster parts
+		itemDrop.transform.Translate(enemyTransform.position.x + 1, enemyTransform.position.y + 1.5f, enemyTransform.position.z); // Place the dropped item at the lobster's last known position with a little offset
+		base.die (this.gameObject);
 	}
 
 	// This method enables the lobster to chase its enemy (the player)

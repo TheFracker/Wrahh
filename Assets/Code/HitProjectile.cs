@@ -26,9 +26,14 @@ public class HitProjectile : Projectile
 	// This will trigger when the projectile collides with anything, but will only hurt the enemies
 	protected virtual void OnTriggerEnter2D(Collider2D c)
 	{
-		if(c.tag == "Enemy" && c.name == "Dolphin_Gun" || c.name == "Dolphin_Rifle")
+		if(c.tag == "Enemy" && c.name == "Dolphin")
 		{
 			c.gameObject.GetComponent<Dolphin>().hurt(this);
+			Destroy (this.gameObject);
+		}
+		if(c.tag == "Enemy" && c.name == "ThaLobster")
+		{
+			c.gameObject.GetComponent<Lobster>().hurt(this);
 			Destroy (this.gameObject);
 		}
 	}

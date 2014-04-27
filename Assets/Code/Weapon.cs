@@ -20,8 +20,7 @@ public class Weapon : MonoBehaviour {
 	protected bool shooting;			// If the Dolphin is pressing the trigger or not
 	protected float delay;// The time between each shot
 	protected int durabillityLevel = 0;
-	protected int rangeLevel = 0;
-	protected AudioSource[] sounds; 
+	protected int rangeLevel = 0; 
 
 
 	void Start()
@@ -30,15 +29,7 @@ public class Weapon : MonoBehaviour {
 		durabilityLossChance = 70;
 		name = "weapon";
 		shooting = false;
-
-		this.gameObject.AddComponent<AudioSource>();
-		sounds = this.GetComponents<AudioSource>();
-		sounds[0].clip = Resources.Load("sounds/punch") as AudioClip;
-		sounds[0].playOnAwake = false;
-		sounds[0].rolloffMode = AudioRolloffMode.Linear;
-		sounds[0].pitch = 1f;
-		sounds[0].volume = 1f;
-
+		durability=1;
 	}
 
 	public void upgradeLevel()
@@ -72,7 +63,6 @@ public class Weapon : MonoBehaviour {
 			pos = this.transform.position + new Vector3(-1.0f,0.5f,0);
 
 		Instantiate(hitProjectile, pos, Quaternion.identity);
-		sounds[0].Play();
 	}
 
 	protected virtual void loadPrefab()

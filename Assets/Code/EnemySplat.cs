@@ -7,7 +7,8 @@ public class EnemySplat : MonoBehaviour {
 	public static bool isCrushed = false;
 	Animator anim;
 
-	AudioSource[] sounds;
+	AudioSource[] sounds; 
+	AudioClip ac;
 
 	// Use this for initialization
 	void Start () {

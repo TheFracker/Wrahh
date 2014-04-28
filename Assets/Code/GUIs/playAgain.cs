@@ -17,6 +17,6 @@ public class playAgain : MonoBehaviour
 	
 	void OnMouseDown()
 	{
-		Application.LoadLevel(Application.loadedLevel);
+		Application.LoadLevel(1);
 	}
 }

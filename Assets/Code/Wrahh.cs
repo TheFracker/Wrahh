@@ -53,8 +53,8 @@ public class Wrahh : GameCharacters
 		// At the begging of the game, Wrahh is stripped of everything, and he therefore does not have a shield, no helmet, no grenades, and no armor
 		shieldOn = false;
 		helmOn = false;
-		weaponParts = 100;	// Set to 0?
-		lobsterParts = 10;	// Set to 0?
+		weaponParts = 0;	
+		lobsterParts = 0;	
 		shieldArmor = 0;
 		helmArmor = 0;
 
@@ -498,19 +498,30 @@ public class Wrahh : GameCharacters
 		while(damageTaken > 0 && (shieldArmor - damageToSheild > 0 || helmArmor - damageToHelm > 0))
 		{
 			int armorHit = Random.Range(0,10); // Randomly assings what part of Wrahh's armor takes a hit
-			if(armorHit >= 4 && shieldArmor - damageToSheild > 0)
+			if(armorHit >= 4 && shieldOn &&shieldArmor - damageToSheild > 0)
 				damageToSheild++;
-			else if(armorHit < 4 && helmArmor - damageToHelm > 0)
+			else if(helmOn && armorHit < 4 && helmArmor - damageToHelm > 0)
 				damageToHelm++;
-			else if (shieldArmor - damageToSheild > 0)
+			else if (shieldOn && shieldArmor - damageToSheild > 0)
 				damageToSheild++;
-			else if (helmArmor - damageToHelm > 0)
+			else if (helmOn && helmArmor - damageToHelm > 0)
 				damageToHelm++;
+			if(helmOn && helmArmor - damageToHelm <= 0)
+			{
+				helm.Protection = 0;
+				helm.upgradeProtection();
+			}
+			if(shieldOn && shieldArmor - damageToSheild <= 0)
+			{
+				shield.Protection = 0;
+				shield.upgradeProtection();
+			}
 			damageTaken--;
 		}
 
 		shieldArmor -= damageToSheild;
 		helmArmor -= damageToHelm;
+
 		// Any damage left after the armor has been hit, if any armor left, will take away his health.
 		// And if the health takes away the last of Wrahh's health, he will die, and the game will end.
 		health -= damageTaken;

@@ -16,11 +16,17 @@ public class HUD : MonoBehaviour
 		DontDestroyOnLoad (this.gameObject);
 	}
 
+	void OnLevelWasLoaded(int level) {
+		if (level == 1)
+			player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();
+		
+	}
+
 	void Start()
 	{
-			player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();	
+		player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();
 	}
-	
+
 	void OnGUI()
 	{
 		GUI.skin = mySkin;

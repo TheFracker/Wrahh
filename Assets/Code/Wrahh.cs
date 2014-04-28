@@ -518,8 +518,6 @@ public class Wrahh : GameCharacters
 			die(this.gameObject); // Calls die from GameCharacters class
 	}
 
-
-
 	// Lots of getters and setters. These are used to by the hud to show different stats to the user.
 	public Weapon CurrentWeapon
 	{

@@ -33,7 +33,7 @@ public class UpgradeStation : MonoBehaviour
 
 	void Start()
 	{
-		window300X300 = new Rect (Screen.width / 2-250, Screen.height / 2 - 100, 300,300); // Defines the size og the standard Gui Rect
+		window300X300 = new Rect (Screen.width / 2-250, Screen.height / 2 - 100, 300,300); // Defines the size of the standard Gui Rect
 	}
 
 

@@ -12,7 +12,7 @@ public class GUI_controller : MonoBehaviour
 
 	void Start()
 	{
-		player = GameObject.FindWithTag("Player");
+		player = GameObject.Find("Player");
 		guiIsOn = false;
 	}
 

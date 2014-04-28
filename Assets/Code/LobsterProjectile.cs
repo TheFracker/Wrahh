@@ -5,7 +5,8 @@ public class LobsterProjectile : HitProjectile {
 
 	// Since this projectile will not be moving its speed is set to 0
 	// And since it will not be moving it will be destroyed after a little while, which is is liveTime
-	void Awake () {
+	void Awake ()
+	{
 		speed = 0;
 		damage = 20;
 		liveTime = 1.0f;

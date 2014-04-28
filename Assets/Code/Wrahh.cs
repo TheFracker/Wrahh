@@ -498,22 +498,29 @@ public class Wrahh : GameCharacters
 		while(damageTaken > 0 && (shieldArmor - damageToSheild > 0 || helmArmor - damageToHelm > 0))
 		{
 			int armorHit = Random.Range(0,10); // Randomly assings what part of Wrahh's armor takes a hit
-			if(armorHit >= 4 && shieldArmor - damageToSheild > 0)
+			if(armorHit >= 4 && shieldOn &&shieldArmor - damageToSheild > 0)
 				damageToSheild++;
-			else if(armorHit < 4 && helmArmor - damageToHelm > 0)
+			else if(helmOn && armorHit < 4 && helmArmor - damageToHelm > 0)
 				damageToHelm++;
-			else if (shieldArmor - damageToSheild > 0)
+			else if (shieldOn && shieldArmor - damageToSheild > 0)
 				damageToSheild++;
-			else if (helmArmor - damageToHelm > 0)
+			else if (helmOn && helmArmor - damageToHelm > 0)
 				damageToHelm++;
+			if(helmOn && helmArmor - damageToHelm <= 0)
+			{
+				helm.Protection = 0;
+				helm.upgradeProtection();
+			}
+			if(shieldOn && shieldArmor - damageToSheild <= 0)
+			{
+				shield.Protection = 0;
+				shield.upgradeProtection();
+			}
 			damageTaken--;
 		}
 
 		shieldArmor -= damageToSheild;
 		helmArmor -= damageToHelm;
-
-		//Når Shield/Helm når 0, skal shield.Protection/helm.Protection sættes til 0 og funktionen shield/helm.upgradeProtection() skal 
-		//Køres, det skulle gerne fjerne grafikken og sætte max armor til 0 (tjek scripts)
 
 		// Any damage left after the armor has been hit, if any armor left, will take away his health.
 		// And if the health takes away the last of Wrahh's health, he will die, and the game will end.

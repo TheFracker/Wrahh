@@ -390,7 +390,7 @@ public class Wrahh : GameCharacters
 		// Picks up a med pack
 		if (c.tag == "Buff")												
 		{
-			if (c.gameObject.name == "healthBuff(Clone)")
+			if (c.gameObject.name == "healthBuff(Clone)" || c.gameObject.name == "healthBuff")
 			{
 				Destroy(c.gameObject);
 				health += 10;
@@ -400,7 +400,7 @@ public class Wrahh : GameCharacters
 		// Picks up armor
 		if (c.tag == "Armor")													// Pick up armor
 		{																		
-			if(c.gameObject.name == "shield")
+			if(c.gameObject.name == "shield" && shieldOn == false)
 			{
 				Destroy(c.gameObject);											// Removed the item from the scene
 				shield.Protection = 1;

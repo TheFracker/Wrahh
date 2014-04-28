@@ -10,7 +10,7 @@ public class HitProjectile : Projectile
 	void Awake ()
 	{
 		speed = 0;
-		damage = 3;
+		damage = 5;
 		liveTime = 0.2f;
 		timeToDie = Time.time + liveTime;
 		criticalChance = 5;

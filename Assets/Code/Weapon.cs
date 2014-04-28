@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour {
 		name = "Fists";
 		shooting = false;
 		durability=1;
-		hitDamage = 1;
+		hitDamage = 3;
 		MAX_DURABILITY = 1;
 		durability = 1;
 		xPos = 0.7f;

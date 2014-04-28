@@ -33,7 +33,6 @@ public class Lobster : GameCharacters
 		facingRight = false;
 		moveSpeed = 2.0f;
 		health = 30;
-		armor = 4;
 		accessAnimator();
 	}
 
@@ -71,7 +70,9 @@ public class Lobster : GameCharacters
 	public void hurt(Projectile p)
 	{
 		base.blinkRed();
-		die(this.gameObject);
+		health -= p.giveDamage();
+		if(health <= 0)
+			die(this.gameObject);
 	}
 
 	protected override void die (GameObject g)

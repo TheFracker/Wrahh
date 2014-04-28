@@ -8,8 +8,8 @@ public class LobsterProjectile : HitProjectile {
 	void Awake ()
 	{
 		speed = 0;
-		damage = 20;
-		liveTime = 1.0f;
+		damage = 7;
+		liveTime = 0.2f;
 		timeToDie = Time.time + liveTime;
 	}
 

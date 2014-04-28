@@ -2251,7 +2251,7 @@ Prefab:
     - target: {fileID: 11400000, guid: c2c5da70152577c4fbf977693fe0b0f9, type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1031765898}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: c2c5da70152577c4fbf977693fe0b0f9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c2c5da70152577c4fbf977693fe0b0f9, type: 2}
@@ -3324,7 +3324,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 216832376}
   m_GameObject: {fileID: 1031765894}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_LightmapIndex: 255
@@ -5079,7 +5079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a562b4f60234f3543ac3927fb0c97796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1031765898}
+  player: {fileID: 0}
   mySkin: {fileID: 11400000, guid: 5d7cf2772778bee49886db9cb4bfb90b, type: 2}
 --- !u!4 &1750433092
 Transform:

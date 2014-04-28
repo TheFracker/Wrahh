@@ -60,7 +60,7 @@ public class Dolphin : GameCharacters
 		timeToWalk = 0;
 
 		//From parent "GameCharacters.cs":
-		moveSpeed = 10;
+		moveSpeed = 7;
 		facingRight = false;
 		health = 20;
 		setStandardPhysics();

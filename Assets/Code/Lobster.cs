@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Lobster : GameCharacters
 {
-	private float maxDistance = 10.0f;										// This is the scope for the lobster's field of sight
+	private float maxDistance = 15.0f;										// This is the scope for the lobster's field of sight
 
 	private Transform target;
 	private Transform enemyTransform;
@@ -26,17 +26,17 @@ public class Lobster : GameCharacters
 		wrahh = GameObject.FindWithTag("Player");
 		startPos = enemyTransform.position;									// Stores the lobster's initial position in an attribute/variable
 
-	//Set from parent (super) class :: GameCharacters
+		attacking = false;
+		hitProjectile = Resources.Load ("Prefabs/LobsterProjectile") as GameObject;
+
+		childAnim = this.transform.GetChild(0).GetComponent<Animator>();
+
+		//Set from parent (super) class :: GameCharacters
 		facingRight = false;
 		moveSpeed = 2.0f;
 		health = 30;
 		armor = 4;
-
-		attacking = false;
-		hitProjectile = Resources.Load ("Prefabs/LobsterProjectile") as GameObject;
-
 		accessAnimator();
-		childAnim = this.transform.GetChild(0).GetComponent<Animator>();
 	}
 
 	void FixedUpdate ()

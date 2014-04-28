@@ -36,7 +36,7 @@ public class Wrahh : GameCharacters
 
 	void Awake()
 	{
-		DontDestroyOnLoad (this.gameObject);
+		DontDestroyOnLoad (this.gameObject); // Makes sure that the player gameobject is the same through various of levels
 	}
 
 	//////////////////////////////////
@@ -515,22 +515,10 @@ public class Wrahh : GameCharacters
 		// And if the health takes away the last of Wrahh's health, he will die, and the game will end.
 		health -= damageTaken;
 		if (health <= 0)
-		{
-			// Calls die from GameCharacters class
-			anim.SetBool("gettingKilled", true);
-			StartCoroutine("waitForDeath");
-			die(this.gameObject);
-		}
+			die(this.gameObject); // Calls die from GameCharacters class
 	}
 
-	public IEnumerator waitForDeath()
-	{
-		while (anim.GetBool("gettingKilled") == true)
-		{
-			yield return new WaitForSeconds(5.0f);
-			anim.SetBool("gettingKilled", false);
-		}
-	}
+
 
 	// Lots of getters and setters. These are used to by the hud to show different stats to the user.
 	public Weapon CurrentWeapon

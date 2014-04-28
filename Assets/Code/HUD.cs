@@ -3,37 +3,42 @@ using System.Collections;
 
 public class HUD : MonoBehaviour
 {
-	public Wrahh player;
-	public GUISkin mySkin;
+	public Wrahh player; 							//Creates a connection to getters/setters within wrah
+	public GUISkin mySkin;							
 	GUIStyle HealthDisplay, StatsDisplay;
 
-	float screenHeight = Screen.height;
+	float screenHeight = Screen.height;				//Variables used to place the HUD in the right location according to width and hight of screen	
 	float screenWidth = Screen.width;
 
 	void Awake()
 	{
-		DontDestroyOnLoad (this.gameObject);
+		DontDestroyOnLoad (this.gameObject); 		//Used to make sure the HUD will persist and remember stats of wrahh on level shift
 	}
 
+	//Created so that when wrahh dies and the game is restarted a new HUD containing the "new" Wrahhs stats will appear
 	void OnLevelWasLoaded(int level) {
 		if (level == 1){
+			//player variable will contain the Wrahh currently located in the scene
 			player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();
 		}
 	}
 
 	void FixedUpdate()
 	{
+		//If wrahh dies the HUD will be destroyed (If retry is pressed a new will be created on level load)
 		if (player.Health < 0)
 			Destroy(this.gameObject);
 	}
 
 	void Start()
-	{
+	{		
+		//The player variable containing an instance of wrahh has the current wrahh in the scene
 			player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();
 	}
 
 	void OnGUI()
 	{
+		//This part creates and positions the different parts of the GUI so that the player has an overview of his current stats
 		GUI.skin = mySkin;
 		HealthDisplay = mySkin.customStyles[0];
 		StatsDisplay = mySkin.customStyles[1];

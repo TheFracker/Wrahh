@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HUD : MonoBehaviour
 {
-	public Wrahh player = new Wrahh();
+	public Wrahh player;
 	public GUISkin mySkin;
 	GUIStyle HealthDisplay, StatsDisplay;
 
@@ -16,6 +16,11 @@ public class HUD : MonoBehaviour
 		DontDestroyOnLoad (this.gameObject);
 	}
 
+	void Start()
+	{
+			player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();	
+	}
+	
 	void OnGUI()
 	{
 		GUI.skin = mySkin;

@@ -402,7 +402,7 @@ public class Wrahh : GameCharacters
 		// Picks up armor
 		if (c.tag == "Armor")													// Pick up armor
 		{																		
-			if(c.gameObject.name == "shield")
+			if(c.gameObject.name == "shield" && shieldOn == false)
 			{
 				Destroy(c.gameObject);											// Removed the item from the scene
 				shield.Protection = 1;

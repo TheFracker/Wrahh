@@ -21,7 +21,6 @@ public class Wrahh : GameCharacters
 	
 	Weapon[] weapons = new Weapon[5];							// An array of weapons used to store the weapons that he picks up
 	Weapon currentWeapon;										// The weapon that Wrahh is currently using
-	int grenades;												// The number of grenades that Wrahh has on his person
 	
 	private float currentSpeed;									// Is the current speed of Wrahh
 	private float climbSpeed = 5f;								// Is the speed at which Wrahh can climb a ladder
@@ -296,7 +295,7 @@ public class Wrahh : GameCharacters
 
 	// Checks if the inventory is full, (standard weapon (bare hands) is not considered a weapon in this case), and if it is, will return true,
 	// so he is not able to pick up a new weapon
-	bool inventoryFull()
+	bool isInventoryFull()
 	{
 		for(int i = 0; i < 5; i++)
 		{
@@ -307,7 +306,7 @@ public class Wrahh : GameCharacters
 	}
 
 	// Finds the first available inventory slot
-	int emptyInventorySlot()
+	int findEmptyInventorySlot()
 	{
 		for(int i = 0; i < 5; i++)
 		{
@@ -360,11 +359,11 @@ public class Wrahh : GameCharacters
 			// When a weapon is picked up, it will be added to the first empty slot in the weapon array, and if it is
 			// stronger than the currently equipped, Wrahh will change to that.
 			// Bare hands < Pistol < Rifle
-			if(!inventoryFull())
+			if(!isInventoryFull())
 			{
-				if (c.gameObject.name == "gunPickUp(Clone)")
+				if (c.gameObject.name == "gunPickUp(Clone)" || c.gameObject.name ==  "gunPickUp")
 				{
-					int slot = emptyInventorySlot();
+					int slot = findEmptyInventorySlot();
 					Destroy(c.gameObject);
 					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Pistol>();
@@ -373,9 +372,9 @@ public class Wrahh : GameCharacters
 						currentWeapon = weapons[currentSlot];
 				}
 				
-				if (c.gameObject.name == "riflePickUp(Clone)")
+				if (c.gameObject.name == "riflePickUp(Clone)" || c.gameObject.name == "riflePickUp")
 				{
-					int slot = emptyInventorySlot();
+					int slot = findEmptyInventorySlot();
 					Destroy(c.gameObject);
 					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Rifle>();

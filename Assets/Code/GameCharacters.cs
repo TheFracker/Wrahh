@@ -16,7 +16,6 @@ public class GameCharacters : MonoBehaviour
 	protected float MAX_MOVE_SPEED; 						// The maximum movement speed that a character should be able to achive
 	protected float standardDrag = 5f; 						// initial drag force
 	protected Animator anim;								// Creates an Animator variable
-	protected float duration = 1.0f;
 	protected bool isHurt;
 	
 	//Sets bool to false (no one hurts anyone in the beginning

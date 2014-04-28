@@ -5,7 +5,7 @@ public class HitProjectile : Projectile
 {
 	protected float liveTime;
 	protected float timeToDie;
-	protected float criticalChange;
+	protected float criticalChance;
 	
 	void Awake ()
 	{
@@ -13,7 +13,7 @@ public class HitProjectile : Projectile
 		damage = 3;
 		liveTime = 0.2f;
 		timeToDie = Time.time + liveTime;
-		criticalChange = 5;
+		criticalChance = 5;
 	}
 
 	// Update is used to see if it is time for the projectile to be removed again
@@ -41,8 +41,8 @@ public class HitProjectile : Projectile
 	// Inflicts damage to the gamecharacter being hit
 	public override int giveDamage ()
 	{
-		if(Random.Range(0,100) < criticalChange)
-			damage *= 3;
+		if (Random.Range (0, 100) < criticalChance)
+				damage *= 3;
 		return damage; 
 	}
 }

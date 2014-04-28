@@ -5,7 +5,7 @@ public class LobsterProjectile : HitProjectile {
 
 	// Since this projectile will not be moving its speed is set to 0
 	// And since it will not be moving it will be destroyed after a little while, which is is liveTime
-	void Start () {
+	void Awake () {
 		speed = 0;
 		damage = 20;
 		liveTime = 1.0f;
@@ -13,7 +13,7 @@ public class LobsterProjectile : HitProjectile {
 	}
 
 	// This will trigger when the projectile collides with anything, but will only hurt the player
-	protected virtual void OnTriggerEnter2D(Collider2D c)
+	void OnTriggerEnter2D(Collider2D c)
 	{
 		if(c.tag == "Player")
 		{

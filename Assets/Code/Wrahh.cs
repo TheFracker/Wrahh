@@ -53,8 +53,8 @@ public class Wrahh : GameCharacters
 		// At the begging of the game, Wrahh is stripped of everything, and he therefore does not have a shield, no helmet, no grenades, and no armor
 		shieldOn = false;
 		helmOn = false;
-		weaponParts = 100;	// Set to 0?
-		lobsterParts = 10;	// Set to 0?
+		weaponParts = 0;	
+		lobsterParts = 0;	
 		shieldArmor = 0;
 		helmArmor = 0;
 

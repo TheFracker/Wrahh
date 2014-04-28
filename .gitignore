@@ -1,3 +1,4 @@
+obj
 DS_Store
 Library
 Temp
@@ -6,3 +7,4 @@ Temp
 *.unityproj
 *.sln
 *.userprefs
+*.suo

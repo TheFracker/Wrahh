@@ -3,17 +3,16 @@ using System.Collections;
 
 public class Lobster : GameCharacters
 {
-	private float maxDistance = 15.0f;										// This is the scope for the lobster's field of sight
+	private float maxDistance = 10.0f;										// This is the scope for the lobster's field of sight
 
 	private Transform target;
 	private Transform enemyTransform;
 	private GameObject lobsterPart;											// This is the lobster's drop item
-	private GameObject wrahh;
+
 	private Animator childAnim;
 
 	private Vector3 startPos;
 	private Vector3 dir;
-	private Vector3 currentDir;
 
 	protected Vector3 pos; 													// The position where the projectile should spawn
 	protected GameObject hitProjectile; 									// Projectile created when hitting with the weapon
@@ -23,12 +22,11 @@ public class Lobster : GameCharacters
 	{
 		enemyTransform = this.GetComponent<Transform>();					// Gets the Tranform of this gameobjects (lobster)
 		lobsterPart = (GameObject)Resources.Load("Prefabs/lobsterParts");	// Collecting the lobsterPart prefab from the assets
-		wrahh = GameObject.FindWithTag("Player");
+		target = GameObject.Find("Player").transform;
 		startPos = enemyTransform.position;									// Stores the lobster's initial position in an attribute/variable
 
 		attacking = false;
 		hitProjectile = Resources.Load ("Prefabs/LobsterProjectile") as GameObject;
-
 		childAnim = this.transform.GetChild(0).GetComponent<Animator>();
 
 		//Set from parent (super) class :: GameCharacters
@@ -42,14 +40,13 @@ public class Lobster : GameCharacters
 	void FixedUpdate ()
 	{
 		// If the lobster has not been crushed by Wrahh and Wrahh is still alive the lobster will chase Wrahh
-		if(wrahh != null && EnemySplat.isCrushed == false)
-		{
-			target = GameObject.FindWithTag("Player").transform; 							// Assign the target to be the whatever object with the tag; "Player"
-			currentDir = enemyTransform.position;
+		if(target != null && EnemySplat.isCrushed == false)
+		{ 																					// Assign the target to be the whatever object with the tag; "Player"
+			dir = enemyTransform.position;
 		
-			if (currentDir.x < target.position.x &! facingRight)							// Flipping the lobster according to its' target's position
+			if (dir.x < target.position.x &! facingRight)									// Flipping the lobster according to its' target's position
 				flip();
-			if (currentDir.x > target.position.x && facingRight)
+			if (dir.x > target.position.x && facingRight)
 				flip();
 		
 			if (Vector3.Distance(target.position, enemyTransform.position) < maxDistance)	// If the distance between the target and the enemy is less than the maximum, chaseTarget will be called!

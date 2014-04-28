@@ -20,10 +20,14 @@ public class Weapon : MonoBehaviour {
 	protected int durabillityLevel = 0;	// The level the durability has been upgraded to
 	protected int rangeLevel = 0;		// The level the range has been upgraded to
 	protected float xPos;				// This is x spawn position of projectiles
+	private bool fire;					// This is used to switch between two identical gunFire sounds.
+										// The reason for using two, is that if there is only one, everytime the dolphin shoots it will cut the sound off and play the sound again
+										// with two, they can play while the other is still playing
 
 	// Start by loading prefabs into the different projectile variables
 	void Start()
 	{
+		fire = false;
 		loadPrefab ();
 		name = "Fists";
 		shooting = false;
@@ -84,6 +88,21 @@ public class Weapon : MonoBehaviour {
 		// If a dolphin is not shooting a coroutine is startet, and shooting is set to true.
 		if(!shooting)
 		{
+			if(ammo > 0)
+			{
+				// Used to play the sound. The sound used is loaded in the Dolphin class, as this script is not placed on anything, and is therefore not capable of
+				// adding an AudioSource component.
+				if(fire)
+				{
+					Dolphin.gunFire[0].Play();
+					fire = !fire;
+				}
+				else
+				{
+					Dolphin.gunFire[1].Play();
+					fire = !fire;
+				}
+			}
 			shooting = true;
 			StartCoroutine ("shot");
 		}

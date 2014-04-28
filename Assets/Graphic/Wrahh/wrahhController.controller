@@ -44,6 +44,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: isClimbing
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -93,6 +99,28 @@ Transition:
     m_ConditionEvent: HitGround
     m_EventTreshold: .5
     m_ExitTime: 0
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+--- !u!1101 &110101122
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110289228}
+  m_DstState: {fileID: 110299111}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isClimbing
+    m_EventTreshold: 0
+    m_ExitTime: .75
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: .00999999978
+    m_ExitTime: .75
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -358,6 +386,50 @@ Transition:
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
+--- !u!1101 &110176864
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110256762}
+  m_DstState: {fileID: 110299111}
+  m_TransitionDuration: .000531300611
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isClimbing
+    m_EventTreshold: 0
+    m_ExitTime: .8125
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: .00999999978
+    m_ExitTime: .8125
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+--- !u!1101 &110179621
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110299111}
+  m_DstState: {fileID: 110289228}
+  m_TransitionDuration: .00361182867
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isClimbing
+    m_EventTreshold: 0
+    m_ExitTime: .625
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: .00999999978
+    m_ExitTime: .625
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
 --- !u!1101 &110182033
 Transition:
   m_ObjectHideFlags: 3
@@ -413,6 +485,28 @@ Transition:
     m_ConditionEvent: IsFalling
     m_EventTreshold: 3
     m_ExitTime: .75
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+--- !u!1101 &110185638
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110299111}
+  m_DstState: {fileID: 110256762}
+  m_TransitionDuration: 0
+  m_TransitionOffset: .246458873
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isClimbing
+    m_EventTreshold: 0
+    m_ExitTime: .625
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: .00999999978
+    m_ExitTime: .625
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -598,6 +692,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110299111
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Wrahh_Climbing
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 125627bd98e6c9748ab720aad89c67dc, type: 2}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 996, y: 192, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1107 &110700000
 StateMachine:
   serializedVersion: 2
@@ -614,9 +723,15 @@ StateMachine:
   - {fileID: 110245984}
   - {fileID: 110224214}
   - {fileID: 110286261}
+  - {fileID: 110299111}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
+    data:
+      first: {fileID: 110299111}
+      second:
+      - {fileID: 110185638}
+      - {fileID: 110179621}
     data:
       first: {fileID: 0}
       second: []
@@ -627,6 +742,7 @@ StateMachine:
       - {fileID: 110118457}
       - {fileID: 110166015}
       - {fileID: 110140004}
+      - {fileID: 110176864}
     data:
       first: {fileID: 110289228}
       second:
@@ -634,6 +750,7 @@ StateMachine:
       - {fileID: 110182096}
       - {fileID: 110119451}
       - {fileID: 110195976}
+      - {fileID: 110101122}
     data:
       first: {fileID: 110257981}
       second:

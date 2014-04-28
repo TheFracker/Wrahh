@@ -45,8 +45,8 @@ public class Helm : MonoBehaviour
 	void protectionLevelEquip()
 	{
 		// Wrahh gets a bit of armor, and the max amount of the helm armor is increased as well.
-		wrahh.HelmMaxArmor += 5;
-		wrahh.HelmArmor += 5;
+		wrahh.HelmMaxArmor += 15;
+		wrahh.HelmArmor += 15;
 		wrahh.transform.FindChild("wrahh_BODY").transform.FindChild("helmet").gameObject.SetActive(true);
 		Debug.Log("Helm Equiped");
 	}
@@ -59,14 +59,14 @@ public class Helm : MonoBehaviour
 	
 	void protectionLevel2()
 	{
-		wrahh.HelmMaxArmor += 3;
-		wrahh.HelmArmor += 3;
+		wrahh.HelmMaxArmor += 7;
+		wrahh.HelmArmor += 7;
 		Debug.Log("Im here, Protection level 2");
 	}
 	void protectionLevel3()
 	{
-		wrahh.HelmMaxArmor += 4;
-		wrahh.HelmArmor += 4;
+		wrahh.HelmMaxArmor += 14;
+		wrahh.HelmArmor += 14;
 		Debug.Log("Im here, Protection level 3");
 	}
 

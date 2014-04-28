@@ -13,7 +13,7 @@ public class Rifle : Weapon {
 		reloadTime = 3.0f;
 		durability = 10;
 		MAX_DURABILITY = 10;
-		hitDamage = 3;
+		hitDamage = 12;
 		delay = 0.3f;
 		durabilityLossChance = 30;
 		xPos = 1.2f;

@@ -13,7 +13,7 @@ public class Pistol : Weapon {
 		reloadTime = 1.0f;
 		durability = 7;
 		MAX_DURABILITY = 7;
-		hitDamage = 2;
+		hitDamage = 8;
 		delay = 0.7f;
 		durabilityLossChance = 30;
 		xPos = 1f;

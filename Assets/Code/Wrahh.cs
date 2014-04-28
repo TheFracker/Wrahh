@@ -390,7 +390,7 @@ public class Wrahh : GameCharacters
 		// Picks up a med pack
 		if (c.tag == "Buff")												
 		{
-			if (c.gameObject.name == "healthBuff(Clone)")
+			if (c.gameObject.name == "healthBuff(Clone)" || c.gameObject.name == "healthBuff")
 			{
 				Destroy(c.gameObject);
 				health += 10;

@@ -45,25 +45,25 @@ public class Shield : MonoBehaviour
 
 	void protectionLevelEquip() //Function which equips shield by setting maxArmor and current armor
 	{
-		wrahh.ShieldMaxArmor +=5;
-		wrahh.ShieldArmor += 5;
+		wrahh.ShieldMaxArmor +=25;
+		wrahh.ShieldArmor += 25;
 		wrahh.transform.FindChild("wrahh_arm_FRONT").transform.FindChild("shield_rotation").gameObject.SetActive(true); //Graphically shows shield on screen
 	}
 	void protectionLevel1()	//The Remaining Increases maxArmor and currentArmor of shield according to upgradeLevel
 	{
-		wrahh.ShieldMaxArmor +=3;
-		wrahh.ShieldArmor += 3;
+		wrahh.ShieldMaxArmor +=7;
+		wrahh.ShieldArmor += 7;
 	}
 
 	void protectionLevel2()
 	{
-		wrahh.ShieldMaxArmor +=4;
-		wrahh.ShieldArmor += 4;
+		wrahh.ShieldMaxArmor +=14;
+		wrahh.ShieldArmor += 14;
 	}
 	void protectionLevel3()
 	{
-		wrahh.ShieldMaxArmor +=4;
-		wrahh.ShieldArmor += 4;
+		wrahh.ShieldMaxArmor +=21;
+		wrahh.ShieldArmor += 21;
 	}
 
 	public int Protection

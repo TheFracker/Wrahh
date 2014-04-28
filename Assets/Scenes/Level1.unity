@@ -3324,7 +3324,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 216832376}
   m_GameObject: {fileID: 1031765894}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_LightmapIndex: 255

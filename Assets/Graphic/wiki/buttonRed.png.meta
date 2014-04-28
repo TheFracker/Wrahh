@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 9edce6223707cc94da894378172fcfdf
-=======
-guid: e6c399e306f431348b85af0818d3fa9e
->>>>>>> bc7d020fec31f699255a10e5773e4a86259a8c8d
+guid: ba3218cb739a39848a5f82b139eb483f
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -28,15 +24,6 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-<<<<<<< HEAD
-    aniso: 1
-    mipBias: -1
-    wrapMode: 1
-  nPOTScale: 0
-  lightmap: 0
-  compressionQuality: 50
-  spriteMode: 2
-=======
     aniso: -1
     mipBias: -1
     wrapMode: -1
@@ -44,7 +31,6 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
->>>>>>> bc7d020fec31f699255a10e5773e4a86259a8c8d
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,37 +44,6 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-<<<<<<< HEAD
-    sprites:
-    - name: arm_left
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 435
-        width: 201
-        height: 422
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: arm_right
-      rect:
-        serializedVersion: 2
-        x: 294
-        y: 435
-        width: 201
-        height: 422
-      alignment: 7
-      pivot: {x: .5, y: 0}
-    - name: climb_sprite
-      rect:
-        serializedVersion: 2
-        x: 537
-        y: 0
-        width: 438
-        height: 885
-      alignment: 0
-      pivot: {x: .5, y: .5}
-=======
     sprites: []
->>>>>>> bc7d020fec31f699255a10e5773e4a86259a8c8d
   spritePackingTag: 
   userData: 

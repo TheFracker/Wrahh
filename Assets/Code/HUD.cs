@@ -9,7 +9,6 @@ public class HUD : MonoBehaviour
 
 	float screenHeight = Screen.height;
 	float screenWidth = Screen.width;
-	bool hudOn;
 
 	void Awake()
 	{
@@ -17,14 +16,20 @@ public class HUD : MonoBehaviour
 	}
 
 	void OnLevelWasLoaded(int level) {
-		if (level == 1)
+		if (level == 1){
 			player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();
-		
+		}
+	}
+
+	void FixedUpdate()
+	{
+		if (player.Health < 0)
+			Destroy(this.gameObject);
 	}
 
 	void Start()
 	{
-		player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();
+			player = GameObject.FindWithTag("Player").gameObject.GetComponent<Wrahh>();
 	}
 
 	void OnGUI()
@@ -42,6 +47,4 @@ public class HUD : MonoBehaviour
 		GUI.Box (new Rect(screenWidth * 0.7f, screenHeight	* 0.02f, 150, 40),"Lobster Parts: " + player.LobsterParts, StatsDisplay);
 		GUI.Box (new Rect(screenWidth * 0.85f, screenHeight	* 0.02f, 150, 40),"Weapon Parts: " + player.WeaponParts, StatsDisplay);
 	}
-
-
 }

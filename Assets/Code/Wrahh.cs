@@ -147,9 +147,9 @@ public class Wrahh : GameCharacters
 		}
 
 		// Change weapon
-		if(Input.GetKeyUp(KeyCode.O))
+		if(Input.GetKeyUp(KeyCode.Q))
 			changeWeaponUp();
-		if(Input.GetKeyUp(KeyCode.L))
+		if(Input.GetKeyUp(KeyCode.E))
 			changeWeaponDown();
 	}
 	
@@ -525,8 +525,9 @@ public class Wrahh : GameCharacters
 		// Any damage left after the armor has been hit, if any armor left, will take away his health.
 		// And if the health takes away the last of Wrahh's health, he will die, and the game will end.
 		health -= damageTaken;
-		if (health <= 0)
+		if (health <= 0){
 			die(this.gameObject); // Calls die from GameCharacters class
+		}
 	}
 
 	// Lots of getters and setters. These are used to by the hud to show different stats to the user.

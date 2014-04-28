@@ -511,6 +511,10 @@ public class Wrahh : GameCharacters
 
 		shieldArmor -= damageToSheild;
 		helmArmor -= damageToHelm;
+
+		//Når Shield/Helm når 0, skal shield.Protection/helm.Protection sættes til 0 og funktionen shield/helm.upgradeProtection() skal 
+		//Køres, det skulle gerne fjerne grafikken og sætte max armor til 0 (tjek scripts)
+
 		// Any damage left after the armor has been hit, if any armor left, will take away his health.
 		// And if the health takes away the last of Wrahh's health, he will die, and the game will end.
 		health -= damageTaken;

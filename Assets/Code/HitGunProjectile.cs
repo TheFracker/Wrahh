@@ -10,6 +10,6 @@ public class HitGunProjectile : HitProjectile {
 		damage = 6;
 		liveTime = 0.2f;
 		timeToDie = Time.time + liveTime;
-		criticalChange = 5;
+		criticalChance = 5;
 	}
 } 

@@ -29,8 +29,15 @@ public class Dolphin : GameCharacters
 	public bool usesPistol;											// Check to indicate what type of weapon the dolphin carry
  	public bool usesRifle;											// Check to indicate what type of weapon the dolphin carry
 
+	public static AudioSource[] gunFire = new AudioSource[2];
+
 	void Start ()
 	{
+		gunFire[0] = gameObject.AddComponent<AudioSource>() as AudioSource;
+		gunFire[1] = gameObject.AddComponent<AudioSource>() as AudioSource;
+		gunFire[0].clip = Resources.Load("sounds/gunshot1") as AudioClip;
+		gunFire[1].clip = Resources.Load("sounds/gunshot1") as AudioClip;
+
 		enemyTransform = this.GetComponent<Transform>();	
 
 		// Adds rifle and gun and health drop prefabs

@@ -21,7 +21,6 @@ public class Wrahh : GameCharacters
 	
 	Weapon[] weapons = new Weapon[5];							// An array of weapons used to store the weapons that he picks up
 	Weapon currentWeapon;										// The weapon that Wrahh is currently using
-	int grenades;												// The number of grenades that Wrahh has on his person
 	
 	private float currentSpeed;									// Is the current speed of Wrahh
 	private float climbSpeed = 5f;								// Is the speed at which Wrahh can climb a ladder
@@ -37,7 +36,7 @@ public class Wrahh : GameCharacters
 
 	void Awake()
 	{
-		DontDestroyOnLoad (this.gameObject);
+		DontDestroyOnLoad (this.gameObject); // Makes sure that the player gameobject is the same through various of levels
 	}
 
 	//////////////////////////////////
@@ -54,7 +53,6 @@ public class Wrahh : GameCharacters
 		// At the begging of the game, Wrahh is stripped of everything, and he therefore does not have a shield, no helmet, no grenades, and no armor
 		shieldOn = false;
 		helmOn = false;
-		grenades = 0;
 		weaponParts = 100;	// Set to 0?
 		lobsterParts = 10;	// Set to 0?
 		shieldArmor = 0;
@@ -296,7 +294,7 @@ public class Wrahh : GameCharacters
 
 	// Checks if the inventory is full, (standard weapon (bare hands) is not considered a weapon in this case), and if it is, will return true,
 	// so he is not able to pick up a new weapon
-	bool inventoryFull()
+	bool isInventoryFull()
 	{
 		for(int i = 0; i < 5; i++)
 		{
@@ -307,7 +305,7 @@ public class Wrahh : GameCharacters
 	}
 
 	// Finds the first available inventory slot
-	int emptyInventorySlot()
+	int findEmptyInventorySlot()
 	{
 		for(int i = 0; i < 5; i++)
 		{
@@ -350,7 +348,7 @@ public class Wrahh : GameCharacters
 		// Pick up lobster parts used for buying helmets, and upgrading and reparing shields and helmets
 		if (c.tag == "Item")													
 		{
-			if (c.gameObject.name == "lobsterParts(Clone)")
+			if (c.gameObject.name == "lobsterParts(Clone)" || c.gameObject.name == "lobsterParts")
 			{
 				Destroy(c.gameObject);
 				lobsterParts += 5;
@@ -360,11 +358,11 @@ public class Wrahh : GameCharacters
 			// When a weapon is picked up, it will be added to the first empty slot in the weapon array, and if it is
 			// stronger than the currently equipped, Wrahh will change to that.
 			// Bare hands < Pistol < Rifle
-			if(!inventoryFull())
+			if(!isInventoryFull())
 			{
-				if (c.gameObject.name == "gunPickUp(Clone)")
+				if (c.gameObject.name == "gunPickUp(Clone)" || c.gameObject.name ==  "gunPickUp")
 				{
-					int slot = emptyInventorySlot();
+					int slot = findEmptyInventorySlot();
 					Destroy(c.gameObject);
 					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Pistol>();
@@ -373,9 +371,9 @@ public class Wrahh : GameCharacters
 						currentWeapon = weapons[currentSlot];
 				}
 				
-				if (c.gameObject.name == "riflePickUp(Clone)")
+				if (c.gameObject.name == "riflePickUp(Clone)" || c.gameObject.name == "riflePickUp")
 				{
-					int slot = emptyInventorySlot();
+					int slot = findEmptyInventorySlot();
 					Destroy(c.gameObject);
 					Destroy(weapons[slot]);
 					weapons[slot] = gameObject.AddComponent<Rifle>();
@@ -493,103 +491,34 @@ public class Wrahh : GameCharacters
 		// The damage is first takes away his armor, and then start to take Wrahh's health 
 
 		int damageTaken = p.giveDamage ();
-		int armorHit = Random.Range(0,2);	// Randomly assings what part of Wrahh's armor takes the first hit
+		int damageToHelm = 0;
+		int damageToSheild = 0;
 
-		// If the damage is less than the currenlty worn armor, only armor will be lost.
-		if (armorHit == 0 && shieldArmor > 0 && shieldArmor > damageTaken)
+		// If any armor is left, it will be lost first.
+		while(damageTaken > 0 && (shieldArmor - damageToSheild > 0 || helmArmor - damageToHelm > 0))
 		{
-			shieldArmor -= damageTaken;
-			damageTaken = 0;
-		}
-		else if(armorHit == 1 && helmArmor > 0 && helmArmor > damageTaken)
-		{
-			helmArmor -= damageTaken;
-			damageTaken = 0;
-		}
-
-		// If the damage is higher than the armor that takes the first hit, that piece of armor will be destroyed, and the rest of the damage will be applied to the
-		// other armor part, if that is still equiped.
-		if (armorHit == 0 && damageTaken > 0 && shield.Protection != 0)
-		{
-			damageTaken -= shieldArmor;
-			shieldArmor = 0;
-			shield.Protection = 0;
-			shield.upgradeProtection();
-			if(helmArmor > 0 && helmArmor > damageTaken)
-			{
-				helmArmor -= damageTaken;
-				damageTaken = 0;
-			}
-			else if (helm.Protection != 0)
-			{
-				damageTaken -= helmArmor;
-				helmArmor = 0;
-				helm.Protection = 0;
-				helm.upgradeProtection();
-			}
-		}
-		else if (armorHit == 1 && damageTaken > 0 && helm.Protection != 0)
-		{
-			damageTaken -= helmArmor;
-			helmArmor = 0;
-			helm.Protection = 0;
-			helm.upgradeProtection();
-			if(shieldArmor > 0 && shieldArmor > damageTaken)
-			{
-				shieldArmor -= damageTaken;
-				damageTaken = 0;
-			}
-			else if(shield.Protection != 0)
-			{
-				damageTaken -= helmArmor;
-				shieldArmor = 0;
-				shield.Protection = 0;
-				shield.upgradeProtection();
-			}
-		}
-		else
-		{
-			int dmg = damageTaken;
-			if(shield.Protection != 0)
-			{
-				if(damageTaken - shieldArmor <= 0)
-					damageTaken = 0;
-				else
-					damageTaken -= shieldArmor;
-				shieldArmor -= dmg;
-				dmg = damageTaken;
-			}
-			if(helm.Protection != 0)
-			{
-				if(dmg - helmArmor <= 0)
-					dmg = 0;
-				else
-					dmg -= helmArmor;
-				helmArmor -= damageTaken;
-				damageTaken = dmg;
-			}
+			int armorHit = Random.Range(0,10); // Randomly assings what part of Wrahh's armor takes a hit
+			if(armorHit >= 4 && shieldArmor - damageToSheild > 0)
+				damageToSheild++;
+			else if(armorHit < 4 && helmArmor - damageToHelm > 0)
+				damageToHelm++;
+			else if (shieldArmor - damageToSheild > 0)
+				damageToSheild++;
+			else if (helmArmor - damageToHelm > 0)
+				damageToHelm++;
+			damageTaken--;
 		}
 
+		shieldArmor -= damageToSheild;
+		helmArmor -= damageToHelm;
 		// Any damage left after the armor has been hit, if any armor left, will take away his health.
 		// And if the health takes away the last of Wrahh's health, he will die, and the game will end.
 		health -= damageTaken;
 		if (health <= 0)
-		{
-			// Calls die from GameCharacters class
-			anim.SetBool("dying", true);
-			StartCoroutine("waitForDeath");
-			die(this.gameObject);
-		}
+			die(this.gameObject); // Calls die from GameCharacters class
 	}
 
-	IEnumerator waitForDeath()
-	{
-		while (anim.GetBool("dying") == true)
-		{
-			yield return new WaitForSeconds(1.5f);
-			anim.SetBool("dying", false);
-		}
-	}
+
 
 	// Lots of getters and setters. These are used to by the hud to show different stats to the user.
 	public Weapon CurrentWeapon

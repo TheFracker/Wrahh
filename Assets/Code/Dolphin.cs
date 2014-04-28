@@ -60,7 +60,7 @@ public class Dolphin : GameCharacters
 		timeToWalk = 0;
 
 		//From parent "GameCharacters.cs":
-		moveSpeed = 7;
+		moveSpeed = 3.5f;
 		facingRight = false;
 		health = 20;
 		setStandardPhysics();
@@ -242,7 +242,7 @@ public class Dolphin : GameCharacters
 		//The enemy's diretion
 		dir = target.position - this.transform.position;
 		dir.Normalize(); //Normalize the direction vector
-		this.transform.position += dir * moveSpeed * 2 * Time.deltaTime; //CHASE THE PLAYER!!!!!
+		this.transform.position += dir * moveSpeed * 1f * Time.deltaTime; //CHASE THE PLAYER!!!!!
 	}
 
 	void moveAway()
@@ -250,6 +250,6 @@ public class Dolphin : GameCharacters
 		//The enemy's diretion
 		dir = target.position - this.transform.position;
 		dir.Normalize(); //Normalize the direction vector
-		this.transform.position += dir * -moveSpeed * 0.4f * Time.deltaTime; //GET AWAY FROM THE PLAYER!!!!!
+		this.transform.position += dir * -moveSpeed * 0.8f * Time.deltaTime; //GET AWAY FROM THE PLAYER!!!!!
 	}
 }

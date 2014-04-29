@@ -124,7 +124,7 @@ public class Dolphin : GameCharacters
 		if(Random.Range(0,100) < 50)
 		{
 			GameObject itemDrop2 = (GameObject)GameObject.Instantiate(healthDrop, Vector2.zero, Quaternion.identity); // Instanciate a new gameobject based on the prefab of the health buff
-			itemDrop2.transform.Translate(enemyTransform.position.x + 0.5f, enemyTransform.position.y + 1f, enemyTransform.position.z); // Place the dropped item at the dolphin last known position with a little offset
+			itemDrop2.transform.Translate(enemyTransform.position.x + 1f, enemyTransform.position.y + 2, enemyTransform.position.z); // Place the dropped item at the dolphin last known position with a little offset
 			base.die (this.gameObject);
 		}
 	}

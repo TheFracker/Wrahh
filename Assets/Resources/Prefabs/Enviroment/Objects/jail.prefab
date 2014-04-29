@@ -123,6 +123,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
   - 82: {fileID: 8200002}
+  - 61: {fileID: 6100002}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -170,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1920929e-07, y: 1.92851806, z: 0}
+  m_LocalPosition: {x: .553459287, y: 1.92851806, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400014}
@@ -235,6 +236,17 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: .400000006, y: 2}
+  m_Center: {x: -1.10000002, y: 0}
+--- !u!61 &6100002
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .5, y: 2}
   m_Center: {x: -1.10000002, y: 0}
 --- !u!82 &8200002
 AudioSource:
@@ -338,7 +350,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 7
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300010, guid: 166992e99931ee248a9ee2416a43b4fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -361,7 +373,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 7
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300008, guid: 166992e99931ee248a9ee2416a43b4fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -384,7 +396,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 7
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300006, guid: 166992e99931ee248a9ee2416a43b4fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -407,7 +419,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 7
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300004, guid: 166992e99931ee248a9ee2416a43b4fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -453,7 +465,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 7
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 166992e99931ee248a9ee2416a43b4fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

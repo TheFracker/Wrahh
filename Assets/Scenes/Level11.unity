@@ -2614,8 +2614,8 @@ GameObject:
   - 4: {fileID: 496192431}
   - 114: {fileID: 496192435}
   - 50: {fileID: 496192434}
-  - 61: {fileID: 496192433}
   - 58: {fileID: 496192432}
+  - 58: {fileID: 496192433}
   m_Layer: 0
   m_Name: ThaLobster
   m_TagString: Enemy
@@ -2646,19 +2646,19 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .364347696
-  m_Center: {x: -.230000004, y: -0}
---- !u!61 &496192433
-BoxCollider2D:
+  m_Center: {x: -.349999994, y: -0}
+--- !u!58 &496192433
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
+  m_PrefabParentObject: {fileID: 5800002, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
     type: 2}
   m_PrefabInternal: {fileID: 1051870993}
   m_GameObject: {fileID: 496192430}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .837639093, y: .653633118}
-  m_Center: {x: .0811796188, y: -.0216479301}
+  m_Radius: .5
+  m_Center: {x: 0, y: 0}
 --- !u!50 &496192434
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2666,7 +2666,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 1051870993}
   m_GameObject: {fileID: 496192430}
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -3261,8 +3261,8 @@ GameObject:
   - 4: {fileID: 615701680}
   - 114: {fileID: 615701684}
   - 50: {fileID: 615701683}
-  - 61: {fileID: 615701682}
   - 58: {fileID: 615701681}
+  - 58: {fileID: 615701682}
   m_Layer: 0
   m_Name: ThaLobster
   m_TagString: Enemy
@@ -3293,19 +3293,19 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .364347696
-  m_Center: {x: -.230000004, y: -0}
---- !u!61 &615701682
-BoxCollider2D:
+  m_Center: {x: -.349999994, y: -0}
+--- !u!58 &615701682
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
+  m_PrefabParentObject: {fileID: 5800002, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
     type: 2}
   m_PrefabInternal: {fileID: 845865698}
   m_GameObject: {fileID: 615701679}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .837639093, y: .653633118}
-  m_Center: {x: .0811796188, y: -.0216479301}
+  m_Radius: .5
+  m_Center: {x: 0, y: 0}
 --- !u!50 &615701683
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -3313,7 +3313,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 845865698}
   m_GameObject: {fileID: 615701679}
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -4659,8 +4659,8 @@ GameObject:
   - 4: {fileID: 923055808}
   - 114: {fileID: 923055812}
   - 50: {fileID: 923055811}
-  - 61: {fileID: 923055810}
   - 58: {fileID: 923055809}
+  - 58: {fileID: 923055810}
   m_Layer: 0
   m_Name: ThaLobster
   m_TagString: Enemy
@@ -4691,19 +4691,19 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .364347696
-  m_Center: {x: -.230000004, y: -0}
---- !u!61 &923055810
-BoxCollider2D:
+  m_Center: {x: -.349999994, y: -0}
+--- !u!58 &923055810
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
+  m_PrefabParentObject: {fileID: 5800002, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
     type: 2}
   m_PrefabInternal: {fileID: 137406794}
   m_GameObject: {fileID: 923055807}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .837639093, y: .653633118}
-  m_Center: {x: .0811796188, y: -.0216479301}
+  m_Radius: .5
+  m_Center: {x: 0, y: 0}
 --- !u!50 &923055811
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -4711,7 +4711,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 137406794}
   m_GameObject: {fileID: 923055807}
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -5164,8 +5164,8 @@ GameObject:
   - 4: {fileID: 972177226}
   - 114: {fileID: 972177230}
   - 50: {fileID: 972177229}
-  - 61: {fileID: 972177228}
   - 58: {fileID: 972177227}
+  - 58: {fileID: 972177228}
   m_Layer: 0
   m_Name: ThaLobster
   m_TagString: Enemy
@@ -5196,19 +5196,19 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .364347696
-  m_Center: {x: -.230000004, y: -0}
---- !u!61 &972177228
-BoxCollider2D:
+  m_Center: {x: -.349999994, y: -0}
+--- !u!58 &972177228
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
+  m_PrefabParentObject: {fileID: 5800002, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
     type: 2}
   m_PrefabInternal: {fileID: 1037433945}
   m_GameObject: {fileID: 972177225}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .837639093, y: .653633118}
-  m_Center: {x: .0811796188, y: -.0216479301}
+  m_Radius: .5
+  m_Center: {x: 0, y: 0}
 --- !u!50 &972177229
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -5216,7 +5216,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 1037433945}
   m_GameObject: {fileID: 972177225}
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -6306,7 +6306,7 @@ Transform:
   m_PrefabInternal: {fileID: 1282270931}
   m_GameObject: {fileID: 1122456147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .0458886698}
+  m_LocalPosition: {x: -1.0214138, y: -.0107069016, z: .0458886698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1168308450}
@@ -6330,7 +6330,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: fd98a2d80d939df429757e4b75054263, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6468,12 +6468,12 @@ Transform:
   m_PrefabInternal: {fileID: 1282270931}
   m_GameObject: {fileID: 1168308448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -.0358886719}
+  m_LocalPosition: {x: .0214138031, y: 1.0107069, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1122456148}
   - {fileID: 1783301068}
   - {fileID: 1826271326}
+  - {fileID: 1122456148}
   m_Father: {fileID: 492551485}
 --- !u!1 &1200270996
 GameObject:
@@ -9591,8 +9591,8 @@ GameObject:
   - 4: {fileID: 1750301185}
   - 114: {fileID: 1750301189}
   - 50: {fileID: 1750301188}
-  - 61: {fileID: 1750301187}
   - 58: {fileID: 1750301186}
+  - 58: {fileID: 1750301187}
   m_Layer: 0
   m_Name: ThaLobster
   m_TagString: Enemy
@@ -9623,19 +9623,19 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .364347696
-  m_Center: {x: -.230000004, y: -0}
---- !u!61 &1750301187
-BoxCollider2D:
+  m_Center: {x: -.349999994, y: -0}
+--- !u!58 &1750301187
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
+  m_PrefabParentObject: {fileID: 5800002, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
     type: 2}
   m_PrefabInternal: {fileID: 939971427}
   m_GameObject: {fileID: 1750301184}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .837639093, y: .653633118}
-  m_Center: {x: .0811796188, y: -.0216479301}
+  m_Radius: .5
+  m_Center: {x: 0, y: 0}
 --- !u!50 &1750301188
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -9643,7 +9643,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 939971427}
   m_GameObject: {fileID: 1750301184}
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -9687,7 +9687,7 @@ Transform:
   m_PrefabInternal: {fileID: 1282270931}
   m_GameObject: {fileID: 1783301067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: .0458886698}
+  m_LocalPosition: {x: -.0214138031, y: -.0107069016, z: .0458886698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1168308450}
@@ -9711,7 +9711,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: fd98a2d80d939df429757e4b75054263, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9880,7 +9880,7 @@ Transform:
   m_PrefabInternal: {fileID: 1282270931}
   m_GameObject: {fileID: 1826271325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: .0458886698}
+  m_LocalPosition: {x: .978586197, y: -.0107069016, z: .0458886698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1168308450}
@@ -9904,7 +9904,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: fd98a2d80d939df429757e4b75054263, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10075,8 +10075,8 @@ GameObject:
   - 4: {fileID: 1856748975}
   - 114: {fileID: 1856748974}
   - 50: {fileID: 1856748973}
-  - 61: {fileID: 1856748972}
   - 58: {fileID: 1856748971}
+  - 58: {fileID: 1856748972}
   m_Layer: 0
   m_Name: ThaLobster
   m_TagString: Enemy
@@ -10095,19 +10095,19 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .364347696
-  m_Center: {x: -.230000004, y: -0}
---- !u!61 &1856748972
-BoxCollider2D:
+  m_Center: {x: -.349999994, y: -0}
+--- !u!58 &1856748972
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
+  m_PrefabParentObject: {fileID: 5800002, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
     type: 2}
   m_PrefabInternal: {fileID: 995454239}
   m_GameObject: {fileID: 1856748970}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .837639093, y: .653633118}
-  m_Center: {x: .0811796188, y: -.0216479301}
+  m_Radius: .5
+  m_Center: {x: 0, y: 0}
 --- !u!50 &1856748973
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -10115,7 +10115,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 995454239}
   m_GameObject: {fileID: 1856748970}
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -11449,8 +11449,8 @@ GameObject:
   - 4: {fileID: 2001209832}
   - 114: {fileID: 2001209836}
   - 50: {fileID: 2001209835}
-  - 61: {fileID: 2001209834}
   - 58: {fileID: 2001209833}
+  - 58: {fileID: 2001209834}
   m_Layer: 0
   m_Name: ThaLobster
   m_TagString: Enemy
@@ -11481,19 +11481,19 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .364347696
-  m_Center: {x: -.230000004, y: -0}
---- !u!61 &2001209834
-BoxCollider2D:
+  m_Center: {x: -.349999994, y: -0}
+--- !u!58 &2001209834
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
+  m_PrefabParentObject: {fileID: 5800002, guid: 9a3fe6a62a506e641aec7ce5810e7e90,
     type: 2}
   m_PrefabInternal: {fileID: 19083266}
   m_GameObject: {fileID: 2001209831}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .837639093, y: .653633118}
-  m_Center: {x: .0811796188, y: -.0216479301}
+  m_Radius: .5
+  m_Center: {x: 0, y: 0}
 --- !u!50 &2001209835
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -11501,7 +11501,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 19083266}
   m_GameObject: {fileID: 2001209831}
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
